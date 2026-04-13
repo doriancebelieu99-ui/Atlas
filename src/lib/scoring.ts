@@ -1,0 +1,368 @@
+// ─── Atlas — Scoring Engine ───────────────────────────────────────
+// Migrated from atlas-backend/src/server/services/scoring.ts
+// Adapted to work with frontend Destination type.
+// All logic preserved: weights, budget, season, style, duration, logistics, interests, pace.
+
+import type {
+  PreferencesInput,
+  CriteriaScores,
+  ScoringWeights,
+  DestinationScoreResult,
+  Destination,
+  BudgetLevel,
+} from "./types";
+
+// ─── Default Weights (from blueprint §11.1) ──────────────────────
+
+const DEFAULT_WEIGHTS: ScoringWeights = {
+  budget: 0.20,
+  season: 0.15,
+  style: 0.20,
+  duration: 0.10,
+  logistics: 0.10,
+  interests: 0.15,
+  pace: 0.10,
+};
+
+// ─── Weight Adjustment ────────────────────────────────────────────
+
+export function adjustWeights(prefs: PreferencesInput): ScoringWeights {
+  const w = { ...DEFAULT_WEIGHTS };
+
+  if (prefs.budget === "low") {
+    w.budget = 0.30;
+    w.style = 0.15;
+  } else if (prefs.budget === "premium") {
+    w.budget = 0.10;
+    w.interests = 0.20;
+  }
+
+  if (prefs.groupType === "family") {
+    w.logistics = 0.18;
+    w.pace = 0.12;
+    w.style = 0.15;
+  }
+
+  // Normalize to sum = 1
+  const sum = Object.values(w).reduce((a, b) => a + b, 0);
+  for (const key of Object.keys(w) as (keyof ScoringWeights)[]) {
+    w[key] = w[key] / sum;
+  }
+
+  return w;
+}
+
+// ─── Duration Mapping ─────────────────────────────────────────────
+
+function durationToDays(duration: string | undefined): number {
+  const map: Record<string, number> = {
+    short: 3,
+    week: 5,
+    long: 10,
+    extended: 18,
+  };
+  return map[duration ?? "week"] ?? 5;
+}
+
+function parseIdealDuration(s: string): [number, number] {
+  const nums = s.match(/\d+/g)?.map(Number) ?? [3, 5];
+  return [nums[0], nums[1] ?? nums[0]];
+}
+
+// ─── Individual Scorers ───────────────────────────────────────────
+
+export function scoreBudget(prefs: PreferencesInput, dest: Destination): number {
+  const budgetRanges: Record<string, [number, number]> = {
+    low: [20, 60],
+    medium: [60, 140],
+    high: [140, 280],
+    premium: [280, 600],
+  };
+
+  const [userMin, userMax] = budgetRanges[prefs.budget];
+  const userMid = (userMin + userMax) / 2;
+  const destMid = (dest.budget.comfort.min + dest.budget.comfort.max) / 2;
+
+  if (userMax < dest.budget.economy.min) return 0;
+  if (userMin > dest.budget.premium.max) return 80;
+
+  const ratio = userMid / destMid;
+  if (ratio >= 0.8 && ratio <= 1.5) return 100;
+  if (ratio >= 0.6) return 70 + ((ratio - 0.6) / 0.2) * 30;
+  if (ratio >= 0.4) return 40 + ((ratio - 0.4) / 0.2) * 30;
+  return Math.max(0, ratio * 100);
+}
+
+export function scoreSeason(prefs: PreferencesInput, dest: Destination): number {
+  let monthIdx: number;
+
+  if (prefs.month !== undefined) {
+    monthIdx = prefs.month;
+  } else if (prefs.period) {
+    const periodMonths: Record<string, number> = {
+      spring: 3,
+      summer: 6,
+      autumn: 9,
+      winter: 0,
+    };
+    monthIdx = periodMonths[prefs.period];
+  } else {
+    const sorted = [...dest.season.months].sort((a, b) => b.score - a.score);
+    return (sorted[0].score + sorted[1].score + sorted[2].score) / 3;
+  }
+
+  let score = dest.season.months[monthIdx]?.score ?? 50;
+
+  const crowd = dest.season.months[monthIdx]?.crowd;
+  if (crowd && crowd > 70) {
+    let penalty = (crowd - 70) * 0.3;
+    if (prefs.pace === "relaxed" || prefs.groupType === "family") {
+      penalty *= 1.5;
+    }
+    score = Math.max(0, score - penalty);
+  }
+
+  return Math.round(score);
+}
+
+export function scoreStyle(prefs: PreferencesInput, dest: Destination): number {
+  if (!prefs.styles || prefs.styles.length === 0) return 70;
+
+  // Map destination ambiance/profiles to style fit
+  const destStyles = [
+    ...dest.ambiance.map((a) => a.toLowerCase()),
+    ...dest.targetProfiles.map((p) => p.toLowerCase()),
+  ];
+
+  let matches = 0;
+  for (const style of prefs.styles) {
+    if (destStyles.some((ds) => ds.includes(style.toLowerCase()))) {
+      matches++;
+    }
+  }
+
+  const ratio = matches / prefs.styles.length;
+  return Math.round(50 + ratio * 50);
+}
+
+export function scoreDuration(prefs: PreferencesInput, dest: Destination): number {
+  const d = prefs.durationDays ?? durationToDays(undefined);
+  const [min, max] = parseIdealDuration(dest.idealDuration);
+
+  if (d >= min && d <= max) return 100;
+  if (d < min) {
+    const deficit = min - d;
+    if (deficit <= 1) return 80;
+    if (deficit <= 2) return 60;
+    return Math.max(20, 100 - deficit * 20);
+  }
+
+  const excess = d - max;
+  if (excess <= 2) return 85;
+  if (excess <= 4) return 65;
+  return Math.max(30, 100 - excess * 10);
+}
+
+export function scoreLogistics(prefs: PreferencesInput, dest: Destination): number {
+  let score = dest.safety.logisticsScore;
+  if (prefs.groupType === "family" && score < 60) {
+    score = score * 0.8;
+  }
+  return Math.round(Math.min(100, score));
+}
+
+export function scoreInterests(prefs: PreferencesInput, dest: Destination): number {
+  if (!prefs.interests || prefs.interests.length === 0) return 70;
+
+  const destKeywords = [
+    dest.mainInterest.toLowerCase(),
+    ...dest.ambiance.map((a) => a.toLowerCase()),
+    ...dest.whyGo.map((w) => w.title.toLowerCase()),
+    ...dest.whyGo.map((w) => w.description.toLowerCase()),
+  ].join(" ");
+
+  let matches = 0;
+  const interestKeywords: Record<string, string[]> = {
+    architecture: ["architecture", "monument", "palais", "cathédrale", "mudéjare", "monastère"],
+    food: ["gastronomie", "gastronomique", "food", "cuisine", "pizza", "tapas", "repas", "foodies"],
+    history: ["histoire", "historique", "patrimoine", "unesco", "grecs", "romain"],
+    nightlife: ["nocturne", "festif", "fête", "nuit", "bar"],
+    nature: ["nature", "paysage", "plage", "montagne", "jardin", "cascades"],
+    art: ["art", "musée", "créatif", "galerie", "street art"],
+  };
+
+  for (const interest of prefs.interests) {
+    const keywords = interestKeywords[interest] ?? [interest];
+    if (keywords.some((kw) => destKeywords.includes(kw))) {
+      matches++;
+    }
+  }
+
+  const ratio = matches / prefs.interests.length;
+  return Math.round(40 + ratio * 60);
+}
+
+export function scorePace(prefs: PreferencesInput, dest: Destination): number {
+  const paceOrder = ["relaxed", "balanced", "dense", "very_active"];
+  const destPaceMap: Record<string, string> = {
+    "Équilibré": "balanced",
+    "Relax": "relaxed",
+    "Dense": "dense",
+  };
+
+  const userIdx = paceOrder.indexOf(prefs.pace);
+  const destIdx = paceOrder.indexOf(destPaceMap[dest.pace] ?? "balanced");
+  const diff = Math.abs(userIdx - destIdx);
+
+  if (diff === 0) return 100;
+  if (diff === 1) return 75;
+  if (diff === 2) return 45;
+  return 20;
+}
+
+// ─── Main Scoring Function ────────────────────────────────────────
+
+export function scoreDestination(
+  prefs: PreferencesInput,
+  dest: Destination,
+): DestinationScoreResult {
+  const weights = adjustWeights(prefs);
+
+  const criteriaScores: CriteriaScores = {
+    budget: scoreBudget(prefs, dest),
+    season: scoreSeason(prefs, dest),
+    style: scoreStyle(prefs, dest),
+    duration: scoreDuration(prefs, dest),
+    logistics: scoreLogistics(prefs, dest),
+    interests: scoreInterests(prefs, dest),
+    pace: scorePace(prefs, dest),
+  };
+
+  const totalScore = Math.round(
+    criteriaScores.budget * weights.budget +
+    criteriaScores.season * weights.season +
+    criteriaScores.style * weights.style +
+    criteriaScores.duration * weights.duration +
+    criteriaScores.logistics * weights.logistics +
+    criteriaScores.interests * weights.interests +
+    criteriaScores.pace * weights.pace,
+  );
+
+  const sorted = Object.entries(criteriaScores).sort(([, a], [, b]) => b - a);
+
+  const highlights = sorted
+    .filter(([, s]) => s >= 75)
+    .slice(0, 3)
+    .map(([key, s]) => generateHighlight(key, s, prefs, dest));
+
+  const limitations = sorted
+    .filter(([, s]) => s < 50)
+    .map(([key, s]) => generateLimitation(key, s, prefs, dest));
+
+  const variant =
+    prefs.budget === "low" ? "economy" : prefs.budget === "premium" ? "premium" : "comfort";
+  const bk =
+    variant === "economy" ? dest.budget.economy : variant === "premium" ? dest.budget.premium : dest.budget.comfort;
+  const days = prefs.durationDays ?? durationToDays(undefined);
+
+  return {
+    slug: dest.slug,
+    name: dest.name,
+    country: dest.country,
+    image: dest.image,
+    totalScore,
+    criteriaScores,
+    highlights,
+    limitations,
+    budgetEstimate: { min: bk.min * days, max: bk.max * days, variant },
+    ambiance: dest.ambiance,
+  };
+}
+
+// ─── Rank Multiple Destinations ───────────────────────────────────
+
+export function rankDestinations(
+  prefs: PreferencesInput,
+  dests: Destination[],
+  maxResults = 8,
+): DestinationScoreResult[] {
+  let results = dests.map((d) => scoreDestination(prefs, d));
+
+  // Hard filters from blueprint §11.7
+  results = results.filter((r) => r.criteriaScores.budget > 0);
+  results = results.filter((r) => r.criteriaScores.season >= 20);
+
+  results.sort((a, b) => b.totalScore - a.totalScore);
+
+  // Diversity: max 2 per country
+  const countryCount: Record<string, number> = {};
+  results = results.filter((r) => {
+    const count = countryCount[r.country] ?? 0;
+    if (count >= 2) return false;
+    countryCount[r.country] = count + 1;
+    return true;
+  });
+
+  return results.slice(0, maxResults);
+}
+
+// ─── Explanation Generators ───────────────────────────────────────
+
+function generateHighlight(
+  criterion: string,
+  score: number,
+  prefs: PreferencesInput,
+  dest: Destination,
+): string {
+  const map: Record<string, string> = {
+    budget: `Excellent rapport qualité/prix pour un budget ${prefs.budget === "low" ? "serré" : prefs.budget === "medium" ? "moyen" : "confort"}.`,
+    season: `Très bonne période pour visiter (score saisonnier : ${score}/100).`,
+    style: `Correspond bien à vos envies de voyage.`,
+    duration: `Durée idéale pour cette destination (${dest.idealDuration} recommandés).`,
+    logistics: `Destination facile d'accès et bien organisée.`,
+    interests: `Forte densité de lieux correspondant à vos centres d'intérêt.`,
+    pace: `Le rythme naturel de cette destination correspond au vôtre.`,
+  };
+  return map[criterion] ?? `${criterion} : ${score}/100`;
+}
+
+function generateLimitation(
+  criterion: string,
+  score: number,
+  prefs: PreferencesInput,
+  dest: Destination,
+): string {
+  const map: Record<string, string> = {
+    budget: `Budget potentiellement serré. Coût de vie : ${dest.budget.costIndex}/200.`,
+    season: `Période pas optimale (score : ${score}/100). Consultez le calendrier saisonnier.`,
+    style: `Ne correspond pas parfaitement à votre style de voyage.`,
+    duration: `Durée pas idéale (recommandé : ${dest.idealDuration}).`,
+    logistics: `Logistique complexe. Anticipez davantage.`,
+    interests: `Peu de lieux pour vos centres d'intérêt principaux.`,
+    pace: `Le rythme naturel de cette destination diffère du vôtre.`,
+  };
+  return map[criterion] ?? `${criterion} : ${score}/100 — point d'attention.`;
+}
+
+// ─── Quiz Answers → PreferencesInput Converter ────────────────────
+
+export function quizToPreferences(answers: Record<string, string | string[]>): PreferencesInput {
+  const durationMap: Record<string, number> = {
+    short: 3,
+    week: 5,
+    long: 10,
+    extended: 18,
+  };
+
+  return {
+    budget: (answers.budget as string as BudgetLevel) ?? "medium",
+    durationDays: durationMap[(answers.duration as string) ?? "week"] ?? 5,
+    period: answers.period as any,
+    groupType: (answers.group as any) ?? "couple",
+    pace: (answers.pace as any) ?? "balanced",
+    interests: Array.isArray(answers.interests) ? answers.interests : [],
+  };
+}
+
+// Alias for API route clarity
+export const quizAnswersToPreferences = quizToPreferences;

@@ -1,0 +1,6 @@
+node_modules/
+.next/
+atlas.db
+out/
+test-results/
+playwright-report/

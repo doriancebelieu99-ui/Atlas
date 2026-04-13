@@ -1,0 +1,130 @@
+import { test, expect } from "@playwright/test";
+
+// ─── Helper: fill the 6-question quiz ─────────────────────────────
+// Clicks one option per single-select question,
+// then selects interests and confirms on the last question.
+
+async function fillQuiz(page: import("@playwright/test").Page) {
+  // Q1: Budget → "Moyen"
+  await page.getByRole("button", { name: /moyen/i }).click();
+
+  // Q2: Duration → "4–7 jours"
+  await page.getByRole("button", { name: /4–7/i }).click();
+
+  // Q3: Period → "Printemps"
+  await page.getByRole("button", { name: /printemps/i }).click();
+
+  // Q4: Group → "Couple"
+  await page.getByRole("button", { name: /couple/i }).click();
+
+  // Q5: Pace → "Équilibré"
+  await page.getByRole("button", { name: /équilibré/i }).click();
+
+  // Q6: Interests (multi-select) → pick 2, then confirm
+  await page.getByRole("button", { name: /gastronomie/i }).click();
+  await page.getByRole("button", { name: /art/i }).click();
+  await page.getByRole("button", { name: /valider/i }).click();
+}
+
+// ═════════════════════════════════════════════════════════════════════
+// TEST 1: Quiz → Results
+// ═════════════════════════════════════════════════════════════════════
+
+test("Quiz → Results: completes quiz and lands on results with sid", async ({ page }) => {
+  // Start at home
+  await page.goto("/");
+  await expect(page).toHaveTitle(/atlas/i);
+
+  // Navigate to quiz
+  await page.getByRole("link", { name: /trouver mon voyage/i }).click();
+  await expect(page).toHaveURL("/quiz");
+
+  // Fill the quiz
+  await fillQuiz(page);
+
+  // Should redirect to /results?sid=...
+  await page.waitForURL(/\/results\?sid=/, { timeout: 10_000 });
+  const url = page.url();
+  expect(url).toMatch(/\/results\?sid=[a-f0-9-]{36}/);
+
+  // Should display at least one destination result
+  const resultCards = page.locator(".result-card");
+  await expect(resultCards.first()).toBeVisible({ timeout: 5_000 });
+
+  const count = await resultCards.count();
+  expect(count).toBeGreaterThanOrEqual(1);
+
+  // Should show the profile summary bar
+  await expect(page.locator(".results-summary")).toBeVisible();
+});
+
+// ═════════════════════════════════════════════════════════════════════
+// TEST 2: Results → Destination → Back to Results (sid preserved)
+// ═════════════════════════════════════════════════════════════════════
+
+test("Results → Destination → Back: sid is preserved in navigation", async ({ page }) => {
+  // Complete quiz first
+  await page.goto("/quiz");
+  await fillQuiz(page);
+  await page.waitForURL(/\/results\?sid=/);
+
+  // Capture the sid from the URL
+  const resultsUrl = page.url();
+  const sid = new URL(resultsUrl).searchParams.get("sid");
+  expect(sid).toBeTruthy();
+
+  // Click "Voir la fiche" on the first result
+  await page.locator(".result-card").first().getByRole("button", { name: /voir la fiche/i }).click();
+
+  // Should be on /destination/[slug]?sid=...
+  await page.waitForURL(/\/destination\/[a-z]+\?sid=/);
+  const destUrl = new URL(page.url());
+  expect(destUrl.searchParams.get("sid")).toBe(sid);
+
+  // Should display the destination hero
+  await expect(page.locator(".fiche-hero")).toBeVisible();
+
+  // Click "Retour aux résultats"
+  await page.getByRole("button", { name: /retour aux résultats/i }).click();
+
+  // Should be back on /results?sid=... with the SAME sid
+  await page.waitForURL(/\/results\?sid=/);
+  const backUrl = new URL(page.url());
+  expect(backUrl.searchParams.get("sid")).toBe(sid);
+
+  // Results should still be visible
+  await expect(page.locator(".result-card").first()).toBeVisible();
+});
+
+// ═════════════════════════════════════════════════════════════════════
+// TEST 3: Results page survives refresh
+// ═════════════════════════════════════════════════════════════════════
+
+test("Results refresh: page remains functional after browser reload", async ({ page }) => {
+  // Complete quiz
+  await page.goto("/quiz");
+  await fillQuiz(page);
+  await page.waitForURL(/\/results\?sid=/);
+
+  // Capture state before refresh
+  const urlBefore = page.url();
+  const firstCardText = await page.locator(".result-card").first().textContent();
+
+  // Hard refresh
+  await page.reload();
+
+  // URL should be unchanged
+  expect(page.url()).toBe(urlBefore);
+
+  // Should NOT redirect to /quiz
+  await page.waitForTimeout(1_000);
+  expect(page.url()).toContain("/results?sid=");
+
+  // Results should still be visible with the same first card
+  await expect(page.locator(".result-card").first()).toBeVisible();
+  const firstCardAfter = await page.locator(".result-card").first().textContent();
+  expect(firstCardAfter).toBe(firstCardText);
+
+  // Profile summary should still be visible
+  await expect(page.locator(".results-summary")).toBeVisible();
+});
