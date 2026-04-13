@@ -350,7 +350,59 @@ export const destinations: Record<string, Destination> = {
       { name: "Jardin Majorelle", type: "Lieu", duration: "2h", description: "Jardin bleu mythique.", vibe: "Photogénique" },
       { name: "Vallée de l'Ourika", type: "Excursion", duration: "1 jour", description: "Cascades, villages berbères.", vibe: "Nature" },
     ],
-    itinerary: null,
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & premiers pas dans la médina", zone: "Médina / Jemaa el-Fna", intensity: 2, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "10h–12h", name: "Arrivée, transfert riad", type: "logistics", duration: 90, icon: "✈️", note: "Taxi aéroport → médina ~70-100 MAD (fixe). Le riad envoie souvent quelqu'un à la porte de la médina." },
+            { slot: "12h30–13h30", name: "Déjeuner au riad ou café", type: "food", duration: 60, icon: "🍽️", note: "Premiers repères. Salade marocaine, tajine léger. 40-80 MAD." },
+            { slot: "14h30–16h30", name: "Balade d'orientation — souks", type: "culture", duration: 120, icon: "🚶", note: "Souk des teinturiers, souk des épices. Ne rien acheter le premier jour — repérez." },
+            { slot: "17h–18h", name: "Pause riad — thé à la menthe", type: "free", duration: 60, icon: "🧘", note: "Le riad est votre refuge. Patio, fontaine, silence." },
+            { slot: "18h30–20h30", name: "Jemaa el-Fna — premier soir", type: "culture", duration: 120, icon: "🌙", note: "La place se transforme au coucher du soleil. Conteurs, musiciens, stands de jus d'orange." },
+            { slot: "20h30–22h", name: "Dîner sur la place ou en terrasse", type: "food", duration: 90, icon: "🍽️", note: "Stands numérotés sur la place (50-80 MAD) ou terrasse Café de France pour la vue." },
+          ],
+        },
+        {
+          number: 2, title: "Palais, jardins & artisanat", zone: "Médina sud / Guéliz", intensity: 3, transportMinutes: 25, freeSlots: 1,
+          activities: [
+            { slot: "9h–9h45", name: "Petit-déj au riad", type: "food", duration: 45, icon: "☕", note: "Msemen, amlou, jus d'orange frais. Inclus dans la plupart des riads." },
+            { slot: "10h–11h30", name: "Palais Bahia", type: "culture", duration: 90, icon: "🏛️", note: "Architecture hispano-mauresque. Zelliges, stucs, jardins. ~70 MAD." },
+            { slot: "11h30–12h30", name: "Tombeaux Saadiens", type: "culture", duration: 45, icon: "🏛️", note: "Redécouverts en 1917. Mausolée aux 12 colonnes. ~70 MAD." },
+            { slot: "13h–14h", name: "Déjeuner Kasbah", type: "food", duration: 60, icon: "🍽️", note: "Quartier plus calme. Tajine d'agneau aux pruneaux." },
+            { slot: "15h–17h", name: "Jardin Majorelle + Musée YSL", type: "culture", duration: 120, icon: "🌿", note: "Jardin bleu cobalt. ~150 MAD combiné. Taxi ou calèche depuis la médina." },
+            { slot: "17h–18h", name: "Temps libre — Guéliz", type: "free", duration: 60, icon: "🛍️", note: "Ville nouvelle. Pâtisseries françaises, boutiques design." },
+            { slot: "20h–22h", name: "Dîner en médina", type: "food", duration: 120, icon: "🍷", note: "Riad-restaurant ou Nomad (terrasse, cuisine moderne marocaine)." },
+          ],
+        },
+        {
+          number: 3, title: "Souks, savoir-faire & Jemaa", zone: "Médina nord / Jemaa el-Fna", intensity: 3, transportMinutes: 15, freeSlots: 1,
+          activities: [
+            { slot: "9h–9h30", name: "Petit-déj", type: "food", duration: 30, icon: "☕", note: "" },
+            { slot: "9h30–12h", name: "Souks — achats raisonnés", type: "culture", duration: 150, icon: "🛍️", note: "Aujourd'hui on achète. Cuir, épices, tapis, lanternes. Négociez en souriant : divisez le premier prix par 2-3." },
+            { slot: "12h–13h", name: "Medersa Ben Youssef", type: "culture", duration: 60, icon: "🏛️", note: "École coranique du XIVe. Architecture sublime. ~50 MAD." },
+            { slot: "13h30–14h30", name: "Déjeuner Café des Épices", type: "food", duration: 60, icon: "🍽️", note: "Terrasse sur la place Rahba Kedima. Vue sur les souks." },
+            { slot: "15h–16h", name: "Pause riad", type: "free", duration: 60, icon: "🧘", note: "Repos, piscine si le riad en a une, hammam de quartier (~100 MAD)." },
+            { slot: "16h30–18h", name: "Musée de Marrakech ou Dar Si Saïd", type: "culture", duration: 90, icon: "🎨", note: "Arts marocains, bijoux berbères, tapis. ~30-50 MAD." },
+            { slot: "18h30–20h", name: "Jemaa el-Fna — coucher de soleil", type: "culture", duration: 90, icon: "🌅", note: "Deuxième passage : halqa (cercles de spectacle), henna, musique gnaoua." },
+            { slot: "20h30–22h", name: "Dîner d'adieu à la médina", type: "food", duration: 90, icon: "🍽️", note: "Dar Yacout ou Le Jardin pour un cadre exceptionnel." },
+          ],
+        },
+        {
+          number: 4, title: "Vallée de l'Ourika & départ", zone: "Ourika (excursion) / Médina", intensity: 3, transportMinutes: 100, freeSlots: 1,
+          activities: [
+            { slot: "8h–9h", name: "Route vers l'Ourika", type: "logistics", duration: 60, icon: "🚗", note: "Grand taxi partagé (~50 MAD/pers) ou excursion organisée. 1h de route, Atlas en vue." },
+            { slot: "9h–10h30", name: "Marche vers les cascades", type: "culture", duration: 90, icon: "🏔️", note: "Sentier le long de l'oued. Guide local conseillé (~100 MAD). Chaussures fermées." },
+            { slot: "10h30–11h30", name: "Cascades de Setti Fatma", type: "culture", duration: 60, icon: "🌊", note: "Première cascade accessible facilement. Les suivantes sont plus sportives." },
+            { slot: "12h–13h", name: "Déjeuner en terrasse sur l'oued", type: "food", duration: 60, icon: "🍽️", note: "Tajine berbère. Tables au-dessus de la rivière. 60-100 MAD." },
+            { slot: "13h30–14h", name: "Village berbère — coopérative", type: "free", duration: 30, icon: "🛍️", note: "Huile d'argan, safran. Coopératives de femmes." },
+            { slot: "14h–15h", name: "Retour Marrakech", type: "logistics", duration: 60, icon: "🚗", note: "" },
+            { slot: "15h30–16h30", name: "Derniers achats médina ou repos", type: "free", duration: 60, icon: "🛍️", note: "Derniers souvenirs, épices, savon noir." },
+            { slot: "17h–18h30", name: "Transfert aéroport", type: "logistics", duration: 90, icon: "✈️", note: "Taxi ~70-100 MAD. Prévoyez 2h avant le vol." },
+          ],
+        },
+      ],
+    },
   },
 
   porto: {

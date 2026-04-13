@@ -107,8 +107,11 @@ describe("getItineraryBySlug", () => {
     expect(result!.itinerary.days).toHaveLength(4);
   });
 
-  it("returns null for destination without itinerary (Marrakech)", () => {
-    expect(getItineraryBySlug("marrakech")).toBeNull();
+  it("returns itinerary for Marrakech (4 days)", () => {
+    const result = getItineraryBySlug("marrakech");
+    expect(result).not.toBeNull();
+    expect(result!.destination.name).toBe("Marrakech");
+    expect(result!.itinerary.days).toHaveLength(4);
   });
 
   it("returns null for unknown slug", () => {
