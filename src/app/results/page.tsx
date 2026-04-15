@@ -3,12 +3,15 @@ import { loadResultsData } from "@/lib/results";
 import ResultsPageClient from "./client";
 
 interface ResultsPageProps {
-  searchParams: Promise<{ sid?: string }>;
+  searchParams: {
+    sid?: string;
+  };
 }
 
-export default async function ResultsPage({ searchParams }: ResultsPageProps) {
-  const params = await searchParams;
-  const outcome = loadResultsData(params.sid);
+export default async function ResultsPage({
+  searchParams,
+}: ResultsPageProps) {
+  const outcome = await loadResultsData(searchParams.sid);
 
   if (!outcome.ok) {
     redirect("/quiz");
