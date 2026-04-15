@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
   const results = rankDestinations(preferences, getAllDestinations());
 
   // Persist session in SQLite
-  const sessionId = createSession(validation.answers, preferences, results);
+  const sessionId = await createSession(validation.answers, preferences, results);
 
   return NextResponse.json({ sessionId });
 }
