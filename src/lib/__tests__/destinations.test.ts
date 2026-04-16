@@ -4,7 +4,6 @@ import {
   getDestinationBySlug,
   getDestinationsBySlugs,
   getItineraryBySlug,
-  getDestinationCount,
 } from "@/lib/destinations";
 
 // These tests hit the real SQLite DB (auto-seeded on first access).
@@ -12,7 +11,7 @@ import {
 describe("getAllDestinations", () => {
   it("returns all seeded destinations", () => {
     const dests = getAllDestinations();
-    expect(dests.length).toBe(5);
+    expect(dests.length).toBe(8);
   });
 
   it("returns destinations sorted by score descending", () => {
@@ -77,50 +76,43 @@ describe("getDestinationsBySlugs", () => {
 });
 
 describe("getItineraryBySlug", () => {
-  it("returns itinerary for Lisbonne", () => {
-    const result = getItineraryBySlug("lisbonne");
   it("returns itinerary for Lisbonne (5 days)", () => {
     const result = getItineraryBySlug("lisbonne");
     expect(result).not.toBeNull();
-    expect(result!.destination.name).toBe("Lisbonne");
-    expect(result!.itinerary.days).toHaveLength(5);
+    expect(result!.days).toHaveLength(5);
   });
 
   it("returns itinerary for Porto (4 days)", () => {
     const result = getItineraryBySlug("porto");
     expect(result).not.toBeNull();
-    expect(result!.destination.name).toBe("Porto");
-    expect(result!.itinerary.days).toHaveLength(4);
+    expect(result!.days).toHaveLength(4);
   });
 
   it("returns itinerary for Séville (4 days)", () => {
     const result = getItineraryBySlug("seville");
     expect(result).not.toBeNull();
-    expect(result!.destination.name).toBe("Séville");
-    expect(result!.itinerary.days).toHaveLength(4);
+    expect(result!.days).toHaveLength(4);
   });
 
   it("returns itinerary for Naples (4 days)", () => {
     const result = getItineraryBySlug("naples");
     expect(result).not.toBeNull();
-    expect(result!.destination.name).toBe("Naples");
-    expect(result!.itinerary.days).toHaveLength(4);
+    expect(result!.days).toHaveLength(4);
   });
 
   it("returns itinerary for Marrakech (4 days)", () => {
     const result = getItineraryBySlug("marrakech");
     expect(result).not.toBeNull();
-    expect(result!.destination.name).toBe("Marrakech");
-    expect(result!.itinerary.days).toHaveLength(4);
+    expect(result!.days).toHaveLength(4);
+  });
+
+  it("returns itinerary for Istanbul (5 days)", () => {
+    const result = getItineraryBySlug("istanbul");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
   });
 
   it("returns null for unknown slug", () => {
     expect(getItineraryBySlug("atlantis")).toBeNull();
-  });
-});
-
-describe("getDestinationCount", () => {
-  it("returns 5 seeded destinations", () => {
-    expect(getDestinationCount()).toBe(5);
   });
 });

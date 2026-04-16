@@ -542,8 +542,9 @@ body {
 
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 18px;
+  align-items: stretch;
 }
 
 .results-empty {
@@ -560,6 +561,9 @@ body {
   background: #fff;
   border: 1px solid var(--mist);
   animation: fadeUp 0.4s both;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .result-card-img-wrap {
@@ -587,6 +591,9 @@ body {
 
 .result-card-body {
   padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .result-card-country {
@@ -605,10 +612,27 @@ body {
   margin-bottom: 6px;
 }
 
+.result-card-compatibility {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2f2a24;
+}
+
+.result-card-why {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6f675d;
+  font-weight: 500;
+  min-height: 34px;
+}
+
 .result-card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin-top: 8px;
   margin-bottom: 10px;
 }
 
@@ -629,7 +653,7 @@ body {
 .result-card-limitation {
   font-size: 12px;
   color: #d97706;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .result-card-budget {
@@ -648,6 +672,7 @@ body {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 /* ─── Buttons ──────────────────────────────────────────────────── */
@@ -1579,32 +1604,133 @@ body {
 /* ─── Responsive ───────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  /* Hide compare action button on mobile only */
+  .btn-compare {
+    display: none !important;
+  }
+
+  .result-card-actions {
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .result-card-actions .btn-primary,
+  .result-card-actions .btn-outline {
+    flex: 1;
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .result-card-img {
+    height: 145px;
+  }
+
+  .result-card-score {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .result-card-body {
+    padding: 14px;
+  }
+
+  .result-card-country {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+
+  .result-card-name {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .result-card-compatibility {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  .result-card-why {
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 1.35;
+    min-height: auto;
+  }
+
+  .result-card-tags {
+    gap: 4px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+
+  .result-card-tag {
+    padding: 2px 8px;
+    font-size: 9px;
+  }
+
+  .result-card-budget {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .result-card-budget-variant {
+    font-size: 10px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
   .envies-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .dest-grid {
     grid-template-columns: 1fr;
   }
-  .results-grid {
-    grid-template-columns: 1fr;
-  }
+
   .budget-grid {
     grid-template-columns: 1fr;
   }
+
   .season-grid {
     grid-template-columns: repeat(6, 1fr);
   }
+
   .cities-grid {
     grid-template-columns: 1fr;
   }
+
   .nav {
     padding: 10px 16px;
   }
+
   .section {
     padding: 40px 16px;
   }
+
   .quiz-options {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .results-summary {
+    padding: 12px 14px;
+    align-items: flex-start;
+  }
+
+  .results-summary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1655,17 +1781,4 @@ body {
 
 .quiz-error p {
   margin: 0;
-}
-.result-card-compatibility {
-  margin-top: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #2f2a24;
-}
-
-.result-card-why {
-  margin-top: 6px;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #6f675d;
 }

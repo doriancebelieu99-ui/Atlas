@@ -7,9 +7,10 @@ interface FicheHeroProps {
 }
 
 export default function FicheHero({ dest }: FicheHeroProps) {
+  const heroImageStyle = dest.slug === "reykjavik" ? { objectPosition: "center 68%" } : undefined;
   return (
     <div className="fiche-hero">
-      <img src={dest.image} alt={dest.name} className="fiche-hero-img" />
+      <img src={dest.image} alt={dest.name} className="fiche-hero-img" style={heroImageStyle} />
       <div className="fiche-hero-overlay">
         <span className="fiche-hero-region">{dest.region}, {dest.country}</span>
         <h1 className="fiche-hero-name">{dest.name}</h1>

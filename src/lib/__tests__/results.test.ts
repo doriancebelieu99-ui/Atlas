@@ -37,9 +37,9 @@ const results: DestinationScoreResult[] = [
 describe("loadResultsData", () => {
   // ─── Valid session ────────────────────────────────────────────
 
-  it("returns ok:true with full session for valid sid", () => {
-    const sid = createSession(answers, prefs, results);
-    const outcome = loadResultsData(sid);
+  it("returns ok:true with full session for valid sid", async () => {
+    const sid = await createSession(answers, prefs, results);
+    const outcome = await loadResultsData(sid);
 
     expect(outcome.ok).toBe(true);
     if (!outcome.ok) return; // type narrowing
@@ -54,22 +54,22 @@ describe("loadResultsData", () => {
 
   // ─── Missing sid ──────────────────────────────────────────────
 
-  it("returns missing_sid for undefined", () => {
-    const outcome = loadResultsData(undefined);
+  it("returns missing_sid for undefined", async () => {
+    const outcome = await loadResultsData(undefined);
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("missing_sid");
   });
 
-  it("returns missing_sid for null", () => {
-    const outcome = loadResultsData(null);
+  it("returns missing_sid for null", async () => {
+    const outcome = await loadResultsData(null);
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("missing_sid");
   });
 
-  it("returns missing_sid for empty string", () => {
-    const outcome = loadResultsData("");
+  it("returns missing_sid for empty string", async () => {
+    const outcome = await loadResultsData("");
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("missing_sid");
@@ -77,22 +77,22 @@ describe("loadResultsData", () => {
 
   // ─── Invalid sid ──────────────────────────────────────────────
 
-  it("returns session_not_found for unknown UUID", () => {
-    const outcome = loadResultsData(randomUUID());
+  it("returns session_not_found for unknown UUID", async () => {
+    const outcome = await loadResultsData(randomUUID());
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("session_not_found");
   });
 
-  it("returns session_not_found for malicious sid", () => {
-    const outcome = loadResultsData("'; DROP TABLE search_sessions; --");
+  it("returns session_not_found for malicious sid", async () => {
+    const outcome = await loadResultsData("'; DROP TABLE search_sessions; --");
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("session_not_found");
   });
 
-  it("returns session_not_found for random garbage", () => {
-    const outcome = loadResultsData("not-a-real-session-id-at-all");
+  it("returns session_not_found for random garbage", async () => {
+    const outcome = await loadResultsData("not-a-real-session-id-at-all");
     expect(outcome.ok).toBe(false);
     if (outcome.ok) return;
     expect(outcome.reason).toBe("session_not_found");

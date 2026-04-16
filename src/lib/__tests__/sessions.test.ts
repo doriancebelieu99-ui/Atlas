@@ -34,22 +34,22 @@ const results: DestinationScoreResult[] = [
 ];
 
 describe("createSession (real module)", () => {
-  it("returns a valid UUID", () => {
-    const id = createSession(answers, prefs, results);
+  it("returns a valid UUID", async () => {
+    const id = await createSession(answers, prefs, results);
     expect(id).toMatch(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/);
   });
 
-  it("returns unique IDs on each call", () => {
-    const id1 = createSession(answers, prefs, results);
-    const id2 = createSession(answers, prefs, results);
+  it("returns unique IDs on each call", async () => {
+    const id1 = await createSession(answers, prefs, results);
+    const id2 = await createSession(answers, prefs, results);
     expect(id1).not.toBe(id2);
   });
 });
 
 describe("getSession (real module)", () => {
-  it("retrieves a session created by createSession", () => {
-    const id = createSession(answers, prefs, results);
-    const session = getSession(id);
+  it("retrieves a session created by createSession", async () => {
+    const id = await createSession(answers, prefs, results);
+    const session = await getSession(id);
 
     expect(session).not.toBeNull();
     expect(session!.id).toBe(id);
@@ -61,45 +61,45 @@ describe("getSession (real module)", () => {
     expect(session!.createdAt).toBeTruthy();
   });
 
-  it("returns null for non-existent UUID", () => {
-    const session = getSession(randomUUID());
+  it("returns null for non-existent UUID", async () => {
+    const session = await getSession(randomUUID());
     expect(session).toBeNull();
   });
 
-  it("returns null for empty string", () => {
-    expect(getSession("")).toBeNull();
+  it("returns null for empty string", async () => {
+    expect(await getSession("")).toBeNull();
   });
 
-  it("returns null for short string", () => {
-    expect(getSession("abc")).toBeNull();
+  it("returns null for short string", async () => {
+    expect(await getSession("abc")).toBeNull();
   });
 
-  it("returns null for malicious input", () => {
-    expect(getSession("'; DROP TABLE search_sessions; --")).toBeNull();
+  it("returns null for malicious input", async () => {
+    expect(await getSession("'; DROP TABLE search_sessions; --")).toBeNull();
   });
 
-  it("returns null for path traversal attempt", () => {
-    expect(getSession("../../../etc/passwd")).toBeNull();
+  it("returns null for path traversal attempt", async () => {
+    expect(await getSession("../../../etc/passwd")).toBeNull();
   });
 
-  it("preserves complex results with multiple destinations", () => {
+  it("preserves complex results with multiple destinations", async () => {
     const multiResults: DestinationScoreResult[] = [
       { ...results[0] },
       { ...results[0], slug: "porto", name: "Porto", totalScore: 85 },
       { ...results[0], slug: "naples", name: "Naples", totalScore: 78 },
     ];
 
-    const id = createSession(answers, prefs, multiResults);
-    const session = getSession(id);
+    const id = await createSession(answers, prefs, multiResults);
+    const session = await getSession(id);
 
     expect(session!.results).toHaveLength(3);
-    expect(session!.results.map((r) => r.slug)).toEqual(["lisbonne", "porto", "naples"]);
-    expect(session!.results.map((r) => r.totalScore)).toEqual([92, 85, 78]);
+    expect(session!.results.map((r: DestinationScoreResult) => r.slug)).toEqual(["lisbonne", "porto", "naples"]);
+    expect(session!.results.map((r: DestinationScoreResult) => r.totalScore)).toEqual([92, 85, 78]);
   });
 
-  it("preserves all criteria scores", () => {
-    const id = createSession(answers, prefs, results);
-    const session = getSession(id);
+  it("preserves all criteria scores", async () => {
+    const id = await createSession(answers, prefs, results);
+    const session = await getSession(id);
     const scores = session!.results[0].criteriaScores;
 
     expect(scores.budget).toBe(100);
