@@ -43,6 +43,10 @@ export function adjustWeights(prefs: PreferencesInput): ScoringWeights {
     w.style = 0.15;
   }
 
+  if (!prefs.styles || prefs.styles.length === 0) {
+    w.style = 0;
+  }
+
   // Normalize to sum = 1
   const sum = Object.values(w).reduce((a, b) => a + b, 0);
   for (const key of Object.keys(w) as (keyof ScoringWeights)[]) {
@@ -87,10 +91,13 @@ export function scoreBudget(prefs: PreferencesInput, dest: Destination): number 
   if (userMin > dest.budget.premium.max) return 80;
 
   const ratio = userMid / destMid;
-  if (ratio >= 0.8 && ratio <= 1.5) return 100;
-  if (ratio >= 0.6) return 70 + ((ratio - 0.6) / 0.2) * 30;
-  if (ratio >= 0.4) return 40 + ((ratio - 0.4) / 0.2) * 30;
-  return Math.max(0, ratio * 100);
+  let score: number;
+  if (ratio >= 0.8 && ratio <= 1.5) score = 100;
+  else if (ratio >= 0.6) score = 70 + ((ratio - 0.6) / 0.2) * 30;
+  else if (ratio >= 0.4) score = 40 + ((ratio - 0.4) / 0.2) * 30;
+  else score = ratio * 100;
+
+  return Math.max(0, Math.min(100, score));
 }
 
 export function scoreSeason(prefs: PreferencesInput, dest: Destination): number {
