@@ -1,4 +1,3 @@
-// ─── Atlas — Result Card ──────────────────────────────────────────
 import { scoreColor } from "@/data/ui-constants";
 import type { DestinationScoreResult, ViewName } from "@/lib/types";
 
@@ -10,6 +9,22 @@ interface ResultCardProps {
   isCompareSelected?: boolean;
 }
 
+function buildWhyText(result: DestinationScoreResult): string {
+  const parts: string[] = [];
+
+  if (result.highlights?.[0]) {
+    parts.push(result.highlights[0]);
+  }
+
+  if (result.ambiance?.[0]) {
+    parts.push(`ambiance ${result.ambiance[0].toLowerCase()}`);
+  }
+
+  parts.push(`budget ${result.budgetEstimate.variant.toLowerCase()}`);
+
+  return parts.slice(0, 2).join(" • ");
+}
+
 export default function ResultCard({
   result,
   rank,
@@ -17,6 +32,8 @@ export default function ResultCard({
   onCompareToggle,
   isCompareSelected,
 }: ResultCardProps) {
+  const whyText = buildWhyText(result);
+
   return (
     <div className="result-card" style={{ animationDelay: `${rank * 0.08}s` }}>
       <div className="result-card-img-wrap">
@@ -30,15 +47,20 @@ export default function ResultCard({
         <div className="result-card-country">{result.country}</div>
         <div className="result-card-name">{result.name}</div>
 
+        <div className="result-card-compatibility">
+          {result.totalScore}% de match avec votre profil
+        </div>
+
+        <div className="result-card-why">
+  {whyText}
+</div>
+
         <div className="result-card-tags">
           {result.ambiance.slice(0, 3).map((tag) => (
             <span key={tag} className="result-card-tag">{tag}</span>
           ))}
         </div>
 
-        {result.highlights.length > 0 && (
-          <div className="result-card-highlight">✓ {result.highlights[0]}</div>
-        )}
         {result.limitations.length > 0 && (
           <div className="result-card-limitation">⚠ {result.limitations[0]}</div>
         )}
@@ -67,4 +89,3 @@ export default function ResultCard({
       </div>
     </div>
   );
-}

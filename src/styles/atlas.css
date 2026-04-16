@@ -1656,3 +1656,16 @@ body {
 .quiz-error p {
   margin: 0;
 }
+.result-card-compatibility {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f2a24;
+}
+
+.result-card-why {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6f675d;
+}
