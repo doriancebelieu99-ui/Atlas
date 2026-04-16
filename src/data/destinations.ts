@@ -76,7 +76,7 @@ export const destinations: Record<string, Destination> = {
       freshness: "Mars 2026",
       points: [
         { category: "Sécurité", level: "low_risk", text: "Très sûre. Pickpockets tram 28." },
-        { category: "Santé", level: "low_risk", text: "Aucun risque. Eau potable." },
+        { category: "Santé", level: "low_risk", text: "Aucun risque particulier. Eau du robinet potable." },
         { category: "Transport", level: "easy", text: "Métro, bus, tram, Uber." },
         { category: "Langue", level: "easy", text: "Anglais largement parlé." },
         { category: "Formalités", level: "easy", text: "Schengen. CI suffisante." },
@@ -208,7 +208,7 @@ export const destinations: Record<string, Destination> = {
     context: {
       culture: "Vit dehors. Dîner 22h. Sieste réelle.",
       tips: "Medias raciones. Tinto de verano > sangria.",
-      surprises: "Plus grande cathédrale gothique du monde.",
+      surprises: "La cathédrale de Séville figure parmi les plus grandes cathédrales gothiques du monde.",
       history: "Porte de l'Amérique espagnole pendant 3 siècles.",
     },
     safety: {
@@ -240,7 +240,7 @@ export const destinations: Record<string, Destination> = {
           number: 2, title: "Cathédrale & centre monumental", zone: "Centro / Arenal", intensity: 3, transportMinutes: 15, freeSlots: 1,
           activities: [
             { slot: "9h–9h45", name: "Petit-déj Bar El Comercio", type: "food", duration: 45, icon: "☕", note: "Tostada con tomate. Café con leche." },
-            { slot: "10h–12h30", name: "Cathédrale + Giralda", type: "culture", duration: 150, icon: "⛪", note: "Plus grande cathédrale gothique du monde. Montée Giralda. ~12€." },
+            { slot: "10h–12h30", name: "Cathédrale + Giralda", type: "culture", duration: 150, icon: "⛪", note: "L'une des plus grandes cathédrales gothiques du monde. Montée Giralda. ~12€." },
             { slot: "13h–14h30", name: "Déjeuner Arenal", type: "food", duration: 90, icon: "🍽️", note: "Medias raciones. Tinto de verano." },
             { slot: "15h–16h30", name: "Plaza de España", type: "culture", duration: 90, icon: "🏛️", note: "Monument colossal. Barques sur le canal. Gratuit." },
             { slot: "17h–18h", name: "Parc María Luisa", type: "free", duration: 60, icon: "🌿", note: "Ombre bienvenue. Fontaines et céramiques." },
@@ -288,7 +288,7 @@ export const destinations: Record<string, Destination> = {
     ambiance: ["Dépaysante", "Sensorielle", "Colorée", "Abordable"],
     targetProfiles: ["Couples", "Amis", "Budget serré"],
     whyGo: [
-      { title: "Dépaysement à 3h de vol", description: "Rapport proximité/dépaysement imbattable." },
+      { title: "Dépaysement à 3h de vol", description: "Rapport proximité/dépaysement difficile à égaler depuis l'Europe." },
       { title: "Budget très bas", description: "30-50€/jour tout compris." },
       { title: "Riads exceptionnels", description: "Patios, mosaïques, calme au cœur du chaos." },
     ],
@@ -347,7 +347,7 @@ export const destinations: Record<string, Destination> = {
     },
     cities: [
       { name: "Médina", type: "Quartier", duration: "2 jours", description: "Souks, palais, riads.", vibe: "Immersif" },
-      { name: "Jardin Majorelle", type: "Lieu", duration: "2h", description: "Jardin bleu mythique.", vibe: "Photogénique" },
+      { name: "Jardin Majorelle", type: "Lieu", duration: "2h", description: "Jardin bleu cobalt, devenu emblème visuel de la ville.", vibe: "Photogénique" },
       { name: "Vallée de l'Ourika", type: "Excursion", duration: "1 jour", description: "Cascades, villages berbères.", vibe: "Nature" },
     ],
     itinerary: {
@@ -507,7 +507,7 @@ export const destinations: Record<string, Destination> = {
         {
           number: 3, title: "Centre historique & azulejos", zone: "Batalha / Bolhão / Clérigos", intensity: 3, transportMinutes: 20, freeSlots: 1,
           activities: [
-            { slot: "9h–9h45", name: "Gare São Bento", type: "culture", duration: 30, icon: "🏛️", note: "20 000 azulejos. Gratuit. Le plus beau hall du monde." },
+            { slot: "9h–9h45", name: "Gare São Bento", type: "culture", duration: 30, icon: "🏛️", note: "20 000 azulejos. Gratuit. L'un des halls de gare les plus remarquables d'Europe." },
             { slot: "10h–11h30", name: "Tour dos Clérigos", type: "culture", duration: 90, icon: "⛪", note: "225 marches. Vue 360°. ~8€." },
             { slot: "12h–13h", name: "Mercado do Bolhão", type: "food", duration: 60, icon: "🛍️", note: "Marché rénové. Produits locaux." },
             { slot: "13h30–14h30", name: "Déjeuner marché", type: "food", duration: 60, icon: "🍽️", note: "Stands gastronomiques à l'étage." },
@@ -539,14 +539,14 @@ export const destinations: Record<string, Destination> = {
     tagline: "Chaos magnifique, pizza et Vésuve",
     score: 85,
     image: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=900&q=80",
-    summary: "Bruyante, vivante, authentique. Meilleure pizza du monde. Pompéi à 30 minutes.",
+    summary: "Bruyante, vivante, authentique. Berceau de la pizza napolitaine. Pompéi à 30 minutes.",
     mainInterest: "Culture & gastronomie",
     idealDuration: "3 à 5 jours",
     pace: "Équilibré",
     ambiance: ["Authentique", "Chaotique", "Gastronomique", "Historique"],
     targetProfiles: ["Foodies", "Aventuriers", "Culture"],
     whyGo: [
-      { title: "Meilleure pizza du monde", description: "Da Michele, Sorbillo — niveau incomparable." },
+      { title: "Berceau de la pizza napolitaine", description: "Da Michele, Sorbillo — référence mondiale du genre, à déguster sur place." },
       { title: "Pompéi et le Vésuve", description: "30 min en train. Expérience unique." },
       { title: "Authenticité brute", description: "L'Italie sans filtre." },
     ],
@@ -646,7 +646,7 @@ export const destinations: Record<string, Destination> = {
           number: 4, title: "Quartiers Espagnols & départ", zone: "Quartieri Spagnoli / Toledo", intensity: 2, transportMinutes: 25, freeSlots: 2,
           activities: [
             { slot: "9h30–11h", name: "Quartiers Espagnols", type: "culture", duration: 90, icon: "🚶", note: "Linge suspendu, street art, Maradona partout. Le vrai Naples." },
-            { slot: "11h–11h30", name: "Station Toledo (métro)", type: "culture", duration: 30, icon: "🎨", note: "Plus belle station de métro d'Europe. Gratuit (billet métro ~1.50€)." },
+            { slot: "11h–11h30", name: "Station Toledo (métro)", type: "culture", duration: 30, icon: "🎨", note: "L'une des stations de métro les plus remarquables d'Europe. ~1.50€." },
             { slot: "11h30–12h30", name: "Marché Pignasecca", type: "free", duration: 60, icon: "🛍️", note: "Marché de rue vivant. Frittatina di pasta à emporter." },
             { slot: "13h–14h", name: "Dernier déjeuner", type: "food", duration: 60, icon: "🍕", note: "Pizza a portafoglio (pliée) dans la rue. 1-2€." },
             { slot: "14h30–15h30", name: "Derniers achats", type: "free", duration: 60, icon: "🛍️", note: "Limoncello, pastiera, céramiques de Vietri." },
@@ -674,8 +674,8 @@ export const destinations: Record<string, Destination> = {
     whyGo: [
       { title: "Carrefour de civilisations", description: "Byzance, Constantinople, Istanbul. Trois noms, trois empires, plus de 1500 ans de présence." },
       { title: "Architecture d'exception", description: "Hagia Sophia, Mosquée Bleue, palais Topkapi. Chefs-d'œuvre de l'architecture byzantine et ottomane." },
-      { title: "Bazars emblématiques", description: "Grand Bazar : 65 rues, 4000 boutiques. Expérience immersive sans équivalent." },
-      { title: "Gastronomie accessible", description: "Kebab, meze, café turc. 3-8€ par repas. Qualité réputée, prix imbattables." },
+      { title: "Bazars emblématiques", description: "Grand Bazar : 65 rues, 4000 boutiques. L'un des plus grands marchés couverts du monde, à la fois lieu de commerce et d'architecture historique." },
+      { title: "Gastronomie accessible", description: "Kebab, meze, café turc. 3-8€ par repas. Cuisine réputée et prix très accessibles pour une capitale." },
     ],
     constraints: [
       { text: "Affluence toute l'année dans Sultanahmet. Visite tôt le matin conseillée.", severity: "info" },
@@ -717,7 +717,7 @@ export const destinations: Record<string, Destination> = {
       note: "Avril-mai offre le meilleur compromis : météo idéale et foules modérées.",
     },
     context: {
-      culture: "Turcs hospitaliers et fiers de leur histoire. Islam prépondérant mais culture laïque très présente. Marchands négocient volontiers ; c'est attendu et accepté.",
+      culture: "Turcs hospitaliers et fiers de leur histoire. La Turquie est un État laïc à population majoritairement musulmane — ces deux dimensions coexistent au quotidien, visibles dans l'architecture comme dans les usages. Marchands négocient volontiers ; c'est attendu et accepté.",
       tips: "Pourboire ~10% au restaurant, arrondir aux taxis. Dire 'Merhaba' (bonjour) ouvre les portes. Hammams : sections séparées par genre ou jours distincts.",
       surprises: "La rive asiatique (Uskudar) reste largement ignorée des circuits touristiques. Les ferries du Bosphore offrent une croisière gratuite via le transport régulier.",
       history: "Capitale sous Byzance (330), Constantinople ottomane (1453-1923), Istanbul républicaine. Chaque couche historique reste tangible.",
@@ -811,7 +811,7 @@ export const destinations: Record<string, Destination> = {
     score: 88,
     image: "/images/destinations/reykjavik.png.avif",
     summary:
-      "Reykjavik est la capitale la plus septentrionale du monde : une ville à taille humaine posée sur une île volcanique, porte d'entrée vers des paysages d'une puissance rare. Geysers, cascades, aurores boréales et soleil de minuit composent un décor sans équivalent en Europe.",
+      "Reykjavik est une capitale nordique posée sur une île volcanique, porte d'entrée vers des paysages d'une puissance rare. Geysers, cascades, aurores boréales et soleil de minuit composent un décor difficile à trouver ailleurs en Europe.",
     mainInterest: "Nature & aventure",
     idealDuration: "4 à 6 jours",
     pace: "Dynamique",
@@ -825,7 +825,7 @@ export const destinations: Record<string, Destination> = {
     ],
     constraints: [
       { text: "Destination très onéreuse : repas, hébergement et excursions pèsent significativement sur le budget.", severity: "warning" },
-      { text: "Météo imprévisible toute l'année. Imperméable, couches et chaussures de randonnée indispensables.", severity: "caution" },
+      { text: "Météo imprévisible toute l'année. Imperméable, vêtements chauds en laine et bonnes chaussures de marche sont indispensables.", severity: "caution" },
       { text: "Voiture recommandée pour explorer au-delà de la ville. Locations chères en haute saison.", severity: "info" },
       { text: "Juin-août : réservations à anticiper plusieurs mois à l'avance.", severity: "info" },
     ],
@@ -863,7 +863,7 @@ export const destinations: Record<string, Destination> = {
       note: "Juin pour le soleil de minuit. Septembre pour les aurores boréales sans la foule estivale.",
     },
     context: {
-      culture: "Islandais discrets, fiers et très instruits. Société égalitaire. L'anglais est parfaitement maîtrisé partout. Respect profond de la nature, inscrit dans les mœurs.",
+      culture: "Islandais discrets, fiers et très instruits. Société égalitaire. L'anglais est très largement parlé, y compris hors des zones touristiques. Respect profond de la nature, inscrit dans les mœurs.",
       tips: "Pourboire non attendu mais apprécié. Eau du robinet parmi les meilleures au monde — inutile d'acheter de l'eau en bouteille. Paiement par carte universel, même pour de petits montants.",
       surprises: "Reykjavik est minuscule : tout le centre-ville se parcourt à pied en 30 minutes. La vraie Islande commence dès la sortie de la ville.",
       history: "Première colonie viking vers 874. Althing (930) à Þingvellir : l'un des plus anciens parlements du monde. Indépendance du Danemark proclamée en 1944.",
@@ -873,10 +873,10 @@ export const destinations: Record<string, Destination> = {
       logisticsScore: 92,
       freshness: "Mars 2026",
       points: [
-        { category: "Sécurité", level: "low_risk", text: "L'une des villes les plus sûres au monde. Criminalité quasi nulle." },
+        { category: "Sécurité", level: "low_risk", text: "Ville très sûre. Taux de criminalité parmi les plus bas d'Europe." },
         { category: "Santé", level: "low_risk", text: "Eau du robinet excellente. Système de santé de très haut niveau." },
         { category: "Transport", level: "easy", text: "Centre piéton. Voiture indispensable pour les excursions hors ville." },
-        { category: "Langue", level: "easy", text: "Anglais parfaitement parlé partout, y compris hors de Reykjavik." },
+        { category: "Langue", level: "easy", text: "Anglais très bien parlé, y compris hors de Reykjavik." },
         { category: "Formalités", level: "easy", text: "Schengen. Carte d'identité suffisante pour ressortissants UE." },
       ],
     },
@@ -958,14 +958,14 @@ export const destinations: Record<string, Destination> = {
     score: 93,
     image: "/images/destinations/kyoto.png.avif",
     summary:
-      "Kyoto fut la capitale impériale du Japon pendant plus de mille ans. Ses temples bouddhistes, sanctuaires shinto, jardins zen et quartiers préservés en font la destination culturelle la plus dense d'Asie. Une ville où le passé n'est pas reconstitué : il est encore habité.",
+      "Kyoto fut la capitale impériale du Japon pendant plus de onze siècles. Ses temples bouddhistes, sanctuaires shinto, jardins zen et quartiers préservés en font l'une des destinations culturelles les plus riches d'Asie. Une ville où le passé n'est pas reconstitué : il est encore habité.",
     mainInterest: "Culture & patrimoine",
     idealDuration: "4 à 6 jours",
     pace: "Équilibré",
     ambiance: ["Raffinée", "Contemplative", "Historique", "Authentique", "Poétique"],
     targetProfiles: ["Couples", "Solo", "Passionnés d'histoire", "Voyageurs culturels"],
     whyGo: [
-      { title: "Densité patrimoniale unique", description: "17 sites UNESCO, plus de 1600 temples et sanctuaires. Aucune ville au monde ne concentre autant de patrimoine vivant." },
+      { title: "Densité patrimoniale rare", description: "17 sites UNESCO, plus de 1600 temples et sanctuaires. Peu de villes au monde concentrent une telle densité de patrimoine encore actif." },
       { title: "Cerisiers et érables", description: "Le hanami de fin mars à mi-avril et les momiji d'automne (octobre-novembre) comptent parmi les spectacles naturels les plus célébrés du monde." },
       { title: "Art de vivre japonais", description: "Ryokan, kaiseki, cérémonie du thé, quartier de Gion : Kyoto préserve des traditions qui ont disparu ailleurs au Japon." },
       { title: "Base idéale pour le Kansai", description: "À 15 min de Nara, 30 min d'Osaka et 2h30 de Tokyo en Shinkansen. Positionnement central exceptionnel." },
@@ -1010,7 +1010,7 @@ export const destinations: Record<string, Destination> = {
       note: "Avril pour les cerisiers, novembre pour les érables rouges. Deux moments d'une beauté rare mais très fréquentés.",
     },
     context: {
-      culture: "Société fondée sur la discrétion, le respect des formes et la maîtrise de soi. Les Japonais sont d'une courtoisie rare. Retirer les chaussures dans les lieux traditionnels est impératif.",
+      culture: "Société fondée sur la discrétion, le respect des formes et la maîtrise de soi. La courtoisie est une valeur centrale de la culture japonaise. Retirer les chaussures dans les lieux traditionnels est impératif.",
       tips: "IC Card (Suica ou ICOCA) indispensable pour les transports. Le pass JR couvre le Shinkansen. Le cash reste nécessaire dans de nombreux temples et restaurants.",
       surprises: "Kyoto est une ville de 1,5 million d'habitants entièrement fonctionnelle. Les temples ne sont pas des décors : certains abritent des communautés monastiques actives.",
       history: "Capitale impériale de 794 à 1869. Épargnée des bombardements de 1945 grâce à son importance culturelle. Le déménagement de la cour à Tokyo n'a pas vidé la ville de son âme.",
@@ -1020,7 +1020,7 @@ export const destinations: Record<string, Destination> = {
       logisticsScore: 90,
       freshness: "Mars 2026",
       points: [
-        { category: "Sécurité", level: "low_risk", text: "L'une des destinations les plus sûres au monde. Criminalité quasi inexistante." },
+        { category: "Sécurité", level: "low_risk", text: "Destination réputée très sûre. Taux de criminalité particulièrement bas." },
         { category: "Santé", level: "low_risk", text: "Eau du robinet potable. Système de santé excellent. Pharmacies très accessibles." },
         { category: "Transport", level: "easy", text: "Bus, métro et vélo couvrent toute la ville. IC Card simplifiée à l'usage." },
         { category: "Langue", level: "moderate", text: "Anglais limité hors zones touristiques. Panneaux bilingues dans les sites majeurs. Applications de traduction recommandées." },
