@@ -18,6 +18,11 @@ const VALID_INTERESTS = [
   "architecture", "food", "history", "nightlife", "nature", "art",
 ];
 
+const VALID_STYLES = [
+  "authentic_local", "culture_patrimoine", "food_artdevivre",
+  "energie_urbaine", "calme_contemplation", "nature_grand_air",
+];
+
 function validateAnswers(
   body: unknown,
 ): { valid: true; answers: QuizAnswers } | { valid: false; error: string } {
@@ -36,6 +41,20 @@ function validateAnswers(
     if (val !== undefined && val !== null) {
       if (typeof val !== "string" || !VALID_VALUES[field].includes(val)) {
         return { valid: false, error: `Champ '${field}' invalide: ${val}` };
+      }
+    }
+  }
+
+  if (answers.styles !== undefined) {
+    if (!Array.isArray(answers.styles)) {
+      return { valid: false, error: "'styles' doit être un tableau." };
+    }
+    if (answers.styles.length > 2) {
+      return { valid: false, error: "'styles' : 2 maximum." };
+    }
+    for (const style of answers.styles) {
+      if (typeof style !== "string" || !VALID_STYLES.includes(style)) {
+        return { valid: false, error: `Style invalide: ${style}` };
       }
     }
   }

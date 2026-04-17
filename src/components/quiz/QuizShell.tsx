@@ -64,6 +64,7 @@ export default function QuizShell({ onComplete, onNavigate, disabled }: QuizShel
 
       {/* Question */}
       <QuizStep
+        key={question.id}
         question={question}
         currentAnswer={answers[question.id]}
         onAnswer={handleAnswer}

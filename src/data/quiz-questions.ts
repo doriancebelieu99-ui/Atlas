@@ -60,6 +60,21 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
+    id: "styles",
+    title: "Quelle atmosphère vous attire ?",
+    subtitle: "Jusqu'à 2.",
+    multi: true,
+    maxSelect: 2,
+    options: [
+      { value: "authentic_local",     label: "Authentique & local",      description: "Quartiers vrais, rythme local, atmosphère simple",          icon: "🏘️" },
+      { value: "culture_patrimoine",  label: "Culture & patrimoine",      description: "Temples, monuments, histoire, héritage",                    icon: "🏛️" },
+      { value: "food_artdevivre",     label: "Food & art de vivre",       description: "Cuisine, marchés, cafés, plaisir de vivre",                 icon: "🍷" },
+      { value: "energie_urbaine",     label: "Énergie & vie urbaine",     description: "Ville animée, contraste, mouvement, soirées",               icon: "⚡" },
+      { value: "calme_contemplation", label: "Calme & contemplation",     description: "Beauté, lenteur, respiration, atmosphère paisible",         icon: "🧘" },
+      { value: "nature_grand_air",    label: "Nature & grand air",        description: "Paysages, éléments, horizons, sensation d'espace",          icon: "🌿" },
+    ],
+  },
+  {
     id: "interests",
     title: "Qu'est-ce qui vous attire ?",
     subtitle: "Jusqu'à 3.",

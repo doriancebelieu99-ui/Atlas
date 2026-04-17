@@ -132,10 +132,18 @@ export function scoreSeason(prefs: PreferencesInput, dest: Destination): number 
   return Math.round(score);
 }
 
+const STYLE_ALIASES: Record<string, string[]> = {
+  authentic_local:     ["authentique", "accessible", "abordable", "taille humaine"],
+  culture_patrimoine:  ["historique", "monumentale", "mystique", "raffinée"],
+  food_artdevivre:     ["gastronomique", "sensorielle", "créative"],
+  energie_urbaine:     ["festive", "vibrante", "passionnée", "chaotique", "cosmopolite"],
+  calme_contemplation: ["romantique", "photogénique", "poétique", "contemplative", "apaisante", "épurée"],
+  nature_grand_air:    ["sauvage", "nordique", "dépaysante", "colorée"],
+};
+
 export function scoreStyle(prefs: PreferencesInput, dest: Destination): number {
   if (!prefs.styles || prefs.styles.length === 0) return 70;
 
-  // Map destination ambiance/profiles to style fit
   const destStyles = [
     ...dest.ambiance.map((a) => a.toLowerCase()),
     ...dest.targetProfiles.map((p) => p.toLowerCase()),
@@ -143,8 +151,15 @@ export function scoreStyle(prefs: PreferencesInput, dest: Destination): number {
 
   let matches = 0;
   for (const style of prefs.styles) {
-    if (destStyles.some((ds) => ds.includes(style.toLowerCase()))) {
-      matches++;
+    const aliases = STYLE_ALIASES[style];
+    if (aliases) {
+      if (aliases.some((alias) => destStyles.some((ds) => ds.includes(alias)))) {
+        matches++;
+      }
+    } else {
+      if (destStyles.some((ds) => ds.includes(style.toLowerCase()))) {
+        matches++;
+      }
     }
   }
 
@@ -367,6 +382,7 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
     period: answers.period as any,
     groupType: (answers.group as any) ?? "couple",
     pace: (answers.pace as any) ?? "balanced",
+    styles: Array.isArray(answers.styles) ? answers.styles : [],
     interests: Array.isArray(answers.interests) ? answers.interests : [],
   };
 }
