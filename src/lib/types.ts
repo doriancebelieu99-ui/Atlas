@@ -14,7 +14,7 @@ export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" |
 // ─── User Preferences (quiz output) ──────────────────────────────
 
 export interface PreferencesInput {
-  budget: BudgetLevel;
+  budget?: BudgetLevel;
   durationDays: number;
   period?: Period;
   month?: number;

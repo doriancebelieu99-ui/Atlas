@@ -32,8 +32,8 @@ function validateAnswers(
 
   const answers = body as Record<string, unknown>;
 
-  if (!answers.budget || !VALID_VALUES.budget.includes(answers.budget as string)) {
-    return { valid: false, error: "Champ 'budget' manquant ou invalide." };
+  if (answers.budget !== undefined && !VALID_VALUES.budget.includes(answers.budget as string)) {
+    return { valid: false, error: "Champ 'budget' invalide." };
   }
 
   for (const field of ["duration", "period", "group", "pace"] as const) {

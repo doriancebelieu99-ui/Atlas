@@ -47,6 +47,10 @@ export function adjustWeights(prefs: PreferencesInput): ScoringWeights {
     w.style = 0;
   }
 
+  if (!prefs.budget) {
+    w.budget = 0;
+  }
+
   // Normalize to sum = 1
   const sum = Object.values(w).reduce((a, b) => a + b, 0);
   for (const key of Object.keys(w) as (keyof ScoringWeights)[]) {
@@ -76,6 +80,8 @@ function parseIdealDuration(s: string): [number, number] {
 // ─── Individual Scorers ───────────────────────────────────────────
 
 export function scoreBudget(prefs: PreferencesInput, dest: Destination): number {
+  if (!prefs.budget) return 0;
+
   const budgetRanges: Record<string, [number, number]> = {
     low: [20, 60],
     medium: [60, 140],
@@ -311,7 +317,9 @@ export function rankDestinations(
   let results = dests.map((d) => scoreDestination(prefs, d));
 
   // Hard filters from blueprint §11.7
-  results = results.filter((r) => r.criteriaScores.budget > 0);
+  if (prefs.budget) {
+    results = results.filter((r) => r.criteriaScores.budget > 0);
+  }
   results = results.filter((r) => r.criteriaScores.season >= 20);
 
   results.sort((a, b) => b.totalScore - a.totalScore);
@@ -377,7 +385,7 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
   };
 
   return {
-    budget: (answers.budget as string as BudgetLevel) ?? "medium",
+    budget: answers.budget ? (answers.budget as BudgetLevel) : undefined,
     durationDays: durationMap[(answers.duration as string) ?? "week"] ?? 5,
     period: answers.period as any,
     groupType: (answers.group as any) ?? "couple",

@@ -6,9 +6,11 @@ interface QuizStepProps {
   question: QuizQuestion;
   currentAnswer: string | string[] | undefined;
   onAnswer: (value: string | string[]) => void;
+  onSkip?: () => void;
+  skipLabel?: string;
 }
 
-export default function QuizStep({ question, currentAnswer, onAnswer }: QuizStepProps) {
+export default function QuizStep({ question, currentAnswer, onAnswer, onSkip, skipLabel }: QuizStepProps) {
   const [multiSelection, setMultiSelection] = useState<string[]>(
     Array.isArray(currentAnswer) ? currentAnswer : [],
   );
@@ -68,6 +70,12 @@ export default function QuizStep({ question, currentAnswer, onAnswer }: QuizStep
           );
         })}
       </div>
+
+      {onSkip && (
+        <button className="quiz-skip" onClick={onSkip}>
+          {skipLabel ?? "Passer"}
+        </button>
+      )}
 
       {question.multi && (
         <button

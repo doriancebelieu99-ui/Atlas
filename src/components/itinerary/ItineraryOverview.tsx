@@ -52,7 +52,7 @@ export default function ItineraryOverview({ days, onSelectDay }: ItineraryOvervi
                       className="itin-tag"
                       style={{ background: colors.bg, color: colors.text }}
                     >
-                      {a.icon} {a.name.slice(0, 26)}
+                      {a.icon} {a.name}
                     </span>
                   );
                 })}

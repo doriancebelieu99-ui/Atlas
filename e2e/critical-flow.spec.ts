@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
 
-// ─── Helper: fill the 6-question quiz ─────────────────────────────
-// Clicks one option per single-select question,
-// then selects interests and confirms on the last question.
+// ─── Helper: fill the 7-question quiz ─────────────────────────────
+// Q1 budget, Q2 duration, Q3 period, Q4 group, Q5 pace (single-select)
+// Q6 styles (multi), Q7 interests (multi)
 
 async function fillQuiz(page: import("@playwright/test").Page) {
   // Q1: Budget → "Moyen"
@@ -20,9 +20,13 @@ async function fillQuiz(page: import("@playwright/test").Page) {
   // Q5: Pace → "Équilibré"
   await page.getByRole("button", { name: /équilibré/i }).click();
 
-  // Q6: Interests (multi-select) → pick 2, then confirm
+  // Q6: Styles (multi-select) → pick 1, then confirm
+  await page.getByRole("button", { name: /authentique/i }).click();
+  await page.getByRole("button", { name: /valider/i }).click();
+
+  // Q7: Interests (multi-select) → pick 2, then confirm
   await page.getByRole("button", { name: /gastronomie/i }).click();
-  await page.getByRole("button", { name: /art/i }).click();
+  await page.getByRole("button", { name: /art & musées/i }).click();
   await page.getByRole("button", { name: /valider/i }).click();
 }
 

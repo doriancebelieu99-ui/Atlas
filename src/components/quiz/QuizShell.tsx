@@ -57,9 +57,6 @@ export default function QuizShell({ onComplete, onNavigate, disabled }: QuizShel
         <span className="quiz-counter">
           {step + 1} / {total}
         </span>
-        <button className="quiz-skip" onClick={handleSkip}>
-          Passer →
-        </button>
       </div>
 
       {/* Question */}
@@ -68,6 +65,8 @@ export default function QuizShell({ onComplete, onNavigate, disabled }: QuizShel
         question={question}
         currentAnswer={answers[question.id]}
         onAnswer={handleAnswer}
+        onSkip={handleSkip}
+        skipLabel={question.id === "budget" ? "Je ne sais pas encore" : "Passer"}
       />
     </div>
   );

@@ -384,12 +384,21 @@ body {
 
 .quiz-back,
 .quiz-skip {
-  font-size: 12px;
+  display: block;
+  position: sticky;
+  bottom: 72px;
+  margin: 16px auto 0;
+  padding: 8px 16px;
+  font-size: 13px;
   color: var(--slate);
   background: none;
   border: none;
   cursor: pointer;
   font-family: var(--font-body);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-align: center;
+  margin-top: 24px;
 }
 
 .quiz-back:hover,
@@ -475,6 +484,8 @@ body {
 }
 
 .quiz-confirm {
+  position: sticky;
+  bottom: 20px;
   margin-top: 24px;
   padding: 12px 32px;
   border-radius: 99px;
@@ -1063,7 +1074,7 @@ body {
 }
 
 .season-temp {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--slate);
 }
 
@@ -1313,9 +1324,21 @@ body {
 .itin-day-nav {
   display: flex;
   gap: 6px;
-  padding: 12px 24px;
+  padding: 12px 0 12px 24px;
   overflow-x: auto;
+  scrollbar-width: none;
   border-bottom: 1px solid var(--mist);
+}
+
+.itin-day-nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* spacer terminal — force le peek de J4 sans mask */
+.itin-day-nav::after {
+  content: '';
+  min-width: 40px;
+  flex-shrink: 0;
 }
 
 .itin-day-btn {
@@ -1427,6 +1450,10 @@ body {
   border-radius: 99px;
   font-size: 10px;
   font-weight: 500;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .itin-overview-meta {
