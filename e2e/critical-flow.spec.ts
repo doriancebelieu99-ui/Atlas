@@ -5,26 +5,16 @@ import { test, expect } from "@playwright/test";
 // Q6 styles (multi), Q7 interests (multi)
 
 async function fillQuiz(page: import("@playwright/test").Page) {
-  // Q1: Budget → "Moyen"
-  await page.getByRole("button", { name: /moyen/i }).click();
+  // Q1–Q5 : single-select → role="radio"
+  await page.getByRole("radio", { name: /moyen/i }).click();
+  await page.getByRole("radio", { name: /4–7/i }).click();
+  await page.getByRole("radio", { name: /printemps/i }).click();
+  await page.getByRole("radio", { name: /couple/i }).click();
+  await page.getByRole("radio", { name: /équilibré/i }).click();
 
-  // Q2: Duration → "4–7 jours"
-  await page.getByRole("button", { name: /4–7/i }).click();
-
-  // Q3: Period → "Printemps"
-  await page.getByRole("button", { name: /printemps/i }).click();
-
-  // Q4: Group → "Couple"
-  await page.getByRole("button", { name: /couple/i }).click();
-
-  // Q5: Pace → "Équilibré"
-  await page.getByRole("button", { name: /équilibré/i }).click();
-
-  // Q6: Styles (multi-select) → pick 1, then confirm
+  // Q6–Q7 : multi-select → aria-pressed buttons
   await page.getByRole("button", { name: /authentique/i }).click();
   await page.getByRole("button", { name: /valider/i }).click();
-
-  // Q7: Interests (multi-select) → pick 2, then confirm
   await page.getByRole("button", { name: /gastronomie/i }).click();
   await page.getByRole("button", { name: /art & musées/i }).click();
   await page.getByRole("button", { name: /valider/i }).click();
