@@ -19,7 +19,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "3 à 5 jours",
     pace: "Équilibré",
     ambiance: ["Romantique", "Photogénique", "Gastronomique", "Accessible", "Créative"],
-    targetProfiles: ["Couples", "Solo", "City-trippers", "Foodies"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
     whyGo: [
       { title: "Une lumière unique en Europe", description: "L'exposition à l'Atlantique produit une lumière rasante qui change la couleur des façades et des azulejos selon l'heure. Difficile à anticiper avant d'arriver." },
       { title: "Gastronomie accessible", description: "Les pastéis de nata (tartelettes à la crème cuites au four), le bacalhau (morue accommodée de dizaines de façons différentes) et les vins du Douro composent une gastronomie généreuse. Un repas complet dans un bon restaurant coûte entre 15 et 25€." },
@@ -162,7 +162,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "3 à 4 jours",
     pace: "Équilibré",
     ambiance: ["Passionnée", "Monumentale", "Festive", "Gastronomique"],
-    targetProfiles: ["Couples", "Foodies"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
     whyGo: [
       { title: "Architecture mudéjare", description: "L'Alcázar, palais royal aux influences hispano-arabes, et la cathédrale gothique voisine concentrent l'essentiel du patrimoine monumental de Séville dans le même quartier." },
       { title: "Tapas", description: "Dans de nombreux bars, une petite tapa accompagne encore la boisson. Une habitude de plus en plus rare dans les grandes villes espagnoles." },
@@ -289,7 +289,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "3 à 5 jours",
     pace: "Équilibré",
     ambiance: ["Dépaysante", "Sensorielle", "Colorée", "Abordable"],
-    targetProfiles: ["Couples", "Amis", "Budget serré"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
     whyGo: [
       { title: "À quelques heures de vol", description: "Marrakech est facilement accessible depuis la France et plusieurs grandes villes européennes, avec de nombreux vols directs. Le changement d'ambiance est immédiat à l'arrivée." },
       { title: "Bon rapport qualité-prix", description: "Le coût de la vie à Marrakech reste nettement inférieur à celui de la plupart des grandes villes européennes. Hébergement, repas et déplacements y restent globalement abordables." },
@@ -424,7 +424,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "3 à 4 jours",
     pace: "Équilibré",
     ambiance: ["Authentique", "Photogénique", "Gastronomique", "Taille humaine"],
-    targetProfiles: ["Couples", "Solo", "Foodies"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
     whyGo: [
       { title: "Vin de Porto et caves", description: "Les caves de porto se visitent à Vila Nova de Gaia, sur l'autre rive du Douro. On y découvre l'histoire de ce vin et on termine par une dégustation." },
       { title: "Azulejos et architecture baroque", description: "La gare de São Bento est tapissée de 20 000 carreaux bleus et blancs illustrant l'histoire du Portugal. Les façades émaillées couvrent les maisons, les églises et les palais du centre historique." },
@@ -553,7 +553,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "3 à 5 jours",
     pace: "Équilibré",
     ambiance: ["Authentique", "Chaotique", "Gastronomique", "Historique"],
-    targetProfiles: ["Foodies", "Aventuriers", "Culture"],
+    targetProfiles: ["Solo", "Couple", "Amis"],
     whyGo: [
       { title: "Berceau de la pizza napolitaine", description: "Da Michele et Sorbillo figurent parmi les adresses les plus connues au monde pour la pizza napolitaine. Les prix tournent autour de 5 euros et une file d'attente est souvent signe de qualité." },
       { title: "Pompéi et le Vésuve", description: "Le site archéologique de Pompéi est accessible en 35 minutes depuis Naples par la Circumvesuviana. La ville romaine ensevelie par l'éruption du Vésuve en 79 après J.-C. est l'un des sites les mieux conservés du monde." },
@@ -681,7 +681,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "4 à 6 jours",
     pace: "Dynamique",
     ambiance: ["Mystique", "Cosmopolite", "Historique", "Authentique", "Vibrante"],
-    targetProfiles: ["Couples", "Solo", "Passionnés d'histoire", "Aventuriers"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
     whyGo: [
       { title: "Carrefour de civilisations", description: "Istanbul a été successivement la capitale de l'Empire romain d'Orient, de l'Empire byzantin et de l'Empire ottoman. Chacune de ces périodes a laissé des monuments encore debout dans le centre historique." },
       { title: "Architecture d'exception", description: "Hagia Sophia, la Mosquée Bleue et le palais Topkapi se trouvent à quelques minutes à pied les uns des autres dans Sultanahmet. Peu de villes concentrent autant de monuments majeurs dans un périmètre aussi réduit." },
@@ -827,7 +827,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "4 à 6 jours",
     pace: "Dynamique",
     ambiance: ["Sauvage", "Épurée", "Nordique", "Authentique", "Apaisante"],
-    targetProfiles: ["Couples", "Solo", "Aventuriers", "Amateurs de nature"],
+    targetProfiles: ["Couple", "Solo", "Amis", "Famille"],
     whyGo: [
       { title: "Paysages d'une autre planète", description: "L'Islande concentre volcans, champs de lave, geysers et cascades dans un espace relativement compact. Peu de destinations européennes offrent une telle diversité de paysages." },
       { title: "Aurores boréales", description: "De septembre à mars, l'Islande offre de bonnes conditions pour observer les aurores boréales. La visibilité dépend de la couverture nuageuse et de l'activité solaire." },
@@ -973,7 +973,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "4 à 6 jours",
     pace: "Équilibré",
     ambiance: ["Raffinée", "Contemplative", "Historique", "Authentique", "Poétique"],
-    targetProfiles: ["Couples", "Solo", "Passionnés d'histoire", "Voyageurs culturels"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
     whyGo: [
       { title: "Densité patrimoniale rare", description: "Kyoto réunit 17 sites classés à l'UNESCO et plus de 1600 temples et sanctuaires. Peu de villes concentrent autant de patrimoine encore vivant dans un périmètre aussi lisible." },
       { title: "Cerisiers et érables", description: "Fin mars à mi-avril, les cerisiers en fleurs (hanami) transforment les parcs et les temples de Kyoto. En octobre-novembre, les érables rouges (momiji) offrent un spectacle comparable. Les deux périodes sont très fréquentées." },
