@@ -45,7 +45,13 @@ export default function QuizStep({ question, currentAnswer, onAnswer, onSkip, sk
       <h2 className="quiz-title">{question.title}</h2>
       <p className="quiz-subtitle">{question.subtitle}</p>
 
-      <div className="quiz-options">
+      <div
+        className="quiz-options"
+        role={question.multi ? "group" : "radiogroup"}
+        aria-label={question.multi
+          ? `Sélection multiple, jusqu'à ${question.maxSelect} choix`
+          : question.title}
+      >
         {question.options.map((opt) => {
           const isSelected = question.multi
             ? multiSelection.includes(opt.value)
@@ -54,12 +60,15 @@ export default function QuizStep({ question, currentAnswer, onAnswer, onSkip, sk
           return (
             <button
               key={opt.value}
+              role={question.multi ? undefined : "radio"}
               className={`quiz-option ${isSelected ? "selected" : ""}`}
               onClick={() =>
                 question.multi
                   ? handleMultiToggle(opt.value)
                   : handleSingleSelect(opt.value)
               }
+              aria-checked={question.multi ? undefined : isSelected}
+              aria-pressed={question.multi ? isSelected : undefined}
             >
               <span className="quiz-option-icon">{opt.icon}</span>
               <span className="quiz-option-label">{opt.label}</span>

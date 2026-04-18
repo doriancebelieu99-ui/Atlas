@@ -43,7 +43,12 @@ export default function DestinationClient({ dest, sid }: Props) {
       <Nav currentView="destination" onNavigate={navigate} />
       <FicheHero dest={dest} />
       <TabNav tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
-      <div className="tab-content">
+      <div
+        className="tab-content"
+        role="tabpanel"
+        id={`panel-${activeTab}`}
+        aria-labelledby={`tab-${activeTab}`}
+      >
         {activeTab === "resume" && <TabResume dest={dest} />}
         {activeTab === "budget" && <TabBudget dest={dest} />}
         {activeTab === "season" && <TabSeason dest={dest} />}

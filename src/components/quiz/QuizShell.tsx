@@ -45,7 +45,14 @@ export default function QuizShell({ onComplete, onNavigate, disabled }: QuizShel
   return (
     <div className={`quiz-overlay ${disabled ? "quiz-disabled" : ""}`}>
       {/* Progress bar */}
-      <div className="quiz-progress-bar">
+      <div
+        className="quiz-progress-bar"
+        role="progressbar"
+        aria-valuenow={step + 1}
+        aria-valuemin={1}
+        aria-valuemax={total}
+        aria-label={`Question ${step + 1} sur ${total}`}
+      >
         <div className="quiz-progress-fill" style={{ width: `${progress}%` }} />
       </div>
 

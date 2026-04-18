@@ -29,11 +29,11 @@ export default function ItineraryOverview({ days, onSelectDay }: ItineraryOvervi
           <div className="itin-overview-body">
             <div className="itin-overview-top">
               <span className="itin-overview-day">Jour {day.number}</span>
-              <span
-                className="itin-overview-intensity"
-                style={{ color: INTENSITY_COLORS[day.intensity] }}
-              >
-                {INTENSITY_ICONS[day.intensity]} {INTENSITY_LABELS[day.intensity]}
+              <span className="itin-overview-intensity">
+                <span aria-hidden="true" style={{ color: INTENSITY_COLORS[day.intensity] }}>
+                  {INTENSITY_ICONS[day.intensity]}
+                </span>{" "}
+                {INTENSITY_LABELS[day.intensity]}
               </span>
             </div>
 

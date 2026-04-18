@@ -64,40 +64,63 @@ export default function ItineraryClient({ dest, sid }: Props) {
           </div>
         </div>
 
-        <div className="itin-day-nav">
+        <div className="itin-day-nav" role="tablist" aria-label="Navigation par jour">
           <button
+            id="itin-tab-overview"
+            role="tab"
             className={`itin-day-btn ${mode === "overview" ? "active" : ""}`}
             onClick={() => setMode("overview")}
+            aria-selected={mode === "overview"}
+            aria-controls="itin-panel"
+            tabIndex={mode === "overview" ? 0 : -1}
           >
             Vue d'ensemble
           </button>
           {days.map((d) => (
             <button
               key={d.number}
+              id={`itin-tab-day-${d.number}`}
+              role="tab"
               className={`itin-day-btn ${mode === "day" && selectedDay === d.number ? "active" : ""}`}
               onClick={() => handleSelectDay(d.number)}
+              aria-selected={mode === "day" && selectedDay === d.number}
+              aria-controls="itin-panel"
+              tabIndex={mode === "day" && selectedDay === d.number ? 0 : -1}
             >
               J{d.number}{" "}
-              <span style={{
-                marginLeft: 3,
-                fontSize: 10,
-                color: mode === "day" && selectedDay === d.number ? "#fff" : INTENSITY_COLORS[d.intensity],
-              }}>
+              <span
+                aria-hidden="true"
+                style={{
+                  marginLeft: 3,
+                  fontSize: 10,
+                  color: mode === "day" && selectedDay === d.number ? "#fff" : INTENSITY_COLORS[d.intensity],
+                }}
+              >
                 {INTENSITY_ICONS[d.intensity]}
               </span>
             </button>
           ))}
         </div>
 
-        {mode === "overview" && <ItineraryOverview days={days} onSelectDay={handleSelectDay} />}
-        {mode === "day" && currentDay && <DayView day={currentDay} />}
+        <div
+          id="itin-panel"
+          role="tabpanel"
+          aria-labelledby={mode === "overview" ? "itin-tab-overview" : `itin-tab-day-${selectedDay}`}
+        >
+          {mode === "overview" && <ItineraryOverview days={days} onSelectDay={handleSelectDay} />}
+          {mode === "day" && currentDay && <DayView day={currentDay} />}
+        </div>
 
         <div className="itin-actions">
-          <button className="btn-outline" onClick={() => navigate("destination", dest.slug)}>
+          <button
+            className="btn-outline"
+            onClick={() => navigate("destination", dest.slug)}
+            aria-label={`← Retour à la fiche ${dest.name}`}
+          >
             ← Fiche
           </button>
-          <button className="btn-primary">💾 Sauvegarder</button>
-          <button className="btn-outline">📤 Partager</button>
+          <button className="btn-primary"><span aria-hidden="true">💾</span> Sauvegarder</button>
+          <button className="btn-outline"><span aria-hidden="true">📤</span> Partager</button>
         </div>
       </div>
     </div>

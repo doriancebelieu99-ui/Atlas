@@ -122,8 +122,12 @@ export default function ResultCard({
             <button
               className={`btn-compare ${isCompareSelected ? "active" : ""}`}
               onClick={() => onCompareToggle(result.slug)}
+              aria-label={isCompareSelected
+                ? `Retirer ${result.name} de la comparaison`
+                : `Comparer ${result.name}`}
+              aria-pressed={isCompareSelected}
             >
-              {isCompareSelected ? "✓" : "⇔"}
+              <span aria-hidden="true">{isCompareSelected ? "✓" : "⇔"}</span>
             </button>
           )}
         </div>

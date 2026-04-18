@@ -3,6 +3,12 @@
    Design system: Playfair Display + DM Sans, deep/gold/cream palette
    ═══════════════════════════════════════════════════════════════════ */
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 :root {
   --ink: #0f0f1a;
   --paper: #fafaf7;
@@ -533,7 +539,7 @@ body {
 .results-summary-label {
   font-size: 11px;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--deep);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-right: 4px;
@@ -1423,6 +1429,7 @@ body {
 .itin-overview-intensity {
   font-size: 12px;
   font-weight: 500;
+  color: var(--slate);
 }
 
 .itin-overview-title {
