@@ -350,9 +350,10 @@ body {
 }
 
 .dest-card-tagline {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--slate);
-  font-weight: 300;
+  font-weight: 400;
+  line-height: 1.45;
 }
 
 /* ─── Quiz ─────────────────────────────────────────────────────── */
@@ -433,6 +434,7 @@ body {
   font-size: clamp(26px, 4vw, 42px);
   font-weight: 600;
   margin-bottom: 10px;
+  text-wrap: balance;
 }
 
 .quiz-subtitle {
@@ -690,6 +692,14 @@ body {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: auto;
+  align-items: center;
+}
+
+.result-card-itinerary-soon {
+  font-size: 11px;
+  color: var(--slate);
+  font-style: italic;
+  opacity: 0.7;
 }
 
 /* ─── Buttons ──────────────────────────────────────────────────── */
@@ -810,6 +820,14 @@ body {
   gap: 12px;
   padding: 24px;
   justify-content: center;
+  align-items: center;
+}
+
+.fiche-itinerary-soon {
+  font-size: 12px;
+  color: var(--slate);
+  font-style: italic;
+  opacity: 0.7;
 }
 
 /* ─── Tab navigation ───────────────────────────────────────────── */
@@ -1205,6 +1223,14 @@ body {
 
 /* ─── Comparator ───────────────────────────────────────────────── */
 
+.compare-subtitle {
+  font-size: 12px;
+  color: var(--slate);
+  font-weight: 400;
+  margin-top: -16px;
+  margin-bottom: 24px;
+}
+
 .compare-header {
   display: grid;
   gap: 12px;
@@ -1218,7 +1244,7 @@ body {
 
 .compare-dest-img {
   width: 100%;
-  height: 120px;
+  height: 160px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 8px;
@@ -1681,11 +1707,6 @@ body {
     margin-bottom: 4px;
   }
 
-  .result-card-compatibility {
-    margin-top: 0;
-    font-size: 12px;
-  }
-
   .result-card-why {
     margin-top: 4px;
     font-size: 11px;
@@ -1815,4 +1836,412 @@ body {
 
 .quiz-error p {
   margin: 0;
+}
+
+/* ─── Hero reassurance ─────────────────────────────────────────── */
+
+.hero-reassurance {
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--slate);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  animation: fadeUp 0.6s 0.4s both;
+}
+
+/* ─── How it works ─────────────────────────────────────────────── */
+
+.how-it-works {
+  background: var(--cream);
+  border-top: 1px solid var(--mist);
+  border-bottom: 1px solid var(--mist);
+}
+
+.how-it-works-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.how-it-works-label {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.how-it-works-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.how-step {
+  text-align: center;
+}
+
+.how-step-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.how-step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.how-step-desc {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+/* ─── Dest card duration badge ─────────────────────────────────── */
+
+.dest-card-duration {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+}
+
+/* ─── Site footer ──────────────────────────────────────────────── */
+
+.site-footer {
+  background: var(--deep);
+  padding: 40px 32px;
+}
+
+.site-footer-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.site-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.site-footer-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.site-footer-logo-s {
+  color: var(--gold);
+}
+
+.site-footer-tagline {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+}
+
+.site-footer-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-footer-link {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: 0.2s;
+}
+
+.site-footer-link:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-footer-copy {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Reassurance section ──────────────────────────────────────── */
+
+.reassurance {
+  border-top: 1px solid var(--mist);
+  border-bottom: 1px solid var(--mist);
+}
+
+.reassurance-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 56px 32px;
+}
+
+.reassurance-label {
+  margin-bottom: 32px;
+}
+
+.reassurance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 64px;
+}
+
+.reassurance-item {
+  border-top: 1px solid var(--mist);
+  padding-top: 20px;
+}
+
+.reassurance-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.reassurance-desc {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.65;
+}
+
+/* ─── Hero split layout ────────────────────────────────────────── */
+
+.hero--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  text-align: left;
+  padding: 80px 60px 60px;
+  min-height: 88vh;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.hero--split .hero-badge {
+  margin-bottom: 24px;
+}
+
+.hero--split .hero-sub {
+  margin-bottom: 32px;
+}
+
+.hero-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  height: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-mosaic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.hero-mosaic-img:nth-child(2) {
+  margin-top: 28px;
+}
+
+.hero-mosaic-img:nth-child(4) {
+  margin-top: -28px;
+}
+
+/* Centred fallback (no mosaic) — hero-text acts as transparent wrapper */
+.hero:not(.hero--split) .hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── Results score note ───────────────────────────────────────── */
+
+.results-score-note {
+  font-size: 12px;
+  color: var(--slate);
+  font-weight: 400;
+  line-height: 1.6;
+  margin-top: -14px;
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+/* ─── Featured result card ─────────────────────────────────────── */
+
+.result-card--featured {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  height: auto;
+  border-color: var(--gold-subtle);
+  border-width: 1.5px;
+}
+
+.result-card--featured .result-card-img-wrap {
+  height: 100%;
+}
+
+.result-card--featured .result-card-img {
+  height: 100%;
+  min-height: 280px;
+}
+
+.result-card--featured .result-card-score {
+  display: none;
+}
+
+.result-card--featured .result-card-name {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.result-card--featured .result-card-body {
+  padding: 24px;
+}
+
+.result-card--featured .result-card-why {
+  min-height: unset;
+}
+
+.result-card-why--featured {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.result-card-featured-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+/* Score inline dans la featured card */
+.result-card-featured-score {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 4px 0 14px;
+}
+
+.result-card-featured-score-value {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.result-card-featured-score-label {
+  font-size: 13px;
+  color: var(--slate);
+  font-weight: 400;
+}
+
+/* Séparateur alternatives */
+.results-alternatives-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 36px 0 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--mist);
+}
+
+/* ─── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .hero--split {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 80px 24px 48px;
+    gap: 0;
+  }
+
+  .hero--split .hero-text {
+    align-items: center;
+  }
+
+  .hero-mosaic {
+    display: none;
+  }
+
+  .result-card--featured {
+    grid-template-columns: 1fr;
+    border-top: 3px solid var(--gold);
+  }
+
+  .result-card--featured .result-card-img {
+    height: 210px;
+    min-height: unset;
+  }
+
+  .result-card--featured .result-card-body {
+    padding: 18px 16px 20px;
+  }
+
+  .result-card-featured-score {
+    margin: 6px 0 14px;
+  }
+
+  .result-card-featured-score-value {
+    font-size: 30px;
+  }
+
+  .result-card-featured-score-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .how-it-works-steps {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .site-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .reassurance-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .reassurance-inner {
+    padding: 40px 16px;
+  }
 }

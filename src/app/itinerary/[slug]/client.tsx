@@ -30,8 +30,7 @@ export default function ItineraryClient({ dest, sid }: Props) {
         <div className="page-empty">
           <h2>Itinéraire non disponible</h2>
           <p>
-            L'itinéraire pour {dest.name} n'est pas encore généré.
-            Disponible actuellement pour Lisbonne.
+            L'itinéraire pour {dest.name} n'est pas encore disponible.
           </p>
           <button className="btn-primary" onClick={() => navigate("destination", dest.slug)}>
             ← Retour à la fiche
@@ -55,13 +54,9 @@ export default function ItineraryClient({ dest, sid }: Props) {
       <Nav currentView="itinerary" onNavigate={navigate} />
       <div className="itinerary-page">
         <div className="itin-header">
-          <div className="itin-dest">{dest.name}, {dest.country}</div>
+          <h1 className="itin-dest">{dest.name}, {dest.country}</h1>
           <div className="itin-title">Votre itinéraire · {days.length} jours</div>
-          <div className="itin-meta">⚖️ Équilibré · 💕 Couple · Intensité moy. {avg}/5</div>
-          <div className="itin-budget">
-            💰 <strong>920–1 420€</strong>{" "}
-            <span className="itin-budget-note">(2 pers.)</span>
-          </div>
+          <div className="itin-meta">{dest.pace} · Intensité moy. {avg}/5</div>
         </div>
 
         <div className="itin-day-nav" role="tablist" aria-label="Navigation par jour">
@@ -117,10 +112,8 @@ export default function ItineraryClient({ dest, sid }: Props) {
             onClick={() => navigate("destination", dest.slug)}
             aria-label={`← Retour à la fiche ${dest.name}`}
           >
-            ← Fiche
+            ← Retour à la destination
           </button>
-          <button className="btn-primary"><span aria-hidden="true">💾</span> Sauvegarder</button>
-          <button className="btn-outline"><span aria-hidden="true">📤</span> Partager</button>
         </div>
       </div>
     </div>

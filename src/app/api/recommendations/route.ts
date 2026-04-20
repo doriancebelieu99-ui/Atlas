@@ -23,6 +23,9 @@ const VALID_STYLES = [
   "energie_urbaine", "calme_contemplation", "nature_grand_air",
 ];
 
+const VALID_ENVIRONMENT = ["urban", "coastal", "nature", "any"];
+const VALID_FLIGHT_TOLERANCE = ["short", "medium", "any"];
+
 function validateAnswers(
   body: unknown,
 ): { valid: true; answers: QuizAnswers } | { valid: false; error: string } {
@@ -43,6 +46,14 @@ function validateAnswers(
         return { valid: false, error: `Champ '${field}' invalide: ${val}` };
       }
     }
+  }
+
+  if (answers.environment !== undefined && !VALID_ENVIRONMENT.includes(answers.environment as string)) {
+    return { valid: false, error: "Champ 'environment' invalide." };
+  }
+
+  if (answers.flightTolerance !== undefined && !VALID_FLIGHT_TOLERANCE.includes(answers.flightTolerance as string)) {
+    return { valid: false, error: "Champ 'flightTolerance' invalide." };
   }
 
   if (answers.styles !== undefined) {

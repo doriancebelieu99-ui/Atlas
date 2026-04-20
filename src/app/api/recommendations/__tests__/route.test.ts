@@ -63,12 +63,12 @@ describe("POST /api/recommendations", () => {
 
   // ─── Invalid payloads ───────────────────────────────────────────
 
-  it("rejects missing budget", async () => {
+  it("accepts missing budget (budget is optional)", async () => {
     const res = await POST(makeRequest({ duration: "week" }));
-    expect(res.status).toBe(422);
+    expect(res.status).toBe(200);
 
     const data = await res.json();
-    expect(data.error).toContain("budget");
+    expect(data.sessionId).toBeTruthy();
   });
 
   it("rejects invalid budget value", async () => {
@@ -125,6 +125,30 @@ describe("POST /api/recommendations", () => {
 
     const data = await res.json();
     expect(data.error).toContain("surfing");
+  });
+
+  it("rejects invalid environment value", async () => {
+    const res = await POST(makeRequest({ budget: "medium", environment: "beach" }));
+    expect(res.status).toBe(422);
+  });
+
+  it("accepts valid environment values", async () => {
+    for (const env of ["urban", "coastal", "nature", "any"]) {
+      const res = await POST(makeRequest({ budget: "medium", environment: env }));
+      expect(res.status).toBe(200);
+    }
+  });
+
+  it("rejects invalid flightTolerance value", async () => {
+    const res = await POST(makeRequest({ budget: "medium", flightTolerance: "teleportation" }));
+    expect(res.status).toBe(422);
+  });
+
+  it("accepts valid flightTolerance values", async () => {
+    for (const ft of ["short", "medium", "any"]) {
+      const res = await POST(makeRequest({ budget: "medium", flightTolerance: ft }));
+      expect(res.status).toBe(200);
+    }
   });
 
   it("rejects empty body", async () => {

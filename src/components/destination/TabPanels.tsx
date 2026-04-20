@@ -10,9 +10,9 @@ export function TabResume({ dest }: { dest: Destination }) {
       <p className="tab-summary">{dest.summary}</p>
 
       <div className="tab-meta-row">
-        <span>🎯 {dest.mainInterest}</span>
-        <span>📅 {dest.idealDuration}</span>
-        <span>⚖️ {dest.pace}</span>
+        <span>Thème · {dest.mainInterest}</span>
+        <span>Durée · {dest.idealDuration}</span>
+        <span>Rythme · {dest.pace}</span>
       </div>
 
       <div className="tag-list">
@@ -78,7 +78,7 @@ export function TabBudget({ dest }: { dest: Destination }) {
       </div>
 
       <div className="budget-flight">
-        ✈️ Vol A/R depuis l'Europe : {b.flight.min}–{b.flight.max}€
+        Vol A/R depuis l'Europe : {b.flight.min}–{b.flight.max}€
       </div>
 
       <table className="budget-table">
@@ -160,19 +160,19 @@ export function TabContext({ dest }: { dest: Destination }) {
       <p className="tab-intro">Quelques clés pour mieux comprendre où vous allez.</p>
 
       <div className="context-block">
-        <h4>🎭 Culture locale</h4>
+        <h4>Culture locale</h4>
         <p>{c.culture}</p>
       </div>
       <div className="context-block">
-        <h4>💡 Conseils pratiques</h4>
+        <h4>Conseils pratiques</h4>
         <p>{c.tips}</p>
       </div>
       <div className="context-block">
-        <h4>😮 Ce qui surprend</h4>
+        <h4>Ce qui surprend</h4>
         <p>{c.surprises}</p>
       </div>
       <div className="context-block">
-        <h4>📜 Repère historique</h4>
+        <h4>Repère historique</h4>
         <p>{c.history}</p>
       </div>
     </div>

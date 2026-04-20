@@ -32,6 +32,8 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
     })
     .filter(Boolean);
 
+  const [featured, ...alternatives] = results;
+
   return (
     <div className="section">
       {/* Profile summary bar */}
@@ -45,7 +47,7 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
           ))}
         </div>
         <button className="btn-outline btn-sm" onClick={() => onNavigate("quiz")}>
-          Modifier
+          Refaire le quiz
         </button>
       </div>
 
@@ -64,25 +66,45 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
 
       {/* Results heading */}
       <div className="results-heading">
-        <div className="section-label">Résultats</div>
         <h2 className="section-title">
-          {results.length} destination{results.length > 1 ? "s" : ""} pour vous
+          {results.length} destination{results.length > 1 ? "s" : ""} correspondent à votre profil
         </h2>
+        <p className="results-score-note">
+          Chaque score mesure l'adéquation entre votre profil et la destination, calculé sur 10 critères : budget, saison, style, durée, logistique, centres d'intérêt, rythme, groupe, cadre et temps de vol.
+        </p>
       </div>
 
-      {/* Cards */}
-      <div className="results-grid">
-        {results.map((r, i) => (
-          <ResultCard
-            key={r.slug}
-            result={r}
-            rank={i}
-            onNavigate={onNavigate}
-            onCompareToggle={toggleCompare}
-            isCompareSelected={compareSet.has(r.slug)}
-          />
-        ))}
-      </div>
+      {/* Featured card — recommandation principale */}
+      {featured && (
+        <ResultCard
+          key={featured.slug}
+          result={featured}
+          rank={0}
+          featured
+          onNavigate={onNavigate}
+          onCompareToggle={toggleCompare}
+          isCompareSelected={compareSet.has(featured.slug)}
+        />
+      )}
+
+      {/* Alternatives */}
+      {alternatives.length > 0 && (
+        <>
+          <div className="results-alternatives-label">Autres destinations</div>
+          <div className="results-grid">
+            {alternatives.map((r, i) => (
+              <ResultCard
+                key={r.slug}
+                result={r}
+                rank={i + 1}
+                onNavigate={onNavigate}
+                onCompareToggle={toggleCompare}
+                isCompareSelected={compareSet.has(r.slug)}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
       {results.length === 0 && (
         <div className="results-empty">

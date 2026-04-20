@@ -57,9 +57,13 @@ export default function DestinationClient({ dest, sid }: Props) {
         {activeTab === "cities" && <TabCities dest={dest} />}
       </div>
       <div className="fiche-actions">
-        <button className="btn-primary" onClick={() => navigate("itinerary", dest.slug)}>
-          Générer mon itinéraire →
-        </button>
+        {dest.itinerary ? (
+          <button className="btn-primary" onClick={() => navigate("itinerary", dest.slug)}>
+            Voir l'itinéraire →
+          </button>
+        ) : (
+          <span className="fiche-itinerary-soon">Itinéraire bientôt disponible</span>
+        )}
         <button className="btn-outline" onClick={() => navigate("results")}>
           ← Retour aux résultats
         </button>

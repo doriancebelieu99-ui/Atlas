@@ -12,8 +12,21 @@ interface ComparatorTableProps {
 interface CriterionRow {
   label: string;
   extract: (d: Destination) => string | number;
+  formatDisplay?: (d: Destination) => string;
   format?: (v: string | number) => string;
   lowerIsBetter?: boolean;
+}
+
+function formatLogistics(score: number): string {
+  if (score >= 85) return "Excellent";
+  if (score >= 70) return "Bon";
+  return "Modéré";
+}
+
+function formatCostLevel(costIndex: number): string {
+  if (costIndex < 55) return "Abordable";
+  if (costIndex < 88) return "Standard";
+  return "Élevé";
 }
 
 const CRITERIA: CriterionRow[] = [
@@ -24,15 +37,15 @@ const CRITERIA: CriterionRow[] = [
     lowerIsBetter: true,
   },
   {
-    label: "Coût de la vie",
+    label: "Niveau de prix",
     extract: (d) => d.budget.costIndex,
-    format: (v) => `${v}/200`,
+    formatDisplay: (d) => formatCostLevel(d.budget.costIndex),
     lowerIsBetter: true,
   },
   {
-    label: "Logistique",
+    label: "Facilité logistique",
     extract: (d) => d.safety.logisticsScore,
-    format: (v) => `${v}/100`,
+    formatDisplay: (d) => formatLogistics(d.safety.logisticsScore),
   },
   {
     label: "Durée idéale",
@@ -61,10 +74,12 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
 
   return (
     <div className="compare-page">
-      <div className="section-label">Comparateur</div>
       <h2 className="section-title">
         {dests.map((d) => d.name).join(" vs ")}
       </h2>
+      <p className="compare-subtitle">
+        {dests.length} destinations · {CRITERIA.length + 2} critères
+      </p>
 
       <div className="compare-header" style={{ gridTemplateColumns: `160px repeat(${dests.length}, 1fr)` }}>
         <div />
@@ -90,7 +105,11 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
             <div className="compare-row-label">{criterion.label}</div>
             {dests.map((d) => {
               const val = criterion.extract(d);
-              const display = criterion.format ? criterion.format(val) : String(val);
+              const display = criterion.formatDisplay
+                ? criterion.formatDisplay(d)
+                : criterion.format
+                  ? criterion.format(val)
+                  : String(val);
               const best = isBest(criterion, d);
               return (
                 <div key={d.slug} className={`compare-row-value ${best ? "best" : ""}`}>
@@ -112,7 +131,7 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
           <div className="compare-row-label">Ambiance</div>
           {dests.map((d) => (
             <div key={d.slug} className="compare-row-value">
-              {d.ambiance.slice(0, 3).join(", ")}
+              {d.ambiance.slice(0, 2).join(", ")}
             </div>
           ))}
         </div>
@@ -121,11 +140,11 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
       <div className="compare-actions">
         {dests.map((d) => (
           <div key={d.slug} className="compare-action-group">
-            <button className="btn-primary" onClick={() => onNavigate("destination", d.slug)}>
-              Fiche {d.name}
+            <button className="btn-primary btn-sm" onClick={() => onNavigate("destination", d.slug)}>
+              {d.name} →
             </button>
-            <button className="btn-outline" onClick={() => onNavigate("itinerary", d.slug)}>
-              Itinéraire
+            <button className="btn-outline btn-sm" onClick={() => onNavigate("itinerary", d.slug)}>
+              Itinéraire →
             </button>
           </div>
         ))}

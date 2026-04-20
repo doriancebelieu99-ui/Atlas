@@ -19,9 +19,6 @@ export default function Nav({ currentView, onNavigate }: NavProps) {
         >
           Explorer
         </Link>
-        <button className="nav-link" disabled>
-          Mes voyages
-        </button>
         <Link href="/quiz" className="nav-cta">
           Trouver mon voyage
         </Link>

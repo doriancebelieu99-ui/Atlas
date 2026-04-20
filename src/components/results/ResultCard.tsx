@@ -4,62 +4,54 @@ import type { DestinationScoreResult, ViewName } from "@/lib/types";
 interface ResultCardProps {
   result: DestinationScoreResult;
   rank: number;
+  featured?: boolean;
   onNavigate: (view: ViewName, slug: string) => void;
   onCompareToggle?: (slug: string) => void;
   isCompareSelected?: boolean;
-}
-
-function shortenHighlight(text: string): string {
-  const lower = text.toLowerCase();
-
-  if (lower.includes("durée idéale")) {
-    const match = text.match(/(\d+\s*à\s*\d+|\d+\s*-\s*\d+)\s*jours/i);
-    if (match) {
-      return `Idéal ${match[0].replace(" à ", "–").replace("-", "–")}`;
-    }
-    return "Durée adaptée";
-  }
-
-  if (lower.includes("bonne période") || lower.includes("saison")) {
-    return "Bonne période";
-  }
-
-  if (lower.includes("budget")) {
-    return "Budget adapté";
-  }
-
-  return text.length > 28 ? `${text.slice(0, 28)}…` : text;
 }
 
 function buildWhyText(result: DestinationScoreResult): string {
   const parts: string[] = [];
 
   if (result.highlights?.[0]) {
-    parts.push(shortenHighlight(result.highlights[0]));
+    const h = result.highlights[0];
+    const lower = h.toLowerCase();
+
+    if (lower.includes("durée idéale") || lower.includes("durée")) {
+      const match = h.match(/(\d+\s*à\s*\d+|\d+\s*-\s*\d+)\s*jours/i);
+      parts.push(match ? `Idéal ${match[0].replace(" à ", "–")}` : "Durée adaptée");
+    } else if (lower.includes("bonne période") || lower.includes("saisonnier")) {
+      parts.push("Bonne période");
+    } else if (lower.includes("budget")) {
+      parts.push("Budget adapté");
+    } else {
+      parts.push(h.length > 32 ? `${h.slice(0, 32)}…` : h);
+    }
   }
 
   if (result.ambiance?.[0]) {
-    parts.push(`ambiance ${result.ambiance[0].toLowerCase()}`);
+    parts.push(`Ambiance ${result.ambiance[0].toLowerCase()}`);
   }
 
-  if (parts.length === 0 && result.budgetEstimate?.variant) {
-    parts.push(`budget ${result.budgetEstimate.variant.toLowerCase()}`);
-  }
-
-  return parts.slice(0, 2).join(" • ");
+  return parts.slice(0, 2).join(" · ");
 }
 
 export default function ResultCard({
   result,
   rank,
+  featured = false,
   onNavigate,
   onCompareToggle,
   isCompareSelected,
 }: ResultCardProps) {
   const whyText = buildWhyText(result);
+  const featuredHighlight = result.highlights?.[0] ?? null;
 
   return (
-    <div className="result-card" style={{ animationDelay: `${rank * 0.08}s` }}>
+    <div
+      className={`result-card${featured ? " result-card--featured" : ""}`}
+      style={{ animationDelay: `${rank * 0.08}s` }}
+    >
       <div className="result-card-img-wrap">
         <img
           src={result.image}
@@ -67,25 +59,43 @@ export default function ResultCard({
           className="result-card-img"
           loading="lazy"
         />
-        <div
-          className="result-card-score"
-          style={{ color: scoreColor(result.totalScore) }}
-          aria-label={`${result.totalScore}% de match avec votre profil`}
-          title={`${result.totalScore}% de match avec votre profil`}
-        >
-          {result.totalScore}%
-        </div>
+        {/* Badge score — masqué sur la featured (score affiché dans le body) */}
+        {!featured && (
+          <div
+            className="result-card-score"
+            style={{ color: scoreColor(result.totalScore) }}
+            aria-label={`${result.totalScore}% de compatibilité`}
+            title={`${result.totalScore}% de compatibilité`}
+          >
+            {result.totalScore}%
+          </div>
+        )}
       </div>
 
       <div className="result-card-body">
+        {featured && (
+          <div className="result-card-featured-label">Recommandation principale</div>
+        )}
+
         <div className="result-card-country">{result.country}</div>
         <div className="result-card-name">{result.name}</div>
 
-        <div className="result-card-compatibility">
-          {result.totalScore}% de match avec votre profil
-        </div>
+        {/* Score inline — uniquement sur la featured */}
+        {featured && (
+          <div className="result-card-featured-score">
+            <span
+              className="result-card-featured-score-value"
+              style={{ color: scoreColor(result.totalScore) }}
+            >
+              {result.totalScore}%
+            </span>
+            <span className="result-card-featured-score-label">de compatibilité avec votre profil</span>
+          </div>
+        )}
 
-        <div className="result-card-why">{whyText}</div>
+        <div className={`result-card-why${featured ? " result-card-why--featured" : ""}`}>
+          {featured ? (featuredHighlight ?? whyText) : whyText}
+        </div>
 
         <div className="result-card-tags">
           {result.ambiance.slice(0, 3).map((tag) => (
@@ -96,7 +106,7 @@ export default function ResultCard({
         </div>
 
         <div className="result-card-budget">
-          💰 {result.budgetEstimate.min}–{result.budgetEstimate.max}€
+          Budget : {result.budgetEstimate.min}–{result.budgetEstimate.max}€
           <span className="result-card-budget-variant">
             {" "}
             ({result.budgetEstimate.variant})
@@ -108,15 +118,19 @@ export default function ResultCard({
             className="btn-primary"
             onClick={() => onNavigate("destination", result.slug)}
           >
-            Voir la fiche
+            Voir la fiche →
           </button>
 
-          <button
-            className="btn-outline"
-            onClick={() => onNavigate("itinerary", result.slug)}
-          >
-            Itinéraire
-          </button>
+          {result.hasItinerary ? (
+            <button
+              className="btn-outline"
+              onClick={() => onNavigate("itinerary", result.slug)}
+            >
+              Voir l'itinéraire →
+            </button>
+          ) : (
+            <span className="result-card-itinerary-soon">Itinéraire bientôt disponible</span>
+          )}
 
           {onCompareToggle && (
             <button
@@ -124,10 +138,10 @@ export default function ResultCard({
               onClick={() => onCompareToggle(result.slug)}
               aria-label={isCompareSelected
                 ? `Retirer ${result.name} de la comparaison`
-                : `Comparer ${result.name}`}
+                : `Ajouter ${result.name} à la comparaison`}
               aria-pressed={isCompareSelected}
             >
-              <span aria-hidden="true">{isCompareSelected ? "✓" : "⇔"}</span>
+              <span aria-hidden="true">{isCompareSelected ? "✓" : "+"}</span>
             </button>
           )}
         </div>
