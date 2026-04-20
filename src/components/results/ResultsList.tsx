@@ -54,12 +54,12 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
       {/* Compare bar */}
       {compareSet.size >= 2 && (
         <div className="compare-bar">
-          <span>{compareSet.size} destinations sélectionnées</span>
+          <span>Comparer {compareSet.size} destination{compareSet.size > 1 ? "s" : ""}</span>
           <button
             className="btn-primary btn-sm"
             onClick={() => onNavigate("compare", Array.from(compareSet).join(","))}
           >
-            Comparer →
+            Lancer la comparaison →
           </button>
         </div>
       )}
@@ -69,9 +69,23 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
         <h2 className="section-title">
           {results.length} destination{results.length > 1 ? "s" : ""} correspondent à votre profil
         </h2>
-        <p className="results-score-note">
-          Chaque score mesure l'adéquation entre votre profil et la destination, calculé sur 10 critères : budget, saison, style, durée, logistique, centres d'intérêt, rythme, groupe, cadre et temps de vol.
-        </p>
+        <details className="score-explainer">
+          <summary className="score-explainer-trigger">
+            Comment ce score est calculé ?
+          </summary>
+          <div className="score-explainer-body">
+            <p>
+              Chaque score reflète la compatibilité entre votre profil et la destination,
+              calculée sur <strong>10 critères</strong> : budget, saison, style de voyage,
+              durée, logistique, centres d'intérêt, rythme, groupe, cadre naturel et temps de vol.
+            </p>
+            <p>
+              Un score élevé ne signifie pas que la destination est "meilleure" —
+              il signifie qu'elle correspond mieux à vos réponses. Deux profils différents
+              produisent deux classements différents.
+            </p>
+          </div>
+        </details>
       </div>
 
       {/* Featured card — recommandation principale */}

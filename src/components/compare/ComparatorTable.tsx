@@ -72,16 +72,18 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
     return val === Math.max(...values);
   }
 
+  const gridClass = `compare-grid--${dests.length}`;
+
   return (
     <div className="compare-page">
       <h2 className="section-title">
         {dests.map((d) => d.name).join(" vs ")}
       </h2>
       <p className="compare-subtitle">
-        {dests.length} destinations · {CRITERIA.length + 2} critères
+        Comparaison sur {CRITERIA.length + 2} critères · {dests.length} destinations
       </p>
 
-      <div className="compare-header" style={{ gridTemplateColumns: `160px repeat(${dests.length}, 1fr)` }}>
+      <div className={`compare-header ${gridClass}`}>
         <div />
         {dests.map((d) => (
           <div key={d.slug} className="compare-dest-header">
@@ -97,11 +99,7 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
 
       <div className="compare-table">
         {CRITERIA.map((criterion) => (
-          <div
-            key={criterion.label}
-            className="compare-row"
-            style={{ gridTemplateColumns: `160px repeat(${dests.length}, 1fr)` }}
-          >
+          <div key={criterion.label} className={`compare-row ${gridClass}`}>
             <div className="compare-row-label">{criterion.label}</div>
             {dests.map((d) => {
               const val = criterion.extract(d);
@@ -120,14 +118,14 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
           </div>
         ))}
 
-        <div className="compare-row" style={{ gridTemplateColumns: `160px repeat(${dests.length}, 1fr)` }}>
+        <div className={`compare-row ${gridClass}`}>
           <div className="compare-row-label">Meilleure période</div>
           {dests.map((d) => (
             <div key={d.slug} className="compare-row-value">{d.season.best}</div>
           ))}
         </div>
 
-        <div className="compare-row" style={{ gridTemplateColumns: `160px repeat(${dests.length}, 1fr)` }}>
+        <div className={`compare-row ${gridClass}`}>
           <div className="compare-row-label">Ambiance</div>
           {dests.map((d) => (
             <div key={d.slug} className="compare-row-value">
@@ -138,16 +136,20 @@ export default function ComparatorTable({ destinations, onNavigate }: Comparator
       </div>
 
       <div className="compare-actions">
-        {dests.map((d) => (
-          <div key={d.slug} className="compare-action-group">
-            <button className="btn-primary btn-sm" onClick={() => onNavigate("destination", d.slug)}>
-              {d.name} →
+        <div className="compare-actions-row">
+          {dests.map((d) => (
+            <button key={d.slug} className="btn-primary btn-sm" onClick={() => onNavigate("destination", d.slug)}>
+              Fiche {d.name} →
             </button>
-            <button className="btn-outline btn-sm" onClick={() => onNavigate("itinerary", d.slug)}>
-              Itinéraire →
+          ))}
+        </div>
+        <div className="compare-actions-row">
+          {dests.map((d) => (
+            <button key={d.slug} className="btn-outline btn-sm" onClick={() => onNavigate("itinerary", d.slug)}>
+              Itinéraire {d.name} →
             </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

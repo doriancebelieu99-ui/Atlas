@@ -45,7 +45,6 @@ export default function ResultCard({
   isCompareSelected,
 }: ResultCardProps) {
   const whyText = buildWhyText(result);
-  const featuredHighlight = result.highlights?.[0] ?? null;
 
   return (
     <div
@@ -93,9 +92,17 @@ export default function ResultCard({
           </div>
         )}
 
-        <div className={`result-card-why${featured ? " result-card-why--featured" : ""}`}>
-          {featured ? (featuredHighlight ?? whyText) : whyText}
-        </div>
+        {featured && result.highlights && result.highlights.length > 0 ? (
+          <ul className="result-card-highlights-list">
+            {result.highlights.slice(0, 3).map((h, i) => (
+              <li key={i}>{h}</li>
+            ))}
+          </ul>
+        ) : (
+          <div className={`result-card-why${featured ? " result-card-why--featured" : ""}`}>
+            {whyText}
+          </div>
+        )}
 
         <div className="result-card-tags">
           {result.ambiance.slice(0, 3).map((tag) => (
