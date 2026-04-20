@@ -122,6 +122,22 @@ export const answerLabels: Record<string, Record<string, string>> = {
   pace: { relaxed: "Relax", balanced: "Équilibré", dense: "Dense" },
   environment: { urban: "Ville & culture", coastal: "Mer & côtes", nature: "Nature & paysages", any: "Peu importe" },
   flightTolerance: { short: "Vol court (< 3h)", medium: "Vol moyen (3-7h)", any: "Peu importe" },
+  styles: {
+    authentic_local: "Authentique & local",
+    culture_patrimoine: "Culture & patrimoine",
+    food_artdevivre: "Food & art de vivre",
+    energie_urbaine: "Énergie urbaine",
+    calme_contemplation: "Calme & contemplation",
+    nature_grand_air: "Nature & grand air",
+  },
+  interests: {
+    architecture: "Architecture",
+    food: "Gastronomie",
+    history: "Histoire",
+    nightlife: "Vie nocturne",
+    nature: "Paysages",
+    art: "Art & musées",
+  },
 };
 
 // ─── Envies tiles for home page ───────────────────────────────────
