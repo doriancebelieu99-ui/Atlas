@@ -25,12 +25,14 @@ const results: DestinationScoreResult[] = [
     totalScore: 90,
     criteriaScores: {
       budget: 95, season: 85, style: 70,
-      duration: 100, logistics: 88, interests: 80, pace: 100,
+      duration: 100, logistics: 88, interests: 80, pace: 100, group: 80,
+      environment: 75, flightTime: 100,
     },
     highlights: ["Bon budget"],
     limitations: [],
     budgetEstimate: { min: 450, max: 700, variant: "comfort" },
     ambiance: ["Romantique"],
+    hasItinerary: true,
   },
 ];
 

@@ -1,8 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-// ─── Helper: fill the 7-question quiz ─────────────────────────────
+// ─── Helper: fill the 9-question quiz ─────────────────────────────
 // Q1 budget, Q2 duration, Q3 period, Q4 group, Q5 pace (single-select)
-// Q6 styles (multi), Q7 interests (multi)
+// Q6 environment, Q7 flightTolerance (single-select)
+// Q8 styles (multi), Q9 interests (multi)
 
 async function fillQuiz(page: import("@playwright/test").Page) {
   // Q1–Q5 : single-select → role="radio"
@@ -12,7 +13,11 @@ async function fillQuiz(page: import("@playwright/test").Page) {
   await page.getByRole("radio", { name: /couple/i }).click();
   await page.getByRole("radio", { name: /équilibré/i }).click();
 
-  // Q6–Q7 : multi-select → aria-pressed buttons
+  // Q6 environment, Q7 flightTolerance : single-select → role="radio"
+  await page.getByRole("radio", { name: /peu importe/i }).first().click();
+  await page.getByRole("radio", { name: /peu importe/i }).first().click();
+
+  // Q8–Q9 : multi-select → aria-pressed buttons
   await page.getByRole("button", { name: /authentique/i }).click();
   await page.getByRole("button", { name: /valider/i }).click();
   await page.getByRole("button", { name: /gastronomie/i }).click();
@@ -29,8 +34,8 @@ test("Quiz → Results: completes quiz and lands on results with sid", async ({ 
   await page.goto("/");
   await expect(page).toHaveTitle(/atlas/i);
 
-  // Navigate to quiz
-  await page.getByRole("link", { name: /trouver mon voyage/i }).click();
+  // Navigate to quiz — nav CTA (footer has the same link, use first)
+  await page.getByRole("link", { name: /trouver mon voyage/i }).first().click();
   await expect(page).toHaveURL("/quiz");
 
   // Fill the quiz

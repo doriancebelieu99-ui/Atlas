@@ -271,4 +271,31 @@ describe("rankDestinations", () => {
     const results = rankDestinations(prefs, destinationList, 2);
     expect(results.length).toBeLessThanOrEqual(2);
   });
+
+  it("hard-filters destinations > 3h when flightTolerance is short", () => {
+    const shortPrefs: PreferencesInput = { ...prefs, flightTolerance: "short" };
+    const results = rankDestinations(shortPrefs, destinationList);
+    for (const r of results) {
+      const dest = destinationList.find((d) => d.slug === r.slug)!;
+      expect(dest.flightHoursFromParis).toBeLessThanOrEqual(3);
+    }
+  });
+
+  it("hard-filters destinations > 7h when flightTolerance is medium", () => {
+    const medPrefs: PreferencesInput = { ...prefs, flightTolerance: "medium" };
+    const results = rankDestinations(medPrefs, destinationList);
+    for (const r of results) {
+      const dest = destinationList.find((d) => d.slug === r.slug)!;
+      expect(dest.flightHoursFromParis).toBeLessThanOrEqual(7);
+    }
+    expect(results.find((r) => r.name === "Kyoto")).toBeUndefined();
+  });
+
+  it("does not filter destinations when flightTolerance is any", () => {
+    const anyPrefs: PreferencesInput = { ...prefs, flightTolerance: "any" };
+    const shortPrefs: PreferencesInput = { ...prefs, flightTolerance: "short" };
+    const anyResults = rankDestinations(anyPrefs, destinationList);
+    const shortResults = rankDestinations(shortPrefs, destinationList);
+    expect(anyResults.length).toBeGreaterThanOrEqual(shortResults.length);
+  });
 });
