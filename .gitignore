@@ -11,3 +11,4 @@ tsconfig.tsbuildinfo
 qa_*.png
 vqa_*.png
 qa_*.mjs
+qa_shots/
