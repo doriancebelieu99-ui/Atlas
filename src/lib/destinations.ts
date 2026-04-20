@@ -4,7 +4,7 @@ import type { Destination } from "./types";
 const destinationList = Object.values(seedData) as Destination[];
 
 export function getAllDestinations(): Destination[] {
-  return destinationList;
+  return [...destinationList].sort((a, b) => b.score - a.score);
 }
 
 export function getDestinationBySlug(slug: string): Destination | null {

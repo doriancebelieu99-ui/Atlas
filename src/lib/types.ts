@@ -11,6 +11,9 @@ export type Severity = "info" | "caution" | "warning";
 export type ItineraryViewMode = "overview" | "day";
 export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" | "itinerary";
 
+export type Environment = "urban" | "coastal" | "nature" | "mixed";
+export type FlightTolerance = "short" | "medium" | "any";
+
 // ─── User Preferences (quiz output) ──────────────────────────────
 
 export interface PreferencesInput {
@@ -22,6 +25,8 @@ export interface PreferencesInput {
   pace: Pace;
   styles?: string[];
   interests?: string[];
+  environment?: string;
+  flightTolerance?: FlightTolerance;
   maxTransportHoursPerDay?: number;
   comfortLevel?: string;
   excludeDestinations?: string[];
@@ -141,6 +146,8 @@ export interface Destination {
   pace: string;
   ambiance: string[];
   targetProfiles: string[];
+  environment: Environment;
+  flightHoursFromParis: number;
   whyGo: WhyGoItem[];
   constraints: Constraint[];
   budget: BudgetProfile;
@@ -161,6 +168,9 @@ export interface CriteriaScores {
   logistics: number;
   interests: number;
   pace: number;
+  group: number;
+  environment: number;
+  flightTime: number;
 }
 
 export interface ScoringWeights {
@@ -171,6 +181,9 @@ export interface ScoringWeights {
   logistics: number;
   interests: number;
   pace: number;
+  group: number;
+  environment: number;
+  flightTime: number;
 }
 
 export interface DestinationScoreResult {
@@ -184,6 +197,7 @@ export interface DestinationScoreResult {
   limitations: string[];
   budgetEstimate: { min: number; max: number; variant: string };
   ambiance: string[];
+  hasItinerary: boolean;
 }
 
 // ─── Quiz ─────────────────────────────────────────────────────────

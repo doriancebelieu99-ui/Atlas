@@ -17,11 +17,14 @@ import type {
 const DEFAULT_WEIGHTS: ScoringWeights = {
   budget: 0.20,
   season: 0.15,
-  style: 0.20,
+  style: 0.18,
   duration: 0.10,
   logistics: 0.10,
-  interests: 0.15,
-  pace: 0.10,
+  interests: 0.13,
+  pace: 0.08,
+  group: 0.08,
+  environment: 0.12,
+  flightTime: 0.10,
 };
 
 // ─── Weight Adjustment ────────────────────────────────────────────
@@ -41,6 +44,7 @@ export function adjustWeights(prefs: PreferencesInput): ScoringWeights {
     w.logistics = 0.18;
     w.pace = 0.12;
     w.style = 0.15;
+    w.group = 0.12;
   }
 
   if (!prefs.styles || prefs.styles.length === 0) {
@@ -49,6 +53,14 @@ export function adjustWeights(prefs: PreferencesInput): ScoringWeights {
 
   if (!prefs.budget) {
     w.budget = 0;
+  }
+
+  if (!prefs.environment || prefs.environment === "any") {
+    w.environment = 0;
+  }
+
+  if (!prefs.flightTolerance || prefs.flightTolerance === "any") {
+    w.flightTime = 0;
   }
 
   // Normalize to sum = 1
@@ -248,6 +260,68 @@ export function scorePace(prefs: PreferencesInput, dest: Destination): number {
   return 20;
 }
 
+// ─── Group Scorer ─────────────────────────────────────────────────
+
+const COUPLE_AMBIANCE = ["Romantique", "Photogénique", "Poétique", "Contemplative", "Raffinée"];
+const FRIENDS_AMBIANCE = ["Festive", "Vibrante", "Cosmopolite", "Gastronomique", "Créative"];
+
+export function scoreGroup(prefs: PreferencesInput, dest: Destination): number {
+  const ambianceLower = dest.ambiance.map((a) => a.toLowerCase());
+
+  if (prefs.groupType === "solo") {
+    let base = dest.safety.logisticsScore;
+    if (dest.safety.overall === "Modéré") base -= 10;
+    return Math.round(Math.min(100, Math.max(50, base)));
+  }
+
+  if (prefs.groupType === "couple") {
+    const hits = COUPLE_AMBIANCE.filter((tag) => ambianceLower.includes(tag.toLowerCase())).length;
+    return Math.round(Math.min(100, Math.max(50, 72 + hits * 4)));
+  }
+
+  if (prefs.groupType === "friends") {
+    const hits = FRIENDS_AMBIANCE.filter((tag) => ambianceLower.includes(tag.toLowerCase())).length;
+    return Math.round(Math.min(100, Math.max(50, 72 + hits * 5)));
+  }
+
+  // family
+  let base = 60;
+  if (dest.targetProfiles.includes("Famille")) base += 25;
+  base += Math.max(0, (dest.safety.logisticsScore - 60) / 2);
+  if (dest.safety.overall === "Facile") base += 5;
+  return Math.round(Math.min(100, Math.max(50, base)));
+}
+
+// ─── Environment Scorer ───────────────────────────────────────────
+
+export function scoreEnvironment(prefs: PreferencesInput, dest: Destination): number {
+  if (!prefs.environment || prefs.environment === "any") return 75;
+  if (prefs.environment === dest.environment) return 100;
+  if (dest.environment === "mixed") return 75;
+  const crossScores: Record<string, Record<string, number>> = {
+    urban:   { coastal: 60, nature: 50 },
+    coastal: { urban: 55, nature: 60 },
+    nature:  { urban: 45, coastal: 65 },
+  };
+  return crossScores[prefs.environment]?.[dest.environment] ?? 50;
+}
+
+// ─── Flight Time Scorer ───────────────────────────────────────────
+
+export function scoreFlightTime(prefs: PreferencesInput, dest: Destination): number {
+  if (!prefs.flightTolerance || prefs.flightTolerance === "any") return 100;
+  const hours = dest.flightHoursFromParis;
+  if (prefs.flightTolerance === "short") {
+    if (hours <= 3) return 100;
+    if (hours <= 4.5) return 55;
+    return 15;
+  }
+  // medium
+  if (hours <= 7) return 100;
+  if (hours <= 10) return 65;
+  return 25;
+}
+
 // ─── Main Scoring Function ────────────────────────────────────────
 
 export function scoreDestination(
@@ -264,6 +338,9 @@ export function scoreDestination(
     logistics: scoreLogistics(prefs, dest),
     interests: scoreInterests(prefs, dest),
     pace: scorePace(prefs, dest),
+    group: scoreGroup(prefs, dest),
+    environment: scoreEnvironment(prefs, dest),
+    flightTime: scoreFlightTime(prefs, dest),
   };
 
   const totalScore = Math.round(
@@ -273,7 +350,10 @@ export function scoreDestination(
     criteriaScores.duration * weights.duration +
     criteriaScores.logistics * weights.logistics +
     criteriaScores.interests * weights.interests +
-    criteriaScores.pace * weights.pace,
+    criteriaScores.pace * weights.pace +
+    criteriaScores.group * weights.group +
+    criteriaScores.environment * weights.environment +
+    criteriaScores.flightTime * weights.flightTime,
   );
 
   const sorted = Object.entries(criteriaScores).sort(([, a], [, b]) => b - a);
@@ -304,6 +384,7 @@ export function scoreDestination(
     limitations,
     budgetEstimate: { min: bk.min * days, max: bk.max * days, variant },
     ambiance: dest.ambiance,
+    hasItinerary: dest.itinerary !== null,
   };
 }
 
@@ -314,7 +395,15 @@ export function rankDestinations(
   dests: Destination[],
   maxResults = 8,
 ): DestinationScoreResult[] {
-  let results = dests.map((d) => scoreDestination(prefs, d));
+  // Hard filter: flight tolerance (before scoring — labels are exact ranges)
+  let eligible = dests;
+  if (prefs.flightTolerance === "short") {
+    eligible = dests.filter((d) => d.flightHoursFromParis <= 3);
+  } else if (prefs.flightTolerance === "medium") {
+    eligible = dests.filter((d) => d.flightHoursFromParis <= 7);
+  }
+
+  let results = eligible.map((d) => scoreDestination(prefs, d));
 
   // Hard filters from blueprint §11.7
   if (prefs.budget) {
@@ -345,15 +434,18 @@ function generateHighlight(
   dest: Destination,
 ): string {
   const map: Record<string, string> = {
-    budget: `Excellent rapport qualité/prix pour un budget ${prefs.budget === "low" ? "serré" : prefs.budget === "medium" ? "moyen" : "confort"}.`,
-    season: `Très bonne période pour visiter (score saisonnier : ${score}/100).`,
+    budget: `Excellent rapport qualité/prix pour votre budget.`,
+    season: `Très bonne période pour visiter.`,
     style: `Correspond bien à vos envies de voyage.`,
-    duration: `Durée idéale pour cette destination (${dest.idealDuration} recommandés).`,
+    duration: `Durée idéale pour cette destination (${dest.idealDuration}).`,
     logistics: `Destination facile d'accès et bien organisée.`,
-    interests: `Forte densité de lieux correspondant à vos centres d'intérêt.`,
+    interests: `Forte densité de lieux pour vos centres d'intérêt.`,
     pace: `Le rythme naturel de cette destination correspond au vôtre.`,
+    group: `Destination bien adaptée à votre configuration de voyage.`,
+    environment: `Le cadre de cette destination correspond à votre préférence.`,
+    flightTime: `Facilement accessible depuis la France.`,
   };
-  return map[criterion] ?? `${criterion} : ${score}/100`;
+  return map[criterion] ?? criterion;
 }
 
 function generateLimitation(
@@ -363,15 +455,18 @@ function generateLimitation(
   dest: Destination,
 ): string {
   const map: Record<string, string> = {
-    budget: `Budget potentiellement serré. Coût de vie : ${dest.budget.costIndex}/200.`,
-    season: `Période pas optimale (score : ${score}/100). Consultez le calendrier saisonnier.`,
+    budget: `Budget potentiellement serré pour cette destination.`,
+    season: `Période pas optimale. Consultez le calendrier saisonnier.`,
     style: `Ne correspond pas parfaitement à votre style de voyage.`,
-    duration: `Durée pas idéale (recommandé : ${dest.idealDuration}).`,
-    logistics: `Logistique complexe. Anticipez davantage.`,
+    duration: `Durée pas idéale — recommandé : ${dest.idealDuration}.`,
+    logistics: `Logistique plus complexe. Anticipez davantage.`,
     interests: `Peu de lieux pour vos centres d'intérêt principaux.`,
-    pace: `Le rythme naturel de cette destination diffère du vôtre.`,
+    pace: `Le rythme de cette destination diffère du vôtre.`,
+    group: `Moins adaptée à votre configuration de voyage.`,
+    environment: `Le cadre de cette destination diffère de votre préférence.`,
+    flightTime: `Temps de vol assez long depuis la France.`,
   };
-  return map[criterion] ?? `${criterion} : ${score}/100 — point d'attention.`;
+  return map[criterion] ?? criterion;
 }
 
 // ─── Quiz Answers → PreferencesInput Converter ────────────────────
@@ -384,6 +479,9 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
     extended: 18,
   };
 
+  const env = answers.environment as string | undefined;
+  const flight = answers.flightTolerance as string | undefined;
+
   return {
     budget: answers.budget ? (answers.budget as BudgetLevel) : undefined,
     durationDays: durationMap[(answers.duration as string) ?? "week"] ?? 5,
@@ -392,6 +490,8 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
     pace: (answers.pace as any) ?? "balanced",
     styles: Array.isArray(answers.styles) ? answers.styles : [],
     interests: Array.isArray(answers.interests) ? answers.interests : [],
+    environment: env && env !== "any" ? env : undefined,
+    flightTolerance: flight && flight !== "any" ? (flight as "short" | "medium") : undefined,
   };
 }
 

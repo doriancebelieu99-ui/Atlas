@@ -60,6 +60,27 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
+    id: "environment",
+    title: "Quel cadre vous attire ?",
+    subtitle: "Ville, mer ou grand air.",
+    options: [
+      { value: "urban",   label: "Ville & culture",  description: "Architecture, quartiers, vie urbaine",     icon: "🏙️" },
+      { value: "coastal", label: "Mer & côtes",       description: "Plages, bord de mer, lumière",             icon: "🏖️" },
+      { value: "nature",  label: "Nature & paysages", description: "Montagne, volcans, forêts, horizons",      icon: "🏔️" },
+      { value: "any",     label: "Peu importe",       description: "Je suis ouvert à tout",                    icon: "🌍" },
+    ],
+  },
+  {
+    id: "flightTolerance",
+    title: "Jusqu'où êtes-vous prêt à aller ?",
+    subtitle: "En vol depuis Paris.",
+    options: [
+      { value: "short",  label: "Vol court",          description: "Moins de 3 heures",                        icon: "⚡" },
+      { value: "medium", label: "Vol moyen",           description: "3 à 7 heures",                             icon: "✈️" },
+      { value: "any",    label: "Peu importe",         description: "Prêt pour un long voyage",                 icon: "🌐" },
+    ],
+  },
+  {
     id: "styles",
     title: "Quelle atmosphère vous attire ?",
     subtitle: "Jusqu'à 2.",
@@ -99,6 +120,8 @@ export const answerLabels: Record<string, Record<string, string>> = {
   period: { spring: "Printemps", summer: "Été", autumn: "Automne", winter: "Hiver" },
   group: { solo: "Solo", couple: "Couple", friends: "Amis", family: "Famille" },
   pace: { relaxed: "Relax", balanced: "Équilibré", dense: "Dense" },
+  environment: { urban: "Ville & culture", coastal: "Mer & côtes", nature: "Nature & paysages", any: "Peu importe" },
+  flightTolerance: { short: "Vol court (< 3h)", medium: "Vol moyen (3-7h)", any: "Peu importe" },
 };
 
 // ─── Envies tiles for home page ───────────────────────────────────
