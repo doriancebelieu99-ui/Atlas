@@ -2087,20 +2087,19 @@ body {
   display: block;
 }
 
-/* stagger via transform — no layout impact, structurally safe with align-items:start */
+/* stagger via transform — reduced to ±14px to avoid visual cramping in right column */
 .hero-mosaic-img:nth-child(2) {
-  transform: translateY(28px);
+  transform: translateY(14px);
 }
 
 .hero-mosaic-img:nth-child(4) {
-  transform: translateY(-28px);
-}
-
-/* bottom row: anchor object-position toward 70% so landscape fills the frame,
-   avoiding the sky-heavy centre crop on portrait/wide shots */
-.hero-mosaic-img:nth-child(3),
-.hero-mosaic-img:nth-child(4) {
+  transform: translateY(-14px);
   object-position: center 70%;
+}
+
+/* img3 (Florence/Cinque Terre): show top of image, not sea-heavy bottom */
+.hero-mosaic-img:nth-child(3) {
+  object-position: center 15%;
 }
 
 /* Centred fallback (no mosaic) — hero-text acts as transparent wrapper */
