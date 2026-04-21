@@ -38,7 +38,6 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
   // Responsive size — globe must fit within viewport on all orientations
   useEffect(() => {
     const update = () => {
-      // 0.62 of viewport height leaves room for nav + header without overflow
       const byHeight = window.innerHeight * 0.62;
       const byWidth = window.innerWidth * 0.9;
       setSize(Math.min(680, byWidth, byHeight));
@@ -48,15 +47,16 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Enable auto-rotate once globe is ready
+  // Set initial orientation (Europe/Mediterranean) + auto-rotate
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (globeRef.current) {
-        globeRef.current.controls().autoRotate = true;
-        globeRef.current.controls().autoRotateSpeed = 0.4;
-        globeRef.current.controls().enableDamping = true;
-      }
-    }, 800);
+      if (!globeRef.current) return;
+      // Center on Europe so destinations are immediately visible
+      globeRef.current.pointOfView({ lat: 44, lng: 14, altitude: 2.2 }, 0);
+      globeRef.current.controls().autoRotate = true;
+      globeRef.current.controls().autoRotateSpeed = 0.4;
+      globeRef.current.controls().enableDamping = true;
+    }, 600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -67,7 +67,6 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
   const handlePointHover = (point: object | null) => {
     const p = point as GlobePoint | null;
     setHovered(p);
-    // Pause auto-rotation while hovering a point so it stays clickable
     if (globeRef.current) {
       globeRef.current.controls().autoRotate = !p;
     }
@@ -89,9 +88,11 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
         pointsData={points}
         pointLat="lat"
         pointLng="lng"
-        pointColor={(point) => (point as GlobePoint).slug === hovered?.slug ? "#FFD166" : "#C9A84C"}
-        pointRadius={0.9}
-        pointAltitude={0.02}
+        pointColor={(point) =>
+          (point as GlobePoint).slug === hovered?.slug ? "#FFD166" : "#C9A84C"
+        }
+        pointRadius={1.3}
+        pointAltitude={0.025}
         onPointHover={handlePointHover}
         onPointClick={handlePointClick}
       />

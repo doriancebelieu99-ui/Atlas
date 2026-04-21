@@ -39,7 +39,7 @@ test.describe("Explorer page", () => {
     ).toBeVisible();
 
     // Subtitle copy
-    await expect(page.getByText(/faites tourner le globe/i)).toBeVisible();
+    await expect(page.getByText(/survolez un point doré/i)).toBeVisible();
 
     // No JS errors on load
     expect(errors).toHaveLength(0);
@@ -122,6 +122,27 @@ test.describe("Explorer page", () => {
       expect(response?.status(), `${slug} returned non-200`).toBe(200);
       await expect(page.locator(".fiche-hero")).toBeVisible({ timeout: 5_000 });
     }
+  });
+
+  test("fallback grid: 13 cards present and linked to /destination/[slug]", async ({ page }) => {
+    await page.goto("/explorer");
+
+    const cards = page.locator(".explorer-fallback-card");
+    await expect(cards.first()).toBeVisible({ timeout: 5_000 });
+
+    const count = await cards.count();
+    expect(count).toBe(13);
+
+    // All hrefs must point to /destination/
+    const hrefs = await cards.evaluateAll((els) =>
+      els.map((el) => el.getAttribute("href"))
+    );
+    expect(hrefs.every((h) => h?.startsWith("/destination/"))).toBe(true);
+
+    // Click one card → navigate to destination fiche
+    await cards.first().click();
+    await page.waitForURL(/\/destination\/[a-z]+/);
+    await expect(page.locator(".fiche-hero")).toBeVisible({ timeout: 5_000 });
   });
 
   test("nav links from /explorer work correctly", async ({ page }) => {

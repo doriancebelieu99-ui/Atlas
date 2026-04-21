@@ -2478,3 +2478,77 @@ body {
     display: none;
   }
 }
+
+/* ─── Fallback destination grid ──────────────────────────────────── */
+
+.explorer-fallback {
+  width: 100%;
+  max-width: 900px;
+  padding: 32px 24px 48px;
+}
+
+.explorer-fallback-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 16px;
+}
+
+.explorer-fallback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.explorer-fallback-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.explorer-fallback-card:hover {
+  border-color: rgba(201, 168, 76, 0.4);
+  transform: translateY(-2px);
+}
+
+.explorer-fallback-img {
+  width: 100%;
+  height: 72px;
+  object-fit: cover;
+}
+
+.explorer-fallback-info {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.explorer-fallback-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.explorer-fallback-country {
+  font-size: 10px;
+  color: #C9A84C;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .explorer-fallback-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
+}
