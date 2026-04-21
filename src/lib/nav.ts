@@ -19,6 +19,8 @@ export function buildUrl(view: ViewName, slug?: string, sid?: string | null): st
       return s ? `/itinerary/${slug}?${s}` : `/itinerary/${slug}`;
     case "compare":
       return s ? `/compare?slugs=${slug}&${s}` : `/compare?slugs=${slug}`;
+    case "explorer":
+      return "/explorer";
     default:
       return "/";
   }

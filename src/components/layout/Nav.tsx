@@ -14,8 +14,8 @@ export default function Nav({ currentView, onNavigate }: NavProps) {
       </Link>
       <div className="nav-links">
         <Link
-          href="/"
-          className={`nav-link ${currentView === "home" ? "active" : ""}`}
+          href="/explorer"
+          className={`nav-link ${currentView === "explorer" ? "active" : ""}`}
         >
           Explorer
         </Link>

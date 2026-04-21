@@ -2337,3 +2337,129 @@ body {
     padding: 40px 16px;
   }
 }
+/* ─── Explorer / Globe ──────────────────────────────────────────── */
+
+.explorer-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 0%, #0d1b2e 0%, #060d16 70%);
+  padding-bottom: 40px;
+}
+
+.explorer-header {
+  text-align: center;
+  padding: 56px 24px 24px;
+  color: #fff;
+}
+
+.explorer-header .section-label {
+  color: #C9A84C;
+  border-color: rgba(201, 168, 76, 0.3);
+}
+
+.explorer-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 12px 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.explorer-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.globe-wrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.globe-canvas {
+  width: min(700px, 92vw);
+  height: min(700px, 92vw);
+}
+
+.globe-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.globe-loading-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C9A84C;
+  animation: globe-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes globe-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.6); }
+}
+
+.globe-tooltip {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(10, 18, 30, 0.92);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 10px;
+  padding: 8px 12px 8px 8px;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.globe-tooltip-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.globe-tooltip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.globe-tooltip-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.globe-tooltip-country {
+  font-size: 0.75rem;
+  color: #C9A84C;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .globe-canvas {
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .explorer-header {
+    padding: 40px 16px 16px;
+  }
+}

@@ -22,6 +22,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "urban",
     flightHoursFromParis: 2.5,
+    coordinates: { lat: 38.7169, lng: -9.1395 },
     whyGo: [
       { title: "Une lumière unique en Europe", description: "L'exposition à l'Atlantique produit une lumière rasante qui change la couleur des façades et des azulejos selon l'heure. Difficile à anticiper avant d'arriver." },
       { title: "Gastronomie accessible", description: "Les pastéis de nata (tartelettes à la crème cuites au four), le bacalhau (morue accommodée de dizaines de façons différentes) et les vins du Douro composent une gastronomie généreuse. Un repas complet dans un bon restaurant coûte entre 15 et 25€." },
@@ -167,6 +168,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "urban",
     flightHoursFromParis: 2.5,
+    coordinates: { lat: 37.3891, lng: -5.9845 },
     whyGo: [
       { title: "Architecture mudéjare", description: "L'Alcázar, palais royal aux influences hispano-arabes, et la cathédrale gothique voisine concentrent l'essentiel du patrimoine monumental de Séville dans le même quartier." },
       { title: "Tapas", description: "Dans de nombreux bars, une petite tapa accompagne encore la boisson. Une habitude de plus en plus rare dans les grandes villes espagnoles." },
@@ -297,6 +299,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "urban",
     flightHoursFromParis: 3.5,
+    coordinates: { lat: 31.6295, lng: -7.9811 },
     whyGo: [
       { title: "À quelques heures de vol", description: "Marrakech est facilement accessible depuis la France et plusieurs grandes villes européennes, avec de nombreux vols directs. Le changement d'ambiance est immédiat à l'arrivée." },
       { title: "Bon rapport qualité-prix", description: "Le coût de la vie à Marrakech reste nettement inférieur à celui de la plupart des grandes villes européennes. Hébergement, repas et déplacements y restent globalement abordables." },
@@ -434,6 +437,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "urban",
     flightHoursFromParis: 2.5,
+    coordinates: { lat: 41.1579, lng: -8.6291 },
     whyGo: [
       { title: "Vin de Porto et caves", description: "Les caves de porto se visitent à Vila Nova de Gaia, sur l'autre rive du Douro. On y découvre l'histoire de ce vin et on termine par une dégustation." },
       { title: "Azulejos et architecture baroque", description: "La gare de São Bento est tapissée de 20 000 carreaux bleus et blancs illustrant l'histoire du Portugal. Les façades émaillées couvrent les maisons, les églises et les palais du centre historique." },
@@ -565,6 +569,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Solo", "Couple", "Amis"],
     environment: "mixed",
     flightHoursFromParis: 2.5,
+    coordinates: { lat: 40.8518, lng: 14.2681 },
     whyGo: [
       { title: "Berceau de la pizza napolitaine", description: "Da Michele et Sorbillo figurent parmi les adresses les plus connues au monde pour la pizza napolitaine. Les prix tournent autour de 5 euros et une file d'attente est souvent signe de qualité." },
       { title: "Pompéi et le Vésuve", description: "Le site archéologique de Pompéi est accessible en 35 minutes depuis Naples par la Circumvesuviana. La ville romaine ensevelie par l'éruption du Vésuve en 79 après J.-C. est l'un des sites les mieux conservés du monde." },
@@ -695,6 +700,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "urban",
     flightHoursFromParis: 3.5,
+    coordinates: { lat: 41.0082, lng: 28.9784 },
     whyGo: [
       { title: "Carrefour de civilisations", description: "Istanbul a été successivement la capitale de l'Empire romain d'Orient, de l'Empire byzantin et de l'Empire ottoman. Chacune de ces périodes a laissé des monuments encore debout dans le centre historique." },
       { title: "Architecture d'exception", description: "Hagia Sophia, la Mosquée Bleue et le palais Topkapi se trouvent à quelques minutes à pied les uns des autres dans Sultanahmet. Peu de villes concentrent autant de monuments majeurs dans un périmètre aussi réduit." },
@@ -843,6 +849,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis", "Famille"],
     environment: "nature",
     flightHoursFromParis: 3,
+    coordinates: { lat: 64.1265, lng: -21.8174 },
     whyGo: [
       { title: "Paysages d'une autre planète", description: "L'Islande concentre volcans, champs de lave, geysers et cascades dans un espace relativement compact. Peu de destinations européennes offrent une telle diversité de paysages." },
       { title: "Aurores boréales", description: "De septembre à mars, l'Islande offre de bonnes conditions pour observer les aurores boréales. La visibilité dépend de la couverture nuageuse et de l'activité solaire." },
@@ -990,6 +997,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "mixed",
     flightHoursFromParis: 12,
+    coordinates: { lat: 35.0116, lng: 135.7681 },
     whyGo: [
       { title: "Densité patrimoniale rare", description: "Kyoto réunit 17 sites classés à l'UNESCO et plus de 1600 temples et sanctuaires. Peu de villes concentrent autant de patrimoine encore vivant dans un périmètre aussi lisible." },
       { title: "Cerisiers et érables", description: "Fin mars à mi-avril, les cerisiers en fleurs (hanami) transforment les parcs et les temples de Kyoto. En octobre-novembre, les érables rouges (momiji) offrent un spectacle comparable. Les deux périodes sont très fréquentées." },
@@ -1138,6 +1146,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Amis", "Couple", "Solo"],
     environment: "mixed",
     flightHoursFromParis: 1.5,
+    coordinates: { lat: 41.3851, lng: 2.1734 },
     whyGo: [
       { title: "Architecture de Gaudí", description: "La Sagrada Família, le Parc Güell et la Casa Batlló font partie des œuvres les plus visitées d'Espagne. L'architecture de Gaudí est reconnaissable entre toutes et reste indissociable de l'identité de la ville." },
       { title: "Barceloneta et la mer", description: "Barcelone est l'une des rares grandes capitales européennes à disposer d'une vraie plage accessible depuis le centre-ville en transports. La Barceloneta et les plages du Poblenou sont à 20 minutes à pied du Barri Gòtic." },
@@ -1284,6 +1293,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "urban",
     flightHoursFromParis: 2,
+    coordinates: { lat: 43.7696, lng: 11.2558 },
     whyGo: [
       { title: "La plus grande collection de la Renaissance", description: "Les Offices (Uffizi) rassemblent Botticelli, Raphaël, Michel-Ange et des dizaines d'autres maîtres dans un seul bâtiment. La file d'attente est longue sans réservation — prévoir en ligne." },
       { title: "Architecture exceptionnelle", description: "Le dôme de Brunelleschi, la tour de Giotto et le Palazzo Vecchio composent un skyline qui n'a pas changé depuis le XVe siècle. Une grande partie des monuments se découvrent depuis la rue, sans entrée payante." },
@@ -1417,6 +1427,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Famille", "Couple", "Amis", "Solo"],
     environment: "coastal",
     flightHoursFromParis: 3.5,
+    coordinates: { lat: 35.2401, lng: 24.8093 },
     whyGo: [
       { title: "Plages de niveau mondial", description: "Balos, Elafonissi, Vai et Falasarna figurent parmi les plus belles plages d'Europe. Certaines nécessitent une voiture ou un bateau pour y accéder — mais l'effort est proportionnel au résultat." },
       { title: "Gorges de Samaria", description: "Les gorges de Samaria, dans l'ouest de l'île, font partie des plus longues d'Europe (18 km). La randonnée dure environ 5-6 heures. La période d'ouverture s'étend généralement de mai à octobre." },
@@ -1581,6 +1592,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Solo"],
     environment: "nature",
     flightHoursFromParis: 3.5,
+    coordinates: { lat: 32.6605, lng: -16.9083 },
     whyGo: [
       { title: "Les levadas", description: "Les levadas sont des canaux d'irrigation construits aux XVIe-XXe siècles pour acheminer l'eau des sommets vers les cultures. Un réseau de 2 000 km de sentiers longe ces canaux à travers les forêts laurisylves et les falaises côtières." },
       { title: "Climat doux toute l'année", description: "Madère bénéficie d'un climat subtropical stable : il ne fait jamais très chaud ni très froid. Les hivers sont doux, les étés tempérés par l'Atlantique. C'est l'une des rares îles européennes visitables confortablement en janvier." },
@@ -1738,6 +1750,7 @@ export const destinations: Record<string, Destination> = {
     targetProfiles: ["Couple", "Amis", "Solo"],
     environment: "urban",
     flightHoursFromParis: 1.5,
+    coordinates: { lat: 52.3676, lng: 4.9041 },
     whyGo: [
       { title: "Rijksmuseum et Van Gogh Museum", description: "Le Rijksmuseum rassemble la plus grande collection de peinture néerlandaise du XVIIe siècle : Rembrandt, Vermeer, Hals. Le Van Gogh Museum, à deux pas, abrite la plus grande collection de l'artiste au monde." },
       { title: "Architecture des canaux", description: "Le canal Ring (Grachtengordel) d'Amsterdam est classé à l'UNESCO. Ses maisons à pignons construites aux XVIIe-XVIIIe siècles sont parmi les plus belles de l'architecture civile européenne." },

@@ -9,7 +9,7 @@ export type TimeSlot = "morning" | "afternoon" | "evening";
 export type ActivityType = "culture" | "food" | "logistics" | "free";
 export type Severity = "info" | "caution" | "warning";
 export type ItineraryViewMode = "overview" | "day";
-export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" | "itinerary";
+export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" | "itinerary" | "explorer";
 
 export type Environment = "urban" | "coastal" | "nature" | "mixed";
 export type FlightTolerance = "short" | "medium" | "any";
@@ -132,6 +132,11 @@ export interface ItineraryData {
   days: ItineraryDay[];
 }
 
+export interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
 export interface Destination {
   slug: string;
   name: string;
@@ -148,6 +153,7 @@ export interface Destination {
   targetProfiles: string[];
   environment: Environment;
   flightHoursFromParis: number;
+  coordinates: Coordinates;
   whyGo: WhyGoItem[];
   constraints: Constraint[];
   budget: BudgetProfile;
