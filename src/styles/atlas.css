@@ -2071,9 +2071,10 @@ body {
 .hero-mosaic {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 205px 205px;
   gap: 10px;
   height: 420px;
+  overflow: hidden;
   position: relative;
   z-index: 1;
 }
