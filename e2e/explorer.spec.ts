@@ -115,6 +115,7 @@ test.describe("Explorer page", () => {
       "lisbonne", "seville", "marrakech", "porto", "naples",
       "istanbul", "reykjavik", "kyoto", "barcelone", "florence",
       "crete", "madere", "amsterdam",
+      "new-york", "montreal", "rio-de-janeiro",
     ];
 
     for (const slug of slugs) {
@@ -131,7 +132,7 @@ test.describe("Explorer page", () => {
     await expect(cards.first()).toBeVisible({ timeout: 5_000 });
 
     const count = await cards.count();
-    expect(count).toBe(13);
+    expect(count).toBe(16);
 
     // All hrefs must point to /destination/
     const hrefs = await cards.evaluateAll((els) =>

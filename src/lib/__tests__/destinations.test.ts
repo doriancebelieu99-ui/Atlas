@@ -11,7 +11,7 @@ import {
 describe("getAllDestinations", () => {
   it("returns all seeded destinations", () => {
     const dests = getAllDestinations();
-    expect(dests.length).toBe(13);
+    expect(dests.length).toBe(16);
   });
 
   it("returns destinations sorted by score descending", () => {
@@ -108,6 +108,24 @@ describe("getItineraryBySlug", () => {
 
   it("returns itinerary for Istanbul (5 days)", () => {
     const result = getItineraryBySlug("istanbul");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for New York (5 days)", () => {
+    const result = getItineraryBySlug("new-york");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for Montréal (4 days)", () => {
+    const result = getItineraryBySlug("montreal");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(4);
+  });
+
+  it("returns itinerary for Rio de Janeiro (5 days)", () => {
+    const result = getItineraryBySlug("rio-de-janeiro");
     expect(result).not.toBeNull();
     expect(result!.days).toHaveLength(5);
   });
