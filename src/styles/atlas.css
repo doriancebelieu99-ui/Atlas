@@ -2044,8 +2044,10 @@ body {
   align-items: center;
   gap: 48px;
   text-align: left;
-  padding: 80px 60px 60px;
-  min-height: 88vh;
+  padding: 80px 60px 80px;
+  /* min 620px guarantees mosaic (420px) + paddings (160px) always fit,
+     even on short-viewport desktops where 88vh would be insufficient */
+  min-height: max(88vh, 620px);
 }
 
 .hero-text {
