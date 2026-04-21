@@ -2041,19 +2041,22 @@ body {
 .hero--split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  /* start: row height = content height (tallest column), hero wrapper follows naturally.
+     Previously "center" caused the row to stretch to min-height, letting the mosaic
+     float mid-hero and potentially overflow on short-viewport desktops. */
+  align-items: start;
   gap: 48px;
   text-align: left;
   padding: 80px 60px 80px;
-  /* min 620px guarantees mosaic (420px) + paddings (160px) always fit,
-     even on short-viewport desktops where 88vh would be insufficient */
-  min-height: max(88vh, 620px);
+  min-height: max(88vh, 560px);
 }
 
 .hero-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  /* center the text column vertically relative to the mosaic column */
+  align-self: center;
   position: relative;
   z-index: 1;
 }
@@ -2074,22 +2077,26 @@ body {
   height: 420px;
   position: relative;
   z-index: 1;
+  /* clip the transform-based stagger so images never paint outside this box */
+  overflow: hidden;
+  border-radius: 14px;
 }
 
 .hero-mosaic-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 10px;
   display: block;
 }
 
+/* stagger via transform (no layout impact) instead of margin-top */
 .hero-mosaic-img:nth-child(2) {
-  margin-top: 28px;
+  transform: translateY(28px);
 }
 
 .hero-mosaic-img:nth-child(4) {
-  margin-top: -28px;
+  transform: translateY(-28px);
 }
 
 /* Centred fallback (no mosaic) — hero-text acts as transparent wrapper */
