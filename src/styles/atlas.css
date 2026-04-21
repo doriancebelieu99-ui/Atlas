@@ -2087,19 +2087,17 @@ body {
   display: block;
 }
 
-/* stagger via transform — reduced to ±14px to avoid visual cramping in right column */
 .hero-mosaic-img:nth-child(2) {
-  transform: translateY(14px);
+  transform: translateY(-10px);
+}
+
+.hero-mosaic-img:nth-child(3) {
+  object-position: center 15%;
 }
 
 .hero-mosaic-img:nth-child(4) {
-  transform: translateY(-14px);
+  transform: translateY(10px);
   object-position: center 70%;
-}
-
-/* img3 (Florence/Cinque Terre): show top of image, not sea-heavy bottom */
-.hero-mosaic-img:nth-child(3) {
-  object-position: center 15%;
 }
 
 /* Centred fallback (no mosaic) — hero-text acts as transparent wrapper */
