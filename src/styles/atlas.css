@@ -2041,14 +2041,13 @@ body {
 .hero--split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* start: row height = content height (tallest column), hero wrapper follows naturally.
-     Previously "center" caused the row to stretch to min-height, letting the mosaic
-     float mid-hero and potentially overflow on short-viewport desktops. */
   align-items: start;
   gap: 48px;
   text-align: left;
-  padding: 80px 60px 80px;
-  min-height: max(88vh, 560px);
+  padding: 80px 60px 60px;
+  /* 560px = mosaic 420px + 80 top + 60 bottom; no 88vh so the hero wraps
+     its content without creating a large empty zone below the mosaic */
+  min-height: 560px;
 }
 
 .hero-text {
@@ -2077,26 +2076,30 @@ body {
   height: 420px;
   position: relative;
   z-index: 1;
-  /* clip the transform-based stagger so images never paint outside this box */
-  overflow: hidden;
-  border-radius: 14px;
 }
 
 .hero-mosaic-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 14px;
   display: block;
 }
 
-/* stagger via transform (no layout impact) instead of margin-top */
+/* stagger via transform — no layout impact, structurally safe with align-items:start */
 .hero-mosaic-img:nth-child(2) {
   transform: translateY(28px);
 }
 
 .hero-mosaic-img:nth-child(4) {
   transform: translateY(-28px);
+}
+
+/* bottom row: anchor object-position toward 70% so landscape fills the frame,
+   avoiding the sky-heavy centre crop on portrait/wide shots */
+.hero-mosaic-img:nth-child(3),
+.hero-mosaic-img:nth-child(4) {
+  object-position: center 70%;
 }
 
 /* Centred fallback (no mosaic) — hero-text acts as transparent wrapper */
