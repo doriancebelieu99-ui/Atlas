@@ -2088,7 +2088,7 @@ body {
 }
 
 .hero-mosaic-img:nth-child(2) {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
 }
 
 .hero-mosaic-img:nth-child(3) {
@@ -2096,7 +2096,7 @@ body {
 }
 
 .hero-mosaic-img:nth-child(4) {
-  transform: translateY(10px);
+  transform: translateY(6px);
   object-position: center 70%;
 }
 
