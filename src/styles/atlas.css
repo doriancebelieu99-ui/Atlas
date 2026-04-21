@@ -2087,16 +2087,11 @@ body {
   display: block;
 }
 
-.hero-mosaic-img:nth-child(2) {
-  transform: translateY(-6px);
-}
-
 .hero-mosaic-img:nth-child(3) {
   object-position: center 15%;
 }
 
 .hero-mosaic-img:nth-child(4) {
-  transform: translateY(6px);
   object-position: center 70%;
 }
 
