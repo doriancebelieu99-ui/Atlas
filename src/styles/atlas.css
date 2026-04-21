@@ -2382,7 +2382,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 500px;
+  min-height: 300px;
 }
 
 .globe-canvas {
@@ -2454,12 +2454,27 @@ body {
 }
 
 @media (max-width: 600px) {
-  .globe-canvas {
-    width: 100vw;
-    height: 100vw;
-  }
-
   .explorer-header {
     padding: 40px 16px 16px;
+  }
+}
+
+/* Landscape mobile / very short viewports */
+@media (max-height: 500px) {
+  .explorer-header {
+    padding: 12px 24px 8px;
+  }
+
+  .explorer-title {
+    font-size: 1.25rem;
+    margin: 4px 0 6px;
+  }
+
+  .explorer-sub {
+    display: none;
+  }
+
+  .explorer-header .section-label {
+    display: none;
   }
 }

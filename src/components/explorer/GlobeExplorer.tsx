@@ -35,9 +35,14 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
     image: d.image,
   }));
 
-  // Responsive size
+  // Responsive size — globe must fit within viewport on all orientations
   useEffect(() => {
-    const update = () => setSize(Math.min(680, window.innerWidth * 0.9));
+    const update = () => {
+      // 0.62 of viewport height leaves room for nav + header without overflow
+      const byHeight = window.innerHeight * 0.62;
+      const byWidth = window.innerWidth * 0.9;
+      setSize(Math.min(680, byWidth, byHeight));
+    };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -59,6 +64,20 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
     setTooltipPos({ x: e.clientX, y: e.clientY });
   };
 
+  const handlePointHover = (point: object | null) => {
+    const p = point as GlobePoint | null;
+    setHovered(p);
+    // Pause auto-rotation while hovering a point so it stays clickable
+    if (globeRef.current) {
+      globeRef.current.controls().autoRotate = !p;
+    }
+  };
+
+  const handlePointClick = (point: object) => {
+    const p = point as GlobePoint;
+    if (p?.slug) router.push(`/destination/${p.slug}`);
+  };
+
   return (
     <div className="globe-wrapper" onMouseMove={handleMouseMove}>
       <Globe
@@ -66,18 +85,15 @@ export default function GlobeExplorer({ destinations }: GlobeExplorerProps) {
         width={size}
         height={size}
         backgroundColor="rgba(0,0,0,0)"
-        globeImageUrl="https://unpkg.com/three-globe/example/img/earth-night.jpg"
+        globeImageUrl="/earth-night.jpg"
         pointsData={points}
         pointLat="lat"
         pointLng="lng"
-        pointColor={() => "#C9A84C"}
-        pointRadius={0.6}
-        pointAltitude={0.012}
-        onPointHover={(point) => setHovered(point as GlobePoint | null)}
-        onPointClick={(point) => {
-          const p = point as GlobePoint;
-          if (p?.slug) router.push(`/destination/${p.slug}`);
-        }}
+        pointColor={(point) => (point as GlobePoint).slug === hovered?.slug ? "#FFD166" : "#C9A84C"}
+        pointRadius={0.9}
+        pointAltitude={0.02}
+        onPointHover={handlePointHover}
+        onPointClick={handlePointClick}
       />
       {hovered && (
         <div
