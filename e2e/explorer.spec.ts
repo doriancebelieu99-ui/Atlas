@@ -125,7 +125,7 @@ test.describe("Explorer page", () => {
     }
   });
 
-  test("fallback grid: 13 cards present and linked to /destination/[slug]", async ({ page }) => {
+  test("fallback grid: 16 cards present and linked to /destination/[slug]", async ({ page }) => {
     await page.goto("/explorer");
 
     const cards = page.locator(".explorer-fallback-card");
