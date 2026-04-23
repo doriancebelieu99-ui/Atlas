@@ -11,7 +11,7 @@ import {
 describe("getAllDestinations", () => {
   it("returns all seeded destinations", () => {
     const dests = getAllDestinations();
-    expect(dests.length).toBe(21);
+    expect(dests.length).toBe(26);
   });
 
   it("returns destinations sorted by score descending", () => {
@@ -156,6 +156,36 @@ describe("getItineraryBySlug", () => {
 
   it("returns itinerary for Bali (5 days)", () => {
     const result = getItineraryBySlug("bali");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for Mexico City (5 days)", () => {
+    const result = getItineraryBySlug("mexico");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for Singapour (4 days)", () => {
+    const result = getItineraryBySlug("singapour");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(4);
+  });
+
+  it("returns itinerary for Sydney (5 days)", () => {
+    const result = getItineraryBySlug("sydney");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for Zanzibar (5 days)", () => {
+    const result = getItineraryBySlug("zanzibar");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for Lima (5 days)", () => {
+    const result = getItineraryBySlug("lima");
     expect(result).not.toBeNull();
     expect(result!.days).toHaveLength(5);
   });
