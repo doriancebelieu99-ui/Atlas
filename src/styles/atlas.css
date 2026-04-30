@@ -1228,8 +1228,68 @@ body {
   color: var(--slate);
   font-weight: 400;
   margin-top: -16px;
+  margin-bottom: 20px;
+}
+
+/* ── Synthesis block ─────────────────────────────────────────── */
+
+.compare-synthesis {
+  background: var(--cream);
+  border: 1px solid var(--mist);
+  border-radius: 12px;
+  padding: 16px 20px;
   margin-bottom: 24px;
 }
+
+.compare-synthesis-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 12px;
+}
+
+.compare-synthesis-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.compare-synthesis-item {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.compare-synthesis-item::before {
+  content: "→";
+  margin-right: 8px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.compare-synthesis-dest {
+  font-weight: 700;
+}
+
+.compare-synthesis-reason {
+  color: var(--slate);
+}
+
+/* ── Scrollable wrapper ──────────────────────────────────────── */
+
+.compare-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -4px;
+  padding: 0 4px 8px;
+}
+
+/* ── Destination header ──────────────────────────────────────── */
 
 .compare-header {
   display: grid;
@@ -1244,7 +1304,7 @@ body {
 
 .compare-dest-img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 10px;
@@ -1266,6 +1326,32 @@ body {
   font-weight: 700;
   margin-top: 4px;
 }
+
+/* ── Badges ──────────────────────────────────────────────────── */
+
+.compare-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.compare-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #92610a;
+  background: #fef3c7;
+  border: 1px solid #f59e0b44;
+  border-radius: 99px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+/* ── Table rows ──────────────────────────────────────────────── */
 
 .compare-table {
   margin-bottom: 24px;
@@ -1295,6 +1381,8 @@ body {
   font-weight: 700;
 }
 
+/* ── Actions ─────────────────────────────────────────────────── */
+
 .compare-actions {
   display: flex;
   flex-direction: column;
@@ -1314,19 +1402,25 @@ body {
   color: var(--slate);
 }
 
-/* Grid column templates — responsive */
-.compare-grid--2 { grid-template-columns: 160px 1fr 1fr; }
-.compare-grid--3 { grid-template-columns: 160px 1fr 1fr 1fr; }
+/* ── Grid column templates ───────────────────────────────────── */
+
+.compare-grid--2 {
+  grid-template-columns: 140px minmax(150px, 1fr) minmax(150px, 1fr);
+}
+
+.compare-grid--3 {
+  grid-template-columns: 130px minmax(130px, 1fr) minmax(130px, 1fr) minmax(130px, 1fr);
+}
 
 @media (max-width: 768px) {
-  .compare-grid--2 { grid-template-columns: 100px 1fr 1fr; }
-  .compare-grid--3 { grid-template-columns: 90px 1fr 1fr 1fr; }
-  .compare-dest-img { height: 80px; border-radius: 8px; }
-  .compare-dest-name { font-size: 13px; }
+  .compare-dest-img  { height: 100px; border-radius: 8px; }
+  .compare-dest-name { font-size: 14px; }
   .compare-dest-score { font-size: 12px; }
   .compare-row-label { font-size: 11px; }
   .compare-row-value { font-size: 12px; }
   .compare-actions-row { gap: 8px; }
+  .compare-synthesis { padding: 14px 16px; }
+  .compare-synthesis-item { font-size: 13px; }
 }
 
 /* ─── Itinerary ────────────────────────────────────────────────── */
