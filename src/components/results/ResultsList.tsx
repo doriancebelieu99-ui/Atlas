@@ -98,6 +98,7 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
           onNavigate={onNavigate}
           onCompareToggle={toggleCompare}
           isCompareSelected={compareSet.has(featured.slug)}
+          answers={answers}
         />
       )}
 
@@ -114,6 +115,7 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
                 onNavigate={onNavigate}
                 onCompareToggle={toggleCompare}
                 isCompareSelected={compareSet.has(r.slug)}
+                answers={answers}
               />
             ))}
           </div>

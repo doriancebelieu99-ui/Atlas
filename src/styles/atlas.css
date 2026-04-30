@@ -2278,6 +2278,125 @@ body {
   top: 1px;
 }
 
+/* ─── Decisional blocks (reasons, watchout, why#1) ────────────── */
+
+.result-card-reasons {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.result-card-reason {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--slate);
+  padding-left: 14px;
+  position: relative;
+}
+
+.result-card-reason::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  top: 1px;
+}
+
+.result-card-reason--watchout {
+  color: #92610a;
+  margin-top: 4px;
+}
+
+.result-card-reason--watchout::before {
+  content: "!";
+  color: #d97706;
+  font-weight: 800;
+}
+
+.result-card-decisional {
+  margin-top: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-card-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.result-card-section-label--warn {
+  color: #d97706;
+}
+
+.result-card-why1 {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 500;
+  margin: 0;
+}
+
+.result-card-gains-list {
+  margin: 2px 0 4px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.result-card-gains-list li {
+  font-size: 12px;
+  color: var(--slate);
+  line-height: 1.4;
+  padding-left: 14px;
+  position: relative;
+}
+
+.result-card-gains-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  top: 1px;
+}
+
+.result-card-watchout-block {
+  margin-top: 4px;
+}
+
+.result-card-watchout {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #92610a;
+  margin: 0;
+  padding-left: 14px;
+  position: relative;
+}
+
+.result-card-watchout::before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  color: #d97706;
+  font-size: 10px;
+  font-weight: 800;
+  top: 1px;
+}
+
 /* ─── Featured result card ─────────────────────────────────────── */
 
 .result-card--featured {
