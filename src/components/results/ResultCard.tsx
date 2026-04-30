@@ -374,6 +374,7 @@ export default function ResultCard({
     <div
       className={`result-card${featured ? " result-card--featured" : ""}`}
       style={{ animationDelay: `${rank * 0.08}s` }}
+      data-slug={result.slug}
     >
       <div className="result-card-img-wrap">
         <img
