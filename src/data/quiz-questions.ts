@@ -75,9 +75,10 @@ export const quizQuestions: QuizQuestion[] = [
     title: "Jusqu'où êtes-vous prêt à aller ?",
     subtitle: "En vol depuis Paris.",
     options: [
-      { value: "short",  label: "Vol court",          description: "Moins de 3 heures",                        icon: "⚡" },
-      { value: "medium", label: "Vol moyen",           description: "3 à 7 heures",                             icon: "✈️" },
-      { value: "any",    label: "Peu importe",         description: "Prêt pour un long voyage",                 icon: "🌐" },
+      { value: "short",  label: "Vol court",          description: "Moins de 3 heures",                          icon: "⚡" },
+      { value: "medium", label: "Vol moyen",           description: "3 à 7 heures",                               icon: "✈️" },
+      { value: "long",   label: "Long-courrier",       description: "Je veux voyager loin, plus de 7 heures",     icon: "🌏" },
+      { value: "any",    label: "Peu importe",         description: "Ouvert à tout, sans préférence de distance", icon: "🌐" },
     ],
   },
   {
@@ -121,7 +122,7 @@ export const answerLabels: Record<string, Record<string, string>> = {
   group: { solo: "Solo", couple: "Couple", friends: "Amis", family: "Famille" },
   pace: { relaxed: "Relax", balanced: "Équilibré", dense: "Dense" },
   environment: { urban: "Ville & culture", coastal: "Mer & côtes", nature: "Nature & paysages", any: "Peu importe" },
-  flightTolerance: { short: "Vol court (< 3h)", medium: "Vol moyen (3-7h)", any: "Peu importe" },
+  flightTolerance: { short: "Vol court (< 3h)", medium: "Vol moyen (3-7h)", long: "Long-courrier (> 7h)", any: "Peu importe" },
   styles: {
     authentic_local: "Authentique & local",
     culture_patrimoine: "Culture & patrimoine",

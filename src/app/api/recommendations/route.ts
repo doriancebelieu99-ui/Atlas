@@ -24,7 +24,7 @@ const VALID_STYLES = [
 ];
 
 const VALID_ENVIRONMENT = ["urban", "coastal", "nature", "any"];
-const VALID_FLIGHT_TOLERANCE = ["short", "medium", "any"];
+const VALID_FLIGHT_TOLERANCE = ["short", "medium", "long", "any"];
 
 function validateAnswers(
   body: unknown,

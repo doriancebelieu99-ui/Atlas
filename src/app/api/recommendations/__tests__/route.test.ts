@@ -145,7 +145,7 @@ describe("POST /api/recommendations", () => {
   });
 
   it("accepts valid flightTolerance values", async () => {
-    for (const ft of ["short", "medium", "any"]) {
+    for (const ft of ["short", "medium", "long", "any"]) {
       const res = await POST(makeRequest({ budget: "medium", flightTolerance: ft }));
       expect(res.status).toBe(200);
     }

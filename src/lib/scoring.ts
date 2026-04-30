@@ -316,6 +316,12 @@ export function scoreFlightTime(prefs: PreferencesInput, dest: Destination): num
     if (hours <= 4.5) return 55;
     return 15;
   }
+  if (prefs.flightTolerance === "long") {
+    if (hours > 10) return 100;
+    if (hours > 7) return 80;
+    if (hours > 4) return 45;
+    return 15;
+  }
   // medium
   if (hours <= 7) return 100;
   if (hours <= 10) return 65;
@@ -491,7 +497,7 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
     styles: Array.isArray(answers.styles) ? answers.styles : [],
     interests: Array.isArray(answers.interests) ? answers.interests : [],
     environment: env && env !== "any" ? env : undefined,
-    flightTolerance: flight && flight !== "any" ? (flight as "short" | "medium") : undefined,
+    flightTolerance: flight && flight !== "any" ? (flight as "short" | "medium" | "long") : undefined,
   };
 }
 

@@ -12,7 +12,7 @@ export type ItineraryViewMode = "overview" | "day";
 export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" | "itinerary" | "explorer";
 
 export type Environment = "urban" | "coastal" | "nature" | "mixed";
-export type FlightTolerance = "short" | "medium" | "any";
+export type FlightTolerance = "short" | "medium" | "any" | "long";
 
 // ─── User Preferences (quiz output) ──────────────────────────────
 

@@ -152,6 +152,7 @@ function buildReason(
       const ft = answers?.flightTolerance as string | undefined;
       if (ft === "short") return `Vol court depuis Paris — dans votre préférence de trajet.`;
       if (ft === "medium") return `Temps de vol raisonnable, dans votre tolérance de trajet.`;
+      if (ft === "long") return `Long-courrier depuis Paris — exactement le dépaysement que vous cherchez.`;
       return `Facilement accessible depuis Paris.`;
     }
     default:
@@ -182,7 +183,10 @@ function buildWatchout(
   if (period && cs.season < 65) {
     return `La saison ${PERIOD_ADJ[period] ?? period} n'est pas optimale ici — consultez le calendrier saisonnier avant de réserver.`;
   }
-  if (flightTol && flightTol !== "any" && cs.flightTime < 55) {
+  if (flightTol === "long" && cs.flightTime < 55) {
+    return `Destination plus proche que ce que vous cherchez — pensez à l'associer à une autre étape.`;
+  }
+  if (flightTol && flightTol !== "any" && flightTol !== "long" && cs.flightTime < 55) {
     return `Le vol est plus long que votre préférence — anticipez la fatigue de trajet dans votre planning.`;
   }
   if (environment && environment !== "any" && cs.environment < 65) {
