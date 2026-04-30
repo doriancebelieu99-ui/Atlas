@@ -115,7 +115,7 @@ export function scoreBudget(prefs: PreferencesInput, dest: Destination): number 
   else if (ratio >= 0.4) score = 40 + ((ratio - 0.4) / 0.2) * 30;
   else score = ratio * 100;
 
-  return Math.max(0, Math.min(100, score));
+  return Math.round(Math.max(0, Math.min(100, score)));
 }
 
 export function scoreSeason(prefs: PreferencesInput, dest: Destination): number {

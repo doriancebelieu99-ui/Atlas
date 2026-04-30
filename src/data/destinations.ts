@@ -3063,7 +3063,7 @@ export const destinations: Record<string, Destination> = {
     },
     safety: {
       overall: "Destination sûre dans les quartiers touristiques avec vigilance standard",
-      logisticsScore: 6,
+      logisticsScore: 62,
       freshness: "2025",
       points: [
         { category: "Quartiers recommandés", level: "safe", text: "Roma, Condesa, Polanco, Coyoacán et le Centro Histórico en journée sont très fréquentés et bien surveillés." },
@@ -3198,7 +3198,7 @@ export const destinations: Record<string, Destination> = {
     },
     safety: {
       overall: "Destination parmi les plus sûres au monde",
-      logisticsScore: 9,
+      logisticsScore: 92,
       freshness: "2025",
       points: [
         { category: "Criminalité", level: "safe", text: "Singapour est l'une des villes les plus sûres au monde. La criminalité violente est quasi inexistante. Les oublis d'objets dans les cafés sont fréquemment suivis d'une restitution." },
@@ -3319,7 +3319,7 @@ export const destinations: Record<string, Destination> = {
     },
     safety: {
       overall: "Destination très sûre avec quelques précautions standard",
-      logisticsScore: 9,
+      logisticsScore: 88,
       freshness: "2025",
       points: [
         { category: "Sécurité urbaine", level: "safe", text: "Sydney est globalement très sûre. Les quartiers touristiques (Circular Quay, Darling Harbour, Bondi) sont bien surveillés. Les incidents sont rares et généralement mineurs." },
@@ -3451,7 +3451,7 @@ export const destinations: Record<string, Destination> = {
     },
     safety: {
       overall: "Destination généralement sûre avec vigilance habituelle",
-      logisticsScore: 7,
+      logisticsScore: 68,
       freshness: "2025",
       points: [
         { category: "Sécurité générale", level: "safe", text: "Stone Town et les zones touristiques sont sûres en journée. Évitez les promenades solitaires tard le soir dans les ruelles isolées de la médina." },
@@ -3580,7 +3580,7 @@ export const destinations: Record<string, Destination> = {
     },
     safety: {
       overall: "Destination sûre dans les quartiers touristiques avec vigilance standard",
-      logisticsScore: 7,
+      logisticsScore: 68,
       freshness: "2025",
       points: [
         { category: "Quartiers recommandés", level: "safe", text: "Miraflores, Barranco et San Isidro sont les quartiers les plus sûrs pour les voyageurs. Le Centro Histórico est sûr en journée, moins conseillé seul le soir." },
