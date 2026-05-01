@@ -79,3 +79,25 @@ test("mode mois — le profil summary affiche 'Mois précis'", async ({ page }) 
   const summary = page.locator(".results-summary");
   await expect(summary).toContainText(/mois précis/i);
 });
+
+test("mode mois — badge saisonnier visible sur la première carte", async ({ page }) => {
+  await fillQuizWithMonth(page, "aug");
+  const badge = page.locator(".result-card-month-badge").first();
+  await expect(badge).toBeVisible();
+  await expect(badge).toContainText("Août");
+});
+
+test("mode mois — badge saisonnier présent sur toutes les cartes résultats", async ({ page }) => {
+  await fillQuizWithMonth(page, "jan");
+  const badges = page.locator(".result-card-month-badge");
+  const cards  = page.locator(".result-card");
+  const badgeCount = await badges.count();
+  const cardCount  = await cards.count();
+  expect(badgeCount).toBe(cardCount);
+  await expect(badges.first()).toContainText("Janvier");
+});
+
+test("mode saison — aucun badge saisonnier affiché", async ({ page }) => {
+  await fillQuizWithSeason(page);
+  await expect(page.locator(".result-card-month-badge")).toHaveCount(0);
+});

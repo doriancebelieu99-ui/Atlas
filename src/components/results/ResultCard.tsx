@@ -384,6 +384,17 @@ function buildWhy1(result: DestinationScoreResult, answers: QuizAnswers | undefi
   return `Elle offre le meilleur équilibre global sur l'ensemble de vos critères.`;
 }
 
+// ─── Month season badge ───────────────────────────────────────────
+
+export function monthSeasonBadge(
+  seasonScore: number,
+  monthLabel: string,
+): { dot: string; label: string; level: "top" | "ok" | "off" } {
+  if (seasonScore >= 80) return { dot: "●", label: `${monthLabel} · Très favorable`, level: "top" };
+  if (seasonScore >= 60) return { dot: "○", label: `${monthLabel} · Correct`, level: "ok" };
+  return { dot: "◐", label: `${monthLabel} · Période difficile`, level: "off" };
+}
+
 // ─── Component ────────────────────────────────────────────────────
 
 export default function ResultCard({
@@ -396,6 +407,14 @@ export default function ResultCard({
   answers,
 }: ResultCardProps) {
   const { reasons, watchout } = buildReasons(result, answers);
+
+  const isMonthMode = answers?.departurePrecision === "month" && Boolean(answers?.departureMonth);
+  const rawMonthLabel = isMonthMode
+    ? (MONTH_FR[answers!.departureMonth as string] ?? String(answers!.departureMonth))
+    : null;
+  const badge = rawMonthLabel
+    ? monthSeasonBadge(result.criteriaScores.season, rawMonthLabel)
+    : null;
 
   return (
     <div
@@ -477,6 +496,13 @@ export default function ResultCard({
             {watchout && (
               <div className="result-card-reason result-card-reason--watchout">{watchout}</div>
             )}
+          </div>
+        )}
+
+        {badge && (
+          <div className={`result-card-month-badge result-card-month-badge--${badge.level}`}>
+            <span aria-hidden="true">{badge.dot}</span>{" "}
+            {badge.label}
           </div>
         )}
 
