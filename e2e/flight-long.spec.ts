@@ -8,28 +8,44 @@ const LONG_HAUL_SLUGS = new Set([
   "singapour", "bali", "buenos-aires", "sydney",
 ]);
 
-// ─── Helper : remplit le quiz jusqu'à /results ────────────────────
-// Profil minimal (medium/week/spring/couple/balanced) avec flightTolerance variable.
-// Q8 et Q9 sont passés via le bouton "Passer" pour rester rapide.
+// ─── Generic quiz helper ──────────────────────────────────────────
+// Fills the 9-question quiz with a minimal profile, overridable per test.
+// Q8 (styles) and Q9 (interests) are always skipped via "Passer".
 
-async function fillQuizWithFlight(page: Page, flightTolerance: "short" | "any" | "long") {
+interface QuizOpts {
+  budget?: "low" | "medium" | "high" | "premium";
+  duration?: "short" | "week" | "long" | "extended";
+  group?: "solo" | "couple" | "friends" | "family";
+  flightTolerance?: "short" | "any" | "long";
+}
+
+async function fillQuizMinimal(page: Page, opts: QuizOpts = {}) {
+  const {
+    budget = "medium",
+    duration = "week",
+    group = "couple",
+    flightTolerance = "any",
+  } = opts;
+
   await page.goto("/quiz");
-  await expect(page).toHaveURL("/quiz");
 
-  await page.getByRole("radio", { name: /moyen/i }).click();          // Q1 budget: medium
-  await page.getByRole("radio", { name: /4–7/i }).click();            // Q2 duration: week
-  await page.getByRole("radio", { name: /printemps/i }).click();      // Q3 period: spring
-  await page.getByRole("radio", { name: /couple/i }).click();         // Q4 group: couple
-  await page.getByRole("radio", { name: /équilibré/i }).click();      // Q5 pace: balanced
+  const BUDGET = { low: /serré/i, medium: /moyen/i, high: /confort/i, premium: /premium/i };
+  const DURATION = { short: /2–3/i, week: /4–7/i, long: /8–14/i, extended: /15/i };
+  const GROUP = { solo: /solo/i, couple: /couple/i, friends: /amis/i, family: /famille/i };
+
+  await page.getByRole("radio", { name: BUDGET[budget] }).click();
+  await page.getByRole("radio", { name: DURATION[duration] }).click();
+  await page.getByRole("radio", { name: /printemps/i }).click();           // Q3 period: spring
+  await page.getByRole("radio", { name: GROUP[group] }).click();
+  await page.getByRole("radio", { name: /équilibré/i }).click();           // Q5 pace: balanced
   await page.getByRole("radio", { name: /peu importe/i }).first().click(); // Q6 env: any
 
-  // Q7 flightTolerance : valeur variable
   if (flightTolerance === "long") {
     await page.getByRole("radio", { name: /long-courrier/i }).click();
   } else if (flightTolerance === "short") {
     await page.getByRole("radio", { name: /vol court/i }).click();
   } else {
-    await page.getByRole("radio", { name: /peu importe/i }).first().click(); // any
+    await page.getByRole("radio", { name: /peu importe/i }).first().click();
   }
 
   await page.getByRole("button", { name: /passer/i }).click(); // Q8 styles: skip
@@ -40,7 +56,8 @@ async function fillQuizWithFlight(page: Page, flightTolerance: "short" | "any" |
 }
 
 // ═════════════════════════════════════════════════════════════════════
-// TEST 1 : classement long-courrier — top 5 majoritairement lointains
+// TEST 1 — classement long-courrier : top 5 majoritairement lointains
+// (profil complet avec styles + intérêts — non refactorisé intentionnellement)
 // ═════════════════════════════════════════════════════════════════════
 
 test(
@@ -72,11 +89,8 @@ test(
     const firstFiveSlugs = await page.locator(".result-card").evaluateAll(
       (cards) => cards.slice(0, 5).map((c) => c.getAttribute("data-slug") ?? ""),
     );
-
     expect(firstFiveSlugs).toHaveLength(5);
-
     const longHaulCount = firstFiveSlugs.filter((slug) => LONG_HAUL_SLUGS.has(slug)).length;
-
     expect(
       longHaulCount,
       `Attendu ≥4 long-courriers dans le top 5, obtenu ${longHaulCount}.\nTop 5 : ${firstFiveSlugs.join(", ")}`,
@@ -85,43 +99,65 @@ test(
 );
 
 // ═════════════════════════════════════════════════════════════════════
-// TEST 2 : signal banner visible avec flightTolerance = "long"
+// TESTS 2–7 : signaux contextuels — présence et libellé
+// ═════════════════════════════════════════════════════════════════════
+
+test("signal — flightTolerance long : bloc 'Classement long-courrier' affiché", async ({ page }) => {
+  await fillQuizMinimal(page, { flightTolerance: "long" });
+  const signal = page.locator(".results-flight-signal");
+  await expect(signal).toBeVisible();
+  await expect(signal).toContainText("Classement long-courrier");
+  await expect(signal).toContainText("Les destinations les plus éloignées");
+});
+
+test("signal — flightTolerance short : bloc 'Vols courts uniquement' affiché", async ({ page }) => {
+  await fillQuizMinimal(page, { flightTolerance: "short" });
+  const signal = page.locator(".results-flight-signal");
+  await expect(signal).toBeVisible();
+  await expect(signal).toContainText("Vols courts uniquement");
+  await expect(signal).toContainText("moins de 3 heures de Paris");
+});
+
+test("signal — budget low : bloc 'Budget serré' affiché", async ({ page }) => {
+  await fillQuizMinimal(page, { budget: "low" });
+  const signal = page.locator(".results-flight-signal");
+  await expect(signal).toBeVisible();
+  await expect(signal).toContainText("Budget serré");
+  await expect(signal).toContainText("tarif minimum dépasse votre fourchette");
+});
+
+test("signal — group family : bloc 'Voyage en famille' affiché", async ({ page }) => {
+  await fillQuizMinimal(page, { group: "family" });
+  const signal = page.locator(".results-flight-signal");
+  await expect(signal).toBeVisible();
+  await expect(signal).toContainText("Voyage en famille");
+  await expect(signal).toContainText("facilité logistique");
+});
+
+test("signal — duration short : bloc 'Séjour court' affiché", async ({ page }) => {
+  await fillQuizMinimal(page, { duration: "short" });
+  const signal = page.locator(".results-flight-signal");
+  await expect(signal).toBeVisible();
+  await expect(signal).toContainText("Séjour court");
+  await expect(signal).toContainText("2 à 3 jours");
+});
+
+test("signal — flightTolerance any : aucun bloc signal affiché", async ({ page }) => {
+  await fillQuizMinimal(page, { flightTolerance: "any" });
+  await expect(page.locator(".results-flight-signal")).toHaveCount(0);
+});
+
+// ═════════════════════════════════════════════════════════════════════
+// TEST 8 — priorité : budget=low prend le dessus sur flightTolerance=long
 // ═════════════════════════════════════════════════════════════════════
 
 test(
-  "flightTolerance long — le bloc signal long-courrier est affiché sur /results",
+  "priorité signal — budget low + flightTolerance long : 'Budget serré' affiché (pas long-courrier)",
   async ({ page }) => {
-    await fillQuizWithFlight(page, "long");
-
+    await fillQuizMinimal(page, { budget: "low", flightTolerance: "long" });
     const signal = page.locator(".results-flight-signal");
     await expect(signal).toBeVisible();
-    await expect(signal).toContainText("Classement long-courrier");
-    await expect(signal).toContainText("Les destinations les plus éloignées");
-  },
-);
-
-// ═════════════════════════════════════════════════════════════════════
-// TEST 3 : signal banner absent avec flightTolerance = "any"
-// ═════════════════════════════════════════════════════════════════════
-
-test(
-  "flightTolerance any — le bloc signal long-courrier est absent sur /results",
-  async ({ page }) => {
-    await fillQuizWithFlight(page, "any");
-
-    await expect(page.locator(".results-flight-signal")).toHaveCount(0);
-  },
-);
-
-// ═════════════════════════════════════════════════════════════════════
-// TEST 4 : signal banner absent avec flightTolerance = "short"
-// ═════════════════════════════════════════════════════════════════════
-
-test(
-  "flightTolerance short — le bloc signal long-courrier est absent sur /results",
-  async ({ page }) => {
-    await fillQuizWithFlight(page, "short");
-
-    await expect(page.locator(".results-flight-signal")).toHaveCount(0);
+    await expect(signal).toContainText("Budget serré");
+    await expect(signal).not.toContainText("Classement long-courrier");
   },
 );

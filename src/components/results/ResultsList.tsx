@@ -12,6 +12,46 @@ interface ResultsListProps {
   onNavigate: (view: ViewName, slug?: string) => void;
 }
 
+// ─── Signal selection ─────────────────────────────────────────────
+// Priority: budget_low → flight_short → flight_long → family → duration_short
+// At most one signal is shown. The order reflects structural impact on ranking.
+
+interface ResultSignal { icon: string; label: string; text: string }
+
+function getResultSignal(answers: QuizAnswers): ResultSignal | null {
+  if (answers.budget === "low")
+    return {
+      icon: "💶",
+      label: "Budget serré",
+      text: "Seules les destinations compatibles avec votre budget sont retenues — d'autres ont été écartées car leur tarif minimum dépasse votre fourchette.",
+    };
+  if (answers.flightTolerance === "short")
+    return {
+      icon: "⚡",
+      label: "Vols courts uniquement",
+      text: "Ce classement ne comprend que les destinations à moins de 3 heures de Paris. Les vols plus longs ont été exclus.",
+    };
+  if (answers.flightTolerance === "long")
+    return {
+      icon: "✈",
+      label: "Classement long-courrier",
+      text: "Vous avez indiqué une préférence pour les trajets lointains. Les destinations les plus éloignées sont donc davantage valorisées dans ce classement.",
+    };
+  if (answers.group === "family")
+    return {
+      icon: "👨‍👩‍👧‍👦",
+      label: "Voyage en famille",
+      text: "La facilité logistique et le rythme adapté aux familles ont plus de poids dans ce classement.",
+    };
+  if (answers.duration === "short")
+    return {
+      icon: "⏱",
+      label: "Séjour court",
+      text: "Séjour de 2 à 3 jours : les destinations pensées pour une semaine ou plus sont moins bien classées ici.",
+    };
+  return null;
+}
+
 export default function ResultsList({ results, answers, onNavigate }: ResultsListProps) {
   const [compareSet, setCompareSet] = useState<Set<string>>(new Set());
 
@@ -32,6 +72,7 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
     })
     .filter(Boolean);
 
+  const signal = getResultSignal(answers);
   const [featured, ...alternatives] = results;
 
   return (
@@ -88,16 +129,13 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
         </details>
       </div>
 
-      {/* Long-haul signal — visible uniquement si flightTolerance = "long" */}
-      {answers.flightTolerance === "long" && (
+      {/* Contextual signal — at most one, priority defined in getResultSignal() */}
+      {signal && (
         <div className="results-flight-signal">
-          <span className="results-flight-signal-icon">✈</span>
+          <span className="results-flight-signal-icon">{signal.icon}</span>
           <div>
-            <div className="results-flight-signal-label">Classement long-courrier</div>
-            <p className="results-flight-signal-text">
-              Vous avez indiqué une préférence pour les trajets lointains. Les destinations
-              les plus éloignées sont donc davantage valorisées dans ce classement.
-            </p>
+            <div className="results-flight-signal-label">{signal.label}</div>
+            <p className="results-flight-signal-text">{signal.text}</p>
           </div>
         </div>
       )}
