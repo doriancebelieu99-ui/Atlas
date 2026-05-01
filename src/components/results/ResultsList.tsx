@@ -95,8 +95,8 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
           <div>
             <div className="results-flight-signal-label">Classement long-courrier</div>
             <p className="results-flight-signal-text">
-              Vous avez indiqué préférer les longs trajets. Ce classement favorise
-              les destinations à plus de 7h de vol depuis Paris.
+              Vous avez indiqué une préférence pour les trajets lointains. Les destinations
+              les plus éloignées sont donc davantage valorisées dans ce classement.
             </p>
           </div>
         </div>
