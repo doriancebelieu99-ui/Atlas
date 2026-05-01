@@ -14,22 +14,24 @@ export default function QuizShell({ onComplete, onNavigate, disabled }: QuizShel
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
 
-  const question = quizQuestions[step];
-  const total = quizQuestions.length;
+  const visibleQuestions = quizQuestions.filter((q) => !q.visibleWhen || q.visibleWhen(answers));
+  const question = visibleQuestions[step];
+  const total = visibleQuestions.length;
   const progress = ((step + 1) / total) * 100;
 
   const handleAnswer = useCallback(
     (value: string | string[]) => {
       const updated = { ...answers, [question.id]: value };
       setAnswers(updated);
-
-      if (step < total - 1) {
+      // Re-compute visible total with the new answer so the completion check is accurate
+      const newVisible = quizQuestions.filter((q) => !q.visibleWhen || q.visibleWhen(updated));
+      if (step < newVisible.length - 1) {
         setStep(step + 1);
       } else {
         onComplete(updated);
       }
     },
-    [answers, question, step, total, onComplete],
+    [answers, question, step, onComplete],
   );
 
   const handleBack = useCallback(() => {

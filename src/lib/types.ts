@@ -13,6 +13,7 @@ export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" |
 
 export type Environment = "urban" | "coastal" | "nature" | "mixed";
 export type FlightTolerance = "short" | "medium" | "any" | "long";
+export type DepartureMonth = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul" | "aug" | "sep" | "oct" | "nov" | "dec";
 
 // ─── User Preferences (quiz output) ──────────────────────────────
 
@@ -222,6 +223,7 @@ export interface QuizQuestion {
   multi?: boolean;
   maxSelect?: number;
   options: QuizOption[];
+  visibleWhen?: (answers: Record<string, string | string[]>) => boolean;
 }
 
 export type QuizAnswers = Record<string, string | string[]>;

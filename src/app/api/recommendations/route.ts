@@ -25,6 +25,11 @@ const VALID_STYLES = [
 
 const VALID_ENVIRONMENT = ["urban", "coastal", "nature", "any"];
 const VALID_FLIGHT_TOLERANCE = ["short", "medium", "long", "any"];
+const VALID_DEPARTURE_PRECISION = ["month", "season"];
+const VALID_DEPARTURE_MONTH = [
+  "jan", "feb", "mar", "apr", "may", "jun",
+  "jul", "aug", "sep", "oct", "nov", "dec",
+];
 
 function validateAnswers(
   body: unknown,
@@ -54,6 +59,28 @@ function validateAnswers(
 
   if (answers.flightTolerance !== undefined && !VALID_FLIGHT_TOLERANCE.includes(answers.flightTolerance as string)) {
     return { valid: false, error: "Champ 'flightTolerance' invalide." };
+  }
+
+  if (answers.departurePrecision !== undefined) {
+    if (!VALID_DEPARTURE_PRECISION.includes(answers.departurePrecision as string)) {
+      return { valid: false, error: "Champ 'departurePrecision' invalide." };
+    }
+    if (answers.departurePrecision === "month") {
+      if (!answers.departureMonth) {
+        return { valid: false, error: "departurePrecision=month requiert departureMonth." };
+      }
+      if (!VALID_DEPARTURE_MONTH.includes(answers.departureMonth as string)) {
+        return { valid: false, error: "Champ 'departureMonth' invalide." };
+      }
+    }
+    if (answers.departurePrecision === "season" && !answers.period) {
+      return { valid: false, error: "departurePrecision=season requiert period." };
+    }
+  }
+
+  if (answers.departureMonth !== undefined &&
+      !VALID_DEPARTURE_MONTH.includes(answers.departureMonth as string)) {
+    return { valid: false, error: "Champ 'departureMonth' invalide." };
   }
 
   if (answers.styles !== undefined) {

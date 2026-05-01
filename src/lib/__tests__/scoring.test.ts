@@ -115,12 +115,12 @@ describe("scoreSeason", () => {
     expect(score).toBeGreaterThanOrEqual(80);
   });
 
-  it("uses direct month when specified", () => {
+  it("uses direct month when specified (smoothed: 70% June + 15% May + 15% July)", () => {
     const score = scoreSeason(
       { budget: "medium", durationDays: 5, month: 5, groupType: "couple", pace: "balanced" },
-      lisbonne, // June = score 95
+      lisbonne, // June raw ~95, smoothed result slightly lower due to 70/15/15 weighting
     );
-    expect(score).toBeGreaterThanOrEqual(90);
+    expect(score).toBeGreaterThanOrEqual(80);
   });
 });
 

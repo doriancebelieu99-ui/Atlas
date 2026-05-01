@@ -1,15 +1,15 @@
 import { test, expect } from "@playwright/test";
 
 // ─── Helper: fill the 9-question quiz ─────────────────────────────
-// Q1 budget, Q2 duration, Q3 period, Q4 group, Q5 pace (single-select)
+// Q1 budget, Q2 duration, Q3 departurePrecision, Q3a period, Q4 group, Q5 pace
 // Q6 environment, Q7 flightTolerance (single-select)
 // Q8 styles (multi), Q9 interests (multi)
 
 async function fillQuiz(page: import("@playwright/test").Page) {
-  // Q1–Q5 : single-select → role="radio"
   await page.getByRole("radio", { name: /moyen/i }).click();
   await page.getByRole("radio", { name: /4–7/i }).click();
-  await page.getByRole("radio", { name: /printemps/i }).click();
+  await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
+  await page.getByRole("radio", { name: /printemps/i }).click();            // period
   await page.getByRole("radio", { name: /couple/i }).click();
   await page.getByRole("radio", { name: /équilibré/i }).click();
 

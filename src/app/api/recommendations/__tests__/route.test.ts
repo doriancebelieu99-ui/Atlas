@@ -151,6 +151,63 @@ describe("POST /api/recommendations", () => {
     }
   });
 
+  // ─── departurePrecision / departureMonth ───────────────────────
+
+  it("accepts departurePrecision=month + departureMonth=aug", async () => {
+    const res = await POST(makeRequest({
+      budget: "medium", departurePrecision: "month", departureMonth: "aug",
+    }));
+    expect(res.status).toBe(200);
+  });
+
+  it("accepts departurePrecision=season + period=spring", async () => {
+    const res = await POST(makeRequest({
+      budget: "medium", departurePrecision: "season", period: "spring",
+    }));
+    expect(res.status).toBe(200);
+  });
+
+  it("accepts all 12 departureMonth values", async () => {
+    const months = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+    for (const m of months) {
+      const res = await POST(makeRequest({
+        departurePrecision: "month", departureMonth: m,
+      }));
+      expect(res.status).toBe(200);
+    }
+  });
+
+  it("rejects departurePrecision=month without departureMonth", async () => {
+    const res = await POST(makeRequest({ budget: "medium", departurePrecision: "month" }));
+    expect(res.status).toBe(422);
+    const data = await res.json();
+    expect(data.error).toContain("departureMonth");
+  });
+
+  it("rejects departurePrecision=season without period", async () => {
+    const res = await POST(makeRequest({ budget: "medium", departurePrecision: "season" }));
+    expect(res.status).toBe(422);
+    const data = await res.json();
+    expect(data.error).toContain("period");
+  });
+
+  it("rejects invalid departurePrecision value", async () => {
+    const res = await POST(makeRequest({ budget: "medium", departurePrecision: "week" }));
+    expect(res.status).toBe(422);
+  });
+
+  it("rejects invalid departureMonth value", async () => {
+    const res = await POST(makeRequest({ budget: "medium", departureMonth: "august" }));
+    expect(res.status).toBe(422);
+  });
+
+  it("rejects departurePrecision=month with invalid departureMonth", async () => {
+    const res = await POST(makeRequest({
+      budget: "medium", departurePrecision: "month", departureMonth: "august",
+    }));
+    expect(res.status).toBe(422);
+  });
+
   it("rejects empty body", async () => {
     const req = new NextRequest("http://localhost:3000/api/recommendations", {
       method: "POST",

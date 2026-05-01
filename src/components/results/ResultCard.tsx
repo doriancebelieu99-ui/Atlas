@@ -30,6 +30,12 @@ const PERIOD_ADJ: Record<string, string> = {
   winter: "hivernale",
 };
 
+const MONTH_FR: Record<string, string> = {
+  jan: "Janvier", feb: "Février", mar: "Mars",   apr: "Avril",
+  may: "Mai",     jun: "Juin",    jul: "Juillet", aug: "Août",
+  sep: "Septembre", oct: "Octobre", nov: "Novembre", dec: "Décembre",
+};
+
 const DURATION_DAYS: Record<string, number> = {
   short: 3,
   week: 5,
@@ -92,6 +98,8 @@ function buildReason(
 ): string {
   const budget = answers?.budget as string | undefined;
   const period = answers?.period as string | undefined;
+  const departurePrecision = answers?.departurePrecision as string | undefined;
+  const departureMonth = answers?.departureMonth as string | undefined;
   const duration = answers?.duration as string | undefined;
   const group = answers?.group as string | undefined;
   const pace = answers?.pace as string | undefined;
@@ -117,6 +125,8 @@ function buildReason(
       return `Budget ajusté : environ ${min}–${max} € pour ${days} jours.`;
     }
     case "season":
+      if (departurePrecision === "month" && departureMonth)
+        return `${MONTH_FR[departureMonth] ?? departureMonth} est l'une des meilleures périodes pour visiter.`;
       return period
         ? `La saison ${PERIOD_ADJ[period] ?? period} est l'une des meilleures pour visiter.`
         : `Bonne météo sur la majorité de l'année.`;
@@ -168,6 +178,8 @@ function buildWatchout(
 ): string | null {
   const cs = result.criteriaScores;
   const period = answers?.period as string | undefined;
+  const departurePrecision = answers?.departurePrecision as string | undefined;
+  const departureMonth = answers?.departureMonth as string | undefined;
   const duration = answers?.duration as string | undefined;
   const group = answers?.group as string | undefined;
   const pace = answers?.pace as string | undefined;
@@ -175,13 +187,18 @@ function buildWatchout(
   const budget = answers?.budget as string | undefined;
   const flightTol = answers?.flightTolerance as string | undefined;
 
+  const temporalLabel =
+    departurePrecision === "month" && departureMonth
+      ? (MONTH_FR[departureMonth] ?? departureMonth)
+      : period ? `la saison ${PERIOD_ADJ[period] ?? period}` : null;
+
   // Criterion-specific thresholds for high-signal cases
   if (budget === "low" && cs.budget < 70) {
     const { min, max } = result.budgetEstimate;
     return `Budget potentiellement serré : ${min}–${max} € pour ce séjour — vérifiez que cela reste dans votre enveloppe.`;
   }
-  if (period && cs.season < 65) {
-    return `La saison ${PERIOD_ADJ[period] ?? period} n'est pas optimale ici — consultez le calendrier saisonnier avant de réserver.`;
+  if (temporalLabel && cs.season < 65) {
+    return `${temporalLabel} n'est pas la période idéale ici — consultez le calendrier saisonnier avant de réserver.`;
   }
   if (flightTol === "long" && cs.flightTime < 55) {
     return `Destination plus proche que ce que vous cherchez — pensez à l'associer à une autre étape.`;
@@ -208,8 +225,8 @@ function buildWatchout(
       return `Budget à surveiller : ${min}–${max} € pour ce séjour — vérifiez votre enveloppe.`;
     }
     case "season":
-      return period
-        ? `La saison ${PERIOD_ADJ[period] ?? period} n'est pas optimale — consultez le calendrier saisonnier.`
+      return temporalLabel
+        ? `${temporalLabel} n'est pas la période optimale — consultez le calendrier saisonnier.`
         : `La saisonnalité peut jouer contre vous — vérifiez les mois disponibles.`;
     case "duration": {
       const days = DURATION_DAYS[duration ?? "week"] ?? 5;
@@ -288,12 +305,22 @@ function buildReasons(
 function buildWhy1(result: DestinationScoreResult, answers: QuizAnswers | undefined): string {
   const cs = result.criteriaScores;
   const period = answers?.period as string | undefined;
+  const departurePrecision = answers?.departurePrecision as string | undefined;
+  const departureMonth = answers?.departureMonth as string | undefined;
   const group = answers?.group as string | undefined;
   const environment = answers?.environment as string | undefined;
   const budget = answers?.budget as string | undefined;
   const flightTol = answers?.flightTolerance as string | undefined;
   const rawStyles = Array.isArray(answers?.styles) ? (answers.styles as string[]) : [];
   const rawInterests = Array.isArray(answers?.interests) ? (answers.interests as string[]) : [];
+
+  // Temporal context: either a specific month or a season
+  const monthLabel = departurePrecision === "month" && departureMonth
+    ? (MONTH_FR[departureMonth] ?? departureMonth)
+    : null;
+  const temporalStr = monthLabel
+    ? `en ${monthLabel.toLowerCase()}`
+    : period ? PERIOD_FR[period] : null;
 
   // Helper — score >= 75 AND user expressed a preference for that criterion
   const has = (k: keyof CriteriaScores): boolean => {
@@ -308,7 +335,7 @@ function buildWhy1(result: DestinationScoreResult, answers: QuizAnswers | undefi
 
   // Narrative combinations — ordered by specificity
   if (has("season") && has("environment") && environment !== "any")
-    return `Cadre ${environment} et météo ${PERIOD_ADJ[period ?? ""] ?? "favorable"} réunis : deux exigences clés satisfaites en même temps.`;
+    return `Cadre ${environment} et météo ${monthLabel ? `de ${monthLabel.toLowerCase()}` : (PERIOD_ADJ[period ?? ""] ?? "favorable")} réunis : deux exigences clés satisfaites en même temps.`;
 
   if (group === "family" && has("group") && has("logistics"))
     return `Logistique adaptée aux familles, rythme ajustable — le choix le moins stressant du classement.`;
@@ -316,19 +343,19 @@ function buildWhy1(result: DestinationScoreResult, answers: QuizAnswers | undefi
   if (group === "family" && has("group"))
     return `La destination la mieux notée pour un séjour en famille dans votre classement.`;
 
-  if (group === "couple" && has("group") && has("season") && period)
-    return `Idéale pour un séjour en couple${period ? ` ${PERIOD_FR[period]}` : ""} : ambiance, rythme et météo jouent en sa faveur.`;
+  if (group === "couple" && has("group") && has("season") && temporalStr)
+    return `Idéale pour un séjour en couple ${temporalStr} : ambiance, rythme et météo jouent en sa faveur.`;
 
-  if (has("season") && has("budget") && period)
-    return `Période optimale ${PERIOD_FR[period!] ?? ""} et budget maîtrisé : deux contraintes fondamentales résolues d'un coup.`;
+  if (has("season") && has("budget") && temporalStr)
+    return `Période optimale ${temporalStr} et budget maîtrisé : deux contraintes fondamentales résolues d'un coup.`;
 
-  if (has("flightTime") && has("season") && period)
-    return `Vol accessible depuis Paris et excellente météo ${PERIOD_FR[period!] ?? ""} : le meilleur rapport effort/récompense du classement.`;
+  if (has("flightTime") && has("season") && temporalStr)
+    return `Vol accessible depuis Paris et excellente météo ${temporalStr} : le meilleur rapport effort/récompense du classement.`;
 
   if (has("interests") && has("environment") && environment && environment !== "any")
     return `Cadre ${environment} et richesse pour vos centres d'intérêt : elle correspond à ce que vous cherchez et à ce que vous aimez faire.`;
 
-  if (has("interests") && has("season") && period)
+  if (has("interests") && has("season") && temporalStr)
     return `Meilleure période et densité d'expériences sur vos centres d'intérêt : un alignement rare dans votre classement.`;
 
   if (has("pace") && has("group") && group)

@@ -118,36 +118,59 @@ export function scoreBudget(prefs: PreferencesInput, dest: Destination): number 
   return Math.round(Math.max(0, Math.min(100, score)));
 }
 
-export function scoreSeason(prefs: PreferencesInput, dest: Destination): number {
-  let monthIdx: number;
+// ─── Month Scoring ────────────────────────────────────────────────
+// Applies crowd penalty to a single month's raw score.
 
+function rawMonthScore(dest: Destination, idx: number, prefs: PreferencesInput): number {
+  const m = dest.season.months[((idx % 12) + 12) % 12];
+  let s = m?.score ?? 50;
+  const crowd = m?.crowd;
+  if (crowd && crowd > 70) {
+    let penalty = (crowd - 70) * 0.3;
+    if (prefs.pace === "relaxed" || prefs.groupType === "family") penalty *= 1.5;
+    s = Math.max(0, s - penalty);
+  }
+  return s;
+}
+
+// Smoothed monthly score: 70% chosen month + 15% previous + 15% next.
+// Wraps correctly for January (← December) and December (→ January).
+export function scoreSeasonByMonth(dest: Destination, monthIdx: number, prefs: PreferencesInput): number {
+  const prev = (monthIdx - 1 + 12) % 12;
+  const next = (monthIdx + 1) % 12;
+  return Math.round(
+    rawMonthScore(dest, monthIdx, prefs) * 0.70 +
+    rawMonthScore(dest, prev,     prefs) * 0.15 +
+    rawMonthScore(dest, next,     prefs) * 0.15,
+  );
+}
+
+export function scoreSeason(prefs: PreferencesInput, dest: Destination): number {
   if (prefs.month !== undefined) {
-    monthIdx = prefs.month;
-  } else if (prefs.period) {
+    return scoreSeasonByMonth(dest, prefs.month, prefs);
+  }
+
+  if (prefs.period) {
     const periodMonths: Record<string, number> = {
       spring: 3,
       summer: 6,
       autumn: 9,
       winter: 0,
     };
-    monthIdx = periodMonths[prefs.period];
-  } else {
-    const sorted = [...dest.season.months].sort((a, b) => b.score - a.score);
-    return (sorted[0].score + sorted[1].score + sorted[2].score) / 3;
-  }
-
-  let score = dest.season.months[monthIdx]?.score ?? 50;
-
-  const crowd = dest.season.months[monthIdx]?.crowd;
-  if (crowd && crowd > 70) {
-    let penalty = (crowd - 70) * 0.3;
-    if (prefs.pace === "relaxed" || prefs.groupType === "family") {
-      penalty *= 1.5;
+    const monthIdx = periodMonths[prefs.period];
+    let score = dest.season.months[monthIdx]?.score ?? 50;
+    const crowd = dest.season.months[monthIdx]?.crowd;
+    if (crowd && crowd > 70) {
+      let penalty = (crowd - 70) * 0.3;
+      if (prefs.pace === "relaxed" || prefs.groupType === "family") penalty *= 1.5;
+      score = Math.max(0, score - penalty);
     }
-    score = Math.max(0, score - penalty);
+    return Math.round(score);
   }
 
-  return Math.round(score);
+  // No temporal constraint — average of 3 best months
+  const sorted = [...dest.season.months].sort((a, b) => b.score - a.score);
+  return (sorted[0].score + sorted[1].score + sorted[2].score) / 3;
 }
 
 const STYLE_ALIASES: Record<string, string[]> = {
@@ -477,6 +500,11 @@ function generateLimitation(
 
 // ─── Quiz Answers → PreferencesInput Converter ────────────────────
 
+const DEPARTURE_MONTH_IDX: Record<string, number> = {
+  jan: 0, feb: 1, mar: 2,  apr: 3,  may: 4,  jun: 5,
+  jul: 6, aug: 7, sep: 8,  oct: 9,  nov: 10, dec: 11,
+};
+
 export function quizToPreferences(answers: Record<string, string | string[]>): PreferencesInput {
   const durationMap: Record<string, number> = {
     short: 3,
@@ -487,11 +515,16 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
 
   const env = answers.environment as string | undefined;
   const flight = answers.flightTolerance as string | undefined;
+  const departurePrecision = answers.departurePrecision as string | undefined;
+  const departureMonthStr = answers.departureMonth as string | undefined;
+
+  const useMonth = departurePrecision === "month" && departureMonthStr !== undefined;
 
   return {
     budget: answers.budget ? (answers.budget as BudgetLevel) : undefined,
     durationDays: durationMap[(answers.duration as string) ?? "week"] ?? 5,
-    period: answers.period as any,
+    period: useMonth ? undefined : (answers.period as any),
+    month: useMonth ? DEPARTURE_MONTH_IDX[departureMonthStr!] : undefined,
     groupType: (answers.group as any) ?? "couple",
     pace: (answers.pace as any) ?? "balanced",
     styles: Array.isArray(answers.styles) ? answers.styles : [],

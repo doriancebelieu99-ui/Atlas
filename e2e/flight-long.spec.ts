@@ -17,7 +17,14 @@ interface QuizOpts {
   duration?: "short" | "week" | "long" | "extended";
   group?: "solo" | "couple" | "friends" | "family";
   flightTolerance?: "short" | "any" | "long";
+  departureMonth?: "jan"|"feb"|"mar"|"apr"|"may"|"jun"|"jul"|"aug"|"sep"|"oct"|"nov"|"dec";
 }
+
+const MONTH_LABEL: Record<string, RegExp> = {
+  jan: /janvier/i, feb: /février/i, mar: /mars/i, apr: /avril/i,
+  may: /mai/i, jun: /juin/i, jul: /juillet/i, aug: /août/i,
+  sep: /septembre/i, oct: /octobre/i, nov: /novembre/i, dec: /décembre/i,
+};
 
 async function fillQuizMinimal(page: Page, opts: QuizOpts = {}) {
   const {
@@ -25,6 +32,7 @@ async function fillQuizMinimal(page: Page, opts: QuizOpts = {}) {
     duration = "week",
     group = "couple",
     flightTolerance = "any",
+    departureMonth,
   } = opts;
 
   await page.goto("/quiz");
@@ -35,7 +43,13 @@ async function fillQuizMinimal(page: Page, opts: QuizOpts = {}) {
 
   await page.getByRole("radio", { name: BUDGET[budget] }).click();
   await page.getByRole("radio", { name: DURATION[duration] }).click();
-  await page.getByRole("radio", { name: /printemps/i }).click();           // Q3 period: spring
+  if (departureMonth) {
+    await page.getByRole("radio", { name: /mon mois exact/i }).click();
+    await page.getByRole("radio", { name: MONTH_LABEL[departureMonth] }).click();
+  } else {
+    await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
+    await page.getByRole("radio", { name: /printemps/i }).click();             // period: spring
+  }
   await page.getByRole("radio", { name: GROUP[group] }).click();
   await page.getByRole("radio", { name: /équilibré/i }).click();           // Q5 pace: balanced
   await page.getByRole("radio", { name: /peu importe/i }).first().click(); // Q6 env: any
@@ -68,7 +82,8 @@ test(
 
     await page.getByRole("radio", { name: /premium/i }).click();
     await page.getByRole("radio", { name: /15/i }).click();
-    await page.getByRole("radio", { name: /hiver/i }).click();
+    await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
+    await page.getByRole("radio", { name: /hiver/i }).click();                // period: winter
     await page.getByRole("radio", { name: /couple/i }).click();
     await page.getByRole("radio", { name: /équilibré/i }).click();
     await page.getByRole("radio", { name: /peu importe/i }).first().click();

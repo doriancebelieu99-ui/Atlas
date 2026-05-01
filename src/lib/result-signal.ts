@@ -3,6 +3,7 @@ import type { QuizAnswers } from "@/lib/types";
 export type ResultSignalKey =
   | "budget_low"
   | "flight_short"
+  | "departure_month"
   | "flight_long"
   | "family"
   | "duration_short";
@@ -14,7 +15,13 @@ export interface ResultSignal {
   text: string;
 }
 
-// Priority: budget_low → flight_short → flight_long → family → duration_short
+const MONTH_FR: Record<string, string> = {
+  jan: "Janvier", feb: "Février", mar: "Mars",   apr: "Avril",
+  may: "Mai",     jun: "Juin",    jul: "Juillet", aug: "Août",
+  sep: "Septembre", oct: "Octobre", nov: "Novembre", dec: "Décembre",
+};
+
+// Priority: budget_low → flight_short → departure_month → flight_long → family → duration_short
 // At most one signal is returned. Order reflects structural impact on ranking.
 export function getResultSignal(answers: QuizAnswers): ResultSignal | null {
   if (answers.budget === "low")
@@ -31,6 +38,15 @@ export function getResultSignal(answers: QuizAnswers): ResultSignal | null {
       label: "Vols courts uniquement",
       text: "Ce classement ne comprend que les destinations à moins de 3 heures de Paris. Les vols plus longs ont été exclus.",
     };
+  if (answers.departurePrecision === "month" && answers.departureMonth) {
+    const mLabel = MONTH_FR[answers.departureMonth as string] ?? String(answers.departureMonth);
+    return {
+      key: "departure_month",
+      icon: "📅",
+      label: `Départ en ${mLabel}`,
+      text: `Ce classement privilégie les destinations les plus adaptées à un voyage en ${mLabel.toLowerCase()}.`,
+    };
+  }
   if (answers.flightTolerance === "long")
     return {
       key: "flight_long",
