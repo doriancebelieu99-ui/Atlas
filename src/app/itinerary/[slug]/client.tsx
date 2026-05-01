@@ -8,13 +8,21 @@ import DayView from "@/components/itinerary/DayView";
 import { INTENSITY_COLORS, INTENSITY_ICONS } from "@/data/ui-constants";
 import { buildUrl } from "@/lib/nav";
 import type { Destination, ViewName, ItineraryViewMode } from "@/lib/types";
+import type { AdaptedItinerary } from "@/lib/itinerary-builder";
+
+const TIER_LABEL: Record<string, string> = {
+  condensed: "Séjour court",
+  extended: "Séjour étendu",
+  long: "Long séjour",
+};
 
 interface Props {
   dest: Destination;
   sid: string | null;
+  adaptedItinerary: AdaptedItinerary | null;
 }
 
-export default function ItineraryClient({ dest, sid }: Props) {
+export default function ItineraryClient({ dest, sid, adaptedItinerary }: Props) {
   const router = useRouter();
   const [mode, setMode] = useState<ItineraryViewMode>("overview");
   const [selectedDay, setSelectedDay] = useState(1);
@@ -40,7 +48,9 @@ export default function ItineraryClient({ dest, sid }: Props) {
     );
   }
 
-  const days = dest.itinerary.days;
+  const days = adaptedItinerary?.days ?? dest.itinerary.days;
+  const tier = adaptedItinerary?.tier ?? "standard";
+  const durationWarning = adaptedItinerary?.durationWarning;
   const avg = (days.reduce((s, d) => s + d.intensity, 0) / days.length).toFixed(1);
   const currentDay = days.find((d) => d.number === selectedDay);
 
@@ -55,9 +65,22 @@ export default function ItineraryClient({ dest, sid }: Props) {
       <div className="itinerary-page">
         <div className="itin-header">
           <h1 className="itin-dest">{dest.name}, {dest.country}</h1>
-          <div className="itin-title">Votre itinéraire · {days.length} jours</div>
+          <div className="itin-title">
+            Votre itinéraire · {days.length} jour{days.length > 1 ? "s" : ""}
+            {tier !== "standard" && TIER_LABEL[tier] && (
+              <span className={`itin-tier-badge itin-tier-badge--${tier}`}>
+                {TIER_LABEL[tier]}
+              </span>
+            )}
+          </div>
           <div className="itin-meta">{dest.pace} · Intensité moy. {avg}/5</div>
         </div>
+
+        {durationWarning && (
+          <div className="itin-duration-warning" role="note">
+            {durationWarning}
+          </div>
+        )}
 
         <div className="itin-day-nav" role="tablist" aria-label="Navigation par jour">
           <button

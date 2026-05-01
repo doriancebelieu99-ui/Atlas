@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDestinationBySlug } from "@/lib/destinations";
+import { getSession } from "@/lib/sessions";
+import { buildItinerary } from "@/lib/itinerary-builder";
 import ItineraryClient from "./client";
 
 interface Props {
@@ -42,5 +44,15 @@ export default async function ItineraryPage({ params, searchParams }: Props) {
     notFound();
   }
 
-  return <ItineraryClient dest={dest} sid={sid ?? null} />;
+  let durationDays: number | undefined;
+  if (sid) {
+    const session = await getSession(sid);
+    durationDays = session?.preferences.durationDays;
+  }
+
+  const adaptedItinerary = dest.itinerary
+    ? buildItinerary(dest, durationDays ?? dest.itinerary.days.length)
+    : null;
+
+  return <ItineraryClient dest={dest} sid={sid ?? null} adaptedItinerary={adaptedItinerary} />;
 }
