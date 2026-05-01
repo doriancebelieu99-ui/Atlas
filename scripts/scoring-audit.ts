@@ -1,9 +1,4 @@
-// ─── Scoring Audit — diagnostic complet ──────────────────────────
-// Montre le classement INTÉGRAL (26 destinations) avec scores détaillés
-// sur 5 profils contrastés, pour trouver la vraie cause du problème.
-
-import { describe, it } from "vitest";
-import { scoreDestination, rankDestinations, quizToPreferences, adjustWeights } from "@/lib/scoring";
+import { scoreDestination, quizToPreferences, adjustWeights } from "@/lib/scoring";
 import { destinations as destMap } from "@/data/destinations";
 import type { QuizAnswers } from "@/lib/types";
 
@@ -16,7 +11,6 @@ function fullRanking(label: string, answers: QuizAnswers, top = 26) {
   const results = ALL_DESTS.map((d) => scoreDestination(prefs, d))
     .sort((a, b) => b.totalScore - a.totalScore);
 
-  // Apply hard filters (same as rankDestinations)
   const filtered = results.filter((r) => {
     if (prefs.budget && r.criteriaScores.budget === 0) return false;
     if (r.criteriaScores.season < 20) return false;
@@ -48,13 +42,10 @@ function fullRanking(label: string, answers: QuizAnswers, top = 26) {
     );
   });
 
-  // Stats: long-haul (>7h) in top 5 vs top 8
   const top5LH = filtered.slice(0, 5).filter((r) => (flightMap[r.slug] ?? 0) > 7).length;
   const top8LH = filtered.slice(0, 8).filter((r) => (flightMap[r.slug] ?? 0) > 7).length;
   console.log(`Long-courrier (>7h) dans top-5 : ${top5LH} | dans top-8 : ${top8LH}`);
 }
-
-// ─── 5 profils à auditer ──────────────────────────────────────────
 
 const PROFILES: [string, QuizAnswers][] = [
   [
@@ -72,7 +63,7 @@ const PROFILES: [string, QuizAnswers][] = [
     },
   ],
   [
-    "Long-courrier + gros budget — flightTolerance: long (NOUVEAU SIGNAL)",
+    "Long-courrier + gros budget — flightTolerance: long",
     {
       budget: "premium",
       duration: "extended",
@@ -114,7 +105,7 @@ const PROFILES: [string, QuizAnswers][] = [
     },
   ],
   [
-    "Budget medium + any flight (contrôle — ne doit PAS changer)",
+    "Budget medium + any flight (contrôle)",
     {
       budget: "medium",
       duration: "week",
@@ -128,7 +119,7 @@ const PROFILES: [string, QuizAnswers][] = [
     },
   ],
   [
-    "Amis + été + vol court (contrôle — ne doit PAS changer)",
+    "Amis + été + vol court (contrôle)",
     {
       budget: "medium",
       duration: "week",
@@ -143,15 +134,15 @@ const PROFILES: [string, QuizAnswers][] = [
   ],
 ];
 
-describe("Scoring audit — diagnostic complet", () => {
-  it("affiche le classement intégral pour les 5 profils", () => {
-    console.log("\n\n" + "█".repeat(80));
-    console.log("AUDIT SCORING — CLASSEMENT COMPLET (26 destinations)");
-    console.log("Légende : ✈ = long-courrier (>7h), TOT=score total, BDG=budget, SZN=saison,");
-    console.log("          STY=style, DUR=durée, LOG=logistique, INT=intérêts, PCE=rythme,");
-    console.log("          GRP=groupe, ENV=environnement, FLT=temps de vol");
-    console.log("█".repeat(80));
-    PROFILES.forEach(([label, answers]) => fullRanking(label, answers));
-    console.log("\n" + "█".repeat(80) + "\n");
-  });
-});
+function main() {
+  console.log("\n" + "█".repeat(80));
+  console.log("AUDIT SCORING — CLASSEMENT COMPLET (26 destinations)");
+  console.log("Légende : ✈ = long-courrier (>7h), TOT=score total, BDG=budget, SZN=saison,");
+  console.log("          STY=style, DUR=durée, LOG=logistique, INT=intérêts, PCE=rythme,");
+  console.log("          GRP=groupe, ENV=environnement, FLT=temps de vol");
+  console.log("█".repeat(80));
+  PROFILES.forEach(([label, answers]) => fullRanking(label, answers));
+  console.log("\n" + "█".repeat(80) + "\n");
+}
+
+main();

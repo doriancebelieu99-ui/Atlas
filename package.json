@@ -10,8 +10,8 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest run",
-    "test:audit": "vitest run --config vitest.audit.config.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "audit:scoring": "tsx --tsconfig tsconfig.json scripts/scoring-audit.ts"
   },
   "dependencies": {
     "@vercel/kv": "^1.0.1",
@@ -28,6 +28,7 @@
     "@types/node": "^22.15.21",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.5.0",
     "vitest": "^2.1.9"
   }
