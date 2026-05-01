@@ -5,51 +5,12 @@ import { useState } from "react";
 import ResultCard from "./ResultCard";
 import { answerLabels } from "@/data/quiz-questions";
 import type { QuizAnswers, DestinationScoreResult, ViewName } from "@/lib/types";
+import { getResultSignal } from "@/lib/result-signal";
 
 interface ResultsListProps {
   results: DestinationScoreResult[];
   answers: QuizAnswers;
   onNavigate: (view: ViewName, slug?: string) => void;
-}
-
-// ─── Signal selection ─────────────────────────────────────────────
-// Priority: budget_low → flight_short → flight_long → family → duration_short
-// At most one signal is shown. The order reflects structural impact on ranking.
-
-interface ResultSignal { icon: string; label: string; text: string }
-
-function getResultSignal(answers: QuizAnswers): ResultSignal | null {
-  if (answers.budget === "low")
-    return {
-      icon: "💶",
-      label: "Budget serré",
-      text: "Seules les destinations compatibles avec votre budget sont retenues — d'autres ont été écartées car leur tarif minimum dépasse votre fourchette.",
-    };
-  if (answers.flightTolerance === "short")
-    return {
-      icon: "⚡",
-      label: "Vols courts uniquement",
-      text: "Ce classement ne comprend que les destinations à moins de 3 heures de Paris. Les vols plus longs ont été exclus.",
-    };
-  if (answers.flightTolerance === "long")
-    return {
-      icon: "✈",
-      label: "Classement long-courrier",
-      text: "Vous avez indiqué une préférence pour les trajets lointains. Les destinations les plus éloignées sont donc davantage valorisées dans ce classement.",
-    };
-  if (answers.group === "family")
-    return {
-      icon: "👨‍👩‍👧‍👦",
-      label: "Voyage en famille",
-      text: "La facilité logistique et le rythme adapté aux familles ont plus de poids dans ce classement.",
-    };
-  if (answers.duration === "short")
-    return {
-      icon: "⏱",
-      label: "Séjour court",
-      text: "Séjour de 2 à 3 jours : les destinations pensées pour une semaine ou plus sont moins bien classées ici.",
-    };
-  return null;
 }
 
 export default function ResultsList({ results, answers, onNavigate }: ResultsListProps) {
