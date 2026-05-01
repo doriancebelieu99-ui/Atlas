@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   scoreBudget,
   scoreSeason,
+  scoreSeasonByMonth,
   scoreDuration,
   scoreLogistics,
   scoreInterests,
@@ -121,6 +122,59 @@ describe("scoreSeason", () => {
       lisbonne, // June raw ~95, smoothed result slightly lower due to 70/15/15 weighting
     );
     expect(score).toBeGreaterThanOrEqual(80);
+  });
+
+  it("period mode delegates to scoreSeasonByMonth — result is identical", () => {
+    const prefs: PreferencesInput = {
+      budget: "medium", durationDays: 5, period: "summer", groupType: "couple", pace: "balanced",
+    };
+    expect(scoreSeason(prefs, lisbonne)).toBe(scoreSeasonByMonth(lisbonne, 6, prefs));
+  });
+
+  it("period mode incorporates adjacent months — high adjacent month raises score above raw pivot", () => {
+    // Patch Lisbonne: juillet (6) artificially low, juin (5) and août (7) high
+    const patchedDest = {
+      ...lisbonne,
+      season: {
+        ...lisbonne.season,
+        months: lisbonne.season.months.map((m, i) =>
+          i === 5 ? { ...m, score: 90, crowd: 30 }  // juin: excellent
+          : i === 6 ? { ...m, score: 40, crowd: 20 }  // juillet: pivot médiocre
+          : i === 7 ? { ...m, score: 85, crowd: 30 }  // août: bon
+          : m,
+        ),
+      },
+    };
+    const prefs: PreferencesInput = {
+      budget: "medium", durationDays: 5, period: "summer", groupType: "couple", pace: "balanced",
+    };
+    const score = scoreSeason(prefs, patchedDest);
+    // With smoothing: 40×0.70 + 90×0.15 + 85×0.15 = 28 + 13.5 + 12.75 ≈ 54
+    // Without smoothing (before fix): score would have been 40
+    expect(score).toBeGreaterThan(40);
+    expect(score).toBe(scoreSeasonByMonth(patchedDest, 6, prefs));
+  });
+
+  it("period mode — crowd penalty still applies via rawMonthScore", () => {
+    // Patch: juillet (6) has very high crowd → penalty reduces the smoothed score
+    const crowdedDest = {
+      ...lisbonne,
+      season: {
+        ...lisbonne.season,
+        months: lisbonne.season.months.map((m, i) =>
+          i === 6 ? { ...m, score: 80, crowd: 95 } : m,
+        ),
+      },
+    };
+    const penalized = scoreSeason(
+      { budget: "medium", durationDays: 5, period: "summer", groupType: "couple", pace: "relaxed" },
+      crowdedDest,
+    );
+    const unpenalized = scoreSeason(
+      { budget: "medium", durationDays: 5, period: "summer", groupType: "couple", pace: "balanced" },
+      crowdedDest,
+    );
+    expect(penalized).toBeLessThan(unpenalized);
   });
 });
 

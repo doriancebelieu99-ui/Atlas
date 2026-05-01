@@ -157,15 +157,7 @@ export function scoreSeason(prefs: PreferencesInput, dest: Destination): number 
       autumn: 9,
       winter: 0,
     };
-    const monthIdx = periodMonths[prefs.period];
-    let score = dest.season.months[monthIdx]?.score ?? 50;
-    const crowd = dest.season.months[monthIdx]?.crowd;
-    if (crowd && crowd > 70) {
-      let penalty = (crowd - 70) * 0.3;
-      if (prefs.pace === "relaxed" || prefs.groupType === "family") penalty *= 1.5;
-      score = Math.max(0, score - penalty);
-    }
-    return Math.round(score);
+    return scoreSeasonByMonth(dest, periodMonths[prefs.period], prefs);
   }
 
   // No temporal constraint — average of 3 best months
