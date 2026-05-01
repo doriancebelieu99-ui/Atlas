@@ -3,113 +3,155 @@ import { buildItinerary } from "@/lib/itinerary-builder";
 import { destinations } from "@/data/destinations";
 
 const lisbonne = destinations.lisbonne;
-const TEMPLATE_DAYS = lisbonne.itinerary!.days.length; // 5
+const TEMPLATE_LEN = lisbonne.itinerary!.days.length; // 5
 
-describe("buildItinerary — tier classification", () => {
-  it("1 jour → condensed", () => {
-    expect(buildItinerary(lisbonne, 1).tier).toBe("condensed");
+// ─── adaptationMode ──────────────────────────────────────────────
+
+describe("buildItinerary — adaptationMode", () => {
+  it("N == templateLen → exact_template", () => {
+    expect(buildItinerary(lisbonne, TEMPLATE_LEN).adaptationMode).toBe("exact_template");
   });
 
-  it("2 jours → condensed", () => {
-    expect(buildItinerary(lisbonne, 2).tier).toBe("condensed");
+  it("N < templateLen → compressed_best_of", () => {
+    expect(buildItinerary(lisbonne, 3).adaptationMode).toBe("compressed_best_of");
   });
 
-  it("3 jours → standard", () => {
-    expect(buildItinerary(lisbonne, 3).tier).toBe("standard");
+  it("N == 1 → compressed_best_of", () => {
+    expect(buildItinerary(lisbonne, 1).adaptationMode).toBe("compressed_best_of");
   });
 
-  it("5 jours → standard", () => {
-    expect(buildItinerary(lisbonne, 5).tier).toBe("standard");
+  it("N > templateLen mais contenu dispo → extended_with_cities", () => {
+    expect(buildItinerary(lisbonne, TEMPLATE_LEN + 1).adaptationMode).toBe("extended_with_cities");
   });
 
-  it("6 jours → extended", () => {
-    expect(buildItinerary(lisbonne, 6).tier).toBe("extended");
-  });
-
-  it("8 jours → extended", () => {
-    expect(buildItinerary(lisbonne, 8).tier).toBe("extended");
-  });
-
-  it("9 jours → long", () => {
-    expect(buildItinerary(lisbonne, 9).tier).toBe("long");
+  it("N > tout le contenu dispo → exhausted_content", () => {
+    expect(buildItinerary(lisbonne, 999).adaptationMode).toBe("exhausted_content");
   });
 });
 
-describe("buildItinerary — nombre de jours produits", () => {
-  it("condensed 2 jours → 2 jours dans le résultat", () => {
-    expect(buildItinerary(lisbonne, 2).days).toHaveLength(2);
+// ─── generatedDays & requestedDays ───────────────────────────────
+
+describe("buildItinerary — generatedDays / requestedDays", () => {
+  it("generatedDays == days.length (toujours cohérent)", () => {
+    for (const n of [1, 3, 5, 7, 14]) {
+      const r = buildItinerary(lisbonne, n);
+      expect(r.generatedDays).toBe(r.days.length);
+    }
   });
 
-  it("standard 3 jours → 3 jours (troncature du template)", () => {
+  it("requestedDays == N (préserve la demande, même si contenu insuffisant)", () => {
+    expect(buildItinerary(lisbonne, 14).requestedDays).toBe(14);
+    expect(buildItinerary(lisbonne, 1).requestedDays).toBe(1);
+  });
+
+  it("exact_template: generatedDays == requestedDays", () => {
+    const r = buildItinerary(lisbonne, TEMPLATE_LEN);
+    expect(r.generatedDays).toBe(r.requestedDays);
+  });
+
+  it("exhausted_content: generatedDays < requestedDays", () => {
+    const r = buildItinerary(lisbonne, 999);
+    expect(r.generatedDays).toBeLessThan(r.requestedDays);
+  });
+
+  it("templateDays reflète toujours le template original", () => {
+    expect(buildItinerary(lisbonne, 3).templateDays).toBe(TEMPLATE_LEN);
+    expect(buildItinerary(lisbonne, 10).templateDays).toBe(TEMPLATE_LEN);
+  });
+});
+
+// ─── Compression intelligente (compressed_best_of) ───────────────
+
+describe("buildItinerary — compression best-of", () => {
+  it("N=1 → 1 jour généré", () => {
+    expect(buildItinerary(lisbonne, 1).days).toHaveLength(1);
+  });
+
+  it("N=3 → 3 jours générés", () => {
     expect(buildItinerary(lisbonne, 3).days).toHaveLength(3);
   });
 
-  it("standard 5 jours → 5 jours (template complet)", () => {
-    expect(buildItinerary(lisbonne, 5).days).toHaveLength(TEMPLATE_DAYS);
+  it("compression ≠ slice naïf : le jour de départ (J5) est exclu pour N=3", () => {
+    const r = buildItinerary(lisbonne, 3);
+    // J5 "Derniers instants" a 0 activités culture → importance basse
+    // Ne doit pas apparaître dans un best-of de 3
+    const hasJ5Zone = r.days.some((d) => d.zone === "Au choix");
+    expect(hasJ5Zone).toBe(false);
   });
 
-  it("extended → complète au-delà du template avec les villes non couvertes", () => {
-    const result = buildItinerary(lisbonne, 7);
-    expect(result.days.length).toBeGreaterThan(TEMPLATE_DAYS);
-    expect(result.days.length).toBeLessThanOrEqual(7);
+  it("compression ≠ slice naïf : N=1 ne retourne pas forcément J1", () => {
+    const r = buildItinerary(lisbonne, 1);
+    // J1 (arrivée, 1 culture) < J2 (Alfama, 3 culture) ou J3 (Belém, 3 culture)
+    // Le jour retourné doit avoir plus de valeur que J1 "arrivée"
+    const day = r.days[0];
+    const cultureCount = day.activities.filter((a) => a.type === "culture").length;
+    expect(cultureCount).toBeGreaterThanOrEqual(2);
   });
 
-  it("jours toujours numérotés de 1 à N sans trou", () => {
-    const result = buildItinerary(lisbonne, 4);
-    result.days.forEach((d, i) => expect(d.number).toBe(i + 1));
-  });
-
-  it("templateDays reflète la longueur du template original", () => {
-    expect(buildItinerary(lisbonne, 3).templateDays).toBe(TEMPLATE_DAYS);
-  });
-
-  it("requestedDays reflète la demande, pas la longueur réelle", () => {
-    const r = buildItinerary(lisbonne, 10);
-    expect(r.requestedDays).toBe(10);
+  it("jours sélectionnés respectent l'ordre chronologique du template", () => {
+    const r = buildItinerary(lisbonne, 3);
+    for (let i = 1; i < r.days.length; i++) {
+      expect(r.days[i].number).toBeGreaterThan(r.days[i - 1].number);
+    }
   });
 });
 
-describe("buildItinerary — avertissement de durée", () => {
-  it("aucun warning dans la plage idéale (3–5 jours)", () => {
-    expect(buildItinerary(lisbonne, 4).durationWarning).toBeUndefined();
+// ─── Extension (extended_with_cities / exhausted_content) ─────────
+
+describe("buildItinerary — extension avec villes", () => {
+  it("extended: days.length == durationDays quand contenu suffisant", () => {
+    const r = buildItinerary(lisbonne, TEMPLATE_LEN + 1);
+    expect(r.days.length).toBe(TEMPLATE_LEN + 1);
+    expect(r.adaptationMode).toBe("extended_with_cities");
   });
 
-  it("warning quand durationDays < idealMin (< 3)", () => {
+  it("jours synthétiques ont au moins une activité culture", () => {
+    const r = buildItinerary(lisbonne, TEMPLATE_LEN + 1);
+    const synthDay = r.days[TEMPLATE_LEN]; // first synthetic
+    expect(synthDay.activities.some((a) => a.type === "culture")).toBe(true);
+  });
+
+  it("exhausted: jours <= maxAvailableDays même si N > max", () => {
+    const r = buildItinerary(lisbonne, 999);
+    expect(r.days.length).toBeLessThan(999);
+    expect(r.days.length).toBeGreaterThan(0);
+  });
+});
+
+// ─── Numérotation ────────────────────────────────────────────────
+
+describe("buildItinerary — numérotation", () => {
+  it("jours numérotés de 1 à N sans trou", () => {
+    for (const n of [1, 2, 3, 5, 7]) {
+      const r = buildItinerary(lisbonne, n);
+      r.days.forEach((d, i) => expect(d.number).toBe(i + 1));
+    }
+  });
+});
+
+// ─── Warnings ────────────────────────────────────────────────────
+
+describe("buildItinerary — durationWarning", () => {
+  it("pas de warning dans la plage idéale (3–5 jours)", () => {
+    expect(buildItinerary(lisbonne, 4).durationWarning).toBeUndefined();
+    expect(buildItinerary(lisbonne, 5).durationWarning).toBeUndefined();
+  });
+
+  it("warning quand N < idealMin (<3)", () => {
     const w = buildItinerary(lisbonne, 2).durationWarning;
     expect(w).toBeDefined();
     expect(w).toMatch(/recommandée/i);
     expect(w).toMatch(/3 à 5 jours/);
   });
 
-  it("warning quand contenu épuisé avant la durée demandée", () => {
-    // Lisbonne has 5 template days + few cities → asking for 14 exhausts content
-    const result = buildItinerary(lisbonne, 14);
-    if (result.days.length < 14) {
-      expect(result.durationWarning).toBeDefined();
-      expect(result.durationWarning).toMatch(/contenu disponible/i);
-    }
+  it("warning quand contenu épuisé", () => {
+    const r = buildItinerary(lisbonne, 999);
+    expect(r.durationWarning).toBeDefined();
+    expect(r.durationWarning).toMatch(/contenu disponible/i);
   });
 
-  it("pas de warning en mode standard exact (5 jours)", () => {
-    expect(buildItinerary(lisbonne, 5).durationWarning).toBeUndefined();
-  });
-});
-
-describe("buildItinerary — jours synthétiques (extended)", () => {
-  it("jours synthétiques ont au moins une activité de type culture", () => {
-    const result = buildItinerary(lisbonne, 7);
-    const syntheticDays = result.days.slice(TEMPLATE_DAYS);
-    for (const day of syntheticDays) {
-      const hasCulture = day.activities.some((a) => a.type === "culture");
-      expect(hasCulture).toBe(true);
-    }
-  });
-
-  it("jours synthétiques ont un titre non vide", () => {
-    const result = buildItinerary(lisbonne, 7);
-    const syntheticDays = result.days.slice(TEMPLATE_DAYS);
-    for (const day of syntheticDays) {
-      expect(day.title).toBeTruthy();
-    }
+  it("pas de warning en extended si la demande est raisonnable", () => {
+    const r = buildItinerary(lisbonne, TEMPLATE_LEN + 1);
+    expect(r.durationWarning).toBeUndefined();
   });
 });

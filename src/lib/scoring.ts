@@ -509,12 +509,18 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
   const flight = answers.flightTolerance as string | undefined;
   const departurePrecision = answers.departurePrecision as string | undefined;
   const departureMonthStr = answers.departureMonth as string | undefined;
+  const exactStr = answers.durationExact as string | undefined;
 
   const useMonth = departurePrecision === "month" && departureMonthStr !== undefined;
 
+  const durationDays =
+    exactStr && /^\d+$/.test(exactStr.trim())
+      ? Math.max(1, parseInt(exactStr.trim(), 10))
+      : (durationMap[(answers.duration as string) ?? "week"] ?? 5);
+
   return {
     budget: answers.budget ? (answers.budget as BudgetLevel) : undefined,
-    durationDays: durationMap[(answers.duration as string) ?? "week"] ?? 5,
+    durationDays,
     period: useMonth ? undefined : (answers.period as any),
     month: useMonth ? DEPARTURE_MONTH_IDX[departureMonthStr!] : undefined,
     groupType: (answers.group as any) ?? "couple",

@@ -28,6 +28,28 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
+    id: "durationExact",
+    title: "Combien de jours exactement ?",
+    subtitle: "Pour un itinéraire jour par jour sur mesure. Passez si le chiffre exact ne change rien pour vous.",
+    options: [
+      { value: "1",  label: "1 jour",    icon: "⚡" },
+      { value: "2",  label: "2 jours",   icon: "⚡" },
+      { value: "3",  label: "3 jours",   icon: "📅" },
+      { value: "4",  label: "4 jours",   icon: "📅" },
+      { value: "5",  label: "5 jours",   icon: "📅" },
+      { value: "6",  label: "6 jours",   icon: "🗓️" },
+      { value: "7",  label: "7 jours",   icon: "🗓️" },
+      { value: "8",  label: "8 jours",   icon: "🗓️" },
+      { value: "9",  label: "9 jours",   icon: "🗓️" },
+      { value: "10", label: "10 jours",  icon: "🗓️" },
+      { value: "11", label: "11 jours",  icon: "🌍" },
+      { value: "12", label: "12 jours",  icon: "🌍" },
+      { value: "13", label: "13 jours",  icon: "🌍" },
+      { value: "14", label: "14 jours",  icon: "🌍" },
+      { value: "15", label: "15+ jours", icon: "🌍" },
+    ],
+  },
+  {
     id: "departurePrecision",
     title: "Quand partez-vous ?",
     subtitle: "Indiquez votre contrainte réelle.",
@@ -148,6 +170,11 @@ export const quizQuestions: QuizQuestion[] = [
 export const answerLabels: Record<string, Record<string, string>> = {
   budget: { low: "Budget serré", medium: "Budget moyen", high: "Confort", premium: "Premium" },
   duration: { short: "2-3 jours", week: "4-7 jours", long: "8-14 jours", extended: "15+ jours" },
+  durationExact: {
+    "1": "1 jour", "2": "2 jours", "3": "3 jours", "4": "4 jours", "5": "5 jours",
+    "6": "6 jours", "7": "7 jours", "8": "8 jours", "9": "9 jours", "10": "10 jours",
+    "11": "11 jours", "12": "12 jours", "13": "13 jours", "14": "14 jours", "15": "15+ jours",
+  },
   departurePrecision: { month: "Mois précis", season: "Par saison" },
   departureMonth: {
     jan: "Janvier", feb: "Février", mar: "Mars",   apr: "Avril",

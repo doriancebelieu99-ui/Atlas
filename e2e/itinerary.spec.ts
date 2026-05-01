@@ -3,42 +3,56 @@ import type { Page } from "@playwright/test";
 
 // ─── Helpers ──────────────────────────────────────────────────────
 
-async function fillQuizAndGoToItinerary(
+// Fills the quiz up to results, returns the SID from the URL.
+// Pass exactDays to answer durationExact; omit to skip it (passer).
+async function fillQuizAndGetSid(
   page: Page,
-  duration: "short" | "week" | "long",
-): Promise<void> {
+  opts: {
+    duration?: "short" | "week" | "long";
+    exactDays?: number;
+  } = {},
+): Promise<string> {
+  const { duration = "week", exactDays } = opts;
   const DURATION_LABEL: Record<string, RegExp> = {
     short: /2.3\s*jours/i,
-    week: /4.7/i,
-    long: /8.14/i,
+    week:  /4.7/i,
+    long:  /8.14/i,
   };
 
   await page.goto("/quiz");
   await page.getByRole("radio", { name: /moyen/i }).click();
   await page.getByRole("radio", { name: DURATION_LABEL[duration] }).click();
-  await page.getByRole("radio", { name: /seulement la période/i }).click();
-  await page.getByRole("radio", { name: /printemps/i }).click();
+
+  if (exactDays !== undefined) {
+    // Use negative lookbehind to avoid matching "11" when selecting "1", etc.
+    await page.getByRole("radio", { name: new RegExp(`(?<!\\d)${exactDays} jours?`, "i") }).click();
+  } else {
+    await page.getByRole("button", { name: /passer/i }).click(); // skip durationExact
+  }
+
+  await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
+  await page.getByRole("radio", { name: /printemps/i }).click();             // period
   await page.getByRole("radio", { name: /couple/i }).click();
   await page.getByRole("radio", { name: /équilibré/i }).click();
-  await page.getByRole("radio", { name: /peu importe/i }).first().click();
-  await page.getByRole("radio", { name: /peu importe/i }).first().click();
-  await page.getByRole("button", { name: /passer/i }).click();
-  await page.getByRole("button", { name: /passer/i }).click();
+  await page.getByRole("radio", { name: /peu importe/i }).first().click();  // env
+  await page.getByRole("radio", { name: /peu importe/i }).first().click();  // flightTolerance
+  await page.getByRole("button", { name: /passer/i }).click();              // styles: skip
+  await page.getByRole("button", { name: /passer/i }).click();              // interests: skip
 
   await page.waitForURL(/\/results\?sid=/, { timeout: 10_000 });
   await page.locator(".result-card").first().waitFor({ timeout: 5_000 });
 
-  const itinBtn = page.getByRole("button", { name: /voir l'itinéraire/i }).first();
-  await expect(itinBtn).toBeVisible({ timeout: 5_000 });
-  await itinBtn.click();
+  return new URL(page.url()).searchParams.get("sid")!;
+}
 
-  await page.waitForURL(/\/itinerary\//, { timeout: 5_000 });
+async function goToItinerary(page: Page, slug: string, sid: string): Promise<void> {
+  await page.goto(`/itinerary/${slug}?sid=${sid}`);
   await page.locator(".itin-day-nav").waitFor({ timeout: 5_000 });
 }
 
-// ─── Tests ────────────────────────────────────────────────────────
+// ─── Tests — accès direct ─────────────────────────────────────────
 
-test("accès direct sans session — affiche le template complet", async ({ page }) => {
+test("accès direct sans session — template complet (exact_template)", async ({ page }) => {
   await page.goto("/itinerary/lisbonne");
   await page.locator(".itin-day-nav").waitFor({ timeout: 5_000 });
 
@@ -46,60 +60,80 @@ test("accès direct sans session — affiche le template complet", async ({ page
   const tabs = page.locator(".itin-day-nav [role=tab]");
   await expect(tabs).toHaveCount(6);
   await expect(page.locator(".itin-duration-warning")).toHaveCount(0);
+  await expect(page.locator(".itin-adaptation")).toHaveCount(0);
 });
 
-test("durée courte (3 jours) — itinéraire tronqué à 3 jours", async ({ page }) => {
-  await fillQuizAndGoToItinerary(page, "short");
+// ─── Tests — durationExact via quiz ───────────────────────────────
 
-  // 3 days + 1 overview = 4 tabs
+test("durationExact=1 — itinéraire 1 jour, best-of mode", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short", exactDays: 1 });
+  await goToItinerary(page, "lisbonne", sid);
+
   const tabs = page.locator(".itin-day-nav [role=tab]");
+  await expect(tabs).toHaveCount(2); // 1 day + overview
+});
+
+test("durationExact=3 — itinéraire tronqué à 3 jours", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short", exactDays: 3 });
+  await goToItinerary(page, "lisbonne", sid);
+
+  const tabs = page.locator(".itin-day-nav [role=tab]");
+  await expect(tabs).toHaveCount(4); // 3 days + overview
+});
+
+test("durationExact=5 — template complet (exact_template), pas d'adaptation visible", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "week", exactDays: 5 });
+  await goToItinerary(page, "lisbonne", sid);
+
+  const tabs = page.locator(".itin-day-nav [role=tab]");
+  await expect(tabs).toHaveCount(6); // 5 days + overview
+  await expect(page.locator(".itin-adaptation")).toHaveCount(0);
+  await expect(page.locator(".itin-duration-warning")).toHaveCount(0);
+});
+
+test("durationExact=7 — étendu avec villes secondaires", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "long", exactDays: 7 });
+  await goToItinerary(page, "lisbonne", sid);
+
+  const tabs = page.locator(".itin-day-nav [role=tab]");
+  await expect(tabs).toHaveCount(8); // 7 days + overview
+  await expect(page.locator(".itin-adaptation")).toBeVisible();
+  await expect(page.locator(".itin-adaptation")).toContainText(/zones secondaires/i);
+});
+
+test("durationExact=14 — warning de contenu épuisé visible", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "long", exactDays: 14 });
+  await goToItinerary(page, "lisbonne", sid);
+
+  await expect(page.locator(".itin-duration-warning")).toBeVisible();
+  await expect(page.locator(".itin-duration-warning")).toContainText(/contenu disponible/i);
+  // Nombre de tabs < 14+1 (pas assez de contenu)
+  const tabs = page.locator(".itin-day-nav [role=tab]");
+  const count = await tabs.count();
+  expect(count).toBeLessThan(15);
+});
+
+test("sans durationExact (passer) — fallback sur duration bracket", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short" }); // no exactDays → 3 days
+  await goToItinerary(page, "lisbonne", sid);
+
+  const tabs = page.locator(".itin-day-nav [role=tab]");
+  // "short" → durationDays=3, Lisbonne template=5 → compressed_best_of → 3 tabs + overview = 4
   await expect(tabs).toHaveCount(4);
 });
 
-test("durée longue (10 jours) — warning de contenu épuisé visible pour Lisbonne", async ({ page }) => {
-  await page.goto("/quiz");
-  await page.getByRole("radio", { name: /moyen/i }).click();
-  await page.getByRole("radio", { name: /8.14/i }).click();
-  await page.getByRole("radio", { name: /seulement la période/i }).click();
-  await page.getByRole("radio", { name: /printemps/i }).click();
-  await page.getByRole("radio", { name: /couple/i }).click();
-  await page.getByRole("radio", { name: /équilibré/i }).click();
-  await page.getByRole("radio", { name: /peu importe/i }).first().click();
-  await page.getByRole("radio", { name: /peu importe/i }).first().click();
-  await page.getByRole("button", { name: /passer/i }).click();
-  await page.getByRole("button", { name: /passer/i }).click();
+// ─── Tests — navigation et warning ───────────────────────────────
 
-  await page.waitForURL(/\/results\?sid=/, { timeout: 10_000 });
+test("navigation jour par jour toujours fonctionnelle après compression", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short", exactDays: 2 });
+  await goToItinerary(page, "lisbonne", sid);
 
-  // Extract SID and navigate directly to lisbonne (idealDuration 3-5, requested 10 → warning)
-  const sid = new URL(page.url()).searchParams.get("sid");
-  await page.goto(`/itinerary/lisbonne?sid=${sid}`);
-  await page.locator(".itin-day-nav").waitFor({ timeout: 5_000 });
-
-  await expect(page.locator(".itin-duration-warning")).toBeVisible();
-});
-
-test("durée longue — itinéraire étendu au-delà du template de base", async ({ page }) => {
-  await fillQuizAndGoToItinerary(page, "long");
-
-  // Long (10 days) → more tabs than a 5-day template would give
-  const tabs = page.locator(".itin-day-nav [role=tab]");
-  const count = await tabs.count();
-  // overview (1) + template (5) + synthetic days = at least 7 tabs
-  expect(count).toBeGreaterThan(6);
-});
-
-test("navigation jour par jour toujours fonctionnelle après adaptation", async ({ page }) => {
-  await fillQuizAndGoToItinerary(page, "short");
-
-  // Click on J1 and verify day view loads
   await page.locator(".itin-day-btn", { hasText: "J1" }).click();
   await expect(page.locator(".day-view")).toBeVisible({ timeout: 3_000 });
 });
 
-test("badge de tier affiché pour séjour court (condensed)", async ({ page }) => {
+test("ligne adaptation absente pour exact_template", async ({ page }) => {
   await page.goto("/itinerary/lisbonne");
   await page.locator(".itin-day-nav").waitFor({ timeout: 5_000 });
-  // Direct access with no session → standard tier, no badge
-  await expect(page.locator(".itin-tier-badge")).toHaveCount(0);
+  await expect(page.locator(".itin-adaptation")).toHaveCount(0);
 });

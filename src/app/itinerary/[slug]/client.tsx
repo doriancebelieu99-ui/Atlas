@@ -10,10 +10,10 @@ import { buildUrl } from "@/lib/nav";
 import type { Destination, ViewName, ItineraryViewMode } from "@/lib/types";
 import type { AdaptedItinerary } from "@/lib/itinerary-builder";
 
-const TIER_LABEL: Record<string, string> = {
-  condensed: "Séjour court",
-  extended: "Séjour étendu",
-  long: "Long séjour",
+const ADAPTATION_LABEL: Record<string, string> = {
+  compressed_best_of: "Meilleurs jours sélectionnés",
+  extended_with_cities: "Étendu avec zones secondaires",
+  exhausted_content: "Contenu affiché intégralement",
 };
 
 interface Props {
@@ -49,8 +49,11 @@ export default function ItineraryClient({ dest, sid, adaptedItinerary }: Props) 
   }
 
   const days = adaptedItinerary?.days ?? dest.itinerary.days;
-  const tier = adaptedItinerary?.tier ?? "standard";
+  const adaptationMode = adaptedItinerary?.adaptationMode ?? "exact_template";
   const durationWarning = adaptedItinerary?.durationWarning;
+  const requestedDays = adaptedItinerary?.requestedDays;
+  const generatedDays = adaptedItinerary?.generatedDays ?? days.length;
+
   const avg = (days.reduce((s, d) => s + d.intensity, 0) / days.length).toFixed(1);
   const currentDay = days.find((d) => d.number === selectedDay);
 
@@ -59,6 +62,9 @@ export default function ItineraryClient({ dest, sid, adaptedItinerary }: Props) 
     setMode("day");
   };
 
+  const showAdaptation = adaptationMode !== "exact_template" && ADAPTATION_LABEL[adaptationMode];
+  const showDayMismatch = requestedDays !== undefined && requestedDays !== generatedDays;
+
   return (
     <div className="atlas">
       <Nav currentView="itinerary" onNavigate={navigate} />
@@ -66,13 +72,14 @@ export default function ItineraryClient({ dest, sid, adaptedItinerary }: Props) 
         <div className="itin-header">
           <h1 className="itin-dest">{dest.name}, {dest.country}</h1>
           <div className="itin-title">
-            Votre itinéraire · {days.length} jour{days.length > 1 ? "s" : ""}
-            {tier !== "standard" && TIER_LABEL[tier] && (
-              <span className={`itin-tier-badge itin-tier-badge--${tier}`}>
-                {TIER_LABEL[tier]}
-              </span>
-            )}
+            Votre itinéraire · {generatedDays} jour{generatedDays > 1 ? "s" : ""}
           </div>
+          {showAdaptation && (
+            <div className="itin-adaptation">
+              {showDayMismatch && `${requestedDays} jours demandés · `}
+              {ADAPTATION_LABEL[adaptationMode]}
+            </div>
+          )}
           <div className="itin-meta">{dest.pace} · Intensité moy. {avg}/5</div>
         </div>
 

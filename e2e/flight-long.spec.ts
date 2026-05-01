@@ -43,6 +43,7 @@ async function fillQuizMinimal(page: Page, opts: QuizOpts = {}) {
 
   await page.getByRole("radio", { name: BUDGET[budget] }).click();
   await page.getByRole("radio", { name: DURATION[duration] }).click();
+  await page.getByRole("button", { name: /passer/i }).click();               // skip durationExact
   if (departureMonth) {
     await page.getByRole("radio", { name: /mon mois exact/i }).click();
     await page.getByRole("radio", { name: MONTH_LABEL[departureMonth] }).click();
@@ -82,6 +83,7 @@ test(
 
     await page.getByRole("radio", { name: /premium/i }).click();
     await page.getByRole("radio", { name: /15/i }).click();
+    await page.getByRole("button", { name: /passer/i }).click();              // skip durationExact
     await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
     await page.getByRole("radio", { name: /hiver/i }).click();                // period: winter
     await page.getByRole("radio", { name: /couple/i }).click();

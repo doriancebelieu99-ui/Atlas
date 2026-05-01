@@ -1,31 +1,54 @@
 import type { Destination, ItineraryDay, CityInfo } from "./types";
 
-export type ItineraryTier = "condensed" | "standard" | "extended" | "long";
+export type AdaptationMode =
+  | "exact_template"
+  | "compressed_best_of"
+  | "extended_with_cities"
+  | "exhausted_content";
 
 export interface AdaptedItinerary {
   days: ItineraryDay[];
-  tier: ItineraryTier;
+  adaptationMode: AdaptationMode;
   requestedDays: number;
+  generatedDays: number;
   templateDays: number;
   durationWarning?: string;
 }
 
-function classifyTier(days: number): ItineraryTier {
-  if (days <= 2) return "condensed";
-  if (days <= 5) return "standard";
-  if (days <= 8) return "extended";
-  return "long";
+// ─── Day importance for smart compression ────────────────────────
+// Higher score = more structural / iconic day.
+// Culture activities weighted heavily; intensity as tie-breaker.
+
+function dayImportance(day: ItineraryDay): number {
+  const cultureCount = day.activities.filter((a) => a.type === "culture").length;
+  return cultureCount * 3 + day.intensity;
 }
+
+// Select top-N template days by importance, then restore chronological order.
+// This is deterministic and intentionally different from naive slice(0, N).
+function compressBestOf(template: ItineraryDay[], n: number): ItineraryDay[] {
+  const scored = template.map((day, originalIdx) => ({ day, score: dayImportance(day), originalIdx }));
+  scored.sort((a, b) => b.score - a.score || a.originalIdx - b.originalIdx);
+  const selected = scored.slice(0, n);
+  selected.sort((a, b) => a.originalIdx - b.originalIdx);
+  return selected.map((s) => s.day);
+}
+
+// ─── City coverage ────────────────────────────────────────────────
+
+function isCoveredByTemplate(cityName: string, templateZones: string[]): boolean {
+  const cn = cityName.toLowerCase();
+  return templateZones.some((z) => z.includes(cn) || cn.includes(z));
+}
+
+// ─── Ideal duration parsing ───────────────────────────────────────
 
 function parseIdealDuration(s: string): [number, number] {
   const nums = s.match(/\d+/g)?.map(Number) ?? [3, 5];
   return [nums[0], nums[1] ?? nums[0]];
 }
 
-function isCoveredByTemplate(cityName: string, templateZones: string[]): boolean {
-  const cn = cityName.toLowerCase();
-  return templateZones.some((z) => z.includes(cn) || cn.includes(z));
-}
+// ─── Synthetic day from CityInfo ─────────────────────────────────
 
 function syntheticDayFromCity(city: CityInfo, dayNumber: number): ItineraryDay {
   const isExcursion = city.type === "Excursion";
@@ -65,44 +88,60 @@ function syntheticDayFromCity(city: CityInfo, dayNumber: number): ItineraryDay {
   };
 }
 
+// ─── Main builder ─────────────────────────────────────────────────
+
 export function buildItinerary(
   dest: Destination,
   durationDays: number,
 ): AdaptedItinerary {
-  const tier = classifyTier(durationDays);
   const template = dest.itinerary?.days ?? [];
+  const templateLen = template.length;
+
+  // Build synthetic pool from cities not covered by any template zone
+  const templateZones = template.map((d) => d.zone.toLowerCase());
+  const uncoveredCities = dest.cities.filter(
+    (city) => !isCoveredByTemplate(city.name, templateZones),
+  );
+  const syntheticPool = uncoveredCities.map((city, i) =>
+    syntheticDayFromCity(city, templateLen + i + 1),
+  );
+  const maxAvailableDays = templateLen + syntheticPool.length;
 
   let rawDays: ItineraryDay[];
+  let adaptationMode: AdaptationMode;
 
-  if (tier === "condensed" || tier === "standard") {
-    rawDays = template.slice(0, durationDays);
+  if (durationDays === templateLen) {
+    rawDays = template;
+    adaptationMode = "exact_template";
+  } else if (durationDays < templateLen) {
+    rawDays = compressBestOf(template, Math.max(1, durationDays));
+    adaptationMode = "compressed_best_of";
+  } else if (durationDays <= maxAvailableDays) {
+    const syntheticNeeded = durationDays - templateLen;
+    rawDays = [...template, ...syntheticPool.slice(0, syntheticNeeded)];
+    adaptationMode = "extended_with_cities";
   } else {
-    const templateZones = template.map((d) => d.zone.toLowerCase());
-    const uncoveredCities = dest.cities.filter(
-      (city) => !isCoveredByTemplate(city.name, templateZones),
-    );
-    const synthetic = uncoveredCities.map((city, i) =>
-      syntheticDayFromCity(city, template.length + i + 1),
-    );
-    rawDays = [...template, ...synthetic].slice(0, durationDays);
+    rawDays = [...template, ...syntheticPool];
+    adaptationMode = "exhausted_content";
   }
 
   const days = rawDays.map((d, i) => ({ ...d, number: i + 1 }));
 
-  const [idealMin, idealMax] = parseIdealDuration(dest.idealDuration);
+  const [idealMin] = parseIdealDuration(dest.idealDuration);
   let durationWarning: string | undefined;
 
   if (durationDays < idealMin) {
-    durationWarning = `Durée recommandée : ${dest.idealDuration}. Votre séjour est plus court — les temps forts ont été priorisés.`;
-  } else if (durationDays > idealMax && days.length < durationDays) {
-    durationWarning = `Tout le contenu disponible pour ${dest.name} est affiché. Pour aller plus loin, combinez avec une destination voisine.`;
+    durationWarning = `Durée recommandée : ${dest.idealDuration}. Les temps forts ont été sélectionnés pour ce séjour court.`;
+  } else if (adaptationMode === "exhausted_content") {
+    durationWarning = `Tout le contenu disponible pour ${dest.name} est affiché (${days.length} jour${days.length > 1 ? "s" : ""} sur ${durationDays} demandés). Pour aller plus loin, combinez avec une destination voisine.`;
   }
 
   return {
     days,
-    tier,
+    adaptationMode,
     requestedDays: durationDays,
-    templateDays: template.length,
+    generatedDays: days.length,
+    templateDays: templateLen,
     durationWarning,
   };
 }

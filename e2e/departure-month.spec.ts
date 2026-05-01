@@ -11,6 +11,7 @@ async function fillQuizWithMonth(page: Page, month: "aug" | "jan" | "dec") {
   await page.goto("/quiz");
   await page.getByRole("radio", { name: /moyen/i }).click();            // budget: medium
   await page.getByRole("radio", { name: /4–7/i }).click();              // duration: week
+  await page.getByRole("button", { name: /passer/i }).click();          // skip durationExact
   await page.getByRole("radio", { name: /mon mois exact/i }).click();   // departurePrecision
   await page.getByRole("radio", { name: MONTH_LABEL[month] }).click();  // departureMonth
   await page.getByRole("radio", { name: /couple/i }).click();           // group
@@ -28,6 +29,7 @@ async function fillQuizWithSeason(page: Page) {
   await page.goto("/quiz");
   await page.getByRole("radio", { name: /moyen/i }).click();
   await page.getByRole("radio", { name: /4–7/i }).click();
+  await page.getByRole("button", { name: /passer/i }).click();          // skip durationExact
   await page.getByRole("radio", { name: /seulement la période/i }).click();
   await page.getByRole("radio", { name: /printemps/i }).click();
   await page.getByRole("radio", { name: /couple/i }).click();

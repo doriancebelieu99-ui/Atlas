@@ -8,6 +8,7 @@ import { test, expect } from "@playwright/test";
 async function fillQuiz(page: import("@playwright/test").Page) {
   await page.getByRole("radio", { name: /moyen/i }).click();
   await page.getByRole("radio", { name: /4–7/i }).click();
+  await page.getByRole("button", { name: /passer/i }).click();              // skip durationExact
   await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
   await page.getByRole("radio", { name: /printemps/i }).click();            // period
   await page.getByRole("radio", { name: /couple/i }).click();
