@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest run",
+    "test:audit": "vitest run --config vitest.audit.config.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {
