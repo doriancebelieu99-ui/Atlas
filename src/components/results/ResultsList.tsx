@@ -88,6 +88,20 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
         </details>
       </div>
 
+      {/* Long-haul signal — visible uniquement si flightTolerance = "long" */}
+      {answers.flightTolerance === "long" && (
+        <div className="results-flight-signal">
+          <span className="results-flight-signal-icon">✈</span>
+          <div>
+            <div className="results-flight-signal-label">Classement long-courrier</div>
+            <p className="results-flight-signal-text">
+              Vous avez indiqué préférer les longs trajets. Ce classement favorise
+              les destinations à plus de 7h de vol depuis Paris.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Featured card — recommandation principale */}
       {featured && (
         <ResultCard
