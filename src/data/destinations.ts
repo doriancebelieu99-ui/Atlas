@@ -3680,7 +3680,7 @@ export const destinations: Record<string, Destination> = {
     summary:
       "Prague est l'une des capitales médiévales les mieux préservées d'Europe. Son centre historique classé à l'UNESCO concentre sur quelques kilomètres carrés un château royal, un pont gothique, un quartier juif intact et une horloge astronomique du XVe siècle — le tout à deux heures de Paris.",
     mainInterest: "Architecture & histoire",
-    idealDuration: "3 à 5 jours",
+    idealDuration: "3 à 4 jours",
     destinationType: "city_plus",
     pace: "Équilibré",
     ambiance: ["Romantique", "Historique", "Festive", "Gastronomique", "Photogénique"],
@@ -3822,7 +3822,7 @@ export const destinations: Record<string, Destination> = {
     idealDuration: "4 à 6 jours",
     destinationType: "city_plus",
     pace: "Équilibré",
-    ambiance: ["Romantique", "Photogénique", "Historique", "Accessible", "Dépaysant"],
+    ambiance: ["Romantique", "Photogénique", "Historique", "Méditerranéen", "Dépaysant"],
     targetProfiles: ["Couple", "Solo", "Amis"],
     environment: "coastal",
     flightHoursFromParis: 2.5,
@@ -3925,8 +3925,8 @@ export const destinations: Record<string, Destination> = {
             { slot: "10h–12h", name: "Vieille ville de Kotor (UNESCO)", type: "culture", duration: 120, icon: "🏰", note: "La vieille ville de Kotor est entourée de remparts vénitiens qui montent jusqu'à 280 m au-dessus de la baie sur le mont Saint-Jean. Les ruelles labyrinthiques, la cathédrale Saint-Tryphon (XIIe siècle) et les nombreuses églises orthodoxes constituent l'un des centres médiévaux les plus denses de la côte adriatique. Entrée dans la vieille ville : environ 8€." },
             { slot: "12h–14h", name: "Montée aux remparts de Kotor", type: "culture", duration: 120, icon: "⛰️", note: "1 350 marches depuis la Porte des Fleuves jusqu'au Fort Saint-Jean. Montée soutenue (45-60 min) mais récompensée par une vue plongeante sur la baie de Kotor — l'un des fjords naturels les plus spectaculaires de la Méditerranée. Eau obligatoire." },
             { slot: "14h30–15h30", name: "Déjeuner à Kotor", type: "food", duration: 60, icon: "🐙", note: "Cuisine monténégrine : Ćevapi (brochettes), grillades de la baie, Njeguški pršut (jambon fumé de montagne) et vin rouge Vranac. Budget 15-25€." },
-            { slot: "16h–17h30", name: "Perast et Notre-Dame-du-Rocher", type: "culture", duration: 90, icon: "⛪", note: "Perast est un village baroque à 15 min de Kotor, avec ses palais vénitiens en bord de baie. Notre-Dame-du-Rocher est une église construite sur un îlot artificiel (barque depuis Perast, environ 5€ aller-retour). L'intérieur, couvert de 2 000 ex-voto de marins, est remarquable." },
-            { slot: "18h30–20h", name: "Retour à Dubrovnik", type: "logistics", duration: 90, icon: "🚌", note: "Bus retour depuis Kotor. Derniers départs vers 17h30-18h (vérifiez les horaires en gare routière locale). Arrivée à Dubrovnik vers 20h-21h." },
+            { slot: "15h30–17h", name: "Perast et Notre-Dame-du-Rocher", type: "culture", duration: 90, icon: "⛪", note: "Perast est un village baroque à 15 min de Kotor, avec ses palais vénitiens en bord de baie. Notre-Dame-du-Rocher est une église construite sur un îlot artificiel (barque depuis Perast, environ 5€ aller-retour). L'intérieur, couvert de 2 000 ex-voto de marins, est remarquable." },
+            { slot: "17h30–19h30", name: "Retour à Dubrovnik", type: "logistics", duration: 120, icon: "🚌", note: "Bus retour depuis Kotor : prenez le départ de 17h30 (vérifiez les horaires en gare routière locale). Arrivée à Dubrovnik vers 19h-19h30." },
           ],
         },
         {
@@ -3983,7 +3983,7 @@ export const destinations: Record<string, Destination> = {
       details: [
         { label: "Repas", economy: "5-12€", comfort: "20-40€", premium: "60-120€" },
         { label: "Hébergement/nuit", economy: "25-50€", comfort: "80-160€", premium: "200-500€" },
-        { label: "Voiture/jour", economy: "30-50€", comfort: "50-80€", premium: "100-200€" },
+        { label: "Transport/jour", economy: "30-50€", comfort: "50-80€", premium: "100-200€" },
         { label: "Activités/jour", economy: "10-20€", comfort: "30-60€", premium: "80-200€" },
       ],
     },
