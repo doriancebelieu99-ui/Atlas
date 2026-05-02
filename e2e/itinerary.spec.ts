@@ -10,13 +10,26 @@ async function fillQuizAndGetSid(
   opts: {
     duration?: "short" | "week" | "long";
     exactDays?: number;
+    pace?: "relax" | "balanced" | "dense";
+    group?: "solo" | "couple" | "friends" | "family";
   } = {},
 ): Promise<string> {
-  const { duration = "week", exactDays } = opts;
+  const { duration = "week", exactDays, pace = "balanced", group = "couple" } = opts;
   const DURATION_LABEL: Record<string, RegExp> = {
     short: /2.3\s*jours/i,
     week:  /4.7/i,
     long:  /8.14/i,
+  };
+  const PACE_LABEL: Record<string, RegExp> = {
+    relax:    /relax/i,
+    balanced: /équilibré/i,
+    dense:    /dense/i,
+  };
+  const GROUP_LABEL: Record<string, RegExp> = {
+    solo:    /solo/i,
+    couple:  /couple/i,
+    friends: /amis/i,
+    family:  /famille/i,
   };
 
   await page.goto("/quiz");
@@ -32,8 +45,8 @@ async function fillQuizAndGetSid(
 
   await page.getByRole("radio", { name: /seulement la période/i }).click(); // departurePrecision
   await page.getByRole("radio", { name: /printemps/i }).click();             // period
-  await page.getByRole("radio", { name: /couple/i }).click();
-  await page.getByRole("radio", { name: /équilibré/i }).click();
+  await page.getByRole("radio", { name: GROUP_LABEL[group] }).click();
+  await page.getByRole("radio", { name: PACE_LABEL[pace] }).click();
   await page.getByRole("radio", { name: /peu importe/i }).first().click();  // env
   await page.getByRole("radio", { name: /peu importe/i }).first().click();  // flightTolerance
   await page.getByRole("button", { name: /passer/i }).click();              // styles: skip
@@ -136,4 +149,37 @@ test("ligne adaptation absente pour exact_template", async ({ page }) => {
   await page.goto("/itinerary/lisbonne");
   await page.locator(".itin-day-nav").waitFor({ timeout: 5_000 });
   await expect(page.locator(".itin-adaptation")).toHaveCount(0);
+});
+
+// ─── Tests — adaptation rythme / groupe ──────────────────────────
+
+test("pace=relax — .itin-pace-profile visible avec label 'relax'", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short", exactDays: 3, pace: "relax" });
+  await goToItinerary(page, "lisbonne", sid);
+
+  const profile = page.locator(".itin-pace-profile");
+  await expect(profile).toBeVisible();
+  await expect(profile).toContainText(/relax/i);
+});
+
+test("pace=balanced — aucun .itin-pace-profile affiché", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short", exactDays: 3, pace: "balanced" });
+  await goToItinerary(page, "lisbonne", sid);
+
+  await expect(page.locator(".itin-pace-profile")).toHaveCount(0);
+});
+
+test("group=family — .itin-pace-profile visible avec label 'famille'", async ({ page }) => {
+  const sid = await fillQuizAndGetSid(page, { duration: "short", exactDays: 3, group: "family" });
+  await goToItinerary(page, "lisbonne", sid);
+
+  const profile = page.locator(".itin-pace-profile");
+  await expect(profile).toBeVisible();
+  await expect(profile).toContainText(/famille/i);
+});
+
+test("accès direct sans session — aucun .itin-pace-profile", async ({ page }) => {
+  await page.goto("/itinerary/lisbonne");
+  await page.locator(".itin-day-nav").waitFor({ timeout: 5_000 });
+  await expect(page.locator(".itin-pace-profile")).toHaveCount(0);
 });

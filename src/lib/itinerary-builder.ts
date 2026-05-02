@@ -1,10 +1,15 @@
-import type { Destination, ItineraryDay, CityInfo } from "./types";
+import type { Destination, ItineraryDay, CityInfo, Pace, GroupType } from "./types";
 
 export type AdaptationMode =
   | "exact_template"
   | "compressed_best_of"
   | "extended_with_cities"
   | "exhausted_content";
+
+export interface PaceProfile {
+  label: string;
+  hint: string;
+}
 
 export interface AdaptedItinerary {
   days: ItineraryDay[];
@@ -13,25 +18,71 @@ export interface AdaptedItinerary {
   generatedDays: number;
   templateDays: number;
   durationWarning?: string;
+  paceProfile?: PaceProfile;
+}
+
+export interface BuildOpts {
+  pace?: Pace;
+  groupType?: GroupType;
 }
 
 // ─── Day importance for smart compression ────────────────────────
-// Higher score = more structural / iconic day.
-// Culture activities weighted heavily; intensity as tie-breaker.
+// Default (balanced): culture * 3 + intensity.
+// Relaxed: prefers low-intensity days.
+// Dense: amplifies high-intensity days.
+// Family: penalises heavy transport and rewards free slots.
 
-function dayImportance(day: ItineraryDay): number {
+function dayImportance(day: ItineraryDay, pace?: Pace, groupType?: GroupType): number {
   const cultureCount = day.activities.filter((a) => a.type === "culture").length;
+  if (groupType === "family") {
+    return cultureCount * 3 + day.intensity + day.freeSlots * 3 - Math.round(day.transportMinutes / 20);
+  }
+  if (pace === "relaxed") return cultureCount * 3 + (5 - day.intensity) * 2;
+  if (pace === "dense")   return cultureCount * 3 + day.intensity * 2;
   return cultureCount * 3 + day.intensity;
 }
 
 // Select top-N template days by importance, then restore chronological order.
 // This is deterministic and intentionally different from naive slice(0, N).
-function compressBestOf(template: ItineraryDay[], n: number): ItineraryDay[] {
-  const scored = template.map((day, originalIdx) => ({ day, score: dayImportance(day), originalIdx }));
+function compressBestOf(
+  template: ItineraryDay[],
+  n: number,
+  pace?: Pace,
+  groupType?: GroupType,
+): ItineraryDay[] {
+  const scored = template.map((day, originalIdx) => ({
+    day,
+    score: dayImportance(day, pace, groupType),
+    originalIdx,
+  }));
   scored.sort((a, b) => b.score - a.score || a.originalIdx - b.originalIdx);
   const selected = scored.slice(0, n);
   selected.sort((a, b) => a.originalIdx - b.originalIdx);
   return selected.map((s) => s.day);
+}
+
+// ─── Pace/group profile ───────────────────────────────────────────
+
+function buildPaceProfile(pace?: Pace, groupType?: GroupType): PaceProfile | undefined {
+  if (groupType === "family") {
+    return {
+      label: "Mode famille",
+      hint: "Excursions longues et logistique lourde déprioritisées — rythme plus accessible pour tous.",
+    };
+  }
+  if (pace === "relaxed") {
+    return {
+      label: "Mode relax",
+      hint: "Journées allégées sélectionnées — laissez-vous du temps entre chaque étape.",
+    };
+  }
+  if (pace === "dense") {
+    return {
+      label: "Mode dense",
+      hint: "Journées chargées privilégiées — programme optimisé pour ne rien manquer.",
+    };
+  }
+  return undefined;
 }
 
 // ─── City coverage ────────────────────────────────────────────────
@@ -93,7 +144,9 @@ function syntheticDayFromCity(city: CityInfo, dayNumber: number): ItineraryDay {
 export function buildItinerary(
   dest: Destination,
   durationDays: number,
+  opts: BuildOpts = {},
 ): AdaptedItinerary {
+  const { pace, groupType } = opts;
   const template = dest.itinerary?.days ?? [];
   const templateLen = template.length;
 
@@ -114,7 +167,7 @@ export function buildItinerary(
     rawDays = template;
     adaptationMode = "exact_template";
   } else if (durationDays < templateLen) {
-    rawDays = compressBestOf(template, Math.max(1, durationDays));
+    rawDays = compressBestOf(template, Math.max(1, durationDays), pace, groupType);
     adaptationMode = "compressed_best_of";
   } else if (durationDays <= maxAvailableDays) {
     const syntheticNeeded = durationDays - templateLen;
@@ -143,5 +196,6 @@ export function buildItinerary(
     generatedDays: days.length,
     templateDays: templateLen,
     durationWarning,
+    paceProfile: buildPaceProfile(pace, groupType),
   };
 }

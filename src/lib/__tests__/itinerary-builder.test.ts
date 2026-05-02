@@ -118,6 +118,76 @@ describe("buildItinerary — extension avec villes", () => {
   });
 });
 
+// ─── Adaptation rythme / groupe ──────────────────────────────────
+
+describe("buildItinerary — pace & group adaptation", () => {
+  // Lisbonne J4 = Sintra : intensity 4, transportMinutes 100, freeSlots 0
+  // Verified scores for N=3:
+  //   balanced : J2(12) J3(12) J4(10)  → J4 included
+  //   relaxed  : J2(13) J3(13) J1(9)   → J4 excluded (score 8)
+  //   dense    : J2(15) J3(15) J4(14)  → J4 included
+  //   family   : J2(14) J3(13) J5(7)   → J4 excluded (score 5)
+
+  it("balanced (défaut) : même résultat qu'un appel sans opts", () => {
+    const base = buildItinerary(lisbonne, 3);
+    const balanced = buildItinerary(lisbonne, 3, { pace: "balanced" });
+    expect(balanced.days.map((d) => d.number)).toEqual(base.days.map((d) => d.number));
+  });
+
+  it("relaxed, N=3 : exclut J4 (Sintra, intensité 4)", () => {
+    const r = buildItinerary(lisbonne, 3, { pace: "relaxed" });
+    expect(r.days.every((d) => d.intensity < 4)).toBe(true);
+    expect(r.days.some((d) => d.zone === "Sintra (excursion)")).toBe(false);
+  });
+
+  it("dense, N=3 : inclut J4 (Sintra, intensité 4)", () => {
+    const r = buildItinerary(lisbonne, 3, { pace: "dense" });
+    expect(r.days.some((d) => d.zone === "Sintra (excursion)")).toBe(true);
+  });
+
+  it("family, N=3 : exclut J4 (100′ transport, 0 freeSlots)", () => {
+    const r = buildItinerary(lisbonne, 3, { groupType: "family" });
+    expect(r.days.every((d) => d.transportMinutes < 100)).toBe(true);
+    expect(r.days.some((d) => d.zone === "Sintra (excursion)")).toBe(false);
+  });
+
+  it("paceProfile défini pour relaxed", () => {
+    const r = buildItinerary(lisbonne, 3, { pace: "relaxed" });
+    expect(r.paceProfile).toBeDefined();
+    expect(r.paceProfile?.label).toMatch(/relax/i);
+  });
+
+  it("paceProfile défini pour dense", () => {
+    const r = buildItinerary(lisbonne, 3, { pace: "dense" });
+    expect(r.paceProfile).toBeDefined();
+    expect(r.paceProfile?.label).toMatch(/dense/i);
+  });
+
+  it("paceProfile défini pour family", () => {
+    const r = buildItinerary(lisbonne, 3, { groupType: "family" });
+    expect(r.paceProfile).toBeDefined();
+    expect(r.paceProfile?.label).toMatch(/famille/i);
+  });
+
+  it("paceProfile absent pour balanced sans groupe spécial", () => {
+    expect(buildItinerary(lisbonne, 3).paceProfile).toBeUndefined();
+    expect(buildItinerary(lisbonne, 3, { pace: "balanced" }).paceProfile).toBeUndefined();
+  });
+
+  it("adaptation rythme n'affecte pas exact_template (N == templateLen)", () => {
+    const r = buildItinerary(lisbonne, TEMPLATE_LEN, { pace: "relaxed" });
+    expect(r.adaptationMode).toBe("exact_template");
+    expect(r.days).toHaveLength(TEMPLATE_LEN);
+  });
+
+  it("jours sélectionnés toujours en ordre chronologique (relax)", () => {
+    const r = buildItinerary(lisbonne, 3, { pace: "relaxed" });
+    for (let i = 1; i < r.days.length; i++) {
+      expect(r.days[i].number).toBeGreaterThan(r.days[i - 1].number);
+    }
+  });
+});
+
 // ─── Numérotation ────────────────────────────────────────────────
 
 describe("buildItinerary — numérotation", () => {

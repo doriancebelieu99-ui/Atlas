@@ -45,13 +45,18 @@ export default async function ItineraryPage({ params, searchParams }: Props) {
   }
 
   let durationDays: number | undefined;
+  let pace: import("@/lib/types").Pace | undefined;
+  let groupType: import("@/lib/types").GroupType | undefined;
+
   if (sid) {
     const session = await getSession(sid);
     durationDays = session?.preferences.durationDays;
+    pace      = session?.preferences.pace;
+    groupType = session?.preferences.groupType;
   }
 
   const adaptedItinerary = dest.itinerary
-    ? buildItinerary(dest, durationDays ?? dest.itinerary.days.length)
+    ? buildItinerary(dest, durationDays ?? dest.itinerary.days.length, { pace, groupType })
     : null;
 
   return <ItineraryClient dest={dest} sid={sid ?? null} adaptedItinerary={adaptedItinerary} />;

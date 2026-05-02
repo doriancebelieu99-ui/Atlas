@@ -81,6 +81,13 @@ export default function ItineraryClient({ dest, sid, adaptedItinerary }: Props) 
             </div>
           )}
           <div className="itin-meta">{dest.pace} · Intensité moy. {avg}/5</div>
+          {adaptedItinerary?.paceProfile && (
+            <div className="itin-pace-profile">
+              <strong>{adaptedItinerary.paceProfile.label}</strong>
+              {" · "}
+              {adaptedItinerary.paceProfile.hint}
+            </div>
+          )}
         </div>
 
         {durationWarning && (
