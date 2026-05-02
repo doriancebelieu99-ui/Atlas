@@ -86,11 +86,19 @@ export interface SafetyPoint {
   text: string;
 }
 
+export type SafetyContextTopic = "solo" | "socialNorms" | "identityContext";
+
+export interface SafetyContextNote {
+  topic: SafetyContextTopic;
+  text: string;
+}
+
 export interface SafetyProfile {
   overall: string;
   logisticsScore: number;
   freshness: string;
   points: SafetyPoint[];
+  contextNotes?: SafetyContextNote[];
 }
 
 export interface Constraint {

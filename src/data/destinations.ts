@@ -230,6 +230,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Langue", level: "moderate", text: "L'espagnol reste utile dans les bars et commerces de quartier. L'anglais est plus présent dans les zones touristiques." },
         { category: "Formalités", level: "easy", text: "Espace Schengen : la carte d'identité est suffisante pour les ressortissants UE." },
       ],
+      contextNotes: [
+        { topic: "solo", text: "Séville est accessible pour un voyage en solo. Les quartiers animés (Triana, Alameda) restent fréquentés en soirée. Les précautions habituelles en grande ville touristique s'appliquent." },
+      ],
     },
     cities: [
       { name: "Santa Cruz", type: "Quartier", duration: "½ journée", description: "L'ancien quartier juif de Séville, à deux pas de l'Alcázar. Ruelles étroites, patios fleuris et atmosphère calme malgré la proximité des monuments.", vibe: "Romantique" },
@@ -362,6 +365,10 @@ export const destinations: Record<string, Destination> = {
         { category: "Transport", level: "moderate", text: "Les petits taxis rouges doivent normalement utiliser le compteur ou convenir du prix avant le départ. Pour les transferts depuis l'aéroport, un tarif fixe est souvent affiché ou peut être négocié à l'avance avec le riad." },
         { category: "Langue", level: "easy", text: "Le français est largement parlé et compris à Marrakech. Le darija, arabe marocain du quotidien, reste la langue la plus courante. L'anglais est moins répandu en dehors des zones très touristiques." },
         { category: "Formalités", level: "easy", text: "Pour les voyageurs français, aucun visa n'est requis pour un séjour touristique jusqu'à 90 jours. Le passeport est obligatoire et doit être valide pendant toute la durée du séjour. La seule carte nationale d'identité n'est plus acceptée." },
+      ],
+      contextNotes: [
+        { topic: "socialNorms", text: "Dans la médina, une tenue couvrant épaules et genoux est adaptée aux codes locaux. Les marques d'affection en public sont à éviter dans les espaces ouverts." },
+        { topic: "solo", text: "Les sollicitations de guides non officiels et de vendeurs sont fréquentes dans les souks. Ignorer fermement et continuer à marcher est la réaction la plus efficace. Les axes principaux de la médina sont sûrs en journée." },
       ],
     },
     cities: [
@@ -768,6 +775,10 @@ export const destinations: Record<string, Destination> = {
         { category: "Transport", level: "easy", text: "Le réseau est dense et fiable, avec métro, tram, bus et ferries. La carte rechargeable Istanbulkart fonctionne sur l'ensemble du réseau et s'achète facilement en station." },
         { category: "Langue", level: "moderate", text: "L'anglais est bien parlé dans les zones touristiques et les hôtels. Dans les quartiers résidentiels, il est plus rare, et quelques mots de turc facilitent les échanges." },
         { category: "Formalités", level: "easy", text: "Pour la plupart des ressortissants de l'UE, aucun visa n'est requis pour un séjour touristique jusqu'à 90 jours sur 180. Passeport ou carte nationale d'identité acceptés selon la nationalité, avec une validité suffisante à l'entrée." },
+      ],
+      contextNotes: [
+        { topic: "socialNorms", text: "Une tenue couvrant épaules et jambes est obligatoire pour entrer dans les mosquées. Des foulards sont souvent prêtés à l'entrée. Hors des lieux de culte, aucun code vestimentaire particulier n'est requis dans les quartiers touristiques." },
+        { topic: "solo", text: "Istanbul est globalement accessible en solo. Sultanahmet et les zones touristiques principales sont bien fréquentées. Une vigilance normale est utile dans les ruelles moins éclairées de Beyoğlu en soirée avancée." },
       ],
     },
     cities: [
@@ -2234,6 +2245,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Langue", level: "moderate", text: "Le portugais brésilien est la langue officielle. Dans les zones touristiques, l'anglais est compris dans les hôtels et restaurants. En dehors de ces zones, la communication est plus difficile sans quelques notions de portugais ou espagnol." },
         { category: "Formalités", level: "easy", text: "Les ressortissants français n'ont pas besoin de visa pour le Brésil pour des séjours jusqu'à 90 jours depuis janvier 2024. Le passeport doit être valide 6 mois après la date d'entrée." },
       ],
+      contextNotes: [
+        { topic: "solo", text: "Voyager seul·e à Rio demande une vigilance réelle, y compris dans les zones touristiques. Évitez d'afficher appareil photo ou téléphone dans la rue, et ne vous déplacez pas à pied entre les quartiers en soirée. Les applications VTC sont la solution recommandée pour tous les déplacements nocturnes." },
+      ],
     },
     cities: [
       { name: "Ipanema & Leblon", type: "Quartier", duration: "1-2 jours", description: "Ipanema et Leblon sont les quartiers résidentiels aisés de la Zona Sul. Leurs plages sont les plus propres et les plus fréquentées par les cariocas. La rue Garcia d'Ávila concentre boutiques et restaurants. Leblon est plus calme et résidentiel qu'Ipanema.", vibe: "Vibrante" },
@@ -2522,6 +2536,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Langue", level: "easy", text: "L'anglais est bien parlé dans les hôtels, restaurants touristiques et transports. Les panneaux sont en thaï et en anglais dans la plupart des zones centrales." },
         { category: "Formalités", level: "easy", text: "Les ressortissants de l'UE bénéficient d'une exemption de visa pour 30 jours (prolongeable à 60 jours en ligne depuis 2024). Le passeport doit être valide au moins 6 mois après la date d'entrée." },
       ],
+      contextNotes: [
+        { topic: "socialNorms", text: "Épaules et genoux doivent être couverts pour entrer dans les temples — certains sites refusent les shorts même accompagnés d'un haut à manches. Des paréos sont parfois disponibles à l'entrée. Retirer ses chaussures avant d'entrer dans un lieu de culte est une règle sans exception." },
+      ],
     },
     cities: [
       { name: "Rattanakosin", type: "Quartier", duration: "1 jour", description: "Rattanakosin est le quartier historique fondé en 1782, qui regroupe le Grand Palais, le Wat Phra Kaew et le Wat Pho. C'est le centre cérémoniel de la monarchie thaïlandaise et la zone la plus visitée de Bangkok.", vibe: "Historique" },
@@ -2657,6 +2674,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Transport", level: "moderate", text: "Uber est le mode de transport le plus sûr pour les touristes. La location de voiture est utile mais requiert de la vigilance aux feux rouges la nuit (pratique locale de ne pas s'arrêter pour des raisons de sécurité)." },
         { category: "Langue", level: "easy", text: "L'anglais est une des 11 langues officielles d'Afrique du Sud et est largement parlé dans toutes les zones touristiques et commerciales." },
         { category: "Formalités", level: "easy", text: "Aucun visa requis pour les ressortissants de l'UE pour un séjour touristique jusqu'à 90 jours. Le passeport doit être valide au moins 30 jours après la date de départ prévue." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Pour les activités de plein air (randonnée sur Table Mountain, plages isolées), évitez de partir seul·e sans avoir communiqué votre itinéraire. Dans la ville, préférez systématiquement Uber aux taxis non référencés, y compris en journée." },
       ],
     },
     cities: [
@@ -2804,6 +2824,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Langue", level: "moderate", text: "L'espagnol est la langue officielle. L'anglais est parlé dans les hôtels et les restaurants touristiques, mais peu ailleurs. Quelques notions d'espagnol facilitent grandement les échanges." },
         { category: "Formalités", level: "easy", text: "Aucun visa requis pour les ressortissants de l'UE pour un séjour touristique jusqu'à 90 jours. Le passeport suffit." },
       ],
+      contextNotes: [
+        { topic: "solo", text: "Buenos Aires est généralement accessible en solo. La Boca mérite une prudence particulière : limitez votre visite au périmètre touristique du Caminito et évitez ce quartier en soirée. Cabify et Uber sont préférables aux taxis hélés dans la rue." },
+      ],
     },
     cities: [
       { name: "San Telmo", type: "Quartier", duration: "1 jour", description: "San Telmo est le plus vieux quartier de Buenos Aires, avec ses rues pavées du XIXe siècle, ses antiquaires, ses bars à tango et son marché dominical. La feria de San Telmo (dimanche) occupe toute la Plaza Dorrego avec des stands de vinyles, de meubles et d'artisanat.", vibe: "Authentique" },
@@ -2949,6 +2972,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Langue", level: "easy", text: "L'anglais est très répandu dans les zones touristiques. La plupart des guides, chauffeurs et commerces parlent un anglais fonctionnel." },
         { category: "Formalités", level: "easy", text: "Les ressortissants de l'UE bénéficient d'un visa à l'arrivée (VOA) de 30 jours, renouvelable une fois (30 jours supplémentaires en ligne). Coût : environ 35 dollars. Le passeport doit être valide au moins 6 mois." },
       ],
+      contextNotes: [
+        { topic: "socialNorms", text: "Un sarong (tissu noué à la taille) est obligatoire pour accéder aux temples et est prêté ou vendu à l'entrée. Les cérémonies et processions religieuses sont fréquentes : s'écarter discrètement et ne pas photographier sans accord est la règle locale." },
+      ],
     },
     cities: [
       { name: "Ubud", type: "Ville", duration: "2-3 jours", description: "Ubud est le centre culturel de Bali, avec ses galeries d'art, ses rizières en terrasses accessibles à pied, son marché artisanal du matin et ses spectacles de danse kecak en soirée. L'atmosphère est plus calme et spirituelle que le sud de l'île.", vibe: "Contemplative" },
@@ -3092,6 +3118,9 @@ export const destinations: Record<string, Destination> = {
         { category: "Transport nocturne", level: "caution", text: "Privilégiez Uber ou Cabify la nuit plutôt que les taxis de rue. Partagez votre trajet en temps réel." },
         { category: "Altitude", level: "info", text: "À 2 240 m, certains voyageurs ressentent fatigue ou léger mal de tête les premiers 24-48h. Hydratation importante." },
         { category: "Eau et alimentation", level: "info", text: "Évitez l'eau du robinet. Les marchés de rue sont généralement sûrs s'ils sont fréquentés et à forte rotation." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Les quartiers indiqués (Roma, Condesa, Polanco) sont accessibles en solo. Évitez de vous orienter avec le téléphone à la main dans les zones peu fréquentées. Uber et Cabify sont les transports à privilégier pour tous les déplacements nocturnes." },
       ],
     },
     cities: [
@@ -3483,6 +3512,10 @@ export const destinations: Record<string, Destination> = {
         { category: "Arnaques touristiques", level: "caution", text: "Guides non sollicités, prix gonflés pour les excursions et les taxis : négociez toujours le prix avant de partir. Préférez les opérateurs recommandés par votre hébergement." },
         { category: "Santé", level: "caution", text: "Paludisme présent : prophylaxie antipaludéenne recommandée, répulsifs anti-moustiques obligatoires le soir. Vaccins hépatite A et typhoïde conseillés. Eau en bouteille uniquement." },
         { category: "Mer et plongée", level: "info", text: "Les courants peuvent être forts selon la saison. Plongez toujours avec un guide certifié. Marée basse sur la côte est : vérifiez les horaires avant de planifier vos baignades." },
+      ],
+      contextNotes: [
+        { topic: "socialNorms", text: "Stone Town est un quartier à majorité musulmane : une tenue couvrant épaules et genoux y est attendue. Sur les plages et dans les complexes touristiques, les normes sont plus libres." },
+        { topic: "solo", text: "Les zones balnéaires ne présentent pas d'enjeu particulier. Dans Stone Town et hors des axes touristiques, évitez les ruelles peu éclairées en soirée et renseignez-vous auprès de votre hébergement sur les itinéraires recommandés." },
       ],
     },
     cities: [
@@ -4022,6 +4055,10 @@ export const destinations: Record<string, Destination> = {
         { category: "Chaleur", level: "caution", text: "Hors de novembre-mars, les températures peuvent atteindre 48°C dans l'intérieur. Hydratation permanente, protection solaire et évitement des activités physiques en milieu de journée sont indispensables." },
         { category: "Santé", level: "low_risk", text: "Aucune vaccination obligatoire pour la France. L'eau du robinet est potable à Muscat. Eau en bouteille recommandée dans les zones rurales. Assurance voyage indispensable (soins privés coûteux)." },
         { category: "Formalités", level: "easy", text: "Visa électronique (e-Visa) à obtenir avant le départ sur evisa.rop.gov.om. Coût environ 20 USD pour les ressortissants français. Passeport valide 6 mois après la date d'entrée. Pas de visa à l'arrivée pour les Français." },
+      ],
+      contextNotes: [
+        { topic: "socialNorms", text: "Une tenue couvrant épaules et genoux est attendue dans les espaces publics. Pour visiter les mosquées, un couvrement complet incluant les cheveux est requis. Dans les complexes touristiques et sur les plages, les normes sont plus libres." },
+        { topic: "solo", text: "Le voyage en solo est possible sans difficulté dans les villes et zones touristiques. Pour les régions reculées (Wahiba Sands, Jebel Akhdar), partir accompagné·e ou avec un guide est recommandé pour des raisons logistiques." },
       ],
     },
     cities: [

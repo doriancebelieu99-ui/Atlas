@@ -181,6 +181,12 @@ export function TabContext({ dest }: { dest: Destination }) {
 
 // ─── Sécurité ─────────────────────────────────────────────────────
 
+const CONTEXT_TOPIC_LABELS: Record<string, string> = {
+  solo: "Voyage en solo",
+  socialNorms: "Usages locaux",
+  identityContext: "À savoir selon le contexte",
+};
+
 export function TabSafety({ dest }: { dest: Destination }) {
   const s = dest.safety;
   return (
@@ -199,6 +205,19 @@ export function TabSafety({ dest }: { dest: Destination }) {
           </div>
         ))}
       </div>
+
+      {s.contextNotes && s.contextNotes.length > 0 && (
+        <div className="safety-context">
+          {s.contextNotes.map((note, i) => (
+            <div key={i} className="safety-context-note">
+              <span className="safety-context-label">
+                {CONTEXT_TOPIC_LABELS[note.topic] ?? note.topic}
+              </span>
+              <p className="safety-context-text">{note.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

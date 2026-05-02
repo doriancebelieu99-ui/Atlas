@@ -33,6 +33,19 @@ describe("getAllDestinations", () => {
       expect(d.cities.length).toBeGreaterThan(0);
     }
   });
+
+  it("contextNotes, when present, contain valid topics and non-empty texts", () => {
+    const VALID_TOPICS = new Set(["solo", "socialNorms", "identityContext"]);
+    const dests = getAllDestinations();
+    for (const d of dests) {
+      if (!d.safety.contextNotes) continue;
+      expect(d.safety.contextNotes.length).toBeGreaterThan(0);
+      for (const note of d.safety.contextNotes) {
+        expect(VALID_TOPICS.has(note.topic), `${d.slug}: unknown topic "${note.topic}"`).toBe(true);
+        expect(note.text.length, `${d.slug}: empty text for topic "${note.topic}"`).toBeGreaterThan(20);
+      }
+    }
+  });
 });
 
 describe("getDestinationBySlug", () => {
