@@ -119,7 +119,7 @@ test("durationExact=14 — warning de contenu épuisé visible", async ({ page }
   await goToItinerary(page, "lisbonne", sid);
 
   await expect(page.locator(".itin-duration-warning")).toBeVisible();
-  await expect(page.locator(".itin-duration-warning")).toContainText(/contenu disponible/i);
+  await expect(page.locator(".itin-duration-warning")).toContainText(/programme complet/i); // lisbonne = city_plus
   // Nombre de tabs < 14+1 (pas assez de contenu)
   const tabs = page.locator(".itin-day-nav [role=tab]");
   const count = await tabs.count();

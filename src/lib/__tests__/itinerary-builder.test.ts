@@ -4,6 +4,8 @@ import { destinations } from "@/data/destinations";
 
 const lisbonne = destinations.lisbonne;
 const TEMPLATE_LEN = lisbonne.itinerary!.days.length; // 5
+const seville = destinations.seville;   // compact
+const crete   = destinations.crete;    // territory
 
 // ─── adaptationMode ──────────────────────────────────────────────
 
@@ -217,11 +219,39 @@ describe("buildItinerary — durationWarning", () => {
   it("warning quand contenu épuisé", () => {
     const r = buildItinerary(lisbonne, 999);
     expect(r.durationWarning).toBeDefined();
-    expect(r.durationWarning).toMatch(/contenu disponible/i);
+    // Lisbonne = city_plus → message "Programme complet"
+    expect(r.durationWarning).toMatch(/programme complet/i);
   });
 
   it("pas de warning en extended si la demande est raisonnable", () => {
     const r = buildItinerary(lisbonne, TEMPLATE_LEN + 1);
     expect(r.durationWarning).toBeUndefined();
+  });
+});
+
+// ─── Warnings — exhausted_content par destinationType ─────────────
+
+describe("buildItinerary — exhausted warning variants", () => {
+  it("city_plus (lisbonne) → 'Programme complet … fiche destination'", () => {
+    const r = buildItinerary(lisbonne, 999);
+    expect(r.durationWarning).toMatch(/programme complet/i);
+    expect(r.durationWarning).toMatch(/fiche destination/i);
+  });
+
+  it("compact (seville) → 'Programme complet … destination voisine'", () => {
+    const r = buildItinerary(seville, 999);
+    expect(r.durationWarning).toMatch(/programme complet/i);
+    expect(r.durationWarning).toMatch(/destination voisine/i);
+  });
+
+  it("territory (crete) → message long-séjour avec 'zones moins visitées'", () => {
+    const r = buildItinerary(crete, 999);
+    expect(r.durationWarning).toMatch(/zones moins visitées/i);
+  });
+
+  it("chaque variant mentionne le nom de la destination", () => {
+    expect(buildItinerary(lisbonne, 999).durationWarning).toMatch(/lisbonne/i);
+    expect(buildItinerary(seville, 999).durationWarning).toMatch(/séville/i);
+    expect(buildItinerary(crete, 999).durationWarning).toMatch(/crète/i);
   });
 });

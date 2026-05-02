@@ -13,6 +13,7 @@ export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" |
 
 export type Environment = "urban" | "coastal" | "nature" | "mixed";
 export type FlightTolerance = "short" | "medium" | "any" | "long";
+export type DestinationType = "compact" | "city_plus" | "territory";
 export type DepartureMonth = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul" | "aug" | "sep" | "oct" | "nov" | "dec";
 
 // ─── User Preferences (quiz output) ──────────────────────────────
@@ -149,6 +150,7 @@ export interface Destination {
   summary: string;
   mainInterest: string;
   idealDuration: string;
+  destinationType: DestinationType;
   pace: string;
   ambiance: string[];
   targetProfiles: string[];

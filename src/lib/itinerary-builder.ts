@@ -1,4 +1,4 @@
-import type { Destination, ItineraryDay, CityInfo, Pace, GroupType } from "./types";
+import type { Destination, DestinationType, ItineraryDay, CityInfo, Pace, GroupType } from "./types";
 
 export type AdaptationMode =
   | "exact_template"
@@ -139,6 +139,27 @@ function syntheticDayFromCity(city: CityInfo, dayNumber: number): ItineraryDay {
   };
 }
 
+// ─── Exhausted content warning ────────────────────────────────────
+
+function buildExhaustedWarning(
+  name: string,
+  destinationType: DestinationType,
+  generatedDays: number,
+  _requestedDays: number,
+): string {
+  const n = generatedDays;
+  const s = n > 1 ? "s" : "";
+  switch (destinationType) {
+    case "territory":
+      return `${name} se prête pleinement à un séjour long. Cet itinéraire présente un noyau de ${n} jour${s} forts — pour aller plus loin, explorez les zones moins visitées à votre rythme.`;
+    case "city_plus":
+      return `Programme complet pour ${name} en ${n} jour${s}. Pour prolonger, explorez les zones et excursions secondaires décrites dans la fiche destination.`;
+    case "compact":
+    default:
+      return `Programme complet pour ${name} en ${n} jour${s}. Pour un séjour plus long, combinez avec une destination voisine.`;
+  }
+}
+
 // ─── Main builder ─────────────────────────────────────────────────
 
 export function buildItinerary(
@@ -186,7 +207,7 @@ export function buildItinerary(
   if (durationDays < idealMin) {
     durationWarning = `Durée recommandée : ${dest.idealDuration}. Les temps forts ont été sélectionnés pour ce séjour court.`;
   } else if (adaptationMode === "exhausted_content") {
-    durationWarning = `Tout le contenu disponible pour ${dest.name} est affiché (${days.length} jour${days.length > 1 ? "s" : ""} sur ${durationDays} demandés). Pour aller plus loin, combinez avec une destination voisine.`;
+    durationWarning = buildExhaustedWarning(dest.name, dest.destinationType, days.length, durationDays);
   }
 
   return {
