@@ -83,6 +83,17 @@ function validateAnswers(
     return { valid: false, error: "Champ 'departureMonth' invalide." };
   }
 
+  if (answers.durationExact !== undefined) {
+    const exact = answers.durationExact;
+    if (typeof exact !== "string" || !/^\d+$/.test(exact)) {
+      return { valid: false, error: "Champ 'durationExact' invalide." };
+    }
+    const n = parseInt(exact, 10);
+    if (n < 1 || n > 14) {
+      return { valid: false, error: "Champ 'durationExact' doit être entre 1 et 14." };
+    }
+  }
+
   if (answers.styles !== undefined) {
     if (!Array.isArray(answers.styles)) {
       return { valid: false, error: "'styles' doit être un tableau." };

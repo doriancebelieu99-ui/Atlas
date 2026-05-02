@@ -26,7 +26,11 @@ export default function ResultsList({ results, answers, onNavigate }: ResultsLis
   };
 
   const summaryParts = Object.entries(answers)
-    .filter(([, v]) => v !== undefined)
+    .filter(([key, v]) => {
+      if (v === undefined) return false;
+      if (key === "duration" && answers.durationExact) return false;
+      return true;
+    })
     .map(([key, val]) => {
       if (Array.isArray(val)) return val.map((v) => answerLabels[key]?.[v] ?? v).join(", ");
       return answerLabels[key]?.[val as string] ?? val;

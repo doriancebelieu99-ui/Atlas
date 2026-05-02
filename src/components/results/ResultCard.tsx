@@ -101,6 +101,7 @@ function buildReason(
   const departurePrecision = answers?.departurePrecision as string | undefined;
   const departureMonth = answers?.departureMonth as string | undefined;
   const duration = answers?.duration as string | undefined;
+  const durationExact = answers?.durationExact as string | undefined;
   const group = answers?.group as string | undefined;
   const pace = answers?.pace as string | undefined;
   const environment = answers?.environment as string | undefined;
@@ -109,10 +110,13 @@ function buildReason(
 
   const interests = rawInterests.slice(0, 2).map((v) => INTEREST_LABELS[v] ?? v);
   const styles = rawStyles.slice(0, 2).map((v) => STYLE_LABELS[v] ?? v);
+  const effectiveDays = durationExact
+    ? Math.max(1, parseInt(durationExact, 10))
+    : (DURATION_DAYS[duration ?? "week"] ?? 5);
 
   switch (key) {
     case "budget": {
-      const days = DURATION_DAYS[duration ?? "week"] ?? 5;
+      const days = effectiveDays;
       const { min, max } = result.budgetEstimate;
       if (budget === "low")
         return `Budget accessible : comptez ${min}–${max} € pour ${days} jours, dans votre fourchette serrée.`;
@@ -135,8 +139,7 @@ function buildReason(
         ? `L'ambiance correspond à votre style : ${styles.join(" et ")}.`
         : `Le profil de la destination correspond bien à vos envies.`;
     case "duration": {
-      const days = DURATION_DAYS[duration ?? "week"] ?? 5;
-      return `Format idéal pour un séjour de ${days} jours : rien ne sera précipité, rien ne manquera.`;
+      return `Format idéal pour un séjour de ${effectiveDays} jours : rien ne sera précipité, rien ne manquera.`;
     }
     case "logistics":
       return score >= 85
@@ -181,6 +184,10 @@ function buildWatchout(
   const departurePrecision = answers?.departurePrecision as string | undefined;
   const departureMonth = answers?.departureMonth as string | undefined;
   const duration = answers?.duration as string | undefined;
+  const durationExactW = answers?.durationExact as string | undefined;
+  const effectiveDaysW = durationExactW
+    ? Math.max(1, parseInt(durationExactW, 10))
+    : (DURATION_DAYS[duration ?? "week"] ?? 5);
   const group = answers?.group as string | undefined;
   const pace = answers?.pace as string | undefined;
   const environment = answers?.environment as string | undefined;
@@ -229,10 +236,9 @@ function buildWatchout(
         ? `${temporalLabel} n'est pas la période optimale — consultez le calendrier saisonnier.`
         : `La saisonnalité peut jouer contre vous — vérifiez les mois disponibles.`;
     case "duration": {
-      const days = DURATION_DAYS[duration ?? "week"] ?? 5;
-      if (days <= 5)
-        return `${days} jours, c'est un peu court pour profiter pleinement — prévoyez idéalement plus de temps.`;
-      return `${days} jours, c'est plus qu'il n'en faut ici — pensez à compléter avec une étape voisine.`;
+      if (effectiveDaysW <= 5)
+        return `${effectiveDaysW} jours, c'est un peu court pour profiter pleinement — prévoyez idéalement plus de temps.`;
+      return `${effectiveDaysW} jours, c'est plus qu'il n'en faut ici — pensez à compléter avec une étape voisine.`;
     }
     case "logistics":
       return `La logistique sur place est plus complexe — anticipez davantage l'organisation.`;
