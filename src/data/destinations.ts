@@ -4566,13 +4566,13 @@ export const destinations: Record<string, Destination> = {
     ],
     budget: {
       economy: { min: 30, max: 50 },
-      comfort: { min: 50, max: 80 },
+      comfort: { min: 60, max: 80 },
       premium: { min: 100, max: 165 },
       flight: { min: 60, max: 160 },
       costIndex: 68,
       freshness: "Avril 2026",
       details: [
-        { label: "Hébergement", economy: "15-30€", comfort: "45-80€", premium: "90-170€" },
+        { label: "Hébergement", economy: "15-30€", comfort: "55-85€", premium: "90-170€" },
         { label: "Repas", economy: "6-10€", comfort: "14-25€", premium: "35-65€" },
         { label: "Transport", economy: "2-4€", comfort: "8-12€", premium: "18€" },
         { label: "Bains / Activités", economy: "8-15€", comfort: "20-30€", premium: "40-70€" },
@@ -4583,7 +4583,7 @@ export const destinations: Record<string, Destination> = {
         { name: "Jan", score: 45, temp: 0, rain: 37, crowd: 38 },
         { name: "Fév", score: 50, temp: 2, rain: 33, crowd: 42 },
         { name: "Mar", score: 68, temp: 8, rain: 38, crowd: 58 },
-        { name: "Avr", score: 84, temp: 15, rain: 42, crowd: 66 },
+        { name: "Avr", score: 76, temp: 15, rain: 42, crowd: 66 },
         { name: "Mai", score: 90, temp: 21, rain: 55, crowd: 72 },
         { name: "Jun", score: 80, temp: 25, rain: 62, crowd: 78 },
         { name: "Jul", score: 70, temp: 28, rain: 54, crowd: 84 },
@@ -4605,7 +4605,7 @@ export const destinations: Record<string, Destination> = {
     },
     safety: {
       overall: "Facile",
-      logisticsScore: 78,
+      logisticsScore: 70,
       freshness: "Avril 2026",
       points: [
         { category: "Sécurité", level: "low_risk", text: "Budapest est globalement sûre. Les pickpockets existent dans les zones touristiques et les transports bondés, mais les agressions sont rares." },
@@ -4700,7 +4700,7 @@ export const destinations: Record<string, Destination> = {
       { text: "Été chaud (juillet-août jusqu'à 35°C). Les cafés et musées offrent la climatisation.", severity: "info" },
     ],
     budget: {
-      economy: { min: 55, max: 85 },
+      economy: { min: 65, max: 85 },
       comfort: { min: 85, max: 125 },
       premium: { min: 160, max: 280 },
       flight: { min: 60, max: 180 },
