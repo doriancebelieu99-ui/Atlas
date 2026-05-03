@@ -147,4 +147,36 @@ describe("Sanity check — scoring differentiation", () => {
       expect(countryCount[r.country]).toBeLessThanOrEqual(2);
     }
   });
+
+  it("anti-cannibalisation — famille low-spring-short : Vienne absente, Budapest sous Séville", () => {
+    // Protège l'ordre éditorial : les capitales d'Europe centrale ne doivent
+    // pas supplanter les destinations méditerranéennes sur un profil famille/budget serré.
+    const results = rankDestinations(
+      {
+        budget: "low",
+        durationDays: 7,
+        period: "spring",
+        groupType: "family",
+        pace: "balanced",
+        styles: ["authentic_local"],
+        interests: ["food", "history"],
+        environment: "urban",
+        flightTolerance: "short",
+      },
+      dests,
+      20,
+    );
+
+    // Vienne : economy.min (65) > budget:low userMax (60) → budget score = 0 → hard-filtré
+    expect(results.find((r) => r.name === "Vienne")).toBeUndefined();
+
+    // Séville et Budapest doivent toutes deux apparaître dans le top 20
+    const sevIdx = results.findIndex((r) => r.name === "Séville");
+    const budIdx = results.findIndex((r) => r.name === "Budapest");
+    expect(sevIdx, "Séville doit être dans le top 20").toBeGreaterThanOrEqual(0);
+    expect(budIdx, "Budapest doit être dans le top 20").toBeGreaterThanOrEqual(0);
+
+    // Budapest doit être classée après Séville
+    expect(budIdx, "Budapest ne doit pas devancer Séville sur ce profil").toBeGreaterThan(sevIdx);
+  });
 });
