@@ -1,11 +1,13 @@
 import { test, expect } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-// Destinations dont flightHoursFromParis > 7 — liste stable tirée de destinations.ts
+// Destinations dont flightHoursFromParis > 7 — liste tirée de destinations.ts
 const LONG_HAUL_SLUGS = new Set([
   "montreal", "new-york", "zanzibar", "bangkok", "le-cap",
   "rio-de-janeiro", "kyoto", "mexico", "tokyo", "lima",
   "singapour", "bali", "buenos-aires", "sydney",
+  "hanoi", "kenya", "la-havane", "rajasthan", "oman",
+  "siem-reap", "costa-rica",
 ]);
 
 // ─── Generic quiz helper ──────────────────────────────────────────

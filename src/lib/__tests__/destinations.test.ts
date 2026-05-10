@@ -11,7 +11,7 @@ import {
 describe("getAllDestinations", () => {
   it("returns all seeded destinations", () => {
     const dests = getAllDestinations();
-    expect(dests.length).toBe(39);
+    expect(dests.length).toBe(44);
   });
 
   it("returns destinations sorted by score descending", () => {
@@ -277,6 +277,36 @@ describe("getItineraryBySlug", () => {
 
   it("returns itinerary for Tbilissi (4 days)", () => {
     const result = getItineraryBySlug("tbilissi");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(4);
+  });
+
+  it("returns itinerary for Copenhague (3 days)", () => {
+    const result = getItineraryBySlug("copenhague");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(3);
+  });
+
+  it("returns itinerary for Samarkand (4 days)", () => {
+    const result = getItineraryBySlug("samarkand");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(4);
+  });
+
+  it("returns itinerary for Bergen (3 days)", () => {
+    const result = getItineraryBySlug("bergen");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(3);
+  });
+
+  it("returns itinerary for Siem Reap (4 days)", () => {
+    const result = getItineraryBySlug("siem-reap");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(4);
+  });
+
+  it("returns itinerary for Costa Rica (4 days)", () => {
+    const result = getItineraryBySlug("costa-rica");
     expect(result).not.toBeNull();
     expect(result!.days).toHaveLength(4);
   });
