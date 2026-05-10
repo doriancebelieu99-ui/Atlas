@@ -148,6 +148,55 @@ describe("Sanity check — scoring differentiation", () => {
     }
   });
 
+  it("anti-cannibalisation — couple premium automne nature : Reykjavik devance Bergen", () => {
+    // Bergen (90%) ne doit pas supplanter Reykjavik (91%) sur son profil de référence.
+    const results = rankDestinations(
+      {
+        budget: "premium",
+        durationDays: 10,
+        period: "autumn",
+        groupType: "couple",
+        pace: "balanced",
+        styles: ["calme_contemplation", "nature_grand_air"],
+        interests: ["nature", "art"],
+        environment: "nature",
+        flightTolerance: "medium",
+      },
+      dests,
+      20,
+    );
+
+    const reykIdx = results.findIndex((r) => r.slug === "reykjavik");
+    const bergIdx = results.findIndex((r) => r.slug === "bergen");
+    expect(reykIdx, "Reykjavik doit apparaître dans le top 20").toBeGreaterThanOrEqual(0);
+    expect(bergIdx, "Bergen doit apparaître dans le top 20").toBeGreaterThanOrEqual(0);
+    expect(reykIdx, "Reykjavik doit devancer Bergen sur ce profil").toBeLessThan(bergIdx);
+  });
+
+  it("visibilité — Copenhague top 5 sur profil couple premium printemps urban", () => {
+    // Copenhague (94%) est une destination urbaine-design à fort score premium —
+    // elle doit apparaître dans le top 5 sur son profil cible.
+    const results = rankDestinations(
+      {
+        budget: "premium",
+        durationDays: 4,
+        period: "spring",
+        groupType: "couple",
+        pace: "balanced",
+        styles: ["energie_urbaine", "food_artdevivre"],
+        interests: ["food", "art"],
+        environment: "urban",
+        flightTolerance: "short",
+      },
+      dests,
+      20,
+    );
+
+    const cphIdx = results.findIndex((r) => r.slug === "copenhague");
+    expect(cphIdx, "Copenhague doit apparaître dans le top 20").toBeGreaterThanOrEqual(0);
+    expect(cphIdx, "Copenhague doit être dans le top 5 sur ce profil").toBeLessThan(5);
+  });
+
   it("anti-cannibalisation — famille low-spring-short : Vienne absente, Budapest sous Séville", () => {
     // Protège l'ordre éditorial : les capitales d'Europe centrale ne doivent
     // pas supplanter les destinations méditerranéennes sur un profil famille/budget serré.
