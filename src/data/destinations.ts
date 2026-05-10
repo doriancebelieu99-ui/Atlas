@@ -4273,7 +4273,7 @@ export const destinations: Record<string, Destination> = {
     region: "Écosse",
     tagline: "La ville de pierre, de brume et de château",
     score: 86,
-    image: "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?w=900&q=80",
     summary: "Édimbourg est bâtie sur un volcan éteint, autour d'un château royal perché sur un rocher de 130 mètres. Aucune autre capitale européenne ne présente une telle densité architecturale médiévale à moins de deux heures de Paris — avec les Highlands accessibles en moins d'une heure.",
     mainInterest: "Architecture gothique médiévale, culture écossaise et whisky",
     idealDuration: "3 à 4 jours",
