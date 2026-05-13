@@ -95,10 +95,10 @@ describe("getItineraryBySlug", () => {
     expect(result!.days).toHaveLength(5);
   });
 
-  it("returns itinerary for Porto (4 days)", () => {
+  it("returns itinerary for Porto (5 days)", () => {
     const result = getItineraryBySlug("porto");
     expect(result).not.toBeNull();
-    expect(result!.days).toHaveLength(4);
+    expect(result!.days).toHaveLength(5);
   });
 
   it("returns itinerary for Séville (4 days)", () => {
