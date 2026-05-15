@@ -6718,6 +6718,152 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  shanghai: {
+    slug: "shanghai",
+    name: "Shanghai",
+    country: "Chine",
+    region: "Shanghai",
+    tagline: "Le Bund colonial face aux tours de Lujiazui, entre French Concession et vieille ville",
+    score: 85,
+    image: "https://images.unsplash.com/photo-1537531718468-4a6a1bde3e2d?w=900&q=80",
+    summary: "Shanghai est la plus grande métropole économique de Chine, avec environ 25 millions d'habitants dans la municipalité. La ville articule un héritage architectural des années de concessions étrangères (1842-1945), visible dans les bâtiments néoclassiques du Bund et les villas art déco de la French Concession, avec l'hypermodernité de Pudong et ses tours culminant à 632 mètres. La cuisine shanghaïenne, le réseau de métro parmi les plus étendus du monde et la densité de quartiers distincts en font une destination structurable en 5 jours sans empilement.",
+    mainInterest: "Culture & architecture urbaine",
+    idealDuration: "5 à 7 jours",
+    destinationType: "city_plus",
+    pace: "Dense",
+    ambiance: ["Contrastée", "Gastronomique", "Dynamique", "Historique", "Vertigineuse"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
+    environment: "urban",
+    flightHoursFromParis: 11.0,
+    coordinates: { lat: 31.2304, lng: 121.4737 },
+    whyGo: [
+      { title: "La confrontation Bund-Pudong", description: "Le Bund est une promenade de 1,5 km bordée de bâtiments néoclassiques et art déco des années 1920-1930, face à la skyline de Lujiazui et ses tours de 400 à 632 mètres. La vue nocturne illuminée est l'une des plus saisissantes parmi les grandes métropoles mondiales. Les deux rives offrent des perspectives distinctes et complémentaires : le Bund vers Pudong en J1, Pudong vers le Bund en J3." },
+      { title: "La French Concession et l'architecture art déco", description: "Shanghai possède l'un des plus importants parcs d'architecture art déco au monde, concentré dans la French Concession. Les rues de Huaihai, Wukang et les ruelles adjacentes conservent des centaines de villas, d'immeubles de rapport et d'hôtels construits entre 1920 et 1940, souvent reconvertis en cafés, boutiques ou résidences. Tianzifang est le réseau de ruelles d'ateliers le plus accessible de cette zone." },
+      { title: "La gastronomie shanghaïenne", description: "Shanghai a une cuisine distincte de la cuisine cantonaise ou sichuanaise : xiaolongbao (小笼包, ravioles à la vapeur avec bouillon interne), shengjianbao (ravioles poêlées dorées en dessous), hong shao rou (porc braisé à la sauce soja sucrée-salée, spécialité de la région). La ville figure parmi les plus hautes concentrations de restaurants étoilés Michelin d'Asie, à des prix variables selon l'établissement." },
+      { title: "L'infrastructure logistique de premier plan", description: "Le réseau de métro de Shanghai compte plus de 20 lignes et plusieurs centaines de stations, avec signalétique en anglais dans les grandes stations. La connexion depuis l'aéroport de Pudong est directe par le Maglev (430 km/h, 8 minutes jusqu'à Longyang Road) ou par le métro ligne 2 (environ 1 heure). L'application DiDi, équivalent local d'Uber avec interface en anglais, couvre l'ensemble de la ville." },
+    ],
+    constraints: [
+      { text: "Les ressortissants français ont en principe besoin d'un visa pour entrer en Chine continentale. Shanghai bénéficie d'une politique d'exemption de transit de 144 heures (6 jours) pour les ressortissants de nombreux pays dont la France, sous conditions strictes (billet de sortie confirmé, zone désignée). Les règles sont susceptibles d'évoluer : vérifier impérativement sur le site de l'ambassade de Chine avant de réserver.", severity: "caution" },
+      { text: "Les principaux services occidentaux (Google Maps, Gmail, WhatsApp, Instagram, YouTube) sont inaccessibles depuis la Chine continentale. Installer les alternatives locales (Amap pour la navigation, WeChat pour la messagerie) et préparer ses outils de communication avant le départ.", severity: "caution" },
+      { text: "Le paiement mobile (Alipay et WeChat Pay) domine en Chine. Depuis 2023, Alipay permet aux étrangers de lier une carte bancaire internationale, mais la configuration peut nécessiter du temps. Les cartes bancaires internationales fonctionnent dans les hôtels et grandes enseignes, moins dans les marchés. Avoir du cash en yuan (人民币, RMB) en secours.", severity: "info" },
+      { text: "Les semaines d'or chinoises (fête nationale du 1er au 7 octobre, fête du travail du 1er au 5 mai) provoquent une très forte affluence sur tous les sites touristiques et saturent les transports. Préférer un séjour mi-octobre à fin novembre ou avril.", severity: "caution" },
+    ],
+    budget: {
+      economy: { min: 60, max: 100 },
+      comfort: { min: 100, max: 200 },
+      premium: { min: 220, max: 500 },
+      flight: { min: 600, max: 1200 },
+      costIndex: 68,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "3-10€", comfort: "15-40€", premium: "60-200€" },
+        { label: "Hébergement/nuit", economy: "25-50€", comfort: "80-160€", premium: "200-500€" },
+        { label: "Transport/jour", economy: "3€", comfort: "8€", premium: "20€" },
+        { label: "Activités/jour", economy: "5-15€", comfort: "20-50€", premium: "60-200€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 50, temp: 6, rain: 50, crowd: 30 },
+        { name: "Fév", score: 45, temp: 7, rain: 60, crowd: 40 },
+        { name: "Mar", score: 65, temp: 12, rain: 80, crowd: 45 },
+        { name: "Avr", score: 78, temp: 17, rain: 95, crowd: 55 },
+        { name: "Mai", score: 80, temp: 22, rain: 80, crowd: 55 },
+        { name: "Jun", score: 38, temp: 26, rain: 160, crowd: 45 },
+        { name: "Jul", score: 30, temp: 30, rain: 145, crowd: 40 },
+        { name: "Aoû", score: 32, temp: 31, rain: 130, crowd: 38 },
+        { name: "Sep", score: 52, temp: 26, rain: 130, crowd: 45 },
+        { name: "Oct", score: 88, temp: 20, rain: 60, crowd: 65 },
+        { name: "Nov", score: 80, temp: 14, rain: 50, crowd: 55 },
+        { name: "Déc", score: 55, temp: 8, rain: 40, crowd: 40 },
+      ],
+      best: "Octobre à novembre et avril à mai",
+      avoid: "Juin à août : pluies de mousson (梅雨), chaleur humide (30-31°C) et risque de typhons.",
+      note: "Octobre est la période idéale : températures douces (18-22°C), peu de pluie, ciel souvent dégagé. Attention aux semaines d'or chinoises (fête nationale, 1er-7 octobre) : les sites touristiques et les transports sont très fréquentés. Le printemps (avril-mai) est également agréable. L'hiver (décembre-mars) est frais à froid et la qualité de l'air peut se dégrader selon les vents.",
+    },
+    context: {
+      culture: "Shanghai est une métropole à l'identité distincte, façonnée par son histoire de port ouvert et de concessions étrangères (britannique, française, américaine, japonaise) qui ont produit une culture locale hybride dite 'haipai' (海派, style de Shanghai), mélange d'influences cosmopolites et de traditions chinoises. Le shanghaiien est un dialecte Wu, distincte du mandarin, encore pratiqué dans les générations plus âgées.",
+      tips: "Préparer ses outils de communication et de navigation avant le départ : les services Google, WhatsApp et Instagram sont inaccessibles depuis la Chine continentale. Télécharger Amap (高德地图) pour la navigation et WeChat (微信) pour la messagerie. Le paiement mobile (Alipay ou WeChat Pay) est dominant : depuis 2023, Alipay permet aux étrangers de lier une carte bancaire internationale, procédure à effectuer avant le départ ou à l'arrivée. La carte Jiaotong (交通卡, disponible à l'aéroport) couvre le métro et les bus.",
+      surprises: "Shanghai possède l'un des plus denses parcs d'architecture art déco au monde, concentré dans la French Concession et autour du Bund. Des centaines de villas, d'immeubles de bureaux et d'hôtels construits entre 1920 et 1940 subsistent, souvent reconvertis en cafés, boutiques ou résidences privées. Le contraste avec les tours de Lujiazui (la Shanghai Tower culmine à 632 mètres) en fait une ville visuellement saisissante à l'échelle du piéton.",
+      history: "Shanghai est ouverte aux échanges commerciaux étrangers à partir du traité de Nankin (1842), après la première guerre de l'Opium. Les concessions étrangères se développent jusqu'aux années 1940. La ville devient l'une des principales métropoles mondiales dans les années 1920-1930. Après 1949, Shanghai ralentit sous la planification centralisée. La zone économique spéciale de Pudong, créée en 1990, amorce le développement des tours de Lujiazui visible aujourd'hui.",
+    },
+    safety: {
+      overall: "Modérée",
+      logisticsScore: 80,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Shanghai est une grande métropole globalement sûre pour les voyageurs étrangers. La criminalité violente est faible. Les escroqueries à la 'salade de thé' (invitation par des inconnus à une dégustation payante à prix gonflé) sont documentées autour du Bund et des sites touristiques : décliner poliment toute invitation spontanée à partager un thé ou un repas avec des inconnus." },
+        { category: "Santé", level: "low_risk", text: "L'eau du robinet n'est pas potable : boire en bouteille ou eau filtrée. Le système de santé est de bon niveau dans les hôpitaux internationaux, nombreux à Shanghai. La qualité de l'air peut être dégradée en hiver (novembre à mars) : vérifier l'indice AQI avant les activités de plein air lors de cette période." },
+        { category: "Transport", level: "easy", text: "Le métro de Shanghai est l'un des plus étendus au monde, avec signalétique en anglais dans la majorité des stations. La carte Jiaotong (交通卡) couvre le métro, les bus et certains taxis. L'application DiDi (滴滴, équivalent local d'Uber) propose une interface en anglais et couvre l'ensemble de la ville. Le Maglev relie l'aéroport de Pudong à Longyang Road en 8 minutes." },
+        { category: "Langue", level: "moderate", text: "Le mandarin est pratiquement la seule langue en usage dans les commerces locaux, les restaurants non-touristiques et les marchés. L'anglais est présent dans les hôtels internationaux et la signalétique des transports, mais quasi absent des échanges quotidiens. Une application de traduction photo est indispensable pour les menus et les panneaux en dehors des zones touristiques." },
+        { category: "Formalités", level: "caution", text: "Les ressortissants français doivent en principe disposer d'un visa pour entrer en Chine continentale. La politique d'exemption de transit de 144 heures applicable à Shanghai permet un séjour sans visa sous conditions (billet de sortie confirmé dans ce délai, zone désignée). Les conditions exactes sont susceptibles d'évoluer : vérifier sur le site de l'ambassade de Chine et auprès de la compagnie aérienne avant le départ." },
+        { category: "Internet", level: "caution", text: "Les principaux services occidentaux (Google, Gmail, YouTube, WhatsApp, Instagram) sont inaccessibles depuis la Chine continentale. Préparer des alternatives avant le départ : Amap pour la navigation, WeChat pour la messagerie. L'usage d'un VPN est courant chez les voyageurs étrangers mais se situe dans un cadre légalement ambigu en Chine." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Shanghai est une ville globalement sûre pour les voyageurs solos. Le métro, DiDi (interface anglophone) et les quartiers centraux permettent une autonomie correcte même sans mandarin. L'hébergement en auberge de jeunesse est bien représenté dans la French Concession et à Jing'an." },
+        { topic: "identityContext", text: "La Chine ne reconnaît pas légalement les couples de même sexe et la visibilité LGBTQ+ publique est très limitée. Shanghai est la ville la plus ouverte de Chine sur ce sujet, avec quelques établissements dans la French Concession, mais la discrétion dans les espaces publics reste recommandée." },
+      ],
+    },
+    cities: [
+      { name: "Bund et Huangpu", type: "Front de mer historique", duration: "1 journée", description: "Le Bund (外滩) est une promenade de 1,5 km longeant la rive ouest du fleuve Huangpu, bordée de bâtiments néoclassiques et art déco des années 1920-1930. En face, la skyline de Pudong et la Shanghai Tower forment l'image la plus connue de la ville. La promenade est accessible librement et fréquentée à toute heure.", vibe: "Iconique" },
+      { name: "French Concession", type: "Quartier résidentiel historique", duration: "1 journée", description: "L'ancienne concession française (法租界) est le quartier le plus préservé de l'ère des concessions, avec des platanes centenaires, des villas art déco et des maisons shikumen (石库门). Tianzifang (réseau de ruelles d'ateliers reconverties) et Xintiandi (shikumen restaurés en complexe gastronomique) en sont les points d'entrée.", vibe: "Résidentielle" },
+      { name: "Old City et Yu Garden", type: "Vieille ville", duration: "½ journée", description: "La vieille ville de Shanghai (南市) est le coeur historique autour du jardin Yu (豫园, style classique Ming, 16e siècle). Le bazaar Yuyuan adjacent est très touristique. Le marché de Fuyou Road propose des objets anciens et de la brocante dans une atmosphère plus locale.", vibe: "Traditionnelle" },
+      { name: "Pudong et Lujiazui", type: "CBD ultra-moderne", duration: "½ journée", description: "Pudong est le centre d'affaires développé depuis 1990, avec la Shanghai Tower (632 m), le Shanghai World Financial Center (492 m, surnommé 'l'ouvre-bouteille') et la Jin Mao Tower (421 m). Les observatoires offrent une vue à 360° sur Shanghai. Le bord du Huangpu côté Pudong donne la perspective inverse du Bund.", vibe: "Vertigineuse" },
+      { name: "Jing'an", type: "Quartier central", duration: "½ journée", description: "Jing'an est un quartier central organisé autour du temple bouddhiste Jing'an (静安寺), dont les toits dorés contrastent directement avec les gratte-ciels voisins. Le musée de Shanghai (bronzes, céramiques, peintures) et West Nanjing Road en font un quartier pivot entre histoire et modernité.", vibe: "Contrastée" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée, Huangpu & Bund nocturne", zone: "Pudong Airport / Huangpu", intensity: 1, transportMinutes: 60, freeSlots: 2,
+          activities: [
+            { slot: "9h–12h", name: "Transfert aéroport — Maglev ou métro ligne 2", type: "logistics", duration: 90, icon: "✈️", note: "L'aéroport international de Shanghai-Pudong (PVG) est à environ 30 km du centre. Deux options : le Maglev (磁浮, train à sustentation magnétique, 430 km/h, 8 minutes jusqu'à Longyang Road, tarif environ 50 RMB), depuis Longyang Road correspondance métro ligne 2 vers le centre (20 minutes supplémentaires) ; ou directement le métro ligne 2 depuis l'aéroport jusqu'à People's Square (environ 1 heure, tarif environ 8 RMB). La carte Jiaotong (交通卡, carte de transport rechargeable) est disponible à l'aéroport et couvre le métro, les bus et les taxis locaux. Le créneau indiqué correspond à une arrivée matinale ; le timing varie selon le vol." },
+            { slot: "13h–15h", name: "Déjeuner et installation", type: "food", duration: 120, icon: "🍜", note: "Selon le quartier de l'hôtel, un repas dans un restaurant de quartier permet une première immersion. Wonton en bouillon (馄饨, hun tun), nouilles de blé sautées (炒面, chao mian) et ravioles poêlées (生煎包, shengjianbao) sont disponibles dans tout le centre à bas prix. Budget 5 à 12€ par personne. L'enregistrement à l'hôtel implique la présentation du passeport ; l'établissement effectue normalement lui-même la déclaration auprès de la police dans les 24 heures, obligation légale pour les étrangers." },
+            { slot: "16h–18h30", name: "Promenade du Bund en fin d'après-midi", type: "free", duration: 150, icon: "🌆", note: "Le Bund (外滩) est une promenade de 1,5 km longeant la rive ouest du fleuve Huangpu, bordée de bâtiments néoclassiques et art déco des années 1920-1930 : ancienne Hong Kong and Shanghai Bank, hôtel Peace, anciens consulats et sièges de compagnies d'assurance. Accès libre et permanent. En fin d'après-midi, la lumière rasante éclaire les façades depuis le fleuve. De nombreux bâtiments sont aujourd'hui reconvertis en hôtels de luxe ou restaurants. La promenade est fréquentée en permanence, plus calme le matin." },
+            { slot: "19h–21h", name: "Dîner Huangpu et vue nocturne du Bund", type: "food", duration: 120, icon: "🌃", note: "Le Bund illuminé en soirée, face aux tours de Lujiazui en couleurs, est la vue la plus emblématique de Shanghai. Le dîner peut précéder ou suivre la promenade nocturne selon la fatigue du voyage. Des restaurants de cuisine shanghaïenne (hong shao rou, porc braisé à la sauce soja, shengjianbao) se trouvent dans les ruelles à l'arrière du Bund et dans le quartier autour de Huaihai Road. Budget 15 à 35€ par personne. Les établissements directement sur le front du Bund tendent vers les prix touristiques." },
+          ],
+        },
+        {
+          number: 2, title: "Old City, Yu Garden & French Concession", zone: "Old City / Xuhui / French Concession", intensity: 3, transportMinutes: 35, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h", name: "Yu Garden à l'ouverture", type: "culture", duration: 120, icon: "🏯", note: "Le jardin Yu (豫园, construit au 16e siècle par Pan Yunduan, fonctionnaire de la cour Ming) est le seul jardin classique de style chinois au centre de Shanghai, étendu sur environ 2 hectares. Il est organisé autour d'étangs, de pavillons, de rocailles et de murs couronnés de dragons en faïence. Tarif d'entrée à vérifier sur le site officiel (généralement autour de 40 RMB). Visiter dès l'ouverture (généralement 9h) permet d'éviter l'affluence maximale des groupes, qui arrivent à partir de 10h30." },
+            { slot: "11h–12h", name: "Old City et marché de Fuyou Road", type: "free", duration: 60, icon: "🏺", note: "Le marché de Fuyou Road (福佑路), adjacent à Yu Garden, propose des objets anciens et curiosités chinoises (bronzes, porcelaines, reproductions, antiquités). L'ambiance est dense et locale, distincte du bazaar Yuyuan très touristique qui entoure le jardin. Les ruelles de l'Old City (南市) conservent quelques maisons en bois et cours intérieures dans un tissu urbain très remanié. Accessible à pied depuis la sortie du jardin." },
+            { slot: "12h–13h30", name: "Déjeuner Old City, spécialité xiaolongbao", type: "food", duration: 90, icon: "🥟", note: "Le secteur autour de Yu Garden est connu pour ses restaurants spécialisés dans les xiaolongbao (小笼包, ravioles à la vapeur avec bouillon interne). Des adresses proposant cette spécialité sont présentes dans les ruelles autour du bazaar. Les files d'attente peuvent être longues aux heures de pointe (12h-13h) dans les restaurants réputés : arriver avant ou après ce créneau. Budget 5 à 15€ par personne. La salle de restauration du bazaar Yuyuan lui-même est très touristique et plus chère." },
+            { slot: "14h30–17h", name: "Tianzifang et French Concession", type: "free", duration: 150, icon: "🌿", note: "Tianzifang (田子坊) est un réseau de ruelles shikumen (石库门, maisons de ruelle à entrées de pierre, typiques de Shanghai) reconverties en galeries d'art, ateliers de créateurs, cafés et boutiques de design. L'accès est libre. L'animation est forte le week-end. En sortant de Tianzifang, la déambulation dans les rues de la French Concession (Yongkang Road, Fuxing Road, Wukang Road, avec son immeuble en proue de navire art déco) offre l'ambiance la plus caractéristique du quartier : platanes centenaires, villas des années 1920-1940, cafés indépendants." },
+            { slot: "19h–21h", name: "Dîner French Concession", type: "food", duration: 120, icon: "🍽️", note: "La French Concession concentre une offre variée de restaurants de quartier et d'adresses gastronomiques. Des restaurants de cuisine shanghaïenne accessible (hong shao rou, stir-fry, nouilles froides en sauce sésame) se trouvent dans les ruelles perpendiculaires à Huaihai Road. Xintiandi, à environ 10 minutes au nord de Tianzifang, propose des restaurants dans un cadre de shikumen restaurés, plus haut de gamme. Budget 15 à 30€ par personne pour un repas de quartier, davantage à Xintiandi." },
+          ],
+        },
+        {
+          number: 3, title: "Pudong, observatoire & Jing'an", zone: "Pudong / Lujiazui / Jing'an", intensity: 3, transportMinutes: 40, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h30", name: "Observatoire Pudong — Shanghai Tower ou SWFC", type: "culture", duration: 150, icon: "🏙️", note: "Deux observatoires principaux à Lujiazui. La Shanghai Tower (上海中心大厦, 632 m, plus haut immeuble de Chine) dispose d'un observatoire au 118e étage (tarif à vérifier sur le site officiel, billets à réserver à l'avance pour éviter les files d'attente). Le Shanghai World Financial Center (SWFC, 492 m, surnommé 'l'ouvre-bouteille') propose le Sky Walk 100 à 474 m (tarif à vérifier). La Jin Mao Tower (421 m) a également un observatoire au 88e étage. Arriver tôt le matin maximise les chances de bonne visibilité. En journée nuageuse, la vue est réduite : vérifier les prévisions avant de réserver." },
+            { slot: "11h30–12h30", name: "Bord du Huangpu côté Pudong — perspective sur le Bund", type: "free", duration: 60, icon: "🌊", note: "Depuis la promenade de Binjiang Avenue, le long du fleuve Huangpu côté Pudong, la vue sur le Bund est la perspective inverse de celle de J1 : les façades néoclassiques et art déco se lisent depuis la rive est. Ce point de vue est distinct et complémentaire de celui de J1, et complète la compréhension de la configuration urbaine de Shanghai. L'accès est libre depuis le pied des tours de Lujiazui. La traversée peut se faire par le ferry piéton (tarif modique) ou par le tunnel touristique du Bund (payant, expérience peu recommandée)." },
+            { slot: "13h–14h30", name: "Déjeuner à Jing'an", type: "food", duration: 90, icon: "🍽️", note: "Le quartier de Jing'an propose des restaurants de cuisine shanghaïenne et internationale le long de West Nanjing Road et des ruelles adjacentes. Nouilles à la sauce soja et oignons verts (葱油拌面, cong you ban mian, spécialité shanghaïenne), soupes de riz (粥, zhou), ravioles poêlées (锅贴, guotie). Budget 6 à 15€ par personne dans un restaurant de quartier. Accessible depuis Lujiazui par le métro ligne 2 (environ 20 minutes, station Jing'an Temple)." },
+            { slot: "15h–16h30", name: "Temple Jing'an", type: "culture", duration: 90, icon: "🛕", note: "Le temple bouddhiste Jing'an (静安寺), dont l'origine remonte au 3e siècle, a été reconstruit dans sa forme actuelle au 20e siècle. Il est entouré directement de gratte-ciels et jouxte un grand centre commercial, ce qui en fait l'un des contrastes architecturaux les plus frappants de Shanghai. Le temple est en activité cultuelle. Tarif d'entrée à vérifier (généralement autour de 50 RMB)." },
+            { slot: "17h–21h", name: "West Nanjing Road et dîner Jing'an", type: "free", duration: 240, icon: "🌆", note: "West Nanjing Road (西南京路, de Jing'an Temple vers People's Square) est l'artère commerçante principale du quartier, distincte de la touristique East Nanjing Road piétonne. Elle concentre centres commerciaux, cafés et restaurants. Le dîner peut se faire dans les ruelles perpendiculaires (autour de Changshu Road ou Julu Road) où des restaurants de cuisine shanghaïenne et internationale de quartier sont présents sans orientation touristique. Budget 10 à 25€ par personne." },
+          ],
+        },
+        {
+          number: 4, title: "Zhujiajiao — village aquatique", zone: "Zhujiajiao", intensity: 2, transportMinutes: 120, freeSlots: 1,
+          activities: [
+            { slot: "8h30–10h", name: "Transport depuis Shanghai vers Zhujiajiao", type: "logistics", duration: 90, icon: "🚌", note: "Zhujiajiao (朱家角) est à environ 40 km à l'ouest de Shanghai. Le moyen le plus accessible est le bus depuis la station de Shanghai Stadium (上海体育馆), avec correspondance par le métro ligne 4 ou ligne 1. Des bus touristiques desservent également ce trajet depuis plusieurs points du centre. La durée est d'environ 1 heure selon le trafic. Vérifier les horaires et opérateurs à jour avant le départ, les liaisons variant selon la saison. Un départ avant 9h permet d'arriver avant les groupes. En semaine, l'affluence est nettement moindre que le week-end." },
+            { slot: "10h–12h30", name: "Canaux, ponts et architecture de Zhujiajiao", type: "culture", duration: 150, icon: "🌉", note: "Zhujiajiao est un village aquatique construit à partir du 17e siècle, traversé par des canaux et doté de 36 ponts de pierre, dont le Fangsheng Bridge (放生桥, cinq arches, le plus grand et le plus ancien du secteur, construit en 1571). Le tissu bâti conserve des maisons en brique grise à toits en tuiles des périodes Ming et Qing. L'entrée dans le village est libre ; certains sites internes (temples, musées locaux) sont payants. Le site est touristique mais l'architecture et la structure des canaux sont réels et bien préservés." },
+            { slot: "12h30–14h", name: "Déjeuner local à Zhujiajiao", type: "food", duration: 90, icon: "🍱", note: "Des restaurants proposant des spécialités locales sont présents dans les ruelles du village. Le zongzi (粽子, boulettes de riz gluant enveloppées dans des feuilles de bambou, parfois fourrées au porc ou aux haricots rouges), la tofu pressée locale et les beignets de rue figurent parmi les options. Des restaurants de cuisine shanghaiïenne plus complète sont accessibles près des entrées du village. Budget 8 à 15€ par personne." },
+            { slot: "15h–20h", name: "Retour à Shanghai et soirée libre", type: "free", duration: 300, icon: "🚌", note: "Le retour suit le même trajet que l'aller (bus vers Shanghai Stadium, métro vers le centre). Arrivée à Shanghai vers 16h-17h selon le trafic. La soirée est intentionnellement libre pour absorber les imprévus de transport de la journée et permettre un dernier passage sur le Bund (illuminé à partir de 18h-19h) ou une flânerie dans la French Concession sans programme structuré. Certains voyageurs profitent de ce retour pour visiter le quartier de Xintiandi le soir." },
+          ],
+        },
+        {
+          number: 5, title: "Bund matinal, musée & départ", zone: "Huangpu / Jing'an / Pudong Airport", intensity: 1, transportMinutes: 70, freeSlots: 2,
+          activities: [
+            { slot: "8h–9h30", name: "Bund à l'aube", type: "free", duration: 90, icon: "🌅", note: "Le Bund le matin est nettement moins fréquenté qu'en soirée. La lumière du matin éclaire directement les façades des bâtiments historiques côté ouest. Des habitants du quartier pratiquent leur promenade quotidienne sur la promenade. L'ambiance est calme et différente de l'atmosphère nocturne de J1. La vue sur les tours de Lujiazui dans la lumière du matin est complémentaire des perspectives de J1 et J3." },
+            { slot: "9h30–11h30", name: "Musée de Shanghai ou Jing'an", type: "culture", duration: 120, icon: "🏛️", note: "Le musée de Shanghai conserve des collections majeures de bronzes chinois anciens, céramiques Song et Ming, peintures et sculptures traditionnelles. Le site historique se trouvait Place du Peuple (人民广场) ; un nouveau bâtiment à Pudong (Shanghai Museum East) est en cours d'ouverture autour de 2025-2026 — vérifier la localisation et les modalités de réservation (entrée souvent gratuite sur réservation en ligne) avant le départ. En cas d'indisponibilité ou de saturation : le quartier de Jing'an ou une balade à Xintiandi sont de bonnes alternatives de demi-matinée." },
+            { slot: "12h–13h30", name: "Dernier repas shanghaïen", type: "food", duration: 90, icon: "🥢", note: "Dernier repas dans le quartier de l'hôtel ou en chemin vers la station de métro. Les shengjianbao (生煎包, ravioles poêlées à la pâte épaisse, dorées en dessous et moelleuses au-dessus) ou les wonton en bouillon sont des options de déjeuner rapide disponibles dans la quasi-totalité des quartiers centraux. Budget 5 à 12€ par personne." },
+            { slot: "14h30–17h", name: "Transfert vers l'aéroport de Pudong", type: "logistics", duration: 150, icon: "✈️", note: "Depuis People's Square ou Jing'an, le métro ligne 2 relie directement l'aéroport de Pudong en environ 50 minutes à 1 heure. La carte Jiaotong couvre le trajet (tarif environ 8 RMB). En alternative, un taxi DiDi depuis le centre prend entre 45 minutes et 1h30 selon le trafic (compter 100 à 200 RMB approximativement, tarif variable). Prévoir 3 heures avant l'heure de décollage pour les formalités internationales. Si les bagages sont à l'hôtel, prévoir la récupération avant le départ vers la station. Si le vol est prévu après 19h, il est possible de décaler le transfert d'une heure." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
