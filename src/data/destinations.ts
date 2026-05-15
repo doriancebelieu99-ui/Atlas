@@ -6422,6 +6422,151 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  "kuala-lumpur": {
+    slug: "kuala-lumpur",
+    name: "Kuala Lumpur",
+    country: "Malaisie",
+    region: "Klang Valley",
+    tagline: "Capitale trilingue où mosquées, temples et tours de verre partagent le même quartier",
+    score: 85,
+    image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=900&q=80",
+    summary:
+      "Kuala Lumpur est une métropole de 8 millions d'habitants dans la vallée du Klang, en Malaisie péninsulaire. La ville concentre en quelques kilomètres carrés des sites de trois traditions religieuses distinctes, un tissu historique hérité de la colonisation britannique et un quartier d'affaires moderne dominé par les Petronas Twin Towers (452 mètres), dont la construction s'est achevée en 1998. La coexistence malaise, chinoise et indienne est lisible dans l'espace urbain : chaque communauté a conservé ses marchés, ses lieux de culte et ses restaurants. La gastronomie qui en résulte couvre tous les budgets, des food courts climatisés des centres commerciaux aux étals de rue actifs tard le soir. L'anglais est parlé de manière quasi universelle, le réseau de transports en commun est dense et l'application Grab couvre la plupart des déplacements ponctuels. La chaleur tropicale et l'humidité sont constantes toute l'année.",
+    mainInterest: "Culture & gastronomie asiatique",
+    idealDuration: "4 à 6 jours",
+    destinationType: "city_plus",
+    pace: "Équilibré",
+    ambiance: ["Gastronomique", "Cosmopolite", "Accessible", "Dynamique", "Contrastée"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
+    environment: "urban",
+    flightHoursFromParis: 12.5,
+    coordinates: { lat: 3.139, lng: 101.687 },
+    whyGo: [
+      { title: "Architecture multiculturelle lisible dans l'espace", description: "Masjid Jamek (mosquée de style mogol, 1909), les temples taoïstes du quartier chinois, les temples hindous tamouls et les tours de verre du XXIe siècle coexistent dans un rayon de quelques centaines de mètres. Kuala Lumpur n'a pas effacé ses strates historiques : les quartiers gardent leur identité propre, ce qui rend la ville plus lisible culturellement que sa réputation de mégapole anonyme ne le laisse supposer." },
+      { title: "Cuisine trilingue accessible à tous les budgets", description: "La cuisine malaise, chinoise et indienne tamoule coexistent dans les mêmes food courts (halles alimentaires couvertes climatisées) et hawker centres (marchés de rue couverts). Un repas de nasi lemak (riz au lait de coco, anchois frits, cacahuètes et sambal pimenté) ou de char kway teow (nouilles plates sautées à l'huile de palme avec crevettes et oeufs) coûte entre 10 et 25 ringgits malaisiens, soit 2 à 5 euros au taux actuel. Certains food courts de centres commerciaux accueillent des vendeurs issus des marchés historiques, avec une qualité comparable aux étals de rue." },
+      { title: "Logistique parmi les plus simples d'Asie du Sud-Est", description: "L'anglais est parlé de manière quasi universelle, y compris dans les marchés locaux et les transports. La carte Touch 'n Go (rechargeable à l'aéroport et dans les 7-Eleven) couvre le MRT, le LRT, le Monorail, le bus et le KTM Komuter. L'application Grab fonctionne partout en ville avec les prix affichés à l'avance. L'aéroport de Kuala Lumpur est relié au centre en 28 minutes par le KLIA Ekspres." },
+      { title: "Batu Caves en demi-journée depuis le centre", description: "Les Batu Caves, complexe de temples hindous rupestres taillés dans un affleurement calcaire, sont à 13 kilomètres au nord de la ville et accessibles en 30 à 35 minutes depuis KL Sentral par le KTM Komuter. Le site principal est gratuit et ne requiert aucune logistique particulière hors des périodes de festival. C'est l'une des excursions de demi-journée les plus directes disponibles depuis une grande capitale d'Asie du Sud-Est." },
+    ],
+    constraints: [
+      { text: "Vol Paris-Kuala Lumpur de 12 à 13 heures en direct selon les rotations en vigueur à la date du voyage, ou de 13 à 16 heures avec correspondance à Doha, Dubai ou Amsterdam. Décalage horaire de 6 à 7 heures selon la saison. Les premiers jours peuvent être affectés par le jet lag.", severity: "info" },
+      { text: "L'observatoire des Petronas Twin Towers (skybridge floors 41-42 et deck floor 86) est fermé le lundi. La réservation en ligne est obligatoire et les créneaux du soir se remplissent plusieurs jours à l'avance. Si l'arrivée a lieu un samedi, la journée 4 coïncide avec un lundi : la Menara KL Tower (421 mètres, ouverte tous les jours) constitue l'alternative la plus directe.", severity: "caution" },
+      { text: "Les mosquées et de nombreux temples imposent de couvrir les épaules et les genoux, et de retirer les chaussures. Des abayas et sarongs sont disponibles à l'entrée de Masjid Jamek et de la Mosquée Nationale. Prévoir des tenues adaptables dans le sac de journée.", severity: "caution" },
+      { text: "Masjid Jamek ferme l'accès aux non-musulmans pendant la prière du vendredi, de 12h15 environ à 14h30. Si la journée 2 tombe un vendredi, visiter la mosquée avant 11h30 ou la reporter à un autre créneau de la journée.", severity: "caution" },
+      { text: "La chaleur et l'humidité sont constantes toute l'année (30 à 35 degrés Celsius, 80 à 90 pour cent d'humidité relative). Les activités extérieures de milieu de journée sont physiquement éprouvantes. Des averses brèves mais intenses sont fréquentes en fin d'après-midi. Prévoir un imperméable compact et planifier les visites de sites extérieurs tôt le matin.", severity: "info" },
+    ],
+    budget: {
+      economy: { min: 30, max: 55 },
+      comfort: { min: 75, max: 130 },
+      premium: { min: 170, max: 380 },
+      flight: { min: 450, max: 1400 },
+      costIndex: 58,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "10-25 RM (2-5€)", comfort: "40-100 RM (8-20€)", premium: "150-400 RM (30-80€)" },
+        { label: "Hébergement/nuit", economy: "60-150 RM (12-30€)", comfort: "200-500 RM (40-100€)", premium: "600-2000 RM (120-400€)" },
+        { label: "Transport/jour", economy: "10 RM (2€)", comfort: "25 RM (5€)", premium: "80 RM (16€)" },
+        { label: "Activités/jour", economy: "20-50 RM (4-10€)", comfort: "80-150 RM (16-30€)", premium: "200-500 RM (40-100€)" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 68, temp: 27, rain: 175, crowd: 40 },
+        { name: "Fév", score: 72, temp: 28, rain: 140, crowd: 45 },
+        { name: "Mar", score: 70, temp: 29, rain: 195, crowd: 50 },
+        { name: "Avr", score: 74, temp: 30, rain: 230, crowd: 55 },
+        { name: "Mai", score: 82, temp: 30, rain: 185, crowd: 60 },
+        { name: "Jun", score: 85, temp: 30, rain: 120, crowd: 65 },
+        { name: "Jul", score: 88, temp: 30, rain: 110, crowd: 65 },
+        { name: "Aoû", score: 82, temp: 30, rain: 150, crowd: 60 },
+        { name: "Sep", score: 75, temp: 30, rain: 185, crowd: 55 },
+        { name: "Oct", score: 68, temp: 29, rain: 275, crowd: 50 },
+        { name: "Nov", score: 65, temp: 28, rain: 280, crowd: 45 },
+        { name: "Déc", score: 62, temp: 27, rain: 230, crowd: 50 },
+      ],
+      best: "Mai à juillet",
+      avoid: "Octobre-novembre : précipitations les plus importantes de l'année.",
+      note: "Kuala Lumpur est une ville équatoriale : la chaleur et l'humidité sont constantes toute l'année. Les différences saisonnières tiennent à la fréquence des pluies, pas à la température. La côte ouest de la Malaisie, dont KL fait partie, est relativement moins arrosée de mai à juillet. Les pluies sont généralement brèves et intenses, principalement en fin d'après-midi.",
+    },
+    context: {
+      culture: "La Malaisie est un État multiculturel à majorité malaise musulmane (environ 60 pour cent de la population), avec des communautés chinoises (22 pour cent) et indiennes (7 pour cent) anciennement établies depuis la période coloniale britannique. L'islam est la religion officielle de l'État et structure une partie de la vie publique : appel à la prière audible cinq fois par jour dans les quartiers centraux, et restaurants halal majoritaires dans les zones malaises. Les trois communautés cohabitent avec des institutions généralement distinctes, temples, mosquées et commerces restant souvent organisés par quartier.",
+      tips: "La Touch 'n Go card (disponible à l'aéroport, dans les 7-Eleven et les stations de transit) couvre le MRT, le LRT, le Monorail, le bus et le KTM Komuter. L'application Grab est le moyen le plus pratique pour les déplacements ponctuels : les prix sont affichés à l'avance et les conducteurs parlent anglais. L'eau du robinet n'est pas potable à Kuala Lumpur. Le pourboire n'est pas d'usage dans la culture malaise et indienne, mais est parfois pratiqué dans les restaurants à service international.",
+      surprises: "Les food courts des grands centres commerciaux (comme Lot 10 Hutong ou les étages alimentaires de Pavilion KL) ne sont pas une concession touristique : ils accueillent parfois des vendeurs issus des marchés historiques de la ville, avec une climatisation et des standards d'hygiène supérieurs aux étals de rue, sans perte significative en qualité ou en identité culinaire. C'est souvent là que les habitants de KL déjeunent en semaine.",
+      history: "Kuala Lumpur, dont le nom signifie littéralement embouchure boueuse en malais, a été fondée vers 1857 comme camp minier à la confluence des rivières Gombak et Klang. Le commerce de l'étain sous la colonisation britannique en a fait la capitale des États malais fédérés en 1896, puis de la Malaisie indépendante en 1957. Les Petronas Twin Towers, dont la construction s'est achevée en 1998, ont été les plus hautes tours du monde de 1998 à 2004.",
+    },
+    safety: {
+      overall: "Facile",
+      logisticsScore: 85,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Kuala Lumpur est une ville relativement sûre pour les touristes. Le risque principal est le vol à l'arraché depuis un scooter dans les zones commerçantes très fréquentées comme Bukit Bintang et Petaling Street. Tenir le sac côté intérieur du trottoir et ne pas exposer son téléphone sur la chaussée sont les précautions essentielles. La criminalité violente envers les touristes est exceptionnellement rare." },
+        { category: "Santé", level: "moderate", text: "L'eau du robinet n'est pas potable à Kuala Lumpur. Les infrastructures médicales privées sont de bon niveau, avec du personnel anglophone dans les grands hôpitaux. La chaleur et l'humidité constantes peuvent provoquer des coups de chaleur chez les voyageurs non acclimatés : s'hydrater régulièrement et limiter les activités extérieures entre 11h et 15h." },
+        { category: "Transport", level: "easy", text: "Le réseau de transports en commun (MRT, LRT, Monorail, KTM Komuter) couvre l'essentiel de la ville avec une signalétique en anglais dans toutes les stations. L'application Grab est disponible partout et affiche les prix à l'avance. La Touch 'n Go card couvre l'ensemble des lignes et se recharge dans les stations et les 7-Eleven." },
+        { category: "Langue", level: "easy", text: "L'anglais est la langue de communication entre les communautés malaises, chinoises et indiennes, et est parlé de manière quasi universelle dans les commerces, les transports et les restaurants. Le niveau d'anglais est inhabituellement homogène dans l'ensemble de la population pour une grande ville d'Asie du Sud-Est." },
+        { category: "Formalités", level: "easy", text: "Les ressortissants de l'Union européenne peuvent entrer en Malaisie sans visa pour un séjour touristique jusqu'à 90 jours. Vérifier les conditions en vigueur sur le site officiel de l'immigration malaisienne avant le départ, les modalités pouvant évoluer." },
+        { category: "Météo", level: "moderate", text: "La chaleur équatoriale (30 à 35 degrés Celsius) et l'humidité élevée sont constantes toute l'année. Des orages brefs mais intenses surviennent fréquemment en fin d'après-midi. Pendant la période de Thaipusam (janvier ou février selon le calendrier tamoul hindou), la fréquentation des Batu Caves atteint plusieurs centaines de milliers de pèlerins en quelques jours." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Kuala Lumpur est globalement adaptée aux voyageurs solos. Le risque principal est le vol à l'arraché dans les zones commerçantes très fréquentées. Les transports en commun et Grab permettent des déplacements nocturnes sans dépendre de taxis non officiels. L'anglais universel facilite les démarches autonomes." },
+        { topic: "identityContext", text: "La Malaisie criminalise les actes homosexuels sous la loi civile et sous la loi islamique applicable aux ressortissants musulmans malaisiens, avec des peines pouvant être sévères pour ces derniers. Pour les touristes étrangers non-musulmans, le risque de poursuites en pratique est faible, mais toute démonstration publique d'affection entre personnes de même sexe est fortement déconseillée dans l'ensemble du pays. Il n'existe pas de scène LGBTQ+ visible à Kuala Lumpur." },
+      ],
+    },
+    cities: [
+      { name: "KLCC / Bukit Bintang", type: "Quartier moderne central", duration: "1 journée", description: "KLCC (Kuala Lumpur City Centre) est le quartier des Petronas Twin Towers, du parc public KLCC et des grandes tours de bureaux et d'hôtels. Bukit Bintang, adjacent, est le principal quartier de divertissement et de restauration, avec la rue Jalan Alor active le soir et plusieurs grandes galeries marchandes climatisées. C'est le point d'ancrage logistique naturel pour un premier séjour.", vibe: "Moderne" },
+      { name: "Centre historique (Dataran Merdeka)", type: "Quartier colonial", duration: "½ journée", description: "Le centre historique concentre les traces les plus lisibles de la période coloniale britannique : Dataran Merdeka (esplanade de l'Indépendance), le Sultan Abdul Samad Building en architecture mauresque (1897) et Masjid Jamek (1909), plus ancienne mosquée debout de Kuala Lumpur, construite à la confluence des rivières Gombak et Klang. Les sites sont proches les uns des autres et accessibles à pied.", vibe: "Historique" },
+      { name: "Chinatown (Petaling Street)", type: "Quartier chinois historique", duration: "½ journée", description: "Le quartier chinois de Kuala Lumpur s'organise autour de Petaling Street, marché couvert actif depuis le XIXe siècle, et du Central Market (Pasar Seni), bâtiment Art Déco de 1888 reconverti en marché d'artisanat malais, chinois et indien. Le temple hindou Sri Mahamariamman (fondé en 1873) se trouve dans ce quartier. Les restaurants et étals de cuisine chinoise sont actifs du matin jusqu'en début d'après-midi.", vibe: "Authentique" },
+      { name: "Brickfields (Little India)", type: "Quartier indien", duration: "½ journée", description: "Brickfields est le quartier tamoul de Kuala Lumpur, adjacent à KL Sentral, le principal noeud de transport de la ville. Il concentre des restaurants de cuisine du Sud de l'Inde (banana leaf rice, roti canai, teh tarik), des épiceries d'épices et des lieux de culte tamouls. Le quartier est actif principalement le matin et à l'heure du déjeuner.", vibe: "Cosmopolite" },
+      { name: "Lake Gardens (Perdana Botanical Garden)", type: "Parc urbain central", duration: "½ journée", description: "Le Perdana Botanical Garden est un parc de 91 hectares au centre-ouest de Kuala Lumpur. Il est bordé par l'Islamic Arts Museum Malaysia, l'un des plus importants musées d'art islamique d'Asie du Sud-Est, et par le Muzium Negara (Musée national de Malaisie). Accessible depuis Brickfields à pied ou en Grab.", vibe: "Apaisante" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & KLCC / Bukit Bintang", zone: "KLIA / KLCC / Bukit Bintang", intensity: 1, transportMinutes: 45, freeSlots: 2,
+          activities: [
+            { slot: "Arrivée", name: "Transfert KLIA Ekspres depuis l'aéroport", type: "logistics", duration: 45, icon: "✈️", note: "Le KLIA Ekspres relie l'aéroport international de Kuala Lumpur (KLIA) à KL Sentral en 28 minutes, avec un départ toutes les 15 minutes. Tarif environ 55 ringgits malaisiens (11 euros au taux actuel, à vérifier avant le départ). La Touch 'n Go card, disponible aux distributeurs de l'aéroport dès la sortie du terminal, couvre l'ensemble du réseau de transports en commun de la ville. L'aéroport KLIA2, terminal principal d'AirAsia, est situé sur le même site dans un bâtiment distinct : le KLIA Ekspres s'arrête aux deux terminaux, reliés par un Skybridge gratuit (environ 3 minutes). Le créneau indiqué correspond à une arrivée en matinée ou en milieu de journée ; le timing varie selon le vol." },
+            { slot: "16h–18h30", name: "KLCC Park — Petronas Twin Towers extérieur", type: "free", duration: 150, icon: "🏙️", note: "Le parc KLCC est un espace public de 50 acres en pied des Petronas Twin Towers, ouvert en permanence et gratuit. L'arrivée en fin d'après-midi permet de voir les tours dans la lumière déclinante. Un spectacle de fontaines musicales est programmé en soirée (horaires à vérifier sur place). L'observatoire intérieur du floor 86 et le skybridge (floors 41-42) sont des activités séparées, payantes, fermées le lundi et soumises à réservation obligatoire en avance : ils sont planifiés à la journée 4. Aucune contrainte pour la promenade extérieure dans le parc." },
+            { slot: "19h–21h30", name: "Jalan Alor — street food du soir", type: "food", duration: 150, icon: "🍢", note: "Jalan Alor est la principale rue de street food de Bukit Bintang, active de 17h environ à minuit. Les étals proposent du char kway teow (nouilles plates sautées à l'huile de palme avec crevettes et oeufs), du satay (brochettes de viande marinée avec sauce aux arachides), des fruits de mer grillés et des desserts à base de cendol (lait de coco, sucre de palme liquide et gelée de farine de riz). La rue est orientée touristes, avec des prix légèrement supérieurs aux food courts de quartier : budget de 25 à 45 ringgits par personne (5 à 9 euros) pour un repas complet. Accessible depuis KLCC à pied (15 minutes) ou en monorail (station Bukit Bintang)." },
+          ],
+        },
+        {
+          number: 2, title: "Centre historique & Chinatown", zone: "Masjid Jamek / Dataran Merdeka / Chinatown", intensity: 3, transportMinutes: 20, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h", name: "Masjid Jamek & Dataran Merdeka", type: "culture", duration: 120, icon: "🕌", note: "Masjid Jamek (1909), mosquée en plan en trèfle de style mogol, est construite à la confluence des rivières Gombak et Klang, point d'origine historique de la ville. Entrée gratuite pour les non-musulmans hors des horaires de prière. La mosquée ferme l'accès aux non-musulmans pendant la prière du vendredi, de 12h15 environ à 14h30 : si la journée 2 tombe un vendredi, visiter avant 11h30. Dress code obligatoire : abayas et sarongs disponibles à l'entrée. Dataran Merdeka (esplanade de l'Indépendance), à 10 minutes à pied, est l'espace où le drapeau britannique a été amené le 31 août 1957 lors de l'indépendance de la Malaisie. Le Sultan Abdul Samad Building en architecture mauresque (1897), visible depuis l'esplanade, est un bâtiment judiciaire actif non visitable à l'intérieur." },
+            { slot: "11h–12h30", name: "Central Market (Pasar Seni)", type: "free", duration: 90, icon: "🏛️", note: "Le Central Market est un bâtiment Art Déco de 1888 reconverti en marché d'artisanat. Les étals proposent du batik malais, de l'artisanat chinois et indien, des instruments de musique et des épices. Ouvert tous les jours (horaires à vérifier sur place, généralement à partir de 10h). Adjacent à la rue Petaling Street, accessible à pied depuis Dataran Merdeka en 10 minutes le long de la rivière Klang. Le bâtiment est climatisé, ce qui en fait une pause utile en milieu de matinée." },
+            { slot: "12h30–14h", name: "Déjeuner Chinatown", type: "food", duration: 90, icon: "🍜", note: "Les ruelles autour de Petaling Street et les restaurants adjacents au Central Market proposent de la cuisine chinoise de la région : wonton mee (soupe de ravioles au porc ou aux crevettes), curry laksa (nouilles en bouillon épicé au lait de coco), bak kut teh (soupe de côtes de porc aux herbes, spécifique à la tradition chinoise de la région) et char kway teow. Les étals sont actifs du matin jusqu'à 14h-15h. Budget de 12 à 25 ringgits par personne (2 à 5 euros). Petaling Street elle-même est principalement un marché de produits variés et de contrefaçons : les restaurants de qualité se trouvent dans les ruelles adjacentes." },
+            { slot: "14h30–17h", name: "Petaling Street & Sri Mahamariamman Temple", type: "free", duration: 150, icon: "🛕", note: "Petaling Street est un marché de rue couvert actif depuis la fin du XIXe siècle. Le temple Sri Mahamariamman, à 5 minutes à pied, est un temple hindou tamoul fondé en 1873 et richement décoré. Entrée gratuite, ouvert tous les jours. Retirer les chaussures à l'entrée. Le temple est le point de départ de la procession de Thaipusam vers Batu Caves, organisée chaque année en janvier ou février selon le calendrier tamoul hindou." },
+            { slot: "19h–21h", name: "Dîner Chinatown ou Dataran Merdeka", type: "food", duration: 120, icon: "🍽️", note: "Le quartier de Chinatown reste actif en soirée avec des restaurants et des étals ouverts jusqu'à 22h-23h. Ikan bakar (poisson ou fruits de mer grillés), laksa, desserts à base de cendol ou d'air batu campur (glace pilée aux haricots rouges, maïs et sirop de rose). Budget de 20 à 40 ringgits par personne (4 à 8 euros). Le secteur proche de Dataran Merdeka propose quelques restaurants dans des bâtiments coloniaux rénovés pour un cadre plus calme." },
+          ],
+        },
+        {
+          number: 3, title: "Lake Gardens / Islamic Arts Museum / Brickfields / Thean Hou", zone: "Perdana / Brickfields / Seputeh / Bangsar", intensity: 2, transportMinutes: 50, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h30", name: "Islamic Arts Museum Malaysia", type: "culture", duration: 150, icon: "🏛️", note: "L'Islamic Arts Museum Malaysia est l'un des plus importants musées d'art islamique d'Asie du Sud-Est. Les collections couvrent les manuscrits coraniques, la calligraphie, les céramiques, les textiles et des reconstitutions d'architectures islamiques de différentes régions du monde. Situé en bordure des Lake Gardens. Les horaires et le tarif d'entrée sont à confirmer avant la visite (les données disponibles indiquent une ouverture quotidienne avec un tarif adulte d'environ 20 ringgits, soit environ 4 euros, mais ces informations ont pu évoluer). Durée de visite raisonnable : 1h30 à 2h." },
+            { slot: "11h30–13h", name: "Perdana Botanical Garden", type: "free", duration: 90, icon: "🌿", note: "Le Perdana Botanical Garden est un parc de 91 hectares adjacent à l'Islamic Arts Museum. La promenade entre les deux sites est agréable le matin, avant la chaleur de milieu de journée. Le KL Bird Park (Taman Burung), grand aviaire intégré dans le parc, est une option séparée avec un tarif d'entrée distinct (environ 67 ringgits adulte, à vérifier sur place). Si la chaleur est trop intense pour marcher, Grab depuis les Lake Gardens vers Brickfields couvre environ 10 à 15 minutes de trajet." },
+            { slot: "13h–14h30", name: "Déjeuner Brickfields — banana leaf rice", type: "food", duration: 90, icon: "🍛", note: "Brickfields est le quartier tamoul de Kuala Lumpur, adjacent à KL Sentral. Le banana leaf rice (riz servi sur une feuille de bananier avec plusieurs currys de légumes, dal (purée de lentilles), rasam (bouillon épicé aux tomates et tamarin) et pappadom (galette de lentilles croustillante) est le repas de référence de la cuisine tamoule du Sud de l'Inde. Budget de 15 à 30 ringgits par personne (3 à 6 euros). Les restaurants sont actifs principalement entre 11h30 et 15h." },
+            { slot: "15h30–17h", name: "Thean Hou Temple", type: "culture", duration: 90, icon: "🏯", note: "Le Thean Hou Temple est un complexe taoïste et bouddhiste en terrasses ouvert en 1987 sur la colline de Seputeh. Le temple est un lieu de culte actif fréquenté par la communauté chinoise de Kuala Lumpur. Vue sur la ville depuis les terrasses supérieures. Entrée gratuite, ouvert tous les jours (horaires approximatifs 9h-18h, à confirmer sur place). Il n'existe pas de station MRT ou LRT à proximité directe : Grab depuis Brickfields est le trajet le plus simple (10 à 15 minutes, environ 10 à 15 ringgits)." },
+            { slot: "19h–21h", name: "Dîner Bangsar", type: "food", duration: 120, icon: "🍽️", note: "Bangsar est un quartier résidentiel aisé au sud-ouest de Kuala Lumpur, à 10 à 15 minutes de Thean Hou en Grab. Il concentre des restaurants de cuisines malaise, indienne, internationale et fusion dans les ruelles autour de Jalan Telawi. Budget de 40 à 80 ringgits par personne (8 à 16 euros) pour un repas complet avec boissons. Zone plus calme et résidentielle que Bukit Bintang en soirée." },
+          ],
+        },
+        {
+          number: 4, title: "Batu Caves & Kampung Baru & Petronas Observatory", zone: "Batu Caves / Kampung Baru / KLCC", intensity: 3, transportMinutes: 70, freeSlots: 1,
+          activities: [
+            { slot: "8h–10h30", name: "Batu Caves", type: "culture", duration: 150, icon: "⛰️", note: "Les Batu Caves sont un complexe de grottes calcaires au sein desquelles des temples hindous tamouls ont été aménagés depuis la fin du XIXe siècle. La grotte principale (Cathedral Cave) est accessible par un escalier de 272 marches. Entrée gratuite pour la grotte principale. Depuis KL Sentral, prendre le KTM Komuter ligne Batu Caves (30 à 35 minutes, environ 3 à 4 ringgits). La fréquence des trains est irrégulière hors des heures de pointe, avec des intervalles pouvant atteindre 30 à 45 minutes : vérifier les horaires sur l'application KTM avant le départ ou prévoir Grab depuis KL Sentral (30 minutes, 20 à 30 ringgits). Départ recommandé à 8h au plus tard : au-delà de 10h, la combinaison chaleur et affluence rend la montée difficile. Des singes sont présents sur le site et peuvent être agressifs si on porte de la nourriture visible. Pendant la période de Thaipusam (janvier ou février selon le calendrier tamoul), l'affluence dépasse plusieurs centaines de milliers de pèlerins : le site est alors impraticable pour une visite ordinaire." },
+            { slot: "11h30–13h", name: "Déjeuner Kampung Baru", type: "food", duration: 90, icon: "🍚", note: "Kampung Baru est un village malais enclavé dans le tissu urbain de Kuala Lumpur, à 15 à 20 minutes à pied de KLCC ou 10 minutes en Grab depuis KL Sentral. Les restaurants et étals de cuisine malaise traditionnelle sont actifs surtout le matin et jusqu'à 14h-15h. Nasi lemak (riz cuit au lait de coco, servi avec anchois frits, cacahuètes, oeuf dur et sambal pimenté), rendang (viande braisée longuement en sauce aux épices et lait de coco) et nasi kerabu (riz coloré au bunga telang, fleur de pois bleu, avec garnitures de légumes et poisson séché). Budget de 15 à 30 ringgits par personne (3 à 6 euros)." },
+            { slot: "14h–17h", name: "Après-midi libre — Bukit Bintang", type: "free", duration: 180, icon: "🛍️", note: "La journée 4 est la plus chargée logistiquement. L'après-midi libre permet de récupérer avant la soirée à l'observatoire. Les centres commerciaux climatisés de Bukit Bintang (Pavilion KL, Suria KLCC) constituent une option de repos efficace, avec accès aux food courts pour un encas. Se rapprocher de KLCC avant 18h pour être disponible pour l'observatoire." },
+            { slot: "18h–20h30", name: "Petronas Twin Towers — observatoire", type: "culture", duration: 150, icon: "🏙️", note: "L'observatoire des Petronas Twin Towers comprend le skybridge entre les deux tours (floors 41 et 42) et le deck d'observation du floor 86. La réservation en ligne est obligatoire sur le site officiel de KLCC : les créneaux du soir et du week-end se remplissent plusieurs jours à l'avance. Le tarif adulte est d'environ 80 à 100 ringgits (16 à 20 euros au taux actuel, à vérifier sur le site officiel avant la visite). L'observatoire est fermé le lundi. Si la journée 4 tombe un lundi, la Menara KL Tower (421 mètres, ouverte tous les jours) est l'alternative directe : open deck à 300 mètres de hauteur, tarif distinct, vue légèrement différente depuis une colline boisée." },
+          ],
+        },
+        {
+          number: 5, title: "Départ", zone: "KLCC / KL Sentral / KLIA", intensity: 1, transportMinutes: 50, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h", name: "Matin libre — KLCC", type: "free", duration: 120, icon: "☕", note: "La matinée laisse du temps pour un dernier passage dans le parc KLCC ou un petit-déjeuner dans les cafés de Suria KLCC. Les boutiques d'artisanat et les supermarchés présents dans les centres commerciaux KLCC sont des options pour un achat de dernière minute. Pas d'activité structurée : la priorité est de rester dans un rayon accessible de KL Sentral pour le départ vers l'aéroport." },
+            { slot: "12h–14h", name: "Transfert KLIA Ekspres", type: "logistics", duration: 120, icon: "✈️", note: "Depuis Bukit Bintang ou KLCC, rejoindre KL Sentral par le Monorail (station Bukit Bintang, environ 10 minutes) ou en Grab (10 à 15 minutes selon le trafic). Le KLIA Ekspres depuis KL Sentral relie l'aéroport en 28 minutes (toutes les 15 minutes, tarif environ 55 ringgits). Prévoir 3 heures avant l'heure de décollage pour les formalités internationales. Depuis KLCC, le trajet total vers l'aéroport prend environ 45 à 55 minutes. Si les bagages sont restés à l'hôtel, prévoir la récupération ou le dépôt en consigne avant de partir pour KL Sentral." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
