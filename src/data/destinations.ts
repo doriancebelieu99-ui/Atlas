@@ -6864,6 +6864,152 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  pekin: {
+    slug: "pekin",
+    name: "Pékin",
+    country: "Chine",
+    region: "Pékin",
+    tagline: "La Cité interdite, la Grande Muraille et les hutongs de la capitale impériale",
+    score: 83,
+    image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=900&q=80",
+    summary: "Pékin est la capitale politique de la Chine depuis la dynasty Ming (15e siècle) et concentre un ensemble patrimonial impérial sans équivalent : la Cité interdite (故宫, 720 000 m², 1406-1420), le Temple du Ciel (天坛, 1420), le Palais d'été (颐和园, 18e siècle) et les sections de la Grande Muraille accessibles en journée. Le tissu des hutongs (胡同, ruelles traditionnelles en voie de raréfaction) et les grands parcs urbains fréquentés dès l'aube par les Pékinois constituent le pendant vivant de ce patrimoine monumental. La logistique est efficace (réseau de métro, DiDi) mais requiert une préparation spécifique pour les points d'accès internet, de paiement et de réservation.",
+    mainInterest: "Patrimoine impérial & hutongs",
+    idealDuration: "5 à 7 jours",
+    destinationType: "city_plus",
+    pace: "Dense",
+    ambiance: ["Impériale", "Historique", "Dense", "Gastronomique", "Contrastée"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
+    environment: "urban",
+    flightHoursFromParis: 10.5,
+    coordinates: { lat: 39.9042, lng: 116.4074 },
+    whyGo: [
+      { title: "La Cité interdite et l'axe impérial Ming", description: "La Cité interdite (故宫, 1406-1420) est le plus grand complexe de palais médiévaux au monde, avec 720 000 m² et 980 bâtiments en brique et bois laqué rouge. Elle s'inscrit dans un axe nord-sud parfaitement rectiligne qui traverse la ville depuis la place Tian'anmen jusqu'aux parcs du nord. Depuis la colline de Jingshan, la vue aérienne sur l'ensemble du complexe et sur la silhouette de la ville est l'une des perspectives urbaines les plus saisissantes d'Asie." },
+      { title: "La Grande Muraille accessible en journée", description: "La Grande Muraille de Chine (长城, patrimoine mondial UNESCO) court sur plus de 21 000 km à travers le nord de la Chine. La section de Mutianyu, à environ 70 km de Pékin, est l'une des mieux préservées parmi les sections accessibles en journée : le tracé suit la ligne de crête des collines boisées avec des tours de guet de la période Ming. L'automne (feuillage dense) et le printemps tardif offrent les meilleures conditions de visite." },
+      { title: "Le tissu vivant des hutongs", description: "Les hutongs (胡同) sont les ruelles qui constituaient le tissu résidentiel traditionnel de Pékin, organisées autour de cours intérieures (siheyuan, 四合院). Beaucoup ont disparu lors des grandes restructurations urbaines, mais les quartiers autour de Shichahai (什刹海) et de la Drum Tower en conservent encore des exemples lisibles. La marche lente ou le vélo sont les seuls modes de déplacement adaptés à leur échelle." },
+      { title: "La cuisine pékinoise et le canard laqué", description: "Le canard laqué de Pékin (北京烤鸭) est préparé par rôtissage au four ou à la broche ; la peau laquée et croustillante est servie séparément de la chair, avec des galettes de blé, de la sauce hoisin et des cébettes. Les zhajiang mian (炸酱面, nouilles à la sauce de haricots noirs fermentés, spécialité pékinoise), les jiaozi (饺子, ravioles farcies) et les snacks de hutong complètent un registre culinaire bien ancré géographiquement." },
+    ],
+    constraints: [
+      { text: "La Cité interdite est fermée le lundi. La réservation en ligne est obligatoire sur le site officiel, sans achat possible sur place. Les billets sont souvent épuisés plusieurs semaines à l'avance en haute saison (mai à octobre, semaines d'or). Réserver dès la planification du séjour. Si J2 tombe un lundi, permuter J2 et J3.", severity: "caution" },
+      { text: "Les ressortissants français doivent en principe disposer d'un visa pour entrer en Chine continentale. Pékin bénéficie d'une politique d'exemption de transit de 144 heures sous conditions strictes (billet de sortie confirmé dans ce délai, zone désignée). Vérifier impérativement les conditions en vigueur sur le site de l'ambassade de Chine avant de réserver.", severity: "caution" },
+      { text: "Les services Google, WhatsApp, Instagram et YouTube sont inaccessibles depuis la Chine. Télécharger Amap (navigation) et WeChat (messagerie) avant le départ. Le paiement mobile (Alipay, WeChat Pay) domine ; une configuration préalable avec une carte bancaire internationale est recommandée. Le cash en yuan (人民币, RMB) reste indispensable en secours.", severity: "caution" },
+      { text: "La qualité de l'air à Pékin peut être sévèrement dégradée en novembre-mars, avec des épisodes dépassant régulièrement 200 points d'indice AQI. Des tempêtes de sable venant du désert de Gobi sont possibles en mars-avril. Vérifier l'AQI quotidiennement lors d'un séjour en hiver ou au printemps.", severity: "caution" },
+    ],
+    budget: {
+      economy: { min: 50, max: 90 },
+      comfort: { min: 90, max: 180 },
+      premium: { min: 200, max: 450 },
+      flight: { min: 550, max: 1100 },
+      costIndex: 65,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "3-10€", comfort: "15-40€", premium: "60-200€" },
+        { label: "Hébergement/nuit", economy: "20-45€", comfort: "70-150€", premium: "180-450€" },
+        { label: "Transport/jour", economy: "3€", comfort: "8€", premium: "20€" },
+        { label: "Activités/jour", economy: "10-25€", comfort: "25-60€", premium: "60-200€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 35, temp: -2, rain: 5, crowd: 25 },
+        { name: "Fév", score: 30, temp: 0, rain: 8, crowd: 40 },
+        { name: "Mar", score: 52, temp: 7, rain: 10, crowd: 40 },
+        { name: "Avr", score: 60, temp: 14, rain: 20, crowd: 55 },
+        { name: "Mai", score: 75, temp: 20, rain: 30, crowd: 65 },
+        { name: "Jun", score: 55, temp: 25, rain: 70, crowd: 55 },
+        { name: "Jul", score: 42, temp: 29, rain: 160, crowd: 48 },
+        { name: "Aoû", score: 45, temp: 28, rain: 130, crowd: 50 },
+        { name: "Sep", score: 90, temp: 21, rain: 45, crowd: 65 },
+        { name: "Oct", score: 78, temp: 14, rain: 20, crowd: 80 },
+        { name: "Nov", score: 58, temp: 6, rain: 15, crowd: 40 },
+        { name: "Déc", score: 35, temp: -1, rain: 3, crowd: 30 },
+      ],
+      best: "Septembre et mai",
+      avoid: "Décembre à février : grand froid, pollution sévère. Juillet-août : chaleur humide, pluies.",
+      note: "Septembre est la meilleure période : températures douces (18-22°C), ciel bleu, forêt encore dense sur la Grande Muraille. Début octobre (semaine d'or nationale, 1er-7 octobre) est à éviter : affluence maximale sur tous les sites. L'hiver (décembre-février) cumule gel (températures pouvant descendre à -10°C) et épisodes de pollution sévère. Mars-avril présente un risque de tempêtes de sable (沙尘暴) depuis le désert de Gobi.",
+    },
+    context: {
+      culture: "Pékin est la capitale politique de la Chine depuis la dynasty Yuan (13e siècle), avec une interruption sous les premiers Ming. Son plan urbain actuel date de la dynasty Ming (1368-1644) : damier orienté nord-sud avec la Cité interdite au centre, entourée de quartiers concentriques de hutongs et de temples. Le pékinois (北京话) est la base du mandarin standard national. La ville héberge les institutions centrales du Parti communiste chinois et du gouvernement national.",
+      tips: "Préparer ses outils avant le départ : Google Maps, WhatsApp et les services occidentaux sont inaccessibles depuis la Chine. Télécharger Amap (高德地图) pour la navigation et WeChat (微信) pour la messagerie. La réservation de la Cité interdite est obligatoire en ligne avant le départ, sans possibilité d'achat sur place. La carte Yikatong (一卡通, carte de transport rechargeable) couvre le métro et les bus. Le paiement mobile (Alipay, WeChat Pay) domine ; avoir du cash en yuan (RMB) en secours.",
+      surprises: "Les parcs de Pékin (Temple du Ciel, Beihai, Ditan) sont des espaces de vie quotidienne très intense pour les Pékinois dès le lever du soleil : danses collectives, tai chi, chorales improvisées, jeux d'échecs et exercices en groupe. Ce tissu social, visible dès 6h-7h dans les parcs, est l'un des aspects les plus inattendus de la ville pour un premier voyageur.",
+      history: "La ville, alors nommée Yanjing, est une capitale régionale depuis le 10e siècle. La dynasty mongole Yuan en fait la capitale de l'empire sous le nom de Dadu au 13e siècle. Les Ming reconstruisent entièrement la ville selon un plan en damier orienté sur un axe nord-sud magnétique, avec la Cité interdite au centre. Ce plan urbain Ming structure encore aujourd'hui la géographie de la ville, lisible dans la succession de ses boulevards périphériques (2e, 3e, 4e anneau routier).",
+    },
+    safety: {
+      overall: "Modérée",
+      logisticsScore: 78,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Pékin est une grande métropole globalement sûre pour les visiteurs étrangers. La présence policière et les systèmes de surveillance dans l'espace public sont importants. Les escroqueries documentées dans les zones touristiques (abords de Tian'anmen, Wangfujing) incluent des invitations à visiter des galeries d'art ou salons de thé à prix fortement gonflés : décliner poliment toute sollicitation spontanée." },
+        { category: "Santé", level: "caution", text: "La qualité de l'air est un risque réel à Pékin, surtout de novembre à mars. Des épisodes de pollution sévère (AQI dépassant 200 à 300) sont possibles plusieurs jours consécutifs, rendant les activités extérieures prolongées inconfortables et potentiellement nocives. Vérifier l'indice AQI quotidiennement. L'eau du robinet n'est pas potable : boire en bouteille." },
+        { category: "Transport", level: "easy", text: "Le réseau de métro de Pékin couvre l'ensemble de la ville avec signalétique en anglais dans les grandes stations. La carte Yikatong couvre le métro et les bus. L'application DiDi (interface en anglais) est la solution la plus pratique pour les déplacements en taxi. Pékin dispose de deux aéroports internationaux (PEK au nord-est, PKX au sud) avec leurs propres liaisons express vers le centre." },
+        { category: "Langue", level: "moderate", text: "Le mandarin est la seule langue en usage quotidien. L'anglais est présent dans les hôtels internationaux et les zones touristiques, mais quasi absent dans les commerces de quartier et les restaurants locaux. Une application de traduction photo est indispensable pour les menus et les panneaux hors zones touristiques." },
+        { category: "Formalités", level: "caution", text: "Les ressortissants français doivent en principe disposer d'un visa pour entrer en Chine continentale. La politique d'exemption de transit de 144 heures s'applique à Pékin sous conditions strictes (billet de sortie confirmé dans ce délai, zone désignée). Ces conditions sont susceptibles d'évoluer : vérifier sur le site de l'ambassade de Chine et auprès de la compagnie aérienne avant le départ." },
+        { category: "Internet", level: "caution", text: "Les principaux services occidentaux (Google, Gmail, YouTube, WhatsApp, Instagram) sont inaccessibles depuis la Chine. Préparer des alternatives locales avant le départ : Amap pour la navigation, WeChat pour la messagerie. L'usage d'un VPN est courant chez les voyageurs étrangers mais se situe dans un cadre légalement ambigu en Chine." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Pékin est globalement sûre pour les voyageurs solos. Le métro et DiDi permettent des déplacements autonomes même sans mandarin. La forte présence de systèmes de surveillance dans l'espace public est un élément de contexte à intégrer. L'hébergement en auberge de jeunesse est bien représenté dans les quartiers de Dongcheng et Chaoyang." },
+        { topic: "identityContext", text: "La Chine ne reconnaît pas légalement les couples de même sexe et la visibilité LGBTQ+ est très limitée dans l'espace public. Pékin dispose de quelques établissements dans le quartier de Sanlitun, mais la discrétion dans les espaces publics reste fermement recommandée." },
+      ],
+    },
+    cities: [
+      { name: "Dongcheng et axe impérial", type: "Centre historique", duration: "2 jours", description: "Dongcheng est le district central qui concentre l'axe nord-sud de l'ancienne capitale impériale : la place Tian'anmen, la Cité interdite (故宫), le parc Jingshan et le lac Beihai. Wangfujing est la principale artère commerçante du centre. Les hutongs les mieux conservés du district se trouvent autour de Nanluoguxiang et du lac Shichahai.", vibe: "Impériale" },
+      { name: "Temple du Ciel / Chongwen", type: "Quartier du temple", duration: "½ journée", description: "Le Temple du Ciel (天坛, 273 hectares, 1420) est le principal ensemble rituel de la période impériale Ming et Qing. La salle de prière pour les bonnes récoltes (祈年殿) est l'un des bâtiments les plus photographiés de Pékin. Le parc est fréquenté dès l'aube par les Pékinois pour leurs activités quotidiennes.", vibe: "Sereine" },
+      { name: "Hutongs / Drum Tower / Shichahai", type: "Tissu traditionnel", duration: "½ journée", description: "La zone autour de la Drum Tower (鼓楼) et du lac Shichahai (什刹海) est le quartier de hutongs le plus accessible du centre. Les ruelles autour de Mao'er Hutong et les abords du lac sont moins touristiques que Nanluoguxiang. La Bell Tower (钟楼) est à environ 100 mètres de la Drum Tower.", vibe: "Résidentielle" },
+      { name: "Summer Palace / Haidian", type: "Parc impérial", duration: "1 journée", description: "Le Palais d'été (颐和园, 290 hectares, inscrit au patrimoine mondial UNESCO) est le plus grand parc impérial conservé de Pékin. Le lac Kunming occupe les deux tiers de la superficie. La galerie longue peinte (长廊, 728 mètres) et la colline de Longévité (万寿山) en sont les pièces maîtresses. Accessible en métro (ligne 4) depuis le centre.", vibe: "Contemplative" },
+      { name: "Grande Muraille / Mutianyu", type: "Site hors ville", duration: "1 journée", description: "La section de Mutianyu (慕田峪, à environ 70 km du centre) est l'une des sections les mieux préservées de la Grande Muraille accessible en journée depuis Pékin. Construite sous les Ming et rénovée, elle court sur plusieurs kilomètres avec des tours de guet régulières. La remontée se fait en téléphérique, la descente en télésiège ou en luge selon la saison.", vibe: "Exceptionnelle" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée, Dongcheng & dîner canard laqué", zone: "Aéroport / Dongcheng", intensity: 1, transportMinutes: 60, freeSlots: 2,
+          activities: [
+            { slot: "9h–12h", name: "Arrivée et transfert vers le centre", type: "logistics", duration: 90, icon: "✈️", note: "Pékin dispose de deux aéroports internationaux : Capital Airport (PEK), au nord-est de la ville, relié au centre par l'Airport Express (机场快轨) en environ 25 minutes jusqu'à Dongzhimen ou Sanyuanqiao (tarif à vérifier sur le site officiel) ; et Daxing International Airport (PKX), au sud de la ville, relié par sa propre ligne express en environ 20 minutes jusqu'à Caoqiao avec une correspondance métro vers le centre. Vérifier l'aéroport d'arrivée au moment de la réservation du vol, les deux aéroports desservant des compagnies différentes. La carte Yikatong (一卡通, disponible dans les stations de métro des aéroports) couvre le métro et les bus. Le créneau indiqué correspond à une arrivée matinale ; le timing varie selon le vol." },
+            { slot: "13h–15h", name: "Déjeuner et installation", type: "food", duration: 120, icon: "🍜", note: "Un premier repas dans un restaurant de quartier permet une immersion directe. Les zhajiang mian (炸酱面, nouilles à la sauce de haricots noirs fermentés et viande hachée, spécialité pékinoise), les jiaozi (饺子, ravioles de blé farcies à l'eau ou poêlées) et les baozi (包子, petits pains farcis à la vapeur) sont disponibles dans la majorité des quartiers centraux. Budget 5 à 12€ par personne. L'enregistrement à l'hôtel nécessite la présentation du passeport ; l'établissement effectue la déclaration auprès des autorités dans les 24 heures, obligation légale pour les étrangers." },
+            { slot: "16h–18h30", name: "Parc Beihai ou quartier Wangfujing", type: "free", duration: 150, icon: "🏯", note: "Deux options selon l'énergie après le voyage. Le parc Beihai (北海公园, fondé au 10e siècle, lac et Pagode blanche 白塔) est un espace de promenade calme et authentique à quelques minutes à pied de la Cité interdite, entrée payante modique. Wangfujing (王府井) est l'artère commerçante centrale de Dongcheng, fréquentée en permanence, avec une ruelle de snacks adjacente. Les étals d'insectes frits visibles dans la ruelle de snacks sont principalement des attractions visuelles pour touristes ; les spécialités locales (brochettes de viande, sucreries, tofu) se trouvent dans les étals moins visibles." },
+            { slot: "19h–21h", name: "Dîner — canard laqué de Pékin", type: "food", duration: 120, icon: "🦆", note: "Le canard laqué (北京烤鸭) est rôti au four ou à la broche ; la peau laquée et croustillante est servie avec des galettes de blé (荷叶饼), de la sauce hoisin et des cébettes. Deux enseignes historiques à Pékin : Quanjude (全聚德, fondé en 1864, plusieurs succursales dont une près de Qianmen), format touristique institutionnel ; Da Dong (大董), format plus contemporain, souvent cité pour la qualité de la peau. Budget variable selon l'enseigne et les options choisies. Des boutiques de canard rôti de quartier proposent des portions à emporter nettement plus abordables." },
+          ],
+        },
+        {
+          number: 2, title: "Tian'anmen, Cité interdite & Jingshan", zone: "Dongcheng / axe impérial", intensity: 3, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "8h30–9h30", name: "Place Tian'anmen", type: "culture", duration: 60, icon: "🏛️", note: "La place Tian'anmen (天安门广场) s'étend sur environ 440 000 m². Elle est accessible depuis ses bords avec des contrôles de sécurité (bagages, passeport) à tous les accès. La porte Tian'anmen (天安门), à l'extrémité nord de la place, marque l'entrée de la Cité interdite. Le Mausolée de Mao Zedong (毛主席纪念堂), au centre de la place, est ouvert à des horaires restreints et nécessite une longue file d'attente : à intégrer uniquement si le temps le permet. La cérémonie de levée du drapeau a lieu au lever du soleil, à heure variable selon la saison : pour y assister, arriver très tôt en amont de l'accès." },
+            { slot: "9h30–13h", name: "Cité interdite", type: "culture", duration: 210, icon: "🏯", note: "La Cité interdite (故宫, 1406-1420) est le plus grand complexe de palais médiévaux au monde. La visite suit l'axe central nord-sud à travers les grandes cours, les salles du trône (Taihedian, Zhonghedian, Baohedian) et les jardins impériaux jusqu'à la porte Shenwu au nord. Certains pavillons latéraux (Trésor impérial, collection d'horloges, jardins) nécessitent des billets complémentaires. Réservation en ligne obligatoire sur le site officiel avant le départ ; les billets sont souvent épuisés plusieurs semaines à l'avance en haute saison et il n'est pas possible d'en acheter sur place. La Cité est fermée le lundi : si J2 tombe un lundi, permuter J2 et J3. Compter 2h30 à 4h selon l'étendue de la visite." },
+            { slot: "13h–14h30", name: "Déjeuner aux abords de Jingshan", type: "food", duration: 90, icon: "🍽️", note: "Les abords nord de la Cité interdite et de la porte Shenwu, autour du parc Jingshan, proposent des restaurants de cuisine pékinoise dans les ruelles de Jingshan Xijie. Jiaozi, riz sauté, soupes. Budget 8 à 15€ par personne. Une alternative est de rejoindre les restaurants des ruelles autour du lac Beihai, à 10 minutes à pied vers l'ouest." },
+            { slot: "14h30–15h30", name: "Parc Jingshan — vue sur la Cité interdite", type: "culture", duration: 60, icon: "⛰️", note: "La colline de Jingshan (景山, construite avec la terre extraite des douves de la Cité interdite lors de sa construction) culmine à environ 46 mètres au-dessus de la ville. Le pavillon central (万春亭) offre la vue aérienne la plus dégagée sur l'ensemble de la Cité interdite et sur l'axe nord-sud de Pékin. Compter 30 à 45 minutes pour l'ascension et la contemplation. Billet d'entrée modique, à vérifier sur place." },
+            { slot: "17h–21h", name: "Hutongs de Nanluoguxiang et dîner", type: "free", duration: 240, icon: "🏘️", note: "Nanluoguxiang (南锣鼓巷) est la ruelle touristique la plus accessible de Pékin, à environ 15 minutes à pied au nord-est de la Cité interdite. Elle concentre boutiques, cafés et snacks de rue dans un cadre de hutong partiellement restauré. En bifurquant vers les ruelles perpendiculaires (Mao'er Hutong 帽儿胡同, Bangjiao Hutong 板桥胡同), l'ambiance résidentielle est nettement plus présente. Le dîner peut se faire dans le quartier ou dans les ruelles autour de Houhai (后海). Budget 10 à 20€ par personne." },
+          ],
+        },
+        {
+          number: 3, title: "Temple du Ciel, hutongs & Drum Tower", zone: "Chongwen / Dongcheng nord", intensity: 3, transportMinutes: 45, freeSlots: 1,
+          activities: [
+            { slot: "8h–10h", name: "Temple du Ciel à l'aube — parc et Pékinois", type: "culture", duration: 120, icon: "🌅", note: "Le parc du Temple du Ciel (天坛) est accessible dès 6h pour les promeneurs munis d'un billet d'entrée du parc. Arriver tôt permet d'observer les Pékinois dans leurs activités matinales habituelles : tai chi collectif, danses en groupes, chorales, jeux d'échecs, exercices avec éventails ou épées. Cette animation quotidienne, concentrée avant 9h, est l'un des aspects les plus inattendus de la ville pour un premier visiteur. La salle de prière pour les bonnes récoltes (祈年殿) est déjà lumineuse à cette heure." },
+            { slot: "9h30–11h30", name: "Circuit du temple — salle de prière et autel circulaire", type: "culture", duration: 120, icon: "🛕", note: "Le billet d'entrée du parc donne accès aux espaces extérieurs. Un billet complémentaire est requis pour les monuments principaux (salle de prière, autel circulaire, voûte céleste impériale) : tarifs à vérifier sur le site officiel du Temple du Ciel. La salle de prière pour les bonnes récoltes (祈年殿, rotonde à triple toit bleu, construite sans métal ni ciment) est l'icône architecturale de Pékin après la Cité interdite. Le Chemin vermillon (丹陛桥, allée surélevée reliant les deux ensembles principaux) mérite d'être parcouru dans les deux sens." },
+            { slot: "12h–13h30", name: "Déjeuner quartier Qianmen", type: "food", duration: 90, icon: "🥟", note: "Le quartier de Qianmen (前门), au sud de la place Tian'anmen et au nord du Temple du Ciel, propose une rue piétonne commerçante et des ruelles adjacentes avec des restaurants de cuisine pékinoise : zhajiang mian, jiaozi, brochettes et snacks. Budget 6 à 12€ par personne dans les adresses des rues perpendiculaires à l'axe touristique principal, généralement moins chères." },
+            { slot: "14h30–16h30", name: "Drum Tower et Bell Tower", type: "culture", duration: 120, icon: "🥁", note: "La Drum Tower (鼓楼, 1420) et la Bell Tower (钟楼, à environ 100 mètres au nord) marquent le centre géographique de l'ancienne ville impériale. La Drum Tower présente des spectacles de tambours à horaires fixes selon la saison : vérifier les horaires d'exposition sur place. Les deux tours offrent une vue sur les toits de hutongs environnants depuis leurs galeries supérieures. Billets séparés pour chacune, tarifs à vérifier sur place." },
+            { slot: "17h30–21h", name: "Lac Shichahai et dîner", type: "free", duration: 210, icon: "🌊", note: "Les lacs du nord de Pékin (什刹海, Shichahai) forment un ensemble de plans d'eau entourés de hutongs résidentiels. La promenade à pied ou en vélo en libre-service (Meituan, Hellobike) autour du lac permet de traverser des secteurs moins touristiques que Nanluoguxiang. Le dîner dans les ruelles autour de Houhai (后海, lac ouest) propose une gamme de restaurants de cuisine pékinoise et de bars en terrasse sur l'eau. Budget 10 à 25€ par personne." },
+          ],
+        },
+        {
+          number: 4, title: "Grande Muraille — Mutianyu", zone: "Mutianyu", intensity: 3, transportMinutes: 180, freeSlots: 0,
+          activities: [
+            { slot: "7h30–9h30", name: "Transfert vers Mutianyu", type: "logistics", duration: 120, icon: "🚌", note: "Mutianyu (慕田峪) est à environ 70 km au nord-est de Pékin. Le moyen le plus direct est le taxi ou DiDi depuis le centre (durée variable selon le trafic, compter 1h30 à 2h ; tarif à estimer via l'application). Des bus touristiques saisonniers partent de la station de bus de Dongzhimen en haute saison (lignes à vérifier avant le départ, horaires variables selon la période). Un départ avant 8h permet d'arriver sur le site à l'ouverture et avant l'afflux des groupes. Hors haute saison, vérifier la disponibilité des bus touristiques avant de planifier." },
+            { slot: "9h30–13h", name: "Grande Muraille — téléphérique et marche sur les remparts", type: "culture", duration: 210, icon: "🏔️", note: "La section de Mutianyu est construite sous les Ming et rénovée : elle court sur plusieurs kilomètres avec des tours de guet régulières et une végétation dense de part et d'autre. La montée peut se faire à pied (escaliers raides, environ 20 à 30 minutes depuis la billetterie principale) ou en téléphérique (索道, payant séparément du billet d'entrée). La marche sur les remparts est physiquement exigeante selon le tronçon choisi. Le billet d'entrée et les options (téléphérique, télésiège, luge) sont vendus séparément : tarifs à vérifier sur le site officiel de Mutianyu, non reproduits ici car susceptibles de changer." },
+            { slot: "13h–14h", name: "Déjeuner au pied du site", type: "food", duration: 60, icon: "🍱", note: "Des restaurants et étals de restauration sont présents dans le village et aux abords de l'entrée principale, à prix touristiques. Cuisine chinoise simple : riz sauté, nouilles, brochettes. Budget 8 à 18€ par personne. Emporter un pique-nique depuis Pékin est une option courante pour réduire les coûts et la dépendance aux étals du site." },
+            { slot: "14h30–18h", name: "Descente et retour à Pékin", type: "logistics", duration: 210, icon: "🚕", note: "La descente peut se faire en télésiège (gondole) ou en luge (滑道, toboggan), cette dernière étant soumise aux conditions météorologiques, à la saison et à l'état d'entretien : confirmer la disponibilité sur place. Le retour depuis Mutianyu suit le même trajet qu'à l'aller (taxi ou bus). Arrivée à Pékin vers 17h-18h selon le trafic. La soirée est intentionnellement libre pour absorber les imprévus de transport de la journée." },
+          ],
+        },
+        {
+          number: 5, title: "Summer Palace (conditionnel) & départ", zone: "Haidian / PEK ou PKX", intensity: 1, transportMinutes: 90, freeSlots: 2,
+          activities: [
+            { slot: "8h30–11h30", name: "Summer Palace — conditionnel selon horaire de vol", type: "culture", duration: 180, icon: "🏞️", note: "Cette activité est réalisable uniquement si le vol de départ est prévu après 15h30-16h au minimum, compte tenu du trajet aéroport et des formalités. Si le vol est plus tôt, supprimer cette activité et prévoir un départ depuis l'hôtel vers l'aéroport directement. Le Palais d'été (颐和园, inscrit au patrimoine mondial UNESCO, 290 hectares) est accessible en métro (ligne 4, station Xiyuan ou New Summer Palace, durée 40-50 minutes depuis le centre) ou en taxi. La galerie longue peinte (长廊, 728 mètres), la colline de Longévité (万寿山) et les abords du lac Kunming (昆明湖) constituent le circuit principal. Compter 2h30 à 3h minimum. Billet d'entrée + billets complémentaires pour certains pavillons, tarifs à vérifier sur le site officiel." },
+            { slot: "11h30–13h", name: "Déjeuner et récupération des bagages", type: "food", duration: 90, icon: "🍽️", note: "Selon la configuration du séjour : déjeuner aux abords du Summer Palace avant de rejoindre l'hôtel en métro pour récupérer les bagages, ou retour direct à l'hôtel pour déjeuner dans le quartier central. Budget 8 à 15€ par personne. Si J5 A1 a été supprimé pour cause de vol tôt, ce créneau correspond au départ de l'hôtel avec les bagages vers l'aéroport." },
+            { slot: "13h–14h30", name: "Dernière balade ou Sanlitun", type: "free", duration: 90, icon: "🛍️", note: "Si le temps le permet avant le transfert, le quartier de Sanlitun (三里屯, district de Chaoyang) est le principal quartier de commerces, cafés et boutiques de mode internationale de Pékin, accessible en métro. Sinon, ce créneau est à consacrer à la récupération des bagages et au départ vers l'aéroport selon l'horaire du vol." },
+            { slot: "14h30–17h", name: "Transfert aéroport PEK ou PKX", type: "logistics", duration: 150, icon: "✈️", note: "Pour Capital Airport (PEK) : Airport Express depuis Dongzhimen en environ 25 minutes (tarif à vérifier). Pour Daxing (PKX) : ligne d'Airport Express correspondante depuis Caoqiao, environ 20 minutes, avec une correspondance métro depuis le centre d'environ 40-45 minutes au total. Depuis l'hôtel, un taxi DiDi est souvent plus direct selon la localisation. Prévoir 3 heures avant l'heure de décollage pour les formalités internationales. Récupérer les bagages à l'hôtel avant le départ si nécessaire." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
