@@ -11,7 +11,7 @@ import {
 describe("getAllDestinations", () => {
   it("returns all seeded destinations", () => {
     const dests = getAllDestinations();
-    expect(dests.length).toBe(44);
+    expect(dests.length).toBe(45);
   });
 
   it("returns destinations sorted by score descending", () => {

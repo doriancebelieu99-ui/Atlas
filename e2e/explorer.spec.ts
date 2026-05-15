@@ -131,14 +131,14 @@ test.describe("Explorer page", () => {
     }
   });
 
-  test("fallback grid: 44 cards present and linked to /destination/[slug]", async ({ page }) => {
+  test("fallback grid: 45 cards present and linked to /destination/[slug]", async ({ page }) => {
     await page.goto("/explorer");
 
     const cards = page.locator(".explorer-fallback-card");
     await expect(cards.first()).toBeVisible({ timeout: 5_000 });
 
     const count = await cards.count();
-    expect(count).toBe(44);
+    expect(count).toBe(45);
 
     // All hrefs must point to /destination/
     const hrefs = await cards.evaluateAll((els) =>

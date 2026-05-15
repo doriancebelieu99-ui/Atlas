@@ -6131,6 +6131,151 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  seoul: {
+    slug: "seoul",
+    name: "Séoul",
+    country: "Corée du Sud",
+    region: "Gyeonggi",
+    tagline: "L'hypermodernité coréenne entre palais de la dynastie Joseon et scène culturelle mondiale",
+    score: 90,
+    image: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=900&q=80",
+    summary: "Séoul est une mégapole de 10 millions d'habitants qui articule un patrimoine palatal de la dynastie Joseon (XIVe-XIXe siècle), une scène culturelle de premier plan (K-pop, cinéma, gastronomie) et une infrastructure urbaine parmi les plus modernes d'Asie. La ville se parcourt quartier par quartier, chaque zone ayant une identité propre.",
+    mainInterest: "Culture & modernité asiatique",
+    idealDuration: "5 à 7 jours",
+    destinationType: "city_plus",
+    pace: "Dense",
+    ambiance: ["Dynamique", "Moderne", "Gastronomique", "Créative", "Contrastée"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
+    environment: "urban",
+    flightHoursFromParis: 11.5,
+    coordinates: { lat: 37.5665, lng: 126.978 },
+    whyGo: [
+      { title: "Patrimoine palatal intact dans le tissu urbain", description: "Cinq grands palais de la dynastie Joseon (1392-1910) subsistent à Séoul. Gyeongbokgung, le plus grand, est entouré de quartiers de hanok (maisons traditionnelles en bois et tuiles) qui ont résisté à la spéculation immobilière. Le village de Bukchon compte à lui seul près de 900 hanok habitées." },
+      { title: "Culture contemporaine exportée mondialement", description: "Séoul est l'épicentre de la K-pop, d'une industrie cinématographique primée (Parasite, Palme d'or 2019) et d'une scène de mode et de design diffusée dans le monde entier. La ville produit et consomme de la culture à une densité difficile à anticiper avant d'y être." },
+      { title: "Gastronomie accessible et dense", description: "Du bibimbap (bol de riz aux légumes et viande) au Korean BBQ (grillades sur charbon ou gaz en salle), en passant par les pocha (cantines de rue nocturnes), la gastronomie séoulite couvre tous les budgets avec une densité d'adresses comparable aux plus grandes villes gastronomiques du monde." },
+      { title: "Infrastructure logistique exemplaire", description: "Le réseau de métro de Séoul couvre plus de 300 stations sur 9 lignes principales, avec signalétique en anglais dans toutes les grandes gares. La T-money card (chargeable dans toutes les stations et les convenience stores) couvre le métro, le bus et une partie des taxis." },
+    ],
+    constraints: [
+      { text: "Vol Paris-Séoul de 11 à 12 heures selon la compagnie et les vents. Décalage horaire de 8 heures. Les deux premiers jours peuvent être affectés par le jet lag.", severity: "info" },
+      { text: "Les palais ferment chacun un jour différent dans la semaine : Gyeongbokgung le mardi, Changdeokgung le lundi. La séquence de visite doit être planifiée selon le jour d'arrivée. Éviter une arrivée un lundi (D2 compromis).", severity: "caution" },
+      { text: "Le coréen (hangul) est la seule langue officielle. L'anglais est présent dans les zones touristiques et les grandes gares, mais peu répandu dans les quartiers résidentiels.", severity: "info" },
+      { text: "En juillet-août, Séoul subit des épisodes de chaleur humide intense (35°C et plus avec hygrométrie élevée) et des typhons périodiques. À éviter pour un premier séjour.", severity: "caution" },
+    ],
+    budget: {
+      economy: { min: 45, max: 70 },
+      comfort: { min: 90, max: 150 },
+      premium: { min: 200, max: 400 },
+      flight: { min: 550, max: 1200 },
+      costIndex: 74,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "5-12€", comfort: "20-40€", premium: "60-200€" },
+        { label: "Hébergement/nuit", economy: "20-45€", comfort: "70-130€", premium: "180-450€" },
+        { label: "Transport/jour", economy: "3€", comfort: "6€", premium: "20€" },
+        { label: "Activités/jour", economy: "5-10€", comfort: "15-30€", premium: "50-150€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 40, temp: -3, rain: 25, crowd: 20 },
+        { name: "Fév", score: 45, temp: -1, rain: 35, crowd: 22 },
+        { name: "Mar", score: 70, temp: 7, rain: 45, crowd: 40 },
+        { name: "Avr", score: 95, temp: 14, rain: 70, crowd: 75 },
+        { name: "Mai", score: 90, temp: 20, rain: 80, crowd: 65 },
+        { name: "Jun", score: 60, temp: 25, rain: 130, crowd: 50 },
+        { name: "Jul", score: 35, temp: 29, rain: 380, crowd: 40 },
+        { name: "Aoû", score: 38, temp: 30, rain: 290, crowd: 42 },
+        { name: "Sep", score: 75, temp: 23, rain: 130, crowd: 55 },
+        { name: "Oct", score: 95, temp: 16, rain: 45, crowd: 70 },
+        { name: "Nov", score: 72, temp: 8, rain: 55, crowd: 45 },
+        { name: "Déc", score: 48, temp: 1, rain: 20, crowd: 30 },
+      ],
+      best: "Avril et octobre",
+      avoid: "Juillet-août : chaleur humide, pluies de mousson, risque de typhons.",
+      note: "Avril est le mois des cerisiers (fin mars à mi-avril selon l'année) et des azalées. Octobre offre les couleurs d'automne sur les collines de Namsan et dans les parcs. Les deux périodes sont très fréquentées : hébergements à réserver plusieurs semaines à l'avance.",
+    },
+    context: {
+      culture: "La société coréenne valorise la hiérarchie, la sobriété dans les espaces publics et la réciprocité dans les relations. Le bali-bali (littéralement : rapidement, rapidement) est une valeur culturelle forte : les services sont rapides et le rythme soutenu. Retirer ses chaussures est attendu dans les logements traditionnels et certains restaurants.",
+      tips: "La T-money card (disponible à l'aéroport et dans les convenience stores GS25, CU, 7-Eleven) est indispensable pour le métro, le bus et certains taxis. Elle se recharge facilement dans toutes les stations. Les cartes de crédit internationales sont acceptées dans l'immense majorité des commerces. Le pourboire n'est pas d'usage en Corée du Sud.",
+      surprises: "Les convenience stores coréens (GS25, CU) ont une qualité gastronomique très supérieure à leurs équivalents européens : kimbap frais, triangles de riz, ramyeon préparé sur place, café de spécialité. Ils fonctionnent 24h/24 et servent souvent de salle à manger informelle, notamment pour les dîners tardifs.",
+      history: "Séoul est la capitale de la Corée depuis 1394, quand le roi Taejo de la dynastie Joseon y installe la cour. La ville a été presque entièrement rasée lors de la guerre de Corée (1950-1953). La reconstruction à marche forcée des années 1960-1980 explique l'architecture souvent hétérogène du tissu urbain contemporain, qui contraste avec les palais et les quartiers de hanok préservés.",
+    },
+    safety: {
+      overall: "Facile",
+      logisticsScore: 92,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Séoul est l'une des grandes métropoles les plus sûres d'Asie. La criminalité violente est très faible. Les transports en commun, même de nuit, sont sécurisés." },
+        { category: "Santé", level: "low_risk", text: "L'eau du robinet est potable. Le système de santé sud-coréen est efficace et les pharmacies très présentes. La pollution de l'air (fine dust, hwangsa) peut être prononcée en mars-avril selon les vents venus de Chine." },
+        { category: "Transport", level: "easy", text: "Le métro est la colonne vertébrale des déplacements. Signalétique en anglais dans toutes les grandes stations. Les taxis sont abordables et disposent souvent de fonctions de traduction intégrées." },
+        { category: "Langue", level: "moderate", text: "Le hangul est la seule langue officielle. L'anglais fonctionne dans les zones touristiques et les hôtels. Hors de ces zones, Google Translate avec traduction photo est très utile pour les menus et les panneaux." },
+        { category: "Formalités", level: "easy", text: "Les ressortissants de l'UE ne nécessitent pas de visa pour un séjour touristique court. Une autorisation K-ETA peut être requise selon les accords en vigueur au moment du voyage : vérifier sur le site officiel de l'immigration coréenne avant le départ." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Séoul est une ville très sûre pour les voyageurs solos, y compris les femmes seules. Les transports de nuit et les quartiers animés (Hongdae, Itaewon) sont actifs jusqu'à l'aube avec une présence importante de groupes." },
+      ],
+    },
+    cities: [
+      { name: "Jongno", type: "Quartier historique", duration: "2 jours", description: "Jongno est le centre historique de Séoul, avec Gyeongbokgung, Changdeokgung, le village de hanok de Bukchon et la rue artisanale d'Insadong. C'est le quartier le plus dense en patrimoine palatal et en culture traditionnelle coréenne.", vibe: "Historique" },
+      { name: "Myeongdong", type: "Quartier central", duration: "½ journée", description: "Myeongdong est le quartier commercial de Séoul, avec une forte concentration de boutiques de K-beauty et de vendeurs de street food. L'animation est maximale en soirée et le week-end.", vibe: "Animée" },
+      { name: "Hongdae", type: "Quartier créatif", duration: "½ journée", description: "Hongdae (autour de l'Université Hongik) est le quartier de la culture underground, des musiciens de rue, des cafés thématiques et de la scène de clubs. La Mangwon Market voisine est un marché de quartier authentique sans orientation touristique.", vibe: "Alternative" },
+      { name: "Seongsu", type: "Quartier en mutation", duration: "½ journée", description: "Seongsu est l'ancien quartier industriel de l'est de Séoul reconverti en espace de concept stores, d'ateliers de designers et de cafés installés dans des entrepôts rénovés. Comparé régulièrement au Brooklyn des premières années.", vibe: "Créative" },
+      { name: "Gangnam", type: "Quartier aisé", duration: "½ journée", description: "Gangnam est le quartier résidentiel et commercial aisé au sud du fleuve Han. Garosu-gil et Apgujeong concentrent boutiques de luxe, restaurants gastronomiques et galeries. Le temple Bongeunsa offre un contraste direct avec les gratte-ciels environnants.", vibe: "Cosmopolite" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & Jongno Est", zone: "Incheon / Jongno", intensity: 1, transportMinutes: 60, freeSlots: 2,
+          activities: [
+            { slot: "À l'arrivée", name: "Transfert AREX depuis Incheon", type: "logistics", duration: 90, icon: "✈️", note: "L'AREX (Airport Railroad Express) relie Incheon à Seoul Station en 43 minutes en Express (environ 9€) ou à plusieurs stations intermédiaires en All-Stop (53 min, environ 4€). La T-money card est disponible à l'aéroport dès la sortie du terminal et couvre l'ensemble du réseau de métro et de bus. L'AREX Express s'arrête également à Hongdae et Gongdeok, pratique selon l'emplacement de l'hôtel." },
+            { slot: "16h–18h", name: "Gwangjang Market", type: "food", duration: 120, icon: "🏮", note: "Marché couvert fondé en 1905, l'un des plus anciens de Séoul. Les étals de street food proposent bindaetteok (galettes aux haricots mungo grillées), mayak gimbap (petits rouleaux de riz au sésame), yukhoe (tartare de boeuf cru assaisonné) et mandu (ravioles vapeur). L'animation est forte de 15h à 21h. Budget de 5 à 15€ par personne pour un repas complet. Ouvert tous les jours." },
+            { slot: "18h30–20h30", name: "Insadong — galeries et artisanat", type: "free", duration: 120, icon: "🎨", note: "Insadong est la rue piétonne historique des galeries d'art, des boutiques d'artisanat traditionnel et des cafés. Les galeries présentent des oeuvres d'artistes coréens contemporains et de l'artisanat de la période Joseon. Fermées en général vers 20h-21h. Le passage couvert Ssamziegil (cour intérieure en spirale) est le point de repère architectural de la rue." },
+            { slot: "20h30–22h", name: "Dîner Insadong ou Samcheong-dong", type: "food", duration: 90, icon: "🍽️", note: "Les ruelles autour d'Insadong et de Samcheong-dong proposent des restaurants de cuisine coréenne de quartier (jjigae, dolsot bibimbap, pajeon). Menus dîner entre 10 et 20€. Le quartier est calme le soir comparé à Myeongdong ou Hongdae." },
+          ],
+        },
+        {
+          number: 2, title: "Gyeongbokgung, Bukchon & Euljiro", zone: "Jongno / Euljiro", intensity: 3, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h30", name: "Gyeongbokgung", type: "culture", duration: 150, icon: "🏯", note: "Le plus grand palais de la dynastie Joseon, fondé en 1395 et restauré après les destructions de la période coloniale. Entrée 3 000 KRW (environ 2€). Fermé le mardi. La cérémonie du changement de garde (Sumunjang) se tient deux fois par jour à 10h et 14h devant la porte Gwanghwamun. La location de hanbok (tenue traditionnelle coréenne) aux abords du palais permet l'entrée gratuite et l'accès étendu." },
+            { slot: "11h30–13h", name: "Bukchon Hanok Village", type: "free", duration: 90, icon: "🏘️", note: "Village de près de 900 hanok (maisons traditionnelles en bois et tuiles grises) sur la colline entre Gyeongbokgung et Changdeokgung. Les ruelles en pente donnent des vues dégagées sur les toits traditionnels et les montagnes en arrière-plan. Le matin reste le meilleur créneau avant l'afflux de groupes. Plusieurs maisons sont habitées : silence demandé dans les ruelles résidentielles." },
+            { slot: "13h–14h30", name: "Déjeuner Ikseon-dong", type: "food", duration: 90, icon: "🍜", note: "Ikseon-dong est un réseau de ruelles de hanok convertis en cafés et restaurants. Bibimbap (10 à 15€), sundubu jjigae (tofu soyeux en bouillon épicé) et cafés de spécialité. À 15 minutes à pied de Bukchon vers le sud-est." },
+            { slot: "15h–17h", name: "Cheonggyecheon", type: "free", duration: 120, icon: "🌊", note: "Canal urbain de 5,8 km restauré en 2005 sur l'emplacement d'une ancienne autoroute surélevée. La promenade longe le cours d'eau en contrebas de la rue, avec des oeuvres d'art publiques, des passerelles et des espaces verts. Gratuit, accessible en permanence. Point de départ recommandé : fontaine Cheonggye au niveau de la rue Cheonggyecheon-ro, à 10 minutes à pied d'Ikseon-dong." },
+            { slot: "19h30–22h", name: "Dîner Euljiro", type: "food", duration: 150, icon: "🍺", note: "Le quartier d'Euljiro (entre les stations Euljiro 3-ga et Euljiro 4-ga) abrite une scène de restaurants et de bars installés dans des ateliers et des arrière-cours industrielles. Les pojangmacha (tentes de rue) et les petits restaurants spécialisés en makgeolli (alcool de riz coréen fermenté) et en anju (amuse-gueules de soirée) sont la norme. Budget 15 à 25€ avec boissons." },
+          ],
+        },
+        {
+          number: 3, title: "Changdeokgung, Huwon & Namsan", zone: "Jongno / Myeongdong / Namsan", intensity: 3, transportMinutes: 40, freeSlots: 1,
+          activities: [
+            { slot: "9h–12h", name: "Changdeokgung & Huwon (Jardin Secret)", type: "culture", duration: 180, icon: "🌿", note: "Changdeokgung (1405) est classé au patrimoine mondial de l'UNESCO depuis 1997. Entrée palais 3 000 KRW. Fermé le lundi. Le Huwon (Jardin Secret) est une extension de forêt et de pavillons d'environ 30 hectares, accessible uniquement en visite guidée à horaires fixes. Les créneaux en anglais sont généralement proposés à 10h30 et 14h30 (horaires à vérifier sur le site officiel de Changdeokgung selon la saison). Billet Huwon séparé : environ 5 000 KRW. Réservation en ligne obligatoire, plusieurs jours à l'avance en haute saison (1 à 2 semaines en avril et octobre). Scénario recommandé : visiter le palais principal de 9h à 10h puis enchaîner sur le créneau Huwon 10h30, sortie vers 12h." },
+            { slot: "13h–14h30", name: "Déjeuner Ikseon-dong", type: "food", duration: 90, icon: "🍽️", note: "Même quartier que D2, accessible en 15 minutes à pied depuis Changdeokgung. Cafés et restaurants dans les hanok convertis. Budget 10 à 20€." },
+            { slot: "15h–16h30", name: "Myeongdong — street food", type: "food", duration: 90, icon: "🥢", note: "Myeongdong est le quartier commercial central de Séoul, avec des vendeurs de street food actifs surtout en après-midi et soirée. Hotteok (crêpe fourrée au sucre et aux graines), tteokbokki (galets de riz en sauce pimentée), haemul pajeon (galette aux fruits de mer). Budget 5 à 10€ pour un parcours complet. Le quartier est également le centre de la K-beauty à Séoul." },
+            { slot: "18h30–21h", name: "N Seoul Tower", type: "culture", duration: 150, icon: "🗼", note: "La N Seoul Tower (Namsan Tower) est accessible depuis Myeongdong en téléphérique (câble-car, environ 12 000 KRW aller-retour) ou en navette bus depuis la place Myeongdong. Le billet d'observatoire est vendu séparément (environ 21 000 KRW adulte). Deux billets distincts à prévoir si on utilise le câble-car. La vue de nuit sur Séoul est la plus intéressante. Ouvert jusqu'à 23h en semaine, jusqu'à minuit le week-end." },
+          ],
+        },
+        {
+          number: 4, title: "Yongsan, Itaewon, Hongdae & Mapo", zone: "Yongsan / Mapo", intensity: 3, transportMinutes: 45, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h30", name: "War Memorial of Korea", type: "culture", duration: 150, icon: "🏛️", note: "Le War Memorial of Korea (Yongsan) retrace l'histoire militaire de la péninsule coréenne de l'Antiquité à la guerre de Corée (1950-1953). Entrée gratuite. Fermé le lundi. Les équipements exposés en extérieur (chars, avions, hélicoptères, navires) couvrent une esplanade de plusieurs hectares. La galerie consacrée à la guerre de Corée est la plus documentée." },
+            { slot: "12h–13h30", name: "Déjeuner Itaewon", type: "food", duration: 90, icon: "🍽️", note: "Itaewon est le quartier multiculturel de Séoul, avec une densité inhabituellement élevée de cuisines étrangères et de restaurants coréens dans les ruelles adjacentes, notamment Gyeongnidan-gil. Budget 12 à 25€ selon l'adresse. À 10 à 15 minutes à pied ou une station de métro depuis le War Memorial." },
+            { slot: "14h30–17h", name: "Hongdae", type: "free", duration: 150, icon: "🎵", note: "Le quartier de l'Université Hongik est le centre de la culture underground de Séoul : musiciens de rue, galeries alternatives, cafés thématiques, boutiques de mode indépendante. L'animation de rue est maximale de 15h à 21h. Accessible depuis Itaewon en environ 20 minutes en métro (ligne 6 puis ligne 2)." },
+            { slot: "17h–18h30", name: "Mangwon Market", type: "free", duration: 90, icon: "🥬", note: "Marché de quartier de Mapo-gu, à une station de métro de Hongdae (ligne 6, arrêt Mangwondong). Contrairement à Gwangjang ou Namdaemun, Mangwon est un marché essentiellement local sans orientation touristique : poissons frais, légumes de saison, tteok (gâteaux de riz). L'animation est forte en fin d'après-midi." },
+            { slot: "19h30–22h", name: "Dîner Korean BBQ — Mapo", type: "food", duration: 150, icon: "🥩", note: "Le Korean BBQ (grillades sur feu de charbon ou gaz intégré à la table) est une expérience de groupe : galbi (travers de porc ou de boeuf marinés), samgyeopsal (poitrine de porc épaisse), accompagnés de banchan (petits plats d'accompagnement). Les restaurants du secteur Mapo et Mangwon-dong proposent des adresses de quartier sans orientation touristique. Budget 20 à 35€ par personne avec boissons." },
+          ],
+        },
+        {
+          number: 5, title: "Seongsu, Gangnam & départ", zone: "Seongsu / Gangnam / Incheon", intensity: 2, transportMinutes: 90, freeSlots: 1,
+          activities: [
+            { slot: "6h30–8h30", name: "Noryangjin Fish Market", type: "food", duration: 120, icon: "🐟", note: "Le marché de Noryangjin (ligne 1, station Noryangjin) est l'un des principaux marchés de poisson de Séoul, avec des étals ouverts aux particuliers dès 6h-7h. Il est possible de choisir son poisson et de le faire préparer dans les restaurants du niveau supérieur du bâtiment. Budget 15 à 30€ pour un plateau de hoe (sashimi coréen). Expérience à confirmer sur place selon l'état du marché." },
+            { slot: "9h30–11h", name: "Seongsu — cafés et concept stores", type: "free", duration: 90, icon: "☕", note: "Seongsu est l'ancien quartier industriel de l'est de Séoul reconverti depuis 2015 en espace de cafés de spécialité, d'ateliers de designers et de boutiques de mode dans des entrepôts rénovés. Accessible depuis Noryangjin en environ 30 minutes en métro (ligne 1 puis ligne 2, station Seongsu)." },
+            { slot: "11h30–13h", name: "Bongeunsa — temple en plein Gangnam", type: "culture", duration: 90, icon: "🛕", note: "Le temple bouddhiste Bongeunsa (fondé en 794, reconstruit à plusieurs reprises) est situé directement face au COEX Mall, au coeur de Gangnam. Le contraste entre les pavillons de bois et les tours de verre environnantes est saisissant. Entrée libre ou symbolique à vérifier sur place. La Starfield Library du COEX (bibliothèque en atrium spectaculaire) est accessible à 5 minutes à pied pour un passage de 20 à 30 minutes." },
+            { slot: "13h–14h30", name: "Garosu-gil & Apgujeong", type: "free", duration: 90, icon: "🌳", note: "Garosu-gil (rue des érables, Shinsa-dong) est une rue plantée d'arbres bordée de cafés, de galeries et de boutiques de créateurs indépendants. Apgujeong Rodeo Street, à 10 minutes à pied, est le coeur du luxe et de la K-beauty à Séoul. Pour un dîner gastronomique dans le secteur, Cheongdam-dong concentre les adresses haut de gamme, dont des tables étoilées Michelin. Réservation indispensable." },
+            { slot: "15h30–17h30", name: "Transfert Incheon", type: "logistics", duration: 120, icon: "✈️", note: "Depuis Gangnam, rejoindre Seoul Station en métro (ligne 2 ou 9 puis connexion, environ 20 à 25 minutes). L'AREX Express relie Seoul Station à Incheon Terminal 1 en 43 minutes (environ 9€). Prévoir 3 heures avant le vol pour les formalités internationales. Si vol après 21h, il est possible de décaler le départ de Gangnam d'une heure." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
