@@ -6277,6 +6277,151 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  taipei: {
+    slug: "taipei",
+    name: "Taipei",
+    country: "Taïwan",
+    region: "Taipei",
+    tagline: "Temples millénaires, marchés de nuit et modernité dense au pied des montagnes",
+    score: 88,
+    image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=900&q=80",
+    summary:
+      "Taipei est une capitale compacte de 2,7 millions d'habitants nichée dans un bassin entouré de collines verdoyantes. Elle articule un patrimoine historique multicouche (temples taoïstes du XVIIIe siècle, architecture coloniale japonaise, quartiers marchands du XIXe siècle) avec une scène gastronomique de première qualité, une infrastructure logistique exemplaire et une culture locale singulière, distincte de la Chine continentale et du Japon. Les marchés de nuit, le réseau de MRT et la densité de temples en font une ville qui se parcourt quartier par quartier, à un rythme soutenu mais sans fatigue.",
+    mainInterest: "Culture & gastronomie asiatique",
+    idealDuration: "5 jours",
+    destinationType: "city_plus",
+    pace: "Dense",
+    ambiance: ["Gastronomique", "Dynamique", "Accessible", "Créative", "Contrastée"],
+    targetProfiles: ["Couple", "Solo", "Amis"],
+    environment: "urban",
+    flightHoursFromParis: 12.5,
+    coordinates: { lat: 25.033, lng: 121.5654 },
+    whyGo: [
+      { title: "Marchés de nuit parmi les meilleurs d'Asie", description: "Taipei a normalisé le marché de nuit comme espace social autant que gastronomique. Raohe, Ningxia, Shilin : chacun a sa spécialité. Le hú jiāo bǐng (bun de porc et poivre noir cuit dans un four à bois) de Raohe, les xiaolongbao (ravioles à la vapeur) de quartier et les oyster vermicelli (soupe de vermicelles aux huîtres) suffisent à justifier plusieurs sorties nocturnes." },
+      { title: "Logistique presque sans friction", description: "Le réseau MRT couvre l'ensemble de l'agglomération avec signalétique en anglais et l'EasyCard (carte rechargeable achetée à l'aéroport) couvre le métro, le bus et les vélos partagés YouBike. L'aéroport de Taoyuan est relié au centre en 40 minutes par l'Airport MRT. Taipei est l'une des grandes capitales asiatiques les plus accessibles pour un premier voyageur sans pratique du mandarin." },
+      { title: "Patrimoine architectural multicouche", description: "Taipei concentre des couches historiques superposées : temples taoïstes et bouddhistes fondés sous la dynastie Qing (Longshan, 1738), blocs de maisons de l'ère coloniale japonaise (Bopiliao, Dadaocheng), gratte-ciels des années 1990 et Taipei 101, symbole de la croissance économique taïwanaise des années 2000. Chaque quartier illustre une période différente." },
+      { title: "Porte d'entrée vers la nature en périphérie", description: "À moins d'une heure de Taipei en transports en commun : les sources chaudes sulfureuses de Beitou (35 minutes en MRT), la ville maritime de Tamsui au bord de la rivière Danshui, et les gorges de Taroko accessibles depuis l'aéroport de Hualien (30 minutes en avion domestique). La nature est un complément naturel, pas une excursion difficile." },
+    ],
+    constraints: [
+      { text: "Vol Paris-Taipei d'environ 12 à 13 heures avec correspondance, parfois direct selon la compagnie. Décalage horaire de 6 à 7 heures selon la saison. Les premiers jours peuvent être affectés par le jet lag.", severity: "info" },
+      { text: "Le National Palace Museum (Shilin) est fermé le lundi. Si l'arrivée a lieu un dimanche, la journée 3 telle qu'elle est planifiée dans cet itinéraire devient inaccessible. Alternative : Memorial Chiang Kai-shek (Zhongzheng), gratuit et ouvert tous les jours, avec cérémonie de relève de la garde à 9h, 10h et 11h.", severity: "caution" },
+      { text: "Le Hot Spring Museum de Beitou et le Fort San Domingo de Tamsui sont tous deux fermés le lundi. Si l'arrivée a lieu un jeudi, la journée 5 coïncide avec un lundi. Les alternatives restent viables : sources publiques Millennium Hot Spring (ouvert tous les jours, 5h30-22h) et promenade riverside de Tamsui.", severity: "caution" },
+      { text: "La saison des typhons s'étend de juin à septembre. Les typhons sont généralement prévisibles 3 à 5 jours à l'avance mais peuvent perturber les vols et fermer les sites extérieurs. Un déplacement entre octobre et avril réduit ce risque.", severity: "caution" },
+      { text: "Le mandarin est la langue officielle. L'anglais fonctionne dans les zones touristiques, les hôtels et les grands marchés de nuit. Hors de ces zones, une application de traduction photo (Google Translate) est utile pour les menus et les panneaux.", severity: "info" },
+    ],
+    budget: {
+      economy: { min: 35, max: 60 },
+      comfort: { min: 80, max: 140 },
+      premium: { min: 180, max: 380 },
+      flight: { min: 650, max: 1400 },
+      costIndex: 66,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "5-12€", comfort: "15-30€", premium: "40-100€" },
+        { label: "Hébergement/nuit", economy: "20-45€", comfort: "70-130€", premium: "150-350€" },
+        { label: "Transport/jour", economy: "2€", comfort: "5€", premium: "15€" },
+        { label: "Activités/jour", economy: "5-10€", comfort: "15-25€", premium: "40-80€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 62, temp: 16, rain: 75, crowd: 25 },
+        { name: "Fév", score: 55, temp: 16, rain: 120, crowd: 28 },
+        { name: "Mar", score: 68, temp: 18, rain: 90, crowd: 40 },
+        { name: "Avr", score: 80, temp: 22, rain: 110, crowd: 55 },
+        { name: "Mai", score: 72, temp: 26, rain: 200, crowd: 60 },
+        { name: "Jun", score: 55, temp: 29, rain: 230, crowd: 45 },
+        { name: "Jul", score: 42, temp: 31, rain: 180, crowd: 40 },
+        { name: "Aoû", score: 40, temp: 31, rain: 200, crowd: 38 },
+        { name: "Sep", score: 60, temp: 28, rain: 200, crowd: 42 },
+        { name: "Oct", score: 92, temp: 25, rain: 80, crowd: 65 },
+        { name: "Nov", score: 90, temp: 21, rain: 65, crowd: 55 },
+        { name: "Déc", score: 75, temp: 18, rain: 60, crowd: 35 },
+      ],
+      best: "Octobre-novembre, mars-avril",
+      avoid: "Juillet-août : chaleur humide, typhons, épisodes de pluie intenses.",
+      note: "Octobre est le mois le plus équilibré : températures agréables (23-26°C), pluie faible, fréquentation modérée. Les cerisiers fleurissent en général de fin janvier à début mars à Yangmingshan, au nord de Taipei.",
+    },
+    context: {
+      culture: "Taïwan a développé une identité culturelle propre, distincte de la Chine continentale, nourrie par les héritages autochtone, chinois Han, hollandais et japonais. La société taïwanaise est attachée à la politesse, à la discrétion dans les espaces publics et à une forme d'hospitalité spontanée envers les voyageurs étrangers. Le mandarin est la langue dominante, mais les générations plus âgées parlent souvent le taïwanais (hokkien taïwanais) dans les quartiers historiques.",
+      tips: "L'EasyCard (carte rechargeable vendue à l'aéroport dès NT$100) est indispensable pour le MRT, les bus, le YouBike et de nombreuses supérettes. Elle fonctionne aussi dans les convenience stores 7-Eleven et FamilyMart, omniprésents et ouverts 24h/24. Le pourboire n'est pas d'usage à Taïwan. Les billets de MRT à l'unité restent possibles, mais l'EasyCard donne une remise sur chaque trajet.",
+      surprises: "Les convenience stores taïwanais (7-Eleven, FamilyMart, Hi-Life) dépassent largement la simple épicerie de quartier : impression de billets, dépôt de colis, paiement de factures, plats cuisinés de qualité correcte et café de distributeur souvent cité parmi les meilleurs de la région. Ils servent de point de repère logistique autant que de point de restauration d'appoint.",
+      history: "Taipei est une ville historiquement jeune comparée aux autres capitales asiatiques. Fondée comme centre administratif sous la dynastie Qing à la fin du XIXe siècle, elle est devenue la capitale de la province de Taïwan en 1886. La colonisation japonaise (1895-1945) a redessiné son tissu urbain : gares, bâtiments administratifs et axes en damier datent de cette période. Depuis 1949, Taipei est la capitale de la République de Chine, statut qui continue de structurer les relations diplomatiques de Taïwan avec le reste du monde.",
+    },
+    safety: {
+      overall: "Facile",
+      logisticsScore: 90,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Taipei est l'une des capitales asiatiques les plus sûres. La criminalité violente est exceptionnellement faible. Les transports en commun, y compris tard le soir, sont sécurisés et fréquentés." },
+        { category: "Santé", level: "low_risk", text: "L'eau du robinet est techniquement potable mais rarement bue directement : la plupart des habitants utilisent des filtres ou des bouteilles. Les hôpitaux sont de bon niveau et il existe des cliniques avec personnel anglophone dans les zones centrales. Les pharmacies sont très présentes." },
+        { category: "Transport", level: "easy", text: "Le réseau MRT de Taipei couvre l'essentiel de l'agglomération avec une signalétique bilingue (mandarin et anglais) dans toutes les stations. Les bus sont denses mais moins lisibles pour un premier voyageur. Les taxis sont abordables et les applications de VTC (Uber) fonctionnent." },
+        { category: "Langue", level: "moderate", text: "Le mandarin est la seule langue officielle. L'anglais fonctionne dans les zones touristiques, les hôtels et les marchés de nuit. Dans les quartiers résidentiels et les petits restaurants, une application de traduction photo est utile pour les menus et les panneaux en caractères chinois." },
+        { category: "Formalités", level: "easy", text: "Les ressortissants de l'UE bénéficient d'une exemption de visa pour un séjour touristique jusqu'à 90 jours. Taïwan n'est pas membre de l'ONU : vérifier les modalités d'entrée sur le site officiel du Bureau de représentation de Taïwan avant le départ, les règles ayant pu évoluer." },
+        { category: "Météo", level: "moderate", text: "La saison des typhons (juin à septembre) représente le risque météorologique principal. Les typhons sont généralement annoncés plusieurs jours à l'avance, mais peuvent fermer les transports et les sites. Hors saison des typhons, le risque météorologique est faible." },
+      ],
+      contextNotes: [
+        { topic: "solo", text: "Taipei est particulièrement adaptée aux voyageurs solos. La densité des marchés de nuit, des cafés et des espaces publics animés réduit l'isolement en soirée. Le réseau de MRT permet des déplacements nocturnes autonomes et sécurisés. Taïwan figure régulièrement parmi les destinations les plus sûres d'Asie pour les femmes voyageant seules." },
+      ],
+    },
+    cities: [
+      { name: "Wanhua", type: "Quartier historique", duration: "1 journée", description: "Wanhua est le plus ancien quartier de Taipei, avec le temple Longshan (fondé en 1738) comme point d'ancrage et le bloc historique de Bopiliao comme trace architecturale de la période Qing. C'est le quartier le moins touristique du centre historique, avec des restaurants de cuisine taïwanaise traditionnelle actifs dès le matin.", vibe: "Authentique" },
+      { name: "Datong (Dadaocheng)", type: "Quartier marchand historique", duration: "½ journée", description: "Dadaocheng était le principal quartier marchand de Taipei sous la période Qing et coloniale japonaise. La rue Dihua (迪化街) en conserve l'architecture baroque sino-européenne et les commerces de médecine traditionnelle, de thé et d'épiceries séchées. Depuis une quinzaine d'années, des maisons de thé design et des galeries occupent les étages des anciennes maisons de négoce.", vibe: "Historique" },
+      { name: "Zhongshan", type: "Quartier culturel central", duration: "½ journée", description: "Zhongshan est le quartier des galeries d'artistes indépendants, des boutiques de design et des maisons de thé soignées. La rue Chifeng (赤峰街) concentre des enseignes de vintage, d'artisanat contemporain et de mode locale dans un tissu de petites ruelles. L'ambiance est plus posée et moins dense que les quartiers touristiques.", vibe: "Créative" },
+      { name: "Da'an", type: "Quartier résidentiel aisé", duration: "½ journée", description: "Da'an est le quartier résidentiel le plus dense en restaurants de quartier et en adresses de référence pour la cuisine taïwanaise fine. Yongkang Street concentre le beef noodle soup (牛肉麵) et les xiaolongbao (小籠包). Le parc forestier de Da'an (26 hectares) offre une respiration au centre de la ville.", vibe: "Gastronomique" },
+      { name: "Xinyi", type: "Quartier moderne", duration: "½ journée", description: "Xinyi est le quartier central des affaires de Taipei, dominé par Taipei 101 (508 mètres). Les centres commerciaux Shin Kong Mitsukoshi et Taipei 101 Mall concentrent une offre de restauration dense à toutes gammes. La colline de Xiangshan (Elephant Mountain), accessible à pied depuis la station MRT Xiangshan, offre la vue la plus connue sur le skyline de Taipei.", vibe: "Moderne" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & Ximending", zone: "Taoyuan / Wanhua", intensity: 1, transportMinutes: 50, freeSlots: 2,
+          activities: [
+            { slot: "Arrivée", name: "Transfert Airport MRT depuis Taoyuan", type: "logistics", duration: 60, icon: "✈️", note: "L'Airport MRT (AREX) relie l'aéroport international de Taoyuan à Taipei Main Station en 40 minutes en Express (NT$160, environ 5€ selon le taux de change). L'EasyCard, disponible aux distributeurs de l'aéroport dès la sortie du terminal, couvre l'ensemble du réseau MRT, bus et YouBike. Conserver l'EasyCard pour toute la durée du séjour. L'Express dessert uniquement A1 Taipei Main Station et A3 Xinpu ; l'Ordinary s'arrête à toutes les stations intermédiaires. Le créneau indiqué correspond à une arrivée en matinée ou en milieu de journée ; le timing varie selon le vol." },
+            { slot: "16h–19h", name: "Ximending — quartier de culture jeune", type: "free", duration: 180, icon: "🎨", note: "Ximending est une zone piétonne dans le quartier de Wanhua, à 10 à 12 minutes à pied de Taipei Main Station ou une station en MRT (ligne bleue et verte, station Ximen). L'animation monte à partir de 16h avec les vendeurs de rue, les boutiques de mode indépendante, les librairies de manga et les murales de street art. Espace public ouvert en permanence, sans horaire d'entrée. Premier contact efficace avec l'atmosphère de Taipei sans contrainte logistique." },
+            { slot: "19h–21h", name: "Dîner Ximending — cuisine de rue taïwanaise", type: "food", duration: 120, icon: "🍜", note: "Le quartier de Ximending et ses ruelles adjacentes concentrent des étals et des restaurants de quartier actifs dès la fin d'après-midi. Spécialités à chercher : scallion pancake (蔥抓餅, galette feuilletée à la ciboule), oyster vermicelli (蚵仔麵線, soupe de vermicelles aux huîtres et sauce épaisse), lu rou fan (滷肉飯, porc braisé à la soja sur riz). Budget de 5 à 12€ par personne pour un repas complet composé de plusieurs étals." },
+          ],
+        },
+        {
+          number: 2, title: "Wanhua / Dadaocheng / Raohe", zone: "Wanhua / Datong / Songshan", intensity: 3, transportMinutes: 35, freeSlots: 1,
+          activities: [
+            { slot: "9h–10h30", name: "Longshan Temple", type: "culture", duration: 90, icon: "🛕", note: "Le temple Longshan (龍山寺) est un temple taoïste et bouddhiste fondé en 1738 sous la période Qing, détruit plusieurs fois par les tremblements de terre et la Seconde Guerre mondiale, et reconstruit chaque fois dans sa forme actuelle. Il reste un lieu de culte actif, fréquenté quotidiennement par des fidèles. Entrée gratuite. Ouvert de 6h à 22h environ. L'accès aux zones de culte intérieur peut être restreint selon les cérémonies ou les travaux ponctuels : vérifier sur place." },
+            { slot: "10h30–11h30", name: "Bopiliao Historic Block", type: "culture", duration: 60, icon: "🏛️", note: "Le bloc de Bopiliao (剝皮寮歷史街區) est un ensemble de bâtisses conservées des périodes Qing et coloniale japonaise, situé à 5 minutes à pied de Longshan Temple. Les façades en brique rouge et les arcades couvertes illustrent l'architecture commerciale du Taipei du XIXe siècle. L'espace extérieur est accessible gratuitement à toute heure. Certaines galeries intérieures ont des horaires propres, généralement 9h à 17h. Durée de visite raisonnable : 45 à 60 minutes." },
+            { slot: "12h–13h30", name: "Déjeuner Wanhua", type: "food", duration: 90, icon: "🍽️", note: "Les ruelles autour de Longshan Temple concentrent des restaurants de cuisine taïwanaise traditionnelle ouverts dès le matin. Lu rou fan (porc braisé sur riz), zongzi (riz gluant aux garnitures, enveloppé dans des feuilles de bambou) et beef noodle soup (牛肉麵, soupe de nouilles au boeuf braisé) sont les plats de référence du quartier. Budget de 5 à 10€ par personne." },
+            { slot: "14h30–17h", name: "Dihua Street — Dadaocheng", type: "free", duration: 150, icon: "🏮", note: "La rue Dihua (迪化街) est le coeur de l'ancien quartier marchand de Dadaocheng, dans Datong. L'architecture baroque sino-européenne et japonaise est quasi intacte sur plusieurs centaines de mètres. Les commerces proposent des herbes médicinales, des thés, des épiceries séchées et des pineapple cakes (gâteaux à l'ananas, spécialité taïwanaise). Depuis une quinzaine d'années, des maisons de thé design et des boutiques de créateurs occupent les étages des maisons de négoce restaurées. Trajet depuis Longshan Temple : environ 2 km vers le nord, accessible en MRT ligne bleue jusqu'à Beimen puis 10 minutes à pied, ou en bus. Ce n'est pas un quartier adjacent : prévoir un déplacement." },
+            { slot: "18h–21h", name: "Raohe Night Market", type: "food", duration: 180, icon: "🏮", note: "Le marché de nuit de Raohe (饒河夜市) est situé dans le quartier de Songshan, accessible en MRT brun (ligne 5) station Songshan. Moins saturé que Shilin, il est réputé pour ses hú jiāo bǐng (胡椒餅, buns au porc et poivre noir cuits dans un four à bois), servis par un étal historique à l'entrée du marché. Autres spécialités : oyster vermicelli, tang hu lu (fruits de saison caramélisés sur bâtonnet), scallion pancake. Ouvert de 17h environ à 23h. Budget de 8 à 15€ pour un parcours complet." },
+          ],
+        },
+        {
+          number: 3, title: "National Palace Museum / Zhongshan / Huashan", zone: "Shilin / Zhongshan / Zhongxiao", intensity: 3, transportMinutes: 45, freeSlots: 1,
+          activities: [
+            { slot: "9h–11h30", name: "National Palace Museum", type: "culture", duration: 150, icon: "🏛️", note: "Le National Palace Museum (國立故宮博物院) conserve plus de 690 000 objets issus des collections impériales chinoises des dynasties Qing et précédentes : jades, céramiques, bronzes antiques, calligraphies et peintures. Situé à Shilin au nord de Taipei, accessible en MRT ligne rouge jusqu'à Shilin puis bus. Entrée environ NT$350 (10 à 11€, tarif à vérifier sur place). Fermé le lundi. Ouvert du mardi au dimanche de 8h30 à 17h30, avec nocturnes certains week-ends. Durée minimale recommandée pour les collections principales : 2 heures. Si la journée 3 tombe un lundi, permuter avec la journée 4 ou se replier sur le Memorial Chiang Kai-shek (Zhongzheng, gratuit, ouvert tous les jours)." },
+            { slot: "13h–14h30", name: "Déjeuner Zhongshan", type: "food", duration: 90, icon: "🍽️", note: "Depuis le National Palace Museum, rejoindre Zhongshan en MRT ligne rouge (15 à 20 minutes). Le quartier de Zhongshan concentre des restaurants de cuisine taïwanaise et japonaise de quartier, actifs à l'heure du déjeuner. Budget de 8 à 15€ par personne. Zone de transition pratique entre le musée au nord et les galeries au centre." },
+            { slot: "15h–17h", name: "Chifeng Street — galeries et vintage", type: "free", duration: 120, icon: "🎨", note: "La rue Chifeng (赤峰街), à quelques minutes à pied de la station Zhongshan, concentre des boutiques de mode vintage, des ateliers de designers indépendants et quelques galeries d'artistes contemporains installés dans des bâtisses à arcades. L'ambiance est plus résidentielle et posée que dans les quartiers touristiques. Durée de flânerie raisonnable : 60 à 90 minutes." },
+            { slot: "18h–21h", name: "Huashan 1914 Creative Park & dîner Zhongxiao Dunhua", type: "culture", duration: 180, icon: "🎭", note: "Le Huashan 1914 Creative Park (華山1914文化創意產業園區) est un ancien complexe de brasserie (Datong Brewery, 1914) reconverti en espace d'expositions temporaires, de concerts, de boutiques de design et de restaurants. L'entrée extérieure est gratuite. Situé entre les stations Zhongxiao Xinsheng et Zhongxiao Fuxing (lignes 5 et 4), à 20 à 25 minutes en MRT depuis Zhongshan. Le secteur Zhongxiao Dunhua est l'un des quartiers de restauration les plus denses de Taipei, avec des adresses de toutes gammes dans les ruelles adjacentes à l'axe principal. Budget de 12 à 25€ pour le dîner." },
+          ],
+        },
+        {
+          number: 4, title: "Da'an / Xinyi / Xiangshan", zone: "Da'an / Xinyi", intensity: 3, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "10h–13h", name: "Yongkang Street & Da'an Forest Park", type: "food", duration: 180, icon: "🍜", note: "Yongkang Street (永康街) et ses ruelles adjacentes dans Da'an sont le quartier de référence pour la cuisine taïwanaise fine : beef noodle soup (牛肉麵), xiaolongbao (小籠包, ravioles à la vapeur) et mango shaved ice (glace rasée à la mangue fraîche, spécialité estivale). La chaîne Din Tai Fung, reconnue internationalement pour ses xiaolongbao, dispose d'enseignes dans le secteur Da'an et Xinyi : vérifier la branche la plus proche en ligne avant le départ. Budget de 10 à 20€ pour un déjeuner complet. Le parc forestier de Da'an (26 hectares), à quelques minutes à pied de Yongkang, offre une transition agréable vers Xinyi : prévoir 30 à 45 minutes de traversée dans le parc avant de continuer." },
+            { slot: "14h–16h", name: "Xinyi — quartier de Taipei 101", type: "free", duration: 120, icon: "🏙️", note: "Le quartier de Xinyi est le centre d'affaires moderne de Taipei, avec Taipei 101 (508 mètres, 101 étages) comme repère visuel dominant. La promenade autour de la tour et dans le quartier est gratuite. L'observatoire intérieur du 89e étage est une option séparée (environ NT$600 adulte, tarif à vérifier sur place). La vue depuis Elephant Mountain (étape suivante) offre la même perspective depuis l'extérieur et gratuitement." },
+            { slot: "16h30–18h30", name: "Elephant Mountain — Xiangshan", type: "free", duration: 120, icon: "⛰️", note: "La colline de Xiangshan (象山, Elephant Mountain) est accessible depuis la station MRT Xiangshan (ligne rouge) en environ 20 à 30 minutes de marche sur un sentier balisé avec environ 1 000 marches. Les belvédères offrent une vue frontale sur Taipei 101 et le skyline de Xinyi. Meilleur créneau : coucher de soleil (entre 17h30 et 19h selon la saison). Entrée gratuite. À éviter après une pluie récente : les marches en pierre deviennent glissantes." },
+            { slot: "19h–21h", name: "Dîner Xinyi", type: "food", duration: 120, icon: "🍽️", note: "Les sous-sols du Taipei 101 Mall et des centres Shin Kong Mitsukoshi de Xinyi concentrent des restaurants de toutes gammes, des food courts et des adresses de cuisine taïwanaise, japonaise et internationale. Les ruelles adjacentes à l'axe Xinyi Road proposent des adresses de quartier plus indépendantes. Budget de 12 à 30€ selon l'adresse choisie." },
+          ],
+        },
+        {
+          number: 5, title: "Beitou, Tamsui & départ", zone: "Xinbeitou / Tamsui / Taoyuan", intensity: 2, transportMinutes: 90, freeSlots: 1,
+          activities: [
+            { slot: "9h30–11h30", name: "Beitou — sources chaudes sulfureuses", type: "culture", duration: 120, icon: "♨️", note: "Le quartier de Xinbeitou (新北投) est accessible depuis Taipei Main Station en 35 à 40 minutes en MRT ligne rouge (embranchement vers Xinbeitou depuis Xinbeitou Station). Zone de sources chaudes sulfureuses reconnue à l'échelle asiatique, active depuis l'ère coloniale japonaise. Le Hot Spring Museum (北投溫泉博物館), installé dans un bâtiment de style japonais de 1913, propose une présentation de l'histoire des sources. Entrée gratuite. Fermé le lundi. Ouvert du mardi au dimanche de 9h à 17h. Le Millennium Hot Spring (千禧湯), bains publics en plein air dans la rivière de sources chaudes, est ouvert tous les jours de 5h30 à 22h (NT$40 à 60). Si la journée 5 tombe un lundi, le musée est fermé mais les sources publiques restent accessibles." },
+            { slot: "12h–13h30", name: "Tamsui — Fort San Domingo & Old Street", type: "culture", duration: 90, icon: "🏰", note: "Continuer depuis Xinbeitou vers Danshui (Tamsui) en MRT ligne rouge (15 minutes). Le Fort San Domingo (紅毛城) est un fort du XVIIe siècle, d'origine espagnole (1628) puis hollandais, remanié sous la période Qing. Entrée NT$80. Fermé le lundi. Ouvert du mardi au vendredi de 9h30 à 17h, les week-ends de 9h30 à 18h. Si la journée 5 est un lundi, se replier sur la promenade riverside et la Tamsui Old Street, toujours accessibles. Tamsui Old Street concentre des étals de street food dont l'agei (阿給, tofu farci de vermicelles dans une sauce sucrée-salée, spécialité locale) et les iron eggs (鐵蛋, oeufs à la sauce soja longuement mijotés)." },
+            { slot: "13h30–15h", name: "Déjeuner Tamsui — front de mer", type: "food", duration: 90, icon: "🌊", note: "Les restaurants et les étals de rue autour de la promenade riverside de Tamsui proposent des fruits de mer, des spécialités locales et des cafés avec vue sur la rivière Danshui. Budget de 8 à 15€. La vue en direction des montagnes du parc national de Yangmingshan est particulièrement dégagée depuis le Fisherman's Wharf (Yurenma Pier), à 15 minutes en bus depuis la station Tamsui." },
+            { slot: "15h30–18h", name: "Transfert Taoyuan — retour à l'aéroport", type: "logistics", duration: 150, icon: "✈️", note: "Depuis Tamsui, rejoindre Taipei Main Station en MRT ligne rouge (35 à 40 minutes), puis prendre l'Airport MRT Express jusqu'à l'aéroport de Taoyuan (40 minutes, NT$160). Trajet total depuis Tamsui : environ 80 à 90 minutes. Prévoir 3 heures avant l'heure de décollage pour les formalités internationales. Si le vol est avant 18h, raccourcir à Beitou uniquement et partir directement depuis Taipei Main Station vers l'aéroport. Pour un séjour de 6 nuits ou si le vol est après 20h, Jiufen (九份) constitue une alternative intéressante depuis Taipei Main Station : train TRA vers Ruifang (environ 55 minutes, NT$52 à 83), puis bus (15 à 20 minutes). Jiufen est souvent associée dans les guides à l'univers visuel du film Le Voyage de Chihiro de Miyazaki, lien que le réalisateur n'a jamais confirmé officiellement." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────

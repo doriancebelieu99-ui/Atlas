@@ -122,6 +122,7 @@ test.describe("Explorer page", () => {
       "vienne", "budapest", "athenes", "edimbourg", "hanoi",
       "jordanie", "rajasthan", "la-havane", "kenya", "tbilissi",
       "copenhague", "samarkand", "bergen", "siem-reap", "costa-rica",
+      "seoul", "taipei",
     ];
 
     for (const slug of slugs) {
@@ -131,14 +132,14 @@ test.describe("Explorer page", () => {
     }
   });
 
-  test("fallback grid: 45 cards present and linked to /destination/[slug]", async ({ page }) => {
+  test("fallback grid: 46 cards present and linked to /destination/[slug]", async ({ page }) => {
     await page.goto("/explorer");
 
     const cards = page.locator(".explorer-fallback-card");
     await expect(cards.first()).toBeVisible({ timeout: 5_000 });
 
     const count = await cards.count();
-    expect(count).toBe(45);
+    expect(count).toBe(46);
 
     // All hrefs must point to /destination/
     const hrefs = await cards.evaluateAll((els) =>
