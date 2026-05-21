@@ -7571,6 +7571,147 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  bologne: {
+    slug: "bologne",
+    name: "Bologne",
+    country: "Italie",
+    region: "Émilie-Romagne",
+    tagline: "Portiques, trattorie et pâtes fraîches au coeur de l'Émilie",
+    score: 85,
+    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=900&q=80",
+    summary:
+      "Bologne est la capitale de l'Émilie-Romagne, avec environ 400 000 habitants et une université fondée en 1088, la plus ancienne d'Europe. Elle n'est pas une ville-musée : son intérêt est distribué sur l'ensemble du tissu urbain plutôt que concentré sur un ou deux monuments. Ses 40 kilomètres de portiques couverts traversent la ville en toute saison, structurant les déplacements à pied. Sa réputation gastronomique est la plus solide d'Italie sur les marchés, les charcuteries, les trattorie et les pâtes fraîches. La présence universitaire (environ 85 000 étudiants) entretient une vie de quartier active le soir. Bologne est aussi une excellente base pour des excursions courtes en Émilie-Romagne (Modène, Parme, Ferrare).",
+    mainInterest: "Gastronomie & vie urbaine italienne",
+    idealDuration: "4 à 5 jours",
+    destinationType: "city_plus",
+    pace: "Équilibré",
+    ambiance: ["Gourmande", "Animée", "Étudiante", "Italienne", "Accessible"],
+    targetProfiles: ["Solo", "Couple", "Amateurs de gastronomie"],
+    environment: "urban",
+    flightHoursFromParis: 2,
+    coordinates: { lat: 44.4949, lng: 11.3426 },
+    whyGo: [
+      { title: "La gastronomie la plus dense d'Italie", description: "Bologne est à l'origine de plusieurs des préparations les plus imitées de la cuisine italienne : le ragù alla bolognese (viande hachée longuement mijotée, servi sur des tagliatelle fraîches aux oeufs, jamais sur des spaghetti dans la version locale), les tortellini in brodo (petits pâtés farcis à la viande et au parmesan, servis dans un bouillon de chapon), les lasagnes vertes à la béchamel, et la mortadella (charcuterie à l'IGP, différente du saucisson cuit ordinaire). Le Quadrilatero (réseau de rues autour des marchés Via Pescherie Vecchie et Via Drapperie) concentre les épiceries fines, salumerias et fromageries qui servent de base à cette cuisine." },
+      { title: "Les portiques — 40 km dans la ville", description: "Bologne possède environ 40 kilomètres de portiques couverts (portici), classés au patrimoine mondial de l'UNESCO en 2021. Ces galeries en arcades permettent de traverser presque entièrement le centre historique à l'abri de la pluie ou du soleil. Les portiques ne sont pas seulement décoratifs : ils sont fonctionnels, maintenus par les propriétaires des bâtiments, et donnent à la ville une texture de rue couverte permanente. Le portique qui monte à San Luca (666 arcades, 3,8 km) est le plus long du monde." },
+      { title: "Deux tours médiévales et un centre rouge", description: "Les Due Torri (Torre degli Asinelli, 97 mètres, et la Garisenda, aujourd'hui fermée en raison d'un risque structurel) sont les marqueurs visuels du centre. Elles appartiennent à une série de tours construites par des familles nobles au XIIe-XIIIe siècle (il en restait une quarantaine, deux ont survécu). Le centre historique est bâti en brique rouge de couleur homogène, ce qui lui vaut le surnom de la Rossa. La Piazza Maggiore et la Piazza del Nettuno forment l'espace public central, avec la Basilique San Petronio (commencée en 1390, toujours inachevée selon le projet d'origine)." },
+      { title: "Bologne étudiante et base d'Émilie-Romagne", description: "L'Université de Bologne (fondée en 1088) accueille environ 85 000 étudiants, ce qui donne au centre-ville une vie de soirée continue et une densité de bars, osterie et espaces culturels peu commune pour une ville de cette taille. La ville est également un carrefour ferroviaire efficace : Modène est à 20 minutes en Intercity, Parme à 45 minutes, Ferrare à 35 minutes. Ces excursions se font facilement à la journée ou en demi-journée depuis Bologne." },
+    ],
+    constraints: [
+      { text: "Été (juillet-août) chaud et humide, avec une partie des étudiants et des locaux partis en vacances : ville plus calme mais moins animée. Printemps et automne sont les meilleures périodes.", severity: "caution" },
+      { text: "Le centro storico est entièrement praticable à pied. Voiture déconseillée dans la ZTL (zone à trafic limité) : se déplacer en train, bus ou à pied.", severity: "info" },
+      { text: "La Garisenda (l'une des Due Torri) est fermée depuis 2023 pour risque structurel. Vérifier la situation avant de planifier une visite des deux tours.", severity: "caution" },
+    ],
+    budget: {
+      economy: { min: 55, max: 90 },
+      comfort: { min: 110, max: 180 },
+      premium: { min: 220, max: 380 },
+      flight: { min: 80, max: 220 },
+      costIndex: 68,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "10-18€", comfort: "25-45€", premium: "60-120€" },
+        { label: "Hébergement/nuit", economy: "40-70€", comfort: "90-160€", premium: "180-350€" },
+        { label: "Transport/jour", economy: "3-6€", comfort: "8-15€", premium: "20-40€" },
+        { label: "Activités/jour", economy: "5-12€", comfort: "15-30€", premium: "40-80€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 48, temp: 3, rain: 50, crowd: 15 },
+        { name: "Fév", score: 52, temp: 5, rain: 45, crowd: 15 },
+        { name: "Mar", score: 65, temp: 10, rain: 55, crowd: 25 },
+        { name: "Avr", score: 80, temp: 14, rain: 65, crowd: 40 },
+        { name: "Mai", score: 85, temp: 19, rain: 65, crowd: 55 },
+        { name: "Jun", score: 78, temp: 24, rain: 55, crowd: 60 },
+        { name: "Jul", score: 62, temp: 27, rain: 40, crowd: 55 },
+        { name: "Aoû", score: 55, temp: 27, rain: 45, crowd: 35 },
+        { name: "Sep", score: 82, temp: 22, rain: 60, crowd: 50 },
+        { name: "Oct", score: 80, temp: 16, rain: 75, crowd: 40 },
+        { name: "Nov", score: 60, temp: 9, rain: 70, crowd: 20 },
+        { name: "Déc", score: 52, temp: 4, rain: 55, crowd: 20 },
+      ],
+      best: "Avril-mai et septembre-octobre (températures douces, vie étudiante active, marchés en pleine saison)",
+      avoid: "Juillet-août : chaleur lourde, ville partiellement vidée par les vacances.",
+      note: "Le printemps (avril-mai) est la meilleure fenêtre : cerisiers dans les parcs, marchés en plein air actifs, soirées agréables. L'automne (septembre-octobre) est très comparable. L'hiver est praticable (les portiques protègent de la pluie et du froid) mais les journées sont courtes. L'été est chaud et humide avec une ambiance nettement moins vive.",
+    },
+    context: {
+      culture: "Bologne est historiquement une cité-commune indépendante (XIIe-XIVe siècle), sous domination pontificale à partir de 1506 jusqu'à l'unification italienne (1861). La ville a une tradition politique de gauche marquée depuis 1945, qui a modelé ses politiques urbaines (transport public, services municipaux) et lui vaut un troisième surnom, la Rossa, partagé avec sa couleur architecturale. L'université (Alma Mater Studiorum) est la plus ancienne du monde occidental encore en activité.",
+      tips: "Le centro storico de Bologne est compact et se parcourt entièrement à pied en deux à trois jours. Les portiques permettent de se déplacer à l'abri par mauvais temps. Pour les excursions en Émilie-Romagne, la gare centrale (Bologna Centrale) est à quelques minutes du centre et bien connectée à Modène, Parme et Ferrare. Les trattorie les plus authentiques sont souvent fermées le dimanche soir et parfois le lundi ; vérifier les horaires. La carte Musei (disponible à l'office du tourisme) couvre plusieurs musées municipaux.",
+      surprises: "La Basilique San Petronio (Piazza Maggiore) abrite une méridienne astronomique de 66,8 mètres tracée au sol au XVIIe siècle par Giovanni Cassini — la plus longue méridienne interne d'une église au monde. Un rayon de soleil entre par un trou dans la voûte et frappe la ligne à midi solaire, ce qui permettait de calculer les équinoxes et les solstices. Le musée d'Anatomie de l'Université (Museo di Palazzo Poggi) conserve des planches anatomiques en cire du XVIIIe siècle d'une précision et d'une qualité artistique remarquables.",
+      history: "Fondée comme colonie romaine en 189 avant J.-C. (Bononia), Bologne devient un carrefour de la Via Emilia. Son université attire des étudiants de toute l'Europe dès le XIIe siècle, dont Dante, Pétrarque et Copernic selon les sources. La ville est annexée aux États pontificaux en 1506. Napoléon en fait la capitale de la République cisalpine puis du département du Rhin. L'unification italienne de 1861 l'intègre au Royaume d'Italie. Bologne est lourdement bombardée en 1944 lors de la Seconde Guerre mondiale (notamment la gare centrale, reconstruite après-guerre).",
+    },
+    safety: {
+      overall: "Facile",
+      logisticsScore: 88,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Bologne est une ville sûre pour les normes européennes. Le centro storico est animé jusqu'à tard le soir, notamment autour de l'université. Précautions habituelles dans les zones bondées (marchés, gare)." },
+        { category: "Transport", level: "easy", text: "La gare Bologna Centrale est à 10-15 minutes à pied du centre ou accessible en bus. Les trains régionaux et Intercity couvrent efficacement Modène, Parme et Ferrare pour les excursions. Le centro storico est entièrement praticable à pied." },
+        { category: "ZTL", level: "caution", text: "Le centre historique est en Zone à Trafic Limité (ZTL) : la voiture y est interdite aux non-résidents sans autorisation. Les hébergements en centre-ville gèrent généralement les démarches d'autorisation pour les arrivées en voiture." },
+        { category: "Été", level: "caution", text: "Juillet-août : températures souvent supérieures à 33-35°C avec forte humidité. La ville est moins animée que le reste de l'année. Rythmes de visite à adapter (sorties tôt le matin, sieste en milieu de journée)." },
+      ],
+    },
+    cities: [
+      { name: "Piazza Maggiore & Quadrilatero", type: "Centre historique", duration: "2h à 3h", description: "La Piazza Maggiore est la place centrale de Bologne, entourée de la Basilique San Petronio, du Palazzo d'Accursio (mairie) et du Palazzo dei Notai. La place est un espace public vivant, non un site touristique fermé. Le Quadrilatero adjacent (Via Pescherie Vecchie, Via Drapperie, Via Caprarie) est le réseau de rues du vieux marché : salumerias, fromageries, boucheries, épiceries fines et marchés de plein air. C'est le coeur alimentaire de la ville.", vibe: "Animée et centrale" },
+      { name: "Due Torri & quartier universitaire", type: "Quartier", duration: "1h30 à 2h", description: "Les Due Torri (Torre degli Asinelli, 97 mètres, et la Garisenda, actuellement fermée) marquent le centre médiéval. Le quartier universitaire s'étend autour de Via Zamboni : facultés, librairies, bars, osterie et galeries. L'ambiance est plus détendue et moins touristique qu'autour de Piazza Maggiore. La montée à la Torre degli Asinelli (escalier intérieur en bois, environ 498 marches) offre une vue sur la ville.", vibe: "Médiévale et estudiantine" },
+      { name: "Santo Stefano & Strada Maggiore", type: "Site et promenade", duration: "1h30", description: "Le complexe de Santo Stefano est un ensemble de sept églises imbriquées autour d'une cour romane, construites entre le Ve et le XIIe siècle. La cour centrale (Cortile di Pilato) est l'un des espaces les plus calmes du centre. Strada Maggiore, qui part des Due Torri vers l'est sous ses portiques, est une des promenades les plus représentatives de la ville.", vibe: "Historique et calme" },
+      { name: "Santuario di San Luca", type: "Site", duration: "2h à 3h", description: "Le sanctuaire de San Luca est perché sur la colline de Guardia (291 mètres), à environ 4 kilomètres du centre. Il est relié à la ville par le plus long portique du monde : 666 arcades sur 3,8 kilomètres, construit entre 1674 et 1739. La montée à pied depuis Porta Saragozza prend environ 45 à 60 minutes selon l'allure. Un bus et une télécabine permettent d'y accéder autrement. La vue sur Bologne et la plaine du Pô est dégagée par temps clair.", vibe: "Panoramique et apaisante" },
+      { name: "Modène", type: "Excursion", duration: "Demi-journée à 1 jour", description: "Modène est à 20 minutes de Bologne en Intercity ou Regionale. Elle abrite la cathédrale romane de Modène (classée à l'UNESCO), le musée Ferrari de Maranello (à environ 20 km de Modène, nécessite un bus ou une voiture), et est la ville du vinaigre balsamique traditionnel (aceto balsamico tradizionale, IGP distinct du vinaigre balsamique ordinaire). Le marché Albinelli, couvert et central, est le plus beau marché d'Émilie-Romagne.", vibe: "Gastronomique et patrimoniale" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & Quadrilatero / Piazza Maggiore", zone: "Centro storico", intensity: 2, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "14h–15h30", name: "Arrivée à Bologne", type: "logistics", duration: 90, icon: "🚆", note: "Bologna Centrale est l'une des gares les mieux connectées d'Italie : trains à grande vitesse depuis Paris (via Turin, environ 6h30 à 8h selon le service et le correspondance) ou depuis Paris Gare de Lyon via Trenitalia/SNCF ; vols directs depuis Paris Orly ou CDG vers l'aéroport Marconi de Bologne (environ 2h de vol, navette navette Aerobus vers le centre en 30 minutes environ). La gare centrale est à 10-15 minutes à pied du coeur historique ou accessible en bus (ligne 25 et autres)." },
+            { slot: "15h30–17h", name: "Premier tour — Piazza Maggiore et San Petronio", type: "culture", duration: 90, icon: "🏛️", note: "La Piazza Maggiore est l'espace public central de Bologne : pas un site muséifié, une place active avec terrasses, passants et commerces. La Basilique San Petronio (commencée en 1390 sous maîtrise d'oeuvre de l'architecte Antonio di Vincenzo) est la cinquième plus grande église du monde par la surface intérieure. La façade est restée inachevée sur sa partie haute, le financement n'ayant jamais été complété. L'intérieur abrite la méridienne astronomique de Giovanni Cassini (1655) : un rayon de soleil entre par un trou dans la voûte et trace au sol une ligne de 66,8 mètres servant de cadran solaire. Entrée libre à la basilique." },
+            { slot: "17h–18h30", name: "Quadrilatero — premier passage au marché", type: "culture", duration: 90, icon: "🧀", note: "Le Quadrilatero (Via Pescherie Vecchie, Via Drapperie, Via Caprarie et rues adjacentes) est le réseau de rues du vieux marché de Bologne, actif depuis le Moyen Âge. En fin d'après-midi, les étals sont encore ouverts : salumerias (mortadella, culatello, prosciutto di Parma), fromageries (Parmigiano-Reggiano à différents affinages, Pecorino, Grana Padano), épiceries fines avec pâtes fraîches faites à la main. Ce n'est pas un marché pour touristes : c'est le marché de la ville." },
+            { slot: "19h30–21h30", name: "Premier dîner — trattoria bolognaise", type: "food", duration: 120, icon: "🍝", note: "Le premier dîner doit établir le standard gastronomique de la ville. Une trattoria classique sert : tagliatelle al ragù (ruban de pâte aux oeufs sur un ragù de boeuf et de porc mijoté plusieurs heures, jamais de spaghetti dans la version originale), tortellini in brodo (petits pâtés au bouillon de chapon, spécialité de saison), et crescentine ou tigelle (petits pains frits ou cuits au gril, servis avec de la mortadella, du lardo ou du formaggio). Budget 25 à 45€ par personne selon les plats et le vin." },
+          ],
+        },
+        {
+          number: 2, title: "Tours, Santo Stefano et portiques", zone: "Centro storico / Strada Maggiore", intensity: 2, transportMinutes: 20, freeSlots: 1,
+          activities: [
+            { slot: "9h–10h30", name: "Torre degli Asinelli — montée et vue", type: "culture", duration: 90, icon: "🗼", note: "La Torre degli Asinelli (97 mètres, construite entre 1109 et 1119) est la plus haute des Due Torri et la seule accessible au public. La montée s'effectue par un escalier en bois intérieur d'environ 498 marches, sans ascenseur. Elle est physiquement exigeante et déconseillée aux personnes sujettes au vertige. La vue depuis le sommet donne une lecture de l'ensemble du centro storico rouge, des portiques et de la plaine du Pô jusqu'aux Apennins par temps clair. Billet payant (tarif à confirmer sur le site officiel, réservation recommandée en haute saison)." },
+            { slot: "10h45–12h15", name: "Santo Stefano — complexe des sept églises", type: "culture", duration: 90, icon: "⛪", note: "Le complexe de Santo Stefano (Sette Chiese) est un ensemble de sept édifices religieux imbriqués autour d'une cour romane, bâtis entre le Ve et le XIIe siècle sur les fondations d'un temple romain. Le coeur du complexe est la Basilica del Sepolcro (XVIIIe siècle) et la cour de Pilate (Cortile di Pilato) avec son bassin de pierre. L'ensemble est l'un des lieux les moins touristiques et les plus calmes du centre historique. Entrée libre." },
+            { slot: "12h30–13h30", name: "Déjeuner sous les portiques — Strada Maggiore", type: "food", duration: 60, icon: "🥗", note: "Strada Maggiore, qui part des Due Torri vers l'est, est l'une des rues les plus représentatives du tissu de portiques de Bologne : arcades continues, palais du XVIe au XVIIIe siècle, quelques trattorie et cafés sous les arcades. Le déjeuner peut se prendre dans l'une des osterie de cette rue ou des ruelles adjacentes : pasta al forno (lasagnes), tortelloni à la ricotta et aux épinards, ou un piatto del giorno. Budget 12 à 20€." },
+            { slot: "14h30–16h30", name: "Palazzo Poggi et musée universitaire", type: "culture", duration: 120, icon: "🔬", note: "Le Palazzo Poggi abrite le Sistema Museale di Ateneo de l'Université de Bologne, un ensemble de collections scientifiques réunies au XVIIIe siècle : anatomie (planches en cire anatomiques de haute précision), botanique, astronomie, navigation et histoire naturelle. Les pièces en cire anatomiques (ostetrico, modelli ceroplastici) sont parmi les oeuvres de ce type les plus remarquables d'Europe. L'entrée est libre ou à tarif modique selon les salles. À vérifier les jours et heures d'ouverture sur le site de l'université." },
+            { slot: "19h–21h", name: "Aperitivo et dîner quartier universitaire", type: "food", duration: 120, icon: "🍷", note: "Le quartier autour de Via Zamboni et Via delle Moline est le plus animé de la ville en soirée : osterie, bars à vin (enoteca), pizzerias, et quelques restaurants plus récents. L'aperitivo bolognais (18h-20h dans les bars) fonctionne souvent avec un buffet de bruschette, olives et charcuteries inclus dans le prix du verre. Budget aperitivo 5 à 10€ ; dîner 20 à 35€ par personne." },
+          ],
+        },
+        {
+          number: 3, title: "Gastronomie, sfogline et quartiers vivants", zone: "Quadrilatero / San Vitale / Pratello", intensity: 2, transportMinutes: 20, freeSlots: 1,
+          activities: [
+            { slot: "9h–10h30", name: "Marché du Quadrilatero — matin", type: "culture", duration: 90, icon: "🥩", note: "Le matin est le meilleur moment pour le Quadrilatero : les étals sont complets, les sfogline (artisanes de la pâte fraîche, de sfoglia, la feuille de pâte) travaillent parfois en vitrine dans les boutiques de pâtes. La mortadella di Bologna (IGP) est distincte du saucisson cuit ordinaire : viande de porc hachée finement, farcie de lardons et de pistaches, cuite lentement. Le Parmigiano-Reggiano est vendu à différents niveaux d'affinage (24, 36, 40 mois) avec des différences de texture et d'intensité significatives." },
+            { slot: "11h–12h30", name: "Atelier de pâtes fraîches ou salumeria", type: "culture", duration: 90, icon: "🍝", note: "Plusieurs botteghe du Quadrilatero et de ses environs proposent des ateliers de fabrication de pâtes fraîches (sfoglia, tagliatelle, tortellini) à durée variable. Ces ateliers sont à réserver à l'avance, généralement via les sites des botteghe ou des agences locales. Si l'atelier n'est pas retenu, le temps peut être consacré à une visite approfondie des salumerias et fromageries du Quadrilatero pour composer un déjeuner pris en pique-nique." },
+            { slot: "13h–14h", name: "Déjeuner — pâtes fraîches ou osteria locale", type: "food", duration: 60, icon: "🍜", note: "Les trattorie et osterie autour du Quadrilatero proposent des formules déjeuner à prix fixes (primo + secondo ou primo seul) entre 10 et 18€. Le plat de référence est les tagliatelle al ragù : la recette déposée par la Chambre de commerce de Bologne en 1972 précise une pâte aux oeufs de 8 mm de large (une fois cuite) et un ragù à base de boeuf, porc, pancetta, carotte, céleri, oignon, vin blanc et peu de tomate, mijoté au moins 2 heures." },
+            { slot: "15h–16h30", name: "Via del Pratello — quartier vivant", type: "free", duration: 90, icon: "🏘️", note: "Via del Pratello est une rue de quartier à l'ouest du centre historique, connue pour ses bars populaires, ses osterie bon marché et une ambiance de quartier résidentiel moins touristique que le secteur de Piazza Maggiore. En journée, elle est calme. À partir de 18h-19h, elle s'anime avec des habitués locaux et des étudiants. C'est un bon marqueur de l'ambiance de ville vivable de Bologne, à l'écart des circuits touristiques habituels." },
+            { slot: "19h30–22h", name: "Dîner — lasagnes vertes ou bollito misto", type: "food", duration: 150, icon: "🍽️", note: "Le bollito misto alla bolognese est l'un des plats d'hiver les plus caractéristiques de la cuisine locale : plusieurs viandes (boeuf, veau, cotechino, lingua) cuites ensemble dans un bouillon, servies avec des sauces (salsa verde, mostarda, cren). Les lasagnes alla bolognese sont vertes dans la version locale (pâte à la farine et aux épinards, ragù et béchamel). En été, ces plats lourds sont souvent remplacés par des préparations plus légères. Budget 25 à 45€ par personne." },
+          ],
+        },
+        {
+          number: 4, title: "Excursion à Modène", zone: "Modène", intensity: 2, transportMinutes: 60, freeSlots: 1,
+          activities: [
+            { slot: "9h–9h30", name: "Train Bologne vers Modène", type: "logistics", duration: 30, icon: "🚆", note: "Modène est reliée à Bologne par des trains Regionale et Intercity qui partent régulièrement de Bologna Centrale. Le trajet dure environ 20 à 30 minutes selon le service (tarif autour de 3-5€ en Regionale, à vérifier sur le site Trenitalia). Les trains partent plusieurs fois par heure aux heures de pointe. Modène Centrale est à environ 15 minutes à pied du centre historique ou accessible en bus." },
+            { slot: "9h45–11h45", name: "Cathédrale de Modène et Ghirlandina", type: "culture", duration: 120, icon: "⛪", note: "La cathédrale romane de Modène (XIIe siècle, architecte Lanfranco, sculptures de Wiligelmo) et sa tour campanile (la Ghirlandina, 89 mètres) sont classées au patrimoine mondial de l'UNESCO en 1997. L'ensemble est considéré comme l'un des meilleurs exemples de l'architecture romane d'Italie du Nord. La façade et les chapiteaux de Wiligelmo sont remarquables pour la qualité de leur sculpture. La Ghirlandina peut se visiter (tarif à confirmer sur place)." },
+            { slot: "12h–13h30", name: "Marché Albinelli et déjeuner", type: "food", duration: 90, icon: "🥓", note: "Le marché couvert Albinelli (Mercato Albinelli) est considéré comme l'un des plus beaux marchés alimentaires d'Émilie-Romagne : architecture en fer et verre du début du XXe siècle, étals de charcuteries (zampone, cotechino, salami di Modena), fromages (Parmigiano-Reggiano modenese), fruits et légumes. Des petits restaurants du marché servent des assiettes composées et du vin au verre. Ouvert le matin (heures à confirmer). Budget déjeuner 10 à 20€." },
+            { slot: "14h–16h", name: "Musée et Palazzo dei Musei ou Piazza Grande", type: "culture", duration: 120, icon: "🏛️", note: "Le Palazzo dei Musei de Modène regroupe plusieurs collections : la Galleria Estense (peinture italienne du XIVe au XVIIIe siècle, collection des Este, ducs de Modène) et le Museo Lapidario Estense. La Piazza Grande, devant la cathédrale, est le coeur de vie de Modène. Le vinaigre balsamique traditionnel de Modène (aceto balsamico tradizionale DOP) se vend dans des boutiques spécialisées de la ville : il est très différent du vinaigre balsamique ordinaire (prix élevé, affiné en tonneaux sur 12 à 25 ans minimum)." },
+            { slot: "17h–17h30", name: "Retour Bologne", type: "logistics", duration: 30, icon: "🚆", note: "Train Regionale ou Intercity depuis Modène Centrale vers Bologna Centrale (20 à 30 minutes). Arrivée en début de soirée, temps libre selon les envies : dernier passage au Quadrilatero, soirée via Pratello ou retour à l'hôtel." },
+          ],
+        },
+        {
+          number: 5, title: "San Luca ou dernière matinée / départ", zone: "Colli bolognesi / Centro", intensity: 1, transportMinutes: 50, freeSlots: 2,
+          activities: [
+            { slot: "8h30–11h", name: "Montée à San Luca — portique et sanctuaire (optionnel)", type: "free", duration: 150, icon: "⛪", note: "Le sanctuaire de la Madonna di San Luca est accessible depuis Porta Saragozza par le portique historique de 666 arcades (3,8 km de montée, dénivelé d'environ 250 mètres depuis le bas). La montée à pied prend environ 45 à 60 minutes selon l'allure, avec plusieurs passages exposés au vent en hiver. Un bus (ligne collinare, à confirmer via les lignes TPER) et une télécabine (inaugurée en 2022, tarif à confirmer) permettent d'y accéder autrement. La vue sur Bologne et la plaine du Pô est dégagée par temps clair. Cette activité est conditionnelle à la météo et à l'horaire de départ." },
+            { slot: "11h30–13h", name: "Dernier passage au Quadrilatero et achats", type: "free", duration: 90, icon: "🛍️", note: "Dernière occasion pour les achats alimentaires : mortadella sous vide (transportable), Parmigiano-Reggiano (en boutique spécialisée, vendu en quarts ou en portions), pâtes fraîches sèches, vinaigre balsamique ordinaire ou tradizionale selon le budget. Les boutiques du Quadrilatero conditionnent généralement les produits pour le voyage. Préférer les boutiques de quartier aux enseignes de souvenirs touristiques situées autour de Piazza Maggiore." },
+            { slot: "13h–14h", name: "Dernier repas — tortellini ou tagliatelle", type: "food", duration: 60, icon: "🍝", note: "Une dernière trattoria pour les plats pas encore goûtés : tortelloni à la ricotta et épinards (plus grands que les tortellini, garnis différemment), gramigna al ragù di salsiccia (pâte courte et frisée avec ragù de saucisse), ou un assortiment de charcuteries locales avec du pain. Budget 15 à 25€ par personne. Les trattorie du Quadrilatero servent souvent jusqu'à 14h30-15h." },
+            { slot: "14h30–16h", name: "Transfert gare ou aéroport", type: "logistics", duration: 90, icon: "🚆", note: "Départ depuis Bologna Centrale en train à grande vitesse vers Paris (via Turin, connexions SNCF/Trenitalia, durée totale variable selon les correspondances et le type de service). Alternativement, Aerobus depuis le centre de Bologne vers l'aéroport Guglielmo Marconi (environ 30 minutes selon le trafic). Prévoir 2 heures avant le vol pour les vols internationaux, ou respecter les horaires habituels pour les trains à réservation obligatoire." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
