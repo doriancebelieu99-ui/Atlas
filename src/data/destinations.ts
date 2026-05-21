@@ -7290,6 +7290,146 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  fukuoka: {
+    slug: "fukuoka",
+    name: "Fukuoka",
+    country: "Japon",
+    region: "Kyushu",
+    tagline: "Tonkotsu, yatai et porte d'entrée détendue du Japon",
+    score: 84,
+    image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=900&q=80",
+    summary:
+      "Fukuoka est la plus grande ville de l'île de Kyushu et la cinquième du Japon, avec environ 1,6 million d'habitants. Moins monumentale que Tokyo, moins saturée qu'Osaka, elle offre une expérience urbaine japonaise à taille humaine : ramen tonkotsu, yatai nocturnes, quartiers distincts bien reliés en métro, et une excursion commode vers Dazaifu. La ville est régulièrement citée dans les classements de qualité de vie japonais pour sa compacité et ses espaces verts. Pour un premier voyage au Japon, Fukuoka est une entrée moins intimidante que Tokyo tout en offrant une densité culturelle réelle.",
+    mainInterest: "Gastronomie urbaine & vie de quartier japonaise",
+    idealDuration: "4 à 5 jours",
+    destinationType: "city_plus",
+    pace: "Équilibré",
+    ambiance: ["Détendue", "Gourmande", "Locale", "Urbaine", "Accessible"],
+    targetProfiles: ["Solo", "Couple", "Primo-voyageurs Japon"],
+    environment: "urban",
+    flightHoursFromParis: 13,
+    coordinates: { lat: 33.5904, lng: 130.4017 },
+    whyGo: [
+      { title: "Ramen tonkotsu — le style Hakata", description: "Le ramen de style Hakata est l'un des trois grands styles de ramen japonais : bouillon de porc (tonkotsu) longuement mijoté jusqu'à devenir blanc et onctueux, nouilles fines et droites, garnitures simples (chashu, oeuf, negi, gingembre mariné). Ichiran et Ippudo, deux des marques de ramen les plus connues au monde, sont toutes deux nées à Fukuoka. Des dizaines de ramen-ya indépendants dans les ruelles de Hakata, Tenjin et Nakasu proposent des variations maison. La coutume du kaedama (commander une nouvelle portion de nouilles dans son bouillon restant) est propre au style Hakata." },
+      { title: "Yatai — les échoppes de plein air", description: "Les yatai (stands de nourriture de plein air, 屋台) sont l'image nocturne la plus associée à Fukuoka au Japon. Leur nombre a fortement diminué depuis les années 1970 et se situe aujourd'hui autour d'une centaine, concentrés principalement à Nakasu, autour de Tenjin et à Nagahama. Ils fonctionnent généralement de la nuit tombée jusqu'à 2h du matin. L'expérience est réelle mais inégale selon les emplacements : les yatai de Nakasu accueillent davantage de touristes et d'expatriés, ceux de Nagahama et Haruyoshi tendent à être plus fréquentés par des habitués locaux. L'ambiance est conviviale, les tables exiguës, et les échanges avec les voisins de comptoir font partie du moment." },
+      { title: "Dazaifu — sanctuaire et musée en excursion", description: "Le sanctuaire Tenmangu de Dazaifu est dédié à Sugawara no Michizane (IXe siècle), lettré et calligraphe divinisé en protecteur des études. C'est l'un des sites de pèlerinage les plus fréquentés de Kyushu, accessible en train Nishitetsu depuis Tenjin en environ 40 minutes. Il est adjacent au Kyushu National Museum, l'un des quatre musées nationaux du Japon avec ceux de Tokyo, Nara et Kyoto, spécialisé dans les échanges culturels entre le Japon et l'Asie continentale. Le jardin de mousse du temple zen Komyozen-ji, à quelques minutes à pied du sanctuaire, est une halte calme et peu connue des visiteurs." },
+      { title: "Une ville compacte et agréable à vivre", description: "Fukuoka combine les avantages des grandes villes japonaises (transports efficaces, gastronomie dense, vie nocturne structurée) sans la surcharge logistique de Tokyo ni la densité touristique d'Osaka. Le métro couvre les principaux quartiers en quelques stations. Hakata, Tenjin, Nakasu, Daimyo et Momochi sont tous à moins de 20 minutes les uns des autres. L'aéroport est relié à Hakata Station en 5 minutes de métro, ce qui simplifie considérablement les arrivées et départs." },
+    ],
+    constraints: [
+      { text: "Tsuyu de mi-juin à mi-juillet : pluies fréquentes. Août chaud et humide (32-35°C). Octobre-novembre est la meilleure fenêtre.", severity: "caution" },
+      { text: "Trois réseaux de transports distincts (métro municipal, Nishitetsu, JR) : l'IC card Hayakaken, SUGOCA ou Nimoca couvre les trois.", severity: "info" },
+      { text: "FUK relié à Hakata Station en 5 minutes de métro ligne Kūkō. Alternative : arrivée par Shinkansen à Hakata Station.", severity: "info" },
+    ],
+    budget: {
+      economy: { min: 50, max: 80 },
+      comfort: { min: 100, max: 160 },
+      premium: { min: 200, max: 350 },
+      flight: { min: 450, max: 900 },
+      costIndex: 72,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "8-15€", comfort: "20-35€", premium: "50-100€" },
+        { label: "Hébergement/nuit", economy: "25-50€", comfort: "70-130€", premium: "150-300€" },
+        { label: "Transport/jour", economy: "3-5€", comfort: "8-12€", premium: "20-30€" },
+        { label: "Activités/jour", economy: "5-10€", comfort: "15-25€", premium: "40-80€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 45, temp: 7, rain: 70, crowd: 20 },
+        { name: "Fév", score: 48, temp: 8, rain: 65, crowd: 20 },
+        { name: "Mar", score: 62, temp: 11, rain: 100, crowd: 35 },
+        { name: "Avr", score: 78, temp: 16, rain: 110, crowd: 55 },
+        { name: "Mai", score: 82, temp: 21, rain: 130, crowd: 50 },
+        { name: "Jun", score: 55, temp: 25, rain: 250, crowd: 40 },
+        { name: "Jul", score: 50, temp: 29, rain: 220, crowd: 45 },
+        { name: "Aoû", score: 48, temp: 31, rain: 170, crowd: 50 },
+        { name: "Sep", score: 62, temp: 27, rain: 170, crowd: 40 },
+        { name: "Oct", score: 85, temp: 21, rain: 75, crowd: 55 },
+        { name: "Nov", score: 88, temp: 15, rain: 75, crowd: 50 },
+        { name: "Déc", score: 55, temp: 9, rain: 60, crowd: 30 },
+      ],
+      best: "Octobre et novembre (douceur, moins de pluie, érables rouges à Dazaifu)",
+      avoid: "Mi-juin à mi-juillet : tsuyu (saison des pluies). Août : chaleur et humidité marquées.",
+      note: "Le printemps (avril-mai) est agréable avec les cerisiers mais légèrement pluvieux. L'automne (octobre-novembre) est la meilleure fenêtre : températures douces entre 15 et 21°C, ciel plus stable, feuillage roux à Dazaifu. L'hiver est doux pour une ville japonaise (rarement sous 5°C) mais sans attrait particulier.",
+    },
+    context: {
+      culture: "Fukuoka (anciennement Hakata, nom encore utilisé pour le quartier de la gare et le style de ramen) est historiquement le principal port de commerce entre le Japon, la Corée et la Chine. Elle a résisté aux deux invasions mongoles de 1274 et 1281 (lors de la seconde, une tempête détruisit une grande partie de la flotte mongole). La culture locale valorise une certaine informalité par rapport aux standards de Tokyo. La ville accueille le sumo Kyushu Basho chaque novembre.",
+      tips: "L'IC card est indispensable : Hayakaken, SUGOCA et Nimoca fonctionnent sur tous les réseaux locaux et sont compatibles avec Suica ou Pasmo. Pour Dazaifu, le départ s'effectue depuis Nishitetsu Fukuoka Station (à Tenjin, sur l'avenue Watanabe-dori, distinct de JR Hakata Station) avec changement à Nishitetsu-Futsukaichi. Les yatai ouvrent généralement à partir de 18h-19h et ferment vers 1h-2h du matin. Google Maps et Navitime Japan couvrent bien les transports locaux.",
+      surprises: "L'aéroport de Fukuoka est l'un des rares aéroports internationaux au monde à être relié au centre-ville en métro en 5 minutes (ligne Kūkō, direction Meinohama depuis le terminal international). Les terminaux domestique et international sont distincts et reliés par navette gratuite. Le Fukuoka City Museum (secteur Momochi) conserve un sceau d'or chinois de 57 après J.-C., l'un des objets historiques les plus importants du Japon, offert à un roi de l'archipel par l'empereur Han Guangwu ; l'entrée aux collections permanentes est gratuite.",
+      history: "Hakata est l'un des plus anciens ports de commerce du Japon, mentionné dans les textes dès le VIIe siècle. La ville a été le principal point de contact entre le Japon et le continent asiatique pendant la période de fermeture (sakoku, 1639-1853). En 1889, la ville moderne de Fukuoka a été formée par la fusion de la cité de château (Fukuoka, côté samouraï) et du port marchand (Hakata, côté commerçants). L'usage des deux noms persiste encore selon le contexte.",
+    },
+    safety: {
+      overall: "Très facile",
+      logisticsScore: 91,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Fukuoka est une ville très sûre. Les cas de vol ou d'agression visant les visiteurs étrangers sont rares. Les précautions habituelles (attention aux affaires personnelles dans les lieux bondés) suffisent." },
+        { category: "Transport", level: "easy", text: "Le réseau de métro couvre les quartiers principaux (Hakata, Tenjin, Nakasu, Momochi). L'IC card est utilisable sur les trois réseaux (métro, JR, Nishitetsu). La correspondance depuis l'aéroport est simple : environ 5 minutes de métro ligne Kūkō jusqu'à Hakata Station." },
+        { category: "Langue", level: "caution", text: "L'anglais est moins répandu à Fukuoka qu'à Tokyo. Dans les ramen-ya et les yatai locaux, les menus sont souvent uniquement en japonais. Google Translate (mode caméra) et les menus illustrés facilitent la commande. Les principaux sites touristiques disposent de documentation en anglais." },
+        { category: "Météo", level: "caution", text: "La saison des pluies (tsuyu) de mi-juin à mi-juillet apporte des précipitations fréquentes. Août est chaud et humide. Une veste légère imperméable est utile au printemps et en automne." },
+      ],
+    },
+    cities: [
+      { name: "Hakata", type: "Quartier", duration: "2h à 3h", description: "Hakata est le quartier de la gare et le pôle logistique de Fukuoka, avec accès vers le Shinkansen, le métro et les bus longue distance. Les sous-sols de Hakata Station et le centre commercial adjacent (Hakata City, Amu Plaza) concentrent une offre dense de restaurants dont plusieurs ramen-ya représentatifs du style local. Le quartier artisanal de Gion (autour de la station de métro du même nom) est associé au festival Hakata Gion Yamakasa de juillet.", vibe: "Dynamique et pratique" },
+      { name: "Tenjin & Daimyo", type: "Quartier", duration: "2h à 3h", description: "Tenjin est le centre commercial de Fukuoka : grands magasins, Tenjin Chikagai (mall souterrain de 600 mètres), restaurants et cafés. Le quartier de Daimyo, adjacent à l'ouest, est plus petit et plus créatif : boutiques indépendantes, cafés de spécialité, galeries. Les deux se parcourent facilement à pied depuis la station de métro Tenjin.", vibe: "Commerciale et locale" },
+      { name: "Nakasu", type: "Quartier", duration: "1h à 2h", description: "Nakasu est une île formée par deux bras de la rivière Naka, connue pour sa concentration de restaurants, izakayas, bars et yatai alignés le long du canal. L'ambiance nocturne est animée. Les yatai de Nakasu sont davantage fréquentés par les touristes que ceux de Nagahama ou Haruyoshi.", vibe: "Nocturne et animée" },
+      { name: "Ohori Park & ruines du château", type: "Parc", duration: "1h30 à 2h", description: "Le parc Ohori (大濠公園) est un grand espace de détente avec un lac central et des îles reliées par des passerelles, très fréquenté par les joggers et les riverains. Il est adjacent aux ruines du château de Fukuoka (Maizuru Park) dont il ne reste que les remparts en pierre sur la colline, sans reconstruction. Accès : métro ligne Kūkō, station Ōhori Kōen.", vibe: "Apaisante et locale" },
+      { name: "Momochi", type: "Quartier", duration: "2h", description: "Momochi est un quartier construit sur des terres gagnées sur la mer dans les années 1980-90, à l'ouest du centre. Il abrite la Fukuoka Tower (234 mètres), le Fukuoka City Museum et l'esplanade du Seaside Momochi avec vue sur la baie de Hakata. Le PayPay Dome (stade de baseball) est adjacent. L'ambiance est moderne et ouverte.", vibe: "Moderne et ouverte sur la mer" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & Hakata / Nakasu", zone: "Hakata / Nakasu", intensity: 2, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "13h–15h", name: "Arrivée à Fukuoka", type: "logistics", duration: 120, icon: "✈️", note: "Deux points d'entrée selon l'itinéraire : l'aéroport de Fukuoka (FUK) est relié à Hakata Station par le métro ligne Kūkō en environ 5 minutes (environ 260 yen en IC card). Le terminal international et le terminal domestique sont sur deux sites distincts reliés par une navette gratuite de 5 minutes. Depuis Paris, les vols se font avec escale (Tokyo ou Séoul) pour un trajet total d'environ 13 à 15 heures. Alternative : arrivée à Tokyo puis Shinkansen Nozomi jusqu'à Hakata Station via la ligne Sanyo (environ 5 heures, réservation obligatoire, couvert par le JR Pass)." },
+            { slot: "15h30–17h", name: "Hakata Station et premier ancrage", type: "culture", duration: 90, icon: "🏙️", note: "Hakata Station est l'une des grandes gares de Kyushu : les sous-sols et niveaux supérieurs (Hakata City, Amu Plaza) concentrent des dizaines de restaurants dont plusieurs ramen-ya qui servent le tonkotsu style Hakata. Les galeries marchandes souterraines permettent une première immersion sans jet-lag excessif. Le quartier de Gion, à 10 minutes à pied de la gare, est le secteur artisanal associé au festival Hakata Gion Yamakasa." },
+            { slot: "17h30–19h", name: "Promenade Nakasu — rivière et canal", type: "free", duration: 90, icon: "🌆", note: "Nakasu est une île formée par deux bras de la rivière Naka, reliée à Hakata et Tenjin par plusieurs ponts. En fin d'après-midi, les abords du canal s'animent progressivement. La promenade le long de l'eau donne une première image de l'ambiance de la ville. À partir de 18h-19h, les premiers yatai commencent à ouvrir : les reconnaître à leurs tentures en toile et au comptoir surélevé entourant le stand de cuisson." },
+            { slot: "19h30–21h30", name: "Premier ramen tonkotsu à Hakata", type: "food", duration: 120, icon: "🍜", note: "Le ramen de style Hakata se distingue par son bouillon de porc (tonkotsu) longuement mijoté, d'aspect blanc et onctueux, servi avec des nouilles très fines et droites, du chashu (porc braisé), de l'oeuf mariné et du negi (oignons verts). La coutume du kaedama permet de commander une nouvelle portion de nouilles une fois le bol presque vide, pour les plonger dans le bouillon restant (environ 100-150 yen supplémentaires). Des ramen-ya indépendants sont présents dans les ruelles autour de Hakata Station et Nakasu. Budget 8 à 14€ par personne." },
+          ],
+        },
+        {
+          number: 2, title: "Ohori Park, Tenjin et yatai", zone: "Ohori / Tenjin / Daimyo / Nakasu", intensity: 2, transportMinutes: 40, freeSlots: 1,
+          activities: [
+            { slot: "9h–10h30", name: "Ohori Park et ruines du château", type: "free", duration: 90, icon: "🌳", note: "Le parc Ohori (大濠公園) est un espace de détente autour d'un grand lac artificiel avec trois îles reliées par des passerelles. Le matin, il est fréquenté principalement par des joggers et des riverains. Les ruines du château de Fukuoka (Maizuru Park) sont adjacentes : il ne reste que les remparts en pierre et quelques structures de garde sur la colline, sans reconstruction. La vue depuis les remparts permet d'appréhender la relation historique entre la ville de château (côté Fukuoka) et le port marchand (côté Hakata). Accès : métro ligne Kūkō, station Ōhori Kōen." },
+            { slot: "11h–12h30", name: "Tenjin Chikagai et quartier Daimyo", type: "free", duration: 90, icon: "🛍️", note: "Le Tenjin Chikagai (天神地下街) est un mall souterrain de 600 mètres de long avec une architecture intérieure inspirée de l'Europe du XIXe siècle (voûtes, sol en marbre). À la surface, les grands magasins Iwataya et Mitsukoshi encadrent les avenues piétonnes. Le quartier de Daimyo, à l'ouest de Tenjin (5-10 minutes à pied), est plus compact : boutiques indépendantes, cafés de spécialité, galeries. L'atmosphère est sensiblement plus locale et moins touristique que la zone de Hakata Station." },
+            { slot: "12h30–13h30", name: "Déjeuner Daimyo ou Tenjin", type: "food", duration: 60, icon: "🍱", note: "La zone Daimyo-Tenjin concentre une grande densité de restauration : teishoku (plateau-repas japonais avec riz, soupe et accompagnements), curry katsu, soba, et plusieurs ramen-ya plus discrets que ceux de Hakata Station. Budget 10 à 18€ pour un repas complet. Les ruelles autour de Daimyo sont plus calmes à l'heure du déjeuner qu'en soirée." },
+            { slot: "14h30–17h", name: "Fukuoka Art Museum et quartier Yakuin", type: "culture", duration: 150, icon: "🎨", note: "Le Fukuoka Art Museum (福岡市美術館), situé dans le parc Ohori, conserve une collection d'art moderne occidental et d'art japonais traditionnel. Entrée aux collections permanentes 200 yen. Le quartier de Yakuin (薬院), à 15 minutes à pied au sud de Tenjin, est un secteur résidentiel avec cafés indépendants et une ambiance plus posée. Haruyoshi (春吉), adjacent, est le secteur des bars et izakayas qui ouvrent à partir de 18h et sont davantage fréquentés par des habitués locaux que par des touristes." },
+            { slot: "20h–22h30", name: "Yatai — soirée Nagahama ou Haruyoshi", type: "food", duration: 150, icon: "🏮", note: "Les yatai de Nagahama (bord de mer à l'est du port, environ 10 minutes depuis Hakata en taxi ou bus) ou de Haruyoshi tendent à être plus fréquentés par des habitués locaux que ceux de Nakasu. Un yatai typique sert ramen tonkotsu, yakitori, gyoza et bières. Le comptoir accueille 8 à 12 personnes, les tables sont serrées. Prévoir 20 à 30€ par personne avec boissons. Ouverture vers 18h-19h, fermeture vers 1h-2h du matin." },
+          ],
+        },
+        {
+          number: 3, title: "Excursion à Dazaifu", zone: "Dazaifu", intensity: 2, transportMinutes: 90, freeSlots: 1,
+          activities: [
+            { slot: "9h–9h45", name: "Nishitetsu Tenjin vers Dazaifu", type: "logistics", duration: 45, icon: "🚃", note: "Départ depuis Nishitetsu Fukuoka Station (西鉄福岡駅), sur l'avenue Watanabe-dori à Tenjin, distincte de JR Hakata Station. Prendre le train vers Nishitetsu-Futsukaichi (西鉄二日市), puis changer pour la ligne locale vers Dazaifu Station (太宰府駅). Trajet total environ 40 minutes, tarif environ 420 yen en IC card (Hayakaken, Nimoca ou SUGOCA). Les trains partent toutes les 10 à 15 minutes aux heures de pointe." },
+            { slot: "10h–12h", name: "Dazaifu Tenmangu", type: "culture", duration: 120, icon: "⛩️", note: "Le sanctuaire Tenmangu (太宰府天満宮) est dédié à Sugawara no Michizane (845-903), fonctionnaire impérial et calligraphe exilé à Dazaifu où il mourut, puis divinisé en Tenjin, protecteur des études et de la connaissance. La rue d'approche (avec les vendeurs de umegae mochi, gâteaux de riz fourrés à la pâte de haricot rouge, spécialité locale) mène aux étangs à carpes et au bâtiment principal. Le sanctuaire est très fréquenté les jours de fête et en période d'examens (janvier à mars). Entrée libre au sanctuaire." },
+            { slot: "12h15–13h15", name: "Komyozen-ji — jardin de mousse zen", type: "culture", duration: 60, icon: "🌿", note: "Le temple bouddhiste Komyozen-ji (光明禅寺) est à 5 minutes à pied de Tenmangu. Il possède deux petits jardins de pierre et de mousse dans la tradition zen de la période Muromachi. C'est un lieu calme et peu fréquenté par rapport au sanctuaire adjacent. Entrée 200 yen. Le jardin de mousse côté arrière est particulièrement beau après la pluie. Le temple est en activité religieuse : respecter le silence." },
+            { slot: "13h30–14h30", name: "Déjeuner et retour Fukuoka", type: "food", duration: 60, icon: "🍜", note: "Déjeuner dans la rue d'approche du sanctuaire (restaurants de soba, udon et spécialités locales entre 8 et 14€) ou retour vers Fukuoka pour déjeuner à Tenjin. En option selon le temps disponible : le Kyushu National Museum (九州国立博物館), adjacent à Tenmangu et relié par un escalator couvert, est ouvert du mardi au dimanche de 9h30 à 17h (fermé le lundi). C'est l'un des quatre musées nationaux du Japon, spécialisé dans les échanges culturels entre le Japon et l'Asie. Entrée 700 yen pour les collections permanentes." },
+          ],
+        },
+        {
+          number: 4, title: "Momochi & baie de Hakata", zone: "Momochi / Port / Yakuin", intensity: 2, transportMinutes: 50, freeSlots: 1,
+          activities: [
+            { slot: "9h30–11h", name: "Seaside Momochi et Fukuoka Tower", type: "free", duration: 90, icon: "🗼", note: "Le secteur Momochi est construit sur des terres gagnées sur la mer dans les années 1980. Le Seaside Momochi est une esplanade en bord de mer avec vue sur la baie de Hakata. La Fukuoka Tower (234 mètres, plus haute tour en bord de mer du Japon) dispose d'un observatoire à 116 mètres. Entrée 800 yen. La matinée offre généralement de meilleures conditions de visibilité. Accès depuis Hakata ou Tenjin : bus (plusieurs lignes, environ 20-25 minutes) ou taxi." },
+            { slot: "11h15–12h45", name: "Fukuoka City Museum", type: "culture", duration: 90, icon: "🏛️", note: "Le Fukuoka City Museum (福岡市博物館, adjacent à la Fukuoka Tower) est spécialisé dans l'histoire de Fukuoka et les échanges commerciaux entre le Japon et l'Asie. La collection permanente inclut notamment un sceau d'or chinois de la période Han (57 après J.-C.), l'un des objets historiques les plus importants du Japon, et des collections sur le festival Hakata Gion Yamakasa. Entrée aux collections permanentes gratuite ; expositions temporaires payantes." },
+            { slot: "13h–14h", name: "Déjeuner Momochi", type: "food", duration: 60, icon: "🍱", note: "Plusieurs restaurants et cafés sont présents dans le secteur Momochi et autour du PayPay Dome. Les établissements autour du stade proposent des plats japonais courants (ramen, teishoku, sushi conveyor belt). Budget 12 à 20€ par personne." },
+            { slot: "14h30–16h30", name: "Port de Hakata et bord de mer", type: "free", duration: 120, icon: "⚓", note: "Le port de Hakata (博多港) est le principal terminal de ferries de Fukuoka pour les liaisons vers Iki, Tsushima et la Corée du Sud. La promenade sur les quais autour du terminal donne une image directe de l'activité maritime de la ville. Les abords du port sont calmes en semaine. Accès depuis Momochi : bus retour vers Hakata (20-25 minutes), puis marche ou bus côtier vers le terminal portuaire." },
+            { slot: "19h–21h30", name: "Soirée izakaya à Yakuin ou Haruyoshi", type: "food", duration: 150, icon: "🍶", note: "Les quartiers de Yakuin et Haruyoshi, au sud-ouest de Tenjin (10 minutes à pied), sont les secteurs de bars et d'izakayas les plus fréquentés par les habitants. L'ambiance est moins scénographiée que Nakasu : petits établissements, comptoirs en bois, sake et shochu, yakitori et plats de saison. Budget 20 à 35€ par personne avec boissons. Les ruelles autour de la station de métro Yakuin-Odori (ligne Nanakuma) constituent le meilleur terrain d'exploration." },
+          ],
+        },
+        {
+          number: 5, title: "Marché, mentaiko et départ", zone: "Hakata / Nakasu / FUK ou Shinkansen", intensity: 1, transportMinutes: 40, freeSlots: 2,
+          activities: [
+            { slot: "8h–9h30", name: "Marché Yanagibashi", type: "culture", duration: 90, icon: "🐟", note: "Le marché couvert de Yanagibashi (柳橋連合市場), parfois surnommé la cuisine de Fukuoka, est un marché alimentaire compact entre Nakasu et Hakata, ouvert dès 7h et fréquenté principalement par des restaurateurs et des habitants. On y trouve poissons frais de la baie de Hakata, légumes, pickles, tofu artisanal et épicerie fine. L'ambiance est plus authentique et moins orientée tourisme que la plupart des marchés des grandes villes japonaises. Accès : à pied depuis Nakasu ou Hakata Station (10 à 15 minutes)." },
+            { slot: "9h45–11h", name: "Shopping mentaiko et cadeaux Hakata", type: "free", duration: 75, icon: "🛒", note: "Le mentaiko (明太子, oeufs de lieu de l'Alaska assaisonnés au piment) est la spécialité culinaire exportable la plus associée à Fukuoka. Hakata Station (sous-sol du Hakata City) et l'aéroport de Fukuoka disposent tous deux d'une sélection complète. Pour les cadeaux alimentaires en général, le départ depuis Hakata Station est plus pratique si les vols sont en soirée. Le mentaiko se conserve en glacière pour le transport, les boutiques spécialisées proposent des conditionnements adaptés au voyage." },
+            { slot: "11h–12h30", name: "Dernier repas — ramen ou gyoza", type: "food", duration: 90, icon: "🍜", note: "Profiter du dernier repas pour essayer un style pas encore visité : un ramen-ya indépendant dans les ruelles de Hakata, un gyoza-ya (le style Hakata propose des gyoza à peau fine et farce au porc, distinct du style tokyoïte), ou un teishoku dans un restaurant de quartier. Budget 10 à 16€. Les ruelles autour de Hakata Station restent actives jusqu'en milieu de journée." },
+            { slot: "13h30–15h30", name: "Transfert vers FUK ou Hakata Shinkansen", type: "logistics", duration: 120, icon: "✈️", note: "Pour les vols depuis FUK : métro ligne Kūkō direction Fukuoka Airport depuis Hakata Station (environ 5 minutes, environ 260 yen) ou depuis Tenjin (environ 11 minutes). Le terminal international nécessite une navette depuis le terminal domestique (gratuite, environ 5 minutes). Prévoir 2 heures à 2h30 avant le départ pour les vols internationaux. Pour un retour vers Tokyo en Shinkansen (correspondance vers Incheon ou vol direct depuis Haneda) : Hakata Station, ligne Sanyo, Nozomi jusqu'à Tokyo en environ 5 heures avec réservation obligatoire." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
