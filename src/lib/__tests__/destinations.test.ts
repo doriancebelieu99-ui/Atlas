@@ -11,7 +11,7 @@ import {
 describe("getAllDestinations", () => {
   it("returns all seeded destinations", () => {
     const dests = getAllDestinations();
-    expect(dests.length).toBe(53);
+    expect(dests.length).toBe(54);
   });
 
   it("returns destinations sorted by score descending", () => {
@@ -361,6 +361,12 @@ describe("getItineraryBySlug", () => {
 
   it("returns itinerary for Fukuoka (5 days)", () => {
     const result = getItineraryBySlug("fukuoka");
+    expect(result).not.toBeNull();
+    expect(result!.days).toHaveLength(5);
+  });
+
+  it("returns itinerary for Sapporo (5 days)", () => {
+    const result = getItineraryBySlug("sapporo");
     expect(result).not.toBeNull();
     expect(result!.days).toHaveLength(5);
   });

@@ -7430,6 +7430,147 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  sapporo: {
+    slug: "sapporo",
+    name: "Sapporo",
+    country: "Japon",
+    region: "Hokkaidō",
+    tagline: "Ramen miso, neige d'Hokkaidō et bière au nord du Japon",
+    score: 84,
+    image: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=900&q=80",
+    summary:
+      "Sapporo est la quatrième ville du Japon par la population (environ 1,9 million d'habitants) et la capitale de l'île d'Hokkaidō. Conçue sur un plan en grille par des ingénieurs américains et japonais à partir de 1869, elle n'a pas la densité historique de Kyoto ni la saturation touristique d'Osaka. Sa force est ailleurs : une gastronomie distincte (ramen miso, fruits de mer d'Hokkaidō, produits laitiers), un hiver remarquable avec des chutes de neige parmi les plus importantes du monde pour une grande ville, et une excursion facile vers Otaru. L'été est doux et agréable, l'automne très net, le printemps tardif. C'est une destination cohérente pour qui cherche un Japon moins saturé, plus aéré, fortement saisonnier.",
+    mainInterest: "Gastronomie d'Hokkaidō & hiver de grande ville",
+    idealDuration: "4 à 5 jours",
+    destinationType: "city_plus",
+    pace: "Équilibré",
+    ambiance: ["Aérée", "Saisonnière", "Gourmande", "Locale", "Hivernale"],
+    targetProfiles: ["Solo", "Couple", "Amateurs de gastronomie"],
+    environment: "urban",
+    flightHoursFromParis: 12,
+    coordinates: { lat: 43.0618, lng: 141.3545 },
+    whyGo: [
+      { title: "Ramen miso — le style Sapporo", description: "Le ramen de Sapporo est l'un des trois styles de référence au Japon avec ceux de Tokyo (shoyu) et Hakata (tonkotsu). Sa signature : un bouillon à base de miso (pâte de soja fermenté), riche et épais, servi avec des nouilles ondulées épaisses, du maïs, du beurre, du porc et du bambou. Le style est né à Sapporo dans les années 1950. La Ramen Alley (Ganso Sapporo Ramen Yokocho, dans Susukino) est l'adresse emblématique du genre, aujourd'hui très fréquentée par les touristes, mais les ramen-ya indépendants dans les rues autour de Sapporo Station et Susukino proposent des versions souvent aussi solides." },
+      { title: "Hokkaidō à table — les produits du nord", description: "Hokkaidō est la principale région agricole et maritime du Japon : beurre, fromages, lait (dont la crème fraîche utilisée en cuisine locale), pommes de terre, maïs, mouton pour le jingisukan (barbecue mongol), et fruits de mer (crabe royal, oursins, pétoncles, saumon sauvage). La cuisine de Sapporo est directement alimentée par ces produits régionaux. Les marchés Nijō et Sapporo Central Wholesale Market donnent un accès direct à cette diversité. Pour un premier voyage au Japon, la table d'Hokkaidō est une découverte distincte de celle de Honshu." },
+      { title: "L'hiver, la neige et le festival", description: "Sapporo reçoit des chutes de neige parmi les plus importantes au monde pour une ville de cette taille : plusieurs mètres de neige par saison, avec une moyenne de plus de 6 mètres cumulés par hiver selon les années. Le Festival de la neige de Sapporo (Yuki Matsuri, généralement début février) transforme Odori Park en galerie de sculptures de glace et de neige monumentales, certaines hautes de plusieurs mètres. En dehors du festival, l'hiver reste remarquable : les rues enneigées, les parcs couverts de blanc et l'ambiance nocturne de Susukino sous la neige constituent l'image la plus forte de la ville." },
+      { title: "Otaru — canal et port en excursion courte", description: "Otaru (小樽) est une ville portuaire à environ 40 minutes de Sapporo en train. Son canal historique (construit au début du XXe siècle pour le transport du poisson et du charbon), ses entrepôts en pierre convertis en restaurants et boutiques, et son artisanat du verre en font l'une des excursions les plus cohérentes de Kyushu. L'endroit est aujourd'hui clairement touristique, mais l'infrastructure bâtie (canal, entrepôts, rue commerçante Sakaimachi) reste réelle et agréable. En hiver, les lumières du canal attirent beaucoup de visiteurs." },
+    ],
+    constraints: [
+      { text: "Hiver rigoureux (novembre à mars) : trottoirs verglacés, températures sous -10°C fréquentes. Chaussures imperméables à semelles antidérapantes indispensables.", severity: "warning" },
+      { text: "New Chitose Airport est l'aéroport principal d'Hokkaidō, à environ 40 minutes de Sapporo en train rapide. Prévoir ce transfert dans la logistique.", severity: "info" },
+      { text: "Festival de la neige (Yuki Matsuri, début février) : hébergements saturés, prix en hausse. Réserver très à l'avance si la période coïncide.", severity: "caution" },
+    ],
+    budget: {
+      economy: { min: 50, max: 80 },
+      comfort: { min: 100, max: 160 },
+      premium: { min: 200, max: 350 },
+      flight: { min: 500, max: 1000 },
+      costIndex: 70,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "8-15€", comfort: "20-35€", premium: "50-100€" },
+        { label: "Hébergement/nuit", economy: "25-50€", comfort: "70-130€", premium: "150-300€" },
+        { label: "Transport/jour", economy: "3-6€", comfort: "10-15€", premium: "20-35€" },
+        { label: "Activités/jour", economy: "5-10€", comfort: "15-25€", premium: "40-80€" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 72, temp: -4, rain: 110, crowd: 65 },
+        { name: "Fév", score: 80, temp: -4, rain: 90, crowd: 80 },
+        { name: "Mar", score: 52, temp: 0, rain: 65, crowd: 30 },
+        { name: "Avr", score: 55, temp: 7, rain: 60, crowd: 25 },
+        { name: "Mai", score: 72, temp: 13, rain: 65, crowd: 35 },
+        { name: "Jun", score: 75, temp: 18, rain: 75, crowd: 35 },
+        { name: "Jul", score: 80, temp: 22, rain: 85, crowd: 50 },
+        { name: "Aoû", score: 82, temp: 23, rain: 90, crowd: 60 },
+        { name: "Sep", score: 78, temp: 18, rain: 120, crowd: 45 },
+        { name: "Oct", score: 70, temp: 10, rain: 110, crowd: 40 },
+        { name: "Nov", score: 58, temp: 3, rain: 100, crowd: 25 },
+        { name: "Déc", score: 65, temp: -2, rain: 120, crowd: 30 },
+      ],
+      best: "Juillet-août (été doux, sans foule excessive) et janvier-février (hiver et festival de la neige)",
+      avoid: "Mars-avril : fonte des neiges, boue, grisaille sans intérêt particulier.",
+      note: "Sapporo a deux saisons fortes : l'été (juillet-août, températures douces autour de 22-23°C, rare chaleur accablante) et l'hiver (décembre à mars, neige abondante, ambiance unique). Le festival de la neige (début février) est le pic d'affluence hivernal. Octobre est agréable pour les feuillages. Le printemps (mars-avril) est tardif et peu attrayant visuellement.",
+    },
+    context: {
+      culture: "Sapporo est une ville jeune pour les standards japonais : fondée en 1869, construite sur un plan en grille dessiné par des ingénieurs américains et japonais dans le cadre du développement de l'île d'Hokkaidō. Elle a accueilli les Jeux olympiques d'hiver de 1972. La culture d'Hokkaidō est distincte du reste du Japon : longtemps terra incognita pour les Japonais de Honshu, l'île a été peuplée plus tardivement par des colons japonais, et la culture aïnou (peuple autochtone d'Hokkaidō) est progressivement reconnue. Le Upopoy National Ainu Museum (à Shiraoi, à 65 km de Sapporo) est ouvert depuis 2020.",
+      tips: "Le métro de Sapporo (3 lignes) couvre les principaux quartiers. L'IC card Sapporo Card (Sapica) ou les IC cards nationales (Suica, Pasmo) fonctionnent sur le métro et les bus de la ville. Pour New Chitose Airport, le train rapide JR Airport (Rapid Airport) relie l'aéroport à Sapporo Station en 37 minutes environ (1 070 yen, réservation possible mais non obligatoire pour la classe normale). En hiver, prévoir des chaussures imperméables à semelles antidérapantes (disponibles dans les enseignes locales si besoin).",
+      surprises: "Sapporo est la ville productrice de bière la plus connue du Japon : la Sapporo Brewery, fondée en 1876, est la plus ancienne brasserie industrielle du pays encore en activité. Le Sapporo Beer Museum (entrée libre pour la partie exposition, dégustation payante) retrace cette histoire dans l'ancienne usine de brique rouge de Higashi-ku. Par ailleurs, le jardin botanique de l'Université d'Hokkaidō (Hokkaido University Botanical Garden), en plein centre-ville, est l'un des premiers jardins botaniques du Japon (1886) et abrite une collection de plantes arctiques et subarctiques.",
+      history: "L'île d'Hokkaidō s'appelait Ezo avant l'époque Meiji et était habitée principalement par les Aïnous. La colonisation japonaise systématique commence après 1869 avec la création du Kaitakushi (Bureau de développement). Des conseillers américains (dont le Dr. Clark, à l'origine du Collège agricole d'Hokkaidō, aujourd'hui Université d'Hokkaidō) jouent un rôle important dans l'urbanisme et l'agriculture. Sapporo devient préfecture en 1886. L'Exposition nationale de 1918 puis les Jeux olympiques d'hiver de 1972 consolident sa stature de ville d'Hokkaidō.",
+    },
+    safety: {
+      overall: "Très facile",
+      logisticsScore: 89,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité", level: "low_risk", text: "Sapporo est une ville très sûre. Aucune précaution particulière n'est nécessaire dans les zones touristiques ou les quartiers de nuit de Susukino." },
+        { category: "Hiver", level: "warning", text: "Les trottoirs enneigés et verglacés sont la principale source d'accidents pour les visiteurs. Chaussures imperméables à semelles antidérapantes obligatoires de novembre à mars. Les températures descendent régulièrement sous -10°C : couches thermiques indispensables." },
+        { category: "Transport", level: "easy", text: "Le métro (3 lignes) couvre les quartiers centraux. Le JR Rapid Airport relie New Chitose Airport à Sapporo Station en environ 37 minutes. L'IC card (Suica, Pasmo ou Sapica locale) fonctionne sur tous les réseaux urbains." },
+        { category: "Langue", level: "caution", text: "L'anglais est peu répandu dans les restaurants et commerces locaux. Les menus sont souvent uniquement en japonais. Google Translate en mode caméra est utile pour les menus non illustrés." },
+      ],
+    },
+    cities: [
+      { name: "Odori Park & centre", type: "Espace urbain", duration: "2h", description: "Odori Park est un boulevard-parc de 1,5 km qui traverse le centre de Sapporo d'est en ouest, séparant la ville en deux. En été, terrasses et festivals s'y installent. En hiver (festival de la neige, début février), il se transforme en galerie de sculptures de glace. La Sapporo TV Tower (90 mètres) à l'extrémité est offre un panorama sur le parc et la grille de la ville. L'accès au sommet est payant et la vue est honnête sans être exceptionnelle.", vibe: "Animée et centrale" },
+      { name: "Susukino", type: "Quartier", duration: "1h à 2h", description: "Susukino est le quartier de nuit de Sapporo, l'un des plus importants du Japon hors Tokyo : bars, izakayas, restaurants de ramen et de fruits de mer, karaokes. En soirée et la nuit, l'animation est dense. La Ramen Alley (Ganso Sapporo Ramen Yokocho) est une ruelle étroite de Susukino regroupant une douzaine de stands de ramen miso, emblématique du genre mais aujourd'hui très fréquentée par les touristes.", vibe: "Nocturne et gourmande" },
+      { name: "Marché Nijō", type: "Marché", duration: "1h à 1h30", description: "Le marché Nijō (二条市場) est le principal marché de détail de produits frais de Sapporo, à quelques minutes à pied de Susukino. Poissons, crustacés (crabe, crevettes), oursins, laitages d'Hokkaidō et légumes de saison y sont vendus. Le matin est le moment le plus animé. Des petits restaurants du marché proposent des donburi (bols de riz garnis de fruits de mer) et des plateaux de sushis à des tarifs raisonnables.", vibe: "Maritime et locale" },
+      { name: "Canal d'Otaru", type: "Excursion", duration: "1 jour", description: "Otaru est à environ 40 minutes de Sapporo en train JR. Le canal (creusé au début du XXe siècle pour le commerce du poisson et du charbon), bordé d'entrepôts en pierre convertis en restaurants et boutiques, est le coeur de l'excursion. La rue Sakaimachi, adjacente, est la principale artère touristique avec ses boutiques de verreries soufflées (artisanat local) et ses magasins de confiseries. L'endroit est clairement touristique mais l'infrastructure bâtie reste agréable.", vibe: "Portuaire et historique" },
+      { name: "Campus Université d'Hokkaidō", type: "Site", duration: "1h à 2h", description: "Le campus de l'Université d'Hokkaidō, au nord de Sapporo Station, est un espace vert de 177 hectares ouvert au public. L'allée de peupliers (Poplar Avenue) et les rangées de ginkgos en automne sont les points photographiques les plus connus. Le jardin botanique adjacent (entrée payante) est l'un des premiers du Japon, avec des collections de plantes arctiques et subarctiques.", vibe: "Verte et académique" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée & Odori / Susukino", zone: "Sapporo Station / Odori / Susukino", intensity: 2, transportMinutes: 60, freeSlots: 1,
+          activities: [
+            { slot: "13h–15h", name: "Arrivée à Sapporo", type: "logistics", duration: 120, icon: "✈️", note: "L'aéroport principal est New Chitose Airport (CTS), à environ 40 kilomètres au sud de Sapporo. Le JR Rapid Airport relie l'aéroport à Sapporo Station en environ 37 minutes (environ 1 070 yen, couvert par le JR Pass). Les trains partent toutes les 15 minutes environ. Depuis Paris, les vols s'effectuent avec escale (Tokyo, Séoul ou autre hub asiatique) pour un trajet total d'environ 14 à 17 heures. Alternative : arrivée à Tokyo puis vol intérieur vers New Chitose (environ 1h30), ou Shinkansen jusqu'à Shin-Hakodate-Hokuto puis train spécial Hokuto jusqu'à Sapporo (environ 4h supplémentaires, selon les services disponibles)." },
+            { slot: "15h30–17h", name: "Première promenade — Odori Park et centre", type: "free", duration: 90, icon: "🌳", note: "Odori Park est un boulevard-parc de 1,5 km qui traverse le centre de Sapporo d'est en ouest. Il donne une première lecture de la ville : sa grille régulière, son échelle plus aérée que Tokyo ou Osaka, ses grandes avenues. En été, des terrasses et des fontaines s'y installent. En hiver, les sculptures de neige du festival recouvrent le parc. La TV Tower à l'extrémité est marque le centre géographique du quartier. Accessible à pied depuis Sapporo Station (environ 10 minutes)." },
+            { slot: "17h30–19h", name: "Susukino — repérage du quartier de nuit", type: "free", duration: 90, icon: "🌆", note: "Susukino (すすきの) est le principal quartier de divertissement de Sapporo : bars, izakayas, restaurants de ramen, de fruits de mer, et karaokes. L'animation monte à partir de 18h. En fin d'après-midi, le quartier est calme et permet un repérage tranquille des rues et des enseignes. La Ramen Alley (Ganso Sapporo Ramen Yokocho, 元祖さっぽろラーメン横丁) est une ruelle étroite de Susukino regroupant une douzaine de stands de ramen miso : l'adresse est emblématique du style Sapporo, aujourd'hui très fréquentée par les touristes." },
+            { slot: "19h30–21h30", name: "Premier dîner — ramen miso ou fruits de mer", type: "food", duration: 120, icon: "🍜", note: "Deux options cohérentes pour une première soirée à Sapporo. Option ramen : le miso ramen de style Sapporo se distingue par son bouillon épais à base de pâte de miso, ses nouilles ondulées épaisses, son maïs, son beurre et son chashu. Les ramen-ya autour de Susukino et Sapporo Station sont nombreux, avec des files raisonnables en dehors du festival de la neige. Option fruits de mer : Susukino et ses abords concentrent des izakayas et des restaurants spécialisés en produits d'Hokkaidō (crabe, crevettes, pétoncles, saumon). Budget 10 à 18€ pour un ramen complet, 25 à 45€ par personne en izakaya fruits de mer avec boissons." },
+          ],
+        },
+        {
+          number: 2, title: "Centre-ville — Government Office, campus et brasserie", zone: "Sapporo Station / Chūō-ku / Higashi-ku", intensity: 2, transportMinutes: 40, freeSlots: 1,
+          activities: [
+            { slot: "9h–10h30", name: "Former Hokkaido Government Office", type: "culture", duration: 90, icon: "🏛️", note: "L'ancien bâtiment du gouvernement d'Hokkaidō (道庁赤レンガ庁舎, surnommé Akarenga Chōsha, le bâtiment de brique rouge) est un édifice de style néobaroque américain de 1888, situé à quelques minutes à pied de Sapporo Station. Il est entouré d'un petit parc avec fontaine et arbres. L'accès à l'intérieur est gratuit pendant les heures d'ouverture et présente une exposition permanente sur l'histoire d'Hokkaidō. C'est un monument modeste mais plaisant, représentatif de l'architecture de la période Meiji dans une ville récente." },
+            { slot: "10h45–12h15", name: "Campus de l'Université d'Hokkaidō", type: "free", duration: 90, icon: "🌿", note: "Le campus de l'Université d'Hokkaidō (北海道大学), au nord de Sapporo Station (accès à pied en 5-10 minutes), est un espace de 177 hectares ouvert au public. L'allée de peupliers (Poplar Avenue) et les bâtiments anciens de brique donnent une ambiance verte et calme peu touristique. En automne (mi-octobre à mi-novembre), les ginkgos forment une allée d'or très fréquentée par les Japonais. Le jardin botanique adjacent (Hokkaido University Botanical Garden), au sud du campus principal, est ouvert en semaine à tarif modique." },
+            { slot: "12h30–13h30", name: "Déjeuner Sapporo Station ou Odori", type: "food", duration: 60, icon: "🍱", note: "Les sous-sols de Sapporo Station (Apia, Paseo, Sapporo Factory adjacent) et les rues autour d'Odori concentrent de nombreux restaurants : teishoku (plateau-repas japonais), soup curry (spécialité d'Hokkaidō : curry liquide servi avec des légumes et des protéines dans un bol, à ne pas confondre avec le curry japonais habituel plus épais), soba, et buffets à prix fixes. Budget 10 à 16€ pour un déjeuner complet." },
+            { slot: "14h30–16h30", name: "Sapporo Beer Museum", type: "culture", duration: 120, icon: "🍺", note: "Le Sapporo Beer Museum (サッポロビール博物館) est installé dans l'ancienne usine de brasserie en brique rouge de 1890, à Higashi-ku (environ 15 minutes en tramway ou taxi depuis le centre). L'entrée à la partie exposition permanente est libre ; elle retrace l'histoire de la Sapporo Brewery, fondée en 1876, la plus ancienne brasserie industrielle encore en activité au Japon. Une dégustation payante est proposée en salle à la fin du parcours. Adjacent au musée : le Sapporo Beer Garden, ensemble de restaurants dans d'autres bâtiments de brique, spécialisés dans le jingisukan (barbecue de mouton d'Hokkaidō)." },
+            { slot: "18h–20h", name: "Dîner jingisukan ou izakaya Susukino", type: "food", duration: 120, icon: "🍖", note: "Le jingisukan (ジンギスカン, barbecue de mouton) est la spécialité incontournable d'Hokkaidō : des tranches de viande d'agneau ou de mouton grillées sur une poêle convexe caractéristique, accompagnées de légumes (oignons, poivrons, bean sprouts) et d'une sauce à base de soja. L'agneau d'Hokkaidō est réputé pour sa qualité et sa douceur. Le Sapporo Beer Garden (sur le site du musée) est l'adresse la plus connue, en buffet ou à la carte. Des izakayas plus modestes proposant le jingisukan sont présents dans Susukino. Budget 20 à 35€ par personne." },
+          ],
+        },
+        {
+          number: 3, title: "Marché, ramen et brasseries de quartier", zone: "Nijō Market / Susukino / Nakajima Park", intensity: 2, transportMinutes: 30, freeSlots: 1,
+          activities: [
+            { slot: "8h–9h30", name: "Marché Nijō — matin", type: "culture", duration: 90, icon: "🦀", note: "Le marché Nijō (二条市場), à quelques minutes à pied de Susukino, est actif dès 7h-8h. Les étals proposent des poissons frais, des crabes (tourteau, crabe des neiges selon la saison), des crevettes, des oursins, des pétoncles, des laitages d'Hokkaidō et des légumes. Les restaurants du marché servent des donburi (bols de riz garnis) et des plateaux de sushi-sashimi composés sur le moment. Budget pour un petit-déjeuner sur le marché : 10 à 20€. Les vendeurs sont habitués aux touristes mais le marché reste en activité commerciale réelle." },
+            { slot: "10h–11h30", name: "Nakajima Park et Hokkaidō Museum of Modern Art", type: "free", duration: 90, icon: "🌳", note: "Le parc Nakajima (中島公園), au sud de Susukino (accessible en métro, ligne Namboku, station Nakajima-kōen), est un parc municipal avec étang, concert hall (Sapporo Concert Hall Kitara) et quelques édifices historiques. C'est un espace de détente local, calme en semaine. Adjacent : le Hokkaidō Museum of Modern Art (北海道立近代美術館) abrite une collection d'art moderne japonais et international, avec des expositions temporaires. Tarif variable selon les expositions." },
+            { slot: "12h–13h", name: "Déjeuner — soup curry ou teishoku Susukino", type: "food", duration: 60, icon: "🍛", note: "Le soup curry est l'une des spécialités culinaires les plus associées à Sapporo en dehors du ramen miso : un bouillon de curry épicé et aromatique (inspiré du curry thaïlandais et indien, adapté par des restaurateurs locaux dans les années 1970), servi avec des légumes entiers pochés (pomme de terre, aubergine, carotte, poivron), du poulet ou d'autres protéines, et du riz séparé pour contrôler la quantité. De nombreux restaurants spécialisés sont présents dans le quartier de Susukino et entre Susukino et Odori. Budget 10 à 18€." },
+            { slot: "14h–15h30", name: "Promenade Tanuki-koji — galerie marchande couverte", type: "free", duration: 90, icon: "🛍️", note: "Tanuki-koji (狸小路) est une galerie marchande couverte de 7 blocs (environ 900 mètres de long), entre Susukino et Odori. Elle concentre des boutiques d'alimentation (confiseries d'Hokkaidō, produits régionaux), des pharmacies, des enseignes de mode et des restaurants. C'est l'un des rares espaces de circulation couverts et chauffés du centre-ville en hiver. L'ambiance est populaire et locale, sans être particulièrement pittoresque." },
+            { slot: "19h30–22h", name: "Dîner — ramen miso et soirée Susukino", type: "food", duration: 150, icon: "🍜", note: "Soirée consacrée au ramen miso en version plus approfondie : choisir un ramen-ya en dehors de la Ramen Alley principale (par exemple dans les rues à l'ouest ou au nord de Susukino) pour une expérience moins touristique. Le miso ramen de Sapporo se consomme souvent avec un verre de bière Sapporo locale. Après le dîner, Susukino propose des bars à bière, des bars à saké japonais et des izakayas à tous les niveaux de prix. Budget dîner seul 10 à 16€, soirée complète avec boissons 25 à 40€ selon les consommations." },
+          ],
+        },
+        {
+          number: 4, title: "Excursion à Otaru", zone: "Otaru", intensity: 2, transportMinutes: 80, freeSlots: 1,
+          activities: [
+            { slot: "9h–9h45", name: "Train Sapporo vers Otaru", type: "logistics", duration: 45, icon: "🚃", note: "Plusieurs services JR relient Sapporo Station à Otaru Station : le Rapid Airport et les trains locaux. Le trajet dure environ 33 à 40 minutes selon le service (environ 640 yen en train local, couvert par le JR Pass). Les trains partent toutes les 15 à 30 minutes. Otaru Station est à quelques minutes à pied du centre historique et du canal. Confirmer le type de service (Rapid ou local) sur les panneaux en gare ou via Google Maps." },
+            { slot: "10h–12h", name: "Canal d'Otaru et entrepôts", type: "culture", duration: 120, icon: "⚓", note: "Le canal d'Otaru (小樽運河), creusé entre 1914 et 1923, servait au transbordement de marchandises (poisson, charbon, bois) entre les bateaux et la ville. Ses entrepôts en pierre ont été rénovés à partir des années 1980 et abritent aujourd'hui des restaurants, des brasseries artisanales locales, des boutiques de souvenirs et une galerie permanente sur l'histoire du port. L'ambiance est touristique mais l'infrastructure bâtie est réelle et agréable. En hiver, le canal est éclairé pour le Otaru Snow Light Path Festival (Yuki Akari no Michi, généralement mi-février). En été, les croisières en barque sur le canal sont possibles." },
+            { slot: "12h30–13h30", name: "Déjeuner Otaru — sushis ou fruits de mer", type: "food", duration: 60, icon: "🍣", note: "Otaru est réputée pour ses sushis : la ville est historiquement un port de pêche et les restaurants de sushi utilisent des produits frais du Pacifique Nord. Plusieurs restaurants de sushi (en formule kaiten-zushi, convoyeur, ou à la commande) sont présents dans la rue principale et autour du canal. La qualité est généralement bonne mais les prix sont variables selon les enseignes. Budget 15 à 30€ pour un déjeuner complet." },
+            { slot: "14h–16h", name: "Rue Sakaimachi — verrerie et commerces", type: "free", duration: 120, icon: "🏮", note: "La rue Sakaimachi (堺町通り) est la principale artère touristique d'Otaru : boutiques de verreries soufflées (artisanat local développé depuis les années 1970, les souffleurs travaillent souvent en vitrine), confiseries (le LeTAO, pâtisserie fromager local bien connue au Japon), musicboxes (boîtes à musique, autre artisanat d'Otaru). L'endroit est clairement marchand et orienté tourisme, mais les boutiques de verre sont réelles. On peut observer les souffleurs travailler dans certains ateliers." },
+            { slot: "17h–17h45", name: "Retour Sapporo", type: "logistics", duration: 45, icon: "🚃", note: "Train JR depuis Otaru Station vers Sapporo Station (33 à 40 minutes selon le service). Arrivée en début de soirée, temps libre selon les envies : retour au marché Nijō pour un dernier passage, soirée à Susukino, ou repos. L'excursion à Otaru est calculée pour une journée complète sans surchargement." },
+          ],
+        },
+        {
+          number: 5, title: "Mont Moiwa ou dernier quartier / départ", zone: "Moiwa / Sapporo Station / CTS", intensity: 1, transportMinutes: 60, freeSlots: 2,
+          activities: [
+            { slot: "9h–11h30", name: "Mont Moiwa — téléphérique et panorama (optionnel)", type: "free", duration: 150, icon: "🏔️", note: "Le mont Moiwa (531 mètres) est accessible depuis le centre par tramway et télécabine (Moiwa Ropeway). La vue panoramique sur Sapporo et la plaine d'Hokkaidō est l'une des plus complètes de la ville. En hiver, la vue sur la ville enneigée de nuit est particulièrement recherchée, mais une visite matinale en journée offre de meilleures conditions de visibilité. Le téléphérique fonctionne toute l'année sauf périodes d'entretien ; vérifier les horaires avant de partir. Prévoir environ 1 800 yen aller-retour pour le câble et le mini-funiculaire sommital. Cette activité est conditionnelle à la météo et à l'horaire de départ." },
+            { slot: "11h30–13h", name: "Dernier quartier, shopping alimentaire ou café", type: "free", duration: 90, icon: "☕", note: "Selon l'horaire de départ : dernière visite à Tanuki-koji pour des confiseries d'Hokkaidō (fromages, beurre, chocolats au lait, shiroi koibito, le biscuit sablé fourré à la crème blanche le plus vendu en souvenir d'Hokkaidō), café dans un établissement de Sapporo Station ou du quartier d'Odori, ou dernier passage au marché Nijō. Les sous-sols de Sapporo Station (Apia) concentrent également une bonne sélection de produits d'Hokkaidō pour les cadeaux." },
+            { slot: "13h–13h45", name: "Dernier repas — soup curry ou ramen final", type: "food", duration: 45, icon: "🍛", note: "Profiter du dernier repas pour tester ce qui n'a pas encore été goûté : un soup curry de quartier, un ramen miso dans un établissement non encore visité, ou un plateau de produits d'Hokkaidō (fromages, beurre, produits fumés). Budget 10 à 18€. Les restaurants en sous-sol de Sapporo Station sont pratiques pour un départ en train." },
+            { slot: "14h30–16h30", name: "Transfert New Chitose Airport", type: "logistics", duration: 120, icon: "✈️", note: "JR Rapid Airport depuis Sapporo Station jusqu'à New Chitose Airport en environ 37 minutes (environ 1 070 yen, couvert par le JR Pass). Les trains partent toutes les 15 minutes environ. Prévoir 2 heures à 2h30 avant le vol pour les vols internationaux, en tenant compte du transfert ferroviaire depuis le centre. L'aéroport dispose d'un étage de restaurants et de boutiques de produits d'Hokkaidō pour un dernier shopping si le temps le permet." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
