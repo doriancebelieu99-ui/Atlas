@@ -160,7 +160,7 @@ export const destinations: Record<string, Destination> = {
     region: "Andalousie",
     tagline: "Flamenco, patios secrets et tapas sans fin",
     score: 91,
-    image: "https://images.unsplash.com/photo-3purECWQ47I?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1688404808661-92f72f2ea258?w=900&q=80",
     summary: "Séville est la capitale de l'Andalousie, réputée pour son architecture mauresque, son flamenco et ses tapas. La vie s'y déroule surtout dehors, à un rythme qui lui est propre.",
     mainInterest: "Culture",
     idealDuration: "3 à 4 jours",
