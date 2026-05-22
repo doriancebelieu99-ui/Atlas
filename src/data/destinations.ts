@@ -8834,6 +8834,136 @@ export const destinations: Record<string, Destination> = {
     },
   },
 
+  cork: {
+    slug: "cork",
+    name: "Cork",
+    country: "Irlande",
+    region: "Munster",
+    tagline: "Ville-port compacte, gourmande et locale : marché, rivière Lee, collines et vraie vie de quartier",
+    score: 80,
+    image: "https://images.unsplash.com/photo-1576764402855-9e3d8bdb0e41?w=900&q=80",
+    summary:
+      "Cork est la deuxième grande ville d'Irlande, bâtie sur les bras de la rivière Lee, dont l'île centrale forme un centre-ville dense, marchable et cohérent. Ce n'est pas une ville spectaculaire au sens monumental : sa force est dans l'échelle humaine, dans l'English Market au coeur du tissu commercial, dans les collines de Shandon au nord, dans un tissu de pubs et de cafés moins formaté que celui de Dublin, et dans une culture food qui s'est imposée comme l'une des plus solides d'Irlande. Cork se vit à pied, quartier par quartier, avec une densité de bonne table et une atmosphère locale directe. La ville a une identité propre, revendiquée : la réduire à \"petit Dublin\" est à la fois faux et réducteur.",
+    mainInterest: "Food & vie urbaine compacte",
+    idealDuration: "3 à 4 jours",
+    destinationType: "city_plus",
+    pace: "Balanced",
+    ambiance: ["Gourmande", "Compacte", "Locale", "Portuaire", "Conviviale"],
+    targetProfiles: ["Couple", "Solo", "Amateurs de food", "City-break court"],
+    environment: "urban",
+    flightHoursFromParis: 2.5,
+    coordinates: { lat: 51.8979, lng: -8.4706 },
+    whyGo: [
+      { title: "L'English Market : coeur food de la ville", description: "L'English Market est un marché couvert fondé en 1788, classé parmi les plus vivants d'Europe du nord-ouest. Il propose des produits du Munster : fromages de ferme, beurre artisanal, poissons fumés et frais de l'Atlantique, charcuteries locales, pain soda fraîchement cuit. C'est un marché fréquenté par les habitants et les restaurateurs autant que par les visiteurs, sans mise en scène touristique excessive. Il incarne la culture alimentaire de Cork mieux que n'importe quelle adresse de restaurant." },
+      { title: "Une ville à taille humaine construite sur une île et des collines", description: "Le centre de Cork occupe une île formée par deux bras de la Lee, ce qui lui donne une configuration compacte et lisible. Depuis St Patrick's Street, tout le centre est accessible à pied en quelques minutes. Les collines qui entourent la ville, notamment Shandon au nord, offrent une lecture topographique claire et des vues sur un tissu dense de toits et de clochers. Cette échelle rend Cork agréable à parcourir librement, par curiosité et par hasard, sans itinéraire imposé." },
+      { title: "Shandon et l'histoire du beurre irlandais", description: "Le quartier de Shandon, sur la colline nord, est l'un des repères historiques de Cork. St Anne's Church, reconnaissable à ses deux faces en calcaire blanc et ses deux faces en grès rouge, est le clocher le plus caractéristique de la ville. Cork a été pendant deux siècles le premier marché mondial du beurre : la Cork Butter Exchange drainait la production laitière de tout le Munster vers les ports de commerce atlantiques. Le Butter Museum retrace cette histoire économique peu connue mais structurante pour l'identité de la ville." },
+      { title: "Une scène de pubs et de cafés moins caricaturale", description: "Cork a une scène de pubs qui dépasse le cliché du pub irlandais à Guinness. Les pubs de quartier, autour d'Oliver Plunkett Street ou dans les rues adjacentes au marché, sont fréquentés par des habitants aux profils variés, dans une ambiance directe et sans performance touristique. La scène café s'est développée depuis les années 2010 avec des torréfacteurs locaux. Les trad sessions existent, plus discrètes et moins formatées qu'à Dublin." },
+    ],
+    constraints: [
+      { text: "Cork n'est pas desservie par un réseau urbain de tramway ou de métro. Le centre-ville est entièrement marchable, mais les quartiers excentrés (UCC, Marina, Blackrock) se rejoignent en bus local ou à pied sur 20 à 40 minutes. Les arrivées se font principalement par Cork Airport (ORK), à environ 6 km du centre, accessible en navette Bus Éireann ou en taxi ; par le train depuis Dublin Heuston vers Cork Kent Station (durée variable selon le service, généralement 2h30 à 3h) ; ou par bus longue distance. Vérifier les horaires et options à la date du voyage.", severity: "info" },
+      { text: "L'English Market est fermé le dimanche. Les horaires de la tour de cloches de St Anne's Shandon (qui permet aux visiteurs de sonner les cloches) et du Butter Museum varient selon la saison et les événements locaux. Vérifier les horaires d'ouverture sur les sites officiels avant de planifier une journée centrée sur ces lieux.", severity: "caution" },
+      { text: "La météo à Cork est atlantique : humide, changeante, avec de la pluie possible à toute saison et un vent fréquent. Le sud-ouest de l'Irlande reçoit généralement plus de précipitations que Dublin. Une veste imperméable légère est indispensable. Les températures restent douces toute l'année, sans extrêmes marqués.", severity: "info" },
+    ],
+    budget: {
+      economy: { min: 70, max: 110 },
+      comfort: { min: 110, max: 200 },
+      premium: { min: 200, max: 380 },
+      flight: { min: 60, max: 280 },
+      costIndex: 68,
+      freshness: "Mai 2026",
+      details: [
+        { label: "Repas", economy: "10-18€ (café, marché, pub lunch)", comfort: "22-45€ (restaurant, gastropub)", premium: "60€+ (gastronomique)" },
+        { label: "Hébergement/nuit", economy: "70-110€ (hôtel simple, B&B)", comfort: "110-200€ (hôtel 3-4 étoiles)", premium: "200€+ (hôtel boutique)" },
+        { label: "Transport/jour", economy: "2-6€ (marche principalement, bus local)", comfort: "8-15€ (bus + taxi ponctuel)", premium: "20€+ (taxi principalement)" },
+        { label: "Activités/jour", economy: "5-15€ (musées gratuits ou modiques, marché)", comfort: "15-30€ (visites, entrées)", premium: "40€+ (expériences privées)" },
+      ],
+    },
+    season: {
+      months: [
+        { name: "Jan", score: 38, temp: 7, rain: 95, crowd: 15 },
+        { name: "Fév", score: 40, temp: 7, rain: 85, crowd: 17 },
+        { name: "Mar", score: 52, temp: 9, rain: 80, crowd: 30 },
+        { name: "Avr", score: 65, temp: 11, rain: 72, crowd: 38 },
+        { name: "Mai", score: 76, temp: 14, rain: 75, crowd: 48 },
+        { name: "Jun", score: 80, temp: 17, rain: 76, crowd: 58 },
+        { name: "Jul", score: 82, temp: 19, rain: 72, crowd: 65 },
+        { name: "Aoû", score: 80, temp: 19, rain: 78, crowd: 62 },
+        { name: "Sep", score: 72, temp: 16, rain: 82, crowd: 50 },
+        { name: "Oct", score: 58, temp: 12, rain: 90, crowd: 32 },
+        { name: "Nov", score: 42, temp: 9, rain: 100, crowd: 20 },
+        { name: "Déc", score: 40, temp: 7, rain: 95, crowd: 22 },
+      ],
+      best: "Mai à août : journées plus longues, températures douces, moins de pluie.",
+      avoid: "Novembre à janvier : pluviométrie maximale, peu de lumière, ville moins agréable à explorer.",
+      note: "Cork se visite à toute saison mais les mois d'été offrent nettement plus de confort. La ville est active toute l'année : l'English Market, les pubs et la vie culturelle ne s'arrêtent pas en hiver. Le Cork Jazz Festival a lieu en général fin octobre ; vérifier les dates sur le site officiel chaque année.",
+    },
+    context: {
+      culture: "Cork est la deuxième ville de la République d'Irlande avec environ 220 000 habitants dans l'agglomération. Elle est surnommée la Rebel City (ville rebelle), une désignation issue des guerres dynastiques du XVe siècle, reprise avec fierté dans l'identité locale. La ville a un sentiment d'appartenance très affirmé, parfois exprimé avec humour à l'égard de Dublin. La culture food s'est développée à partir des ressources du Munster : lait, beurre, poissons de l'Atlantique, moutons. Cork est aussi un port historique : la rade de Cork Harbour est l'une des plus grandes rades naturelles d'Europe, et Cobh (prononcé Cove), à l'embouchure de la Lee, est l'une des dernières escales connues du Titanic avant sa traversée vers New York en 1912.",
+      tips: "Cork se fait essentiellement à pied dans le centre. Les bus locaux Bus Éireann couvrent les quartiers excentrés (UCC, Marina, Douglas) ; les fréquences peuvent être limitées en soirée et le week-end, vérifier les horaires à l'avance. La Lee constitue un axe de repère fiable : le centre se trouve sur l'île formée par ses deux bras. Oliver Plunkett Street, parallèle à St Patrick's Street vers le sud, a un profil plus local avec des commerces indépendants et des cafés de quartier. L'English Market ferme le dimanche ; planifier la visite un jour de semaine ou le samedi matin. Le beurre de Cork était commercialisé sous forme de firkins, petits barils de 56 livres, expédiés depuis les quais vers l'Europe et les Amériques.",
+      surprises: "Cork a été le plus grand marché mondial de beurre pendant plus d'un siècle et demi, de la fin du XVIIe siècle aux années 1920, drainant la production laitière de tout le Munster et d'une partie du Connaught. La ville a accueilli la Capitale européenne de la culture en 2005. Le compositeur Aloys Fleischmann (1910-1992) a fondé et développé la vie musicale classique de Cork pendant toute sa carrière. Le hurling, sport gaélique de terrain très physique, est profondément ancré dans la culture sportive du Munster ; le Cork GAA est l'une des équipes les plus titrées d'Irlande.",
+      history: "Cork (Corcaigh en irlandais, signifiant marais) a été fondée comme monastère par saint Finbarr au VIIe siècle sur un marécage à l'embouchure de la Lee. Elle est ensuite conquise par les Vikings au IXe siècle, puis intégrée à la sphère normande à partir de 1177. Son développement économique est lié au commerce du beurre (XVIIe-XIXe siècles) et à son statut de port atlantique. Le siège de Cork en 1690 (pendant la guerre Guillemite entre Guillaume III et Jacques II) et l'incendie de la ville par les Black and Tans en décembre 1920 (pendant la guerre d'indépendance irlandaise) ont laissé des traces durables dans la mémoire locale.",
+    },
+    safety: {
+      overall: "Très facile",
+      logisticsScore: 82,
+      freshness: "Mai 2026",
+      points: [
+        { category: "Sécurité générale", level: "low_risk", text: "Cork est une ville très sûre pour les visiteurs. Le centre, les quartiers commerçants et les zones de visite (English Market, Shandon, UCC) ne présentent aucun risque particulier. Comme dans toute ville de cette taille, les abords des gares routières et les rues peu éclairées en périphérie demandent une attention ordinaire en soirée." },
+        { category: "Météo et tenue", level: "info", text: "Le sud-ouest de l'Irlande est soumis à un climat atlantique humide. La pluie est possible à toute saison, parfois plusieurs fois dans la même journée. Une veste imperméable légère est indispensable. Les températures sont douces et stables (7 à 19°C selon la saison), sans chaleur ni froid extrêmes. Des chaussures confortables et légèrement imperméables facilitent le séjour, Cork se faisant principalement à pied." },
+        { category: "Transport et logistique", level: "info", text: "Cork se parcourt très bien à pied dans le centre. Les quartiers excentrés sont desservis par des bus locaux dont la fréquence peut être limitée en soirée et le week-end. Les taxis sont disponibles depuis le centre et l'aéroport. Cork Airport (ORK) dispose d'une navette Bus Éireann vers le centre et Kent Station. Vérifier les horaires de train et de bus pour les connexions avec Dublin ou d'autres villes irlandaises." },
+        { category: "Pubs et soirées", level: "info", text: "Les pubs de Cork sont globalement conviviaux et sans risque particulier. Les soirées du week-end dans le centre peuvent être animées autour des rues de nuit (Washington Street notamment). Les horaires de fermeture sont encadrés par la loi irlandaise. Les trad sessions dans les pubs de quartier sont ouvertes et sans frais d'entrée ; seule la consommation est payante." },
+      ],
+    },
+    cities: [
+      { name: "Centre / St Patrick's Street / Grand Parade", type: "Coeur commercial et urbain", duration: "2h à 3h", description: "St Patrick's Street est la principale rue commerçante de Cork, dessinant un arc de cercle sur l'île centrale entre les deux bras de la Lee. Grand Parade lui est parallèle, bordée de bâtiments géorgiens et victoriens. Bishop Lucey Park, petit square entre Grand Parade et l'English Market, marque le coeur géographique de la zone centrale. Les deux axes sont entièrement marchables et constituent le point d'entrée naturel de la ville.", vibe: "Commerciale et centrale" },
+      { name: "English Market / South Parish", type: "Food et vie de marché", duration: "1h à 2h30", description: "L'English Market occupe un bâtiment couvert entre Grand Parade et Princes Street, au coeur du centre. C'est l'un des marchés couverts les plus anciens et les plus vivants d'Europe, avec des étals de fromages, poissons, charcuteries et produits locaux. Le South Parish, autour de South Main Street, est l'un des plus anciens quartiers de la ville, avec des rues étroites et des pubs de quartier hors des sentiers touristiques.", vibe: "Gourmande et locale" },
+      { name: "Shandon / Northside", type: "Quartier historique en hauteur", duration: "1h30 à 3h", description: "Shandon est le quartier historique sur la colline nord, dominant le centre. St Anne's Church, reconnaissable à ses deux faces en calcaire blanc et ses deux faces en grès rouge, est le clocher le plus caractéristique de la ville. Le Butter Museum retrace l'histoire du commerce mondial du beurre de Cork, installé dans l'ancienne Cork Butter Exchange. Le quartier est moins touristique et plus calme que le centre.", vibe: "Historique et résidentielle" },
+      { name: "UCC / Fitzgerald Park / Western Road", type: "Campus et verdure urbaine", duration: "2h à 3h", description: "University College Cork, fondée en 1845, occupe un campus néogothique en pierre calcaire à l'ouest du centre. Fitzgerald Park, adjacent au campus, est un parc public bordant la Lee, avec le Cork Public Museum installé dans un pavillon du XIXe siècle. La Lewis Glucksman Gallery, sur le campus, accueille des expositions d'art contemporain avec entrée libre pour les collections permanentes.", vibe: "Académique et tranquille" },
+      { name: "Marina / Lee road", type: "Promenade portuaire", duration: "1h à 2h", description: "La Marina est un axe de promenade longeant le bras sud de la Lee vers l'est, entre le centre et Blackrock. L'itinéraire longe d'anciens quais industriels reconvertis et offre une perspective sur la ville et son contexte portuaire. Cork Harbour, à l'embouchure de la Lee, est l'une des plus grandes rades naturelles d'Europe. Blackrock, plus à l'est, possède un château médiéval en bord de Lee.", vibe: "Portuaire et apaisée" },
+    ],
+    itinerary: {
+      days: [
+        {
+          number: 1, title: "Arrivée, St Patrick's Street et premières rues", zone: "Centre / St Patrick's / Grand Parade / Lee", intensity: 2, transportMinutes: 50, freeSlots: 1,
+          activities: [
+            { slot: "14h–16h", name: "Arrivée à Cork", type: "logistics", duration: 120, icon: "✈️", note: "Cork Airport (ORK) est situé à environ 6 km au sud du centre-ville. Une navette Bus Éireann relie l'aéroport au centre (durée approximative 20 à 30 minutes selon la circulation) ; des taxis sont disponibles depuis les terminaux. La gare ferroviaire de Cork (Kent Station, sur la rive nord de la Lee) reçoit les trains depuis Dublin Heuston (durée variable selon le service, généralement 2h30 à 3h) et d'autres villes irlandaises. Bus Éireann et d'autres compagnies assurent des liaisons en bus longue distance. Vérifier les horaires et options disponibles à la date du voyage, les services pouvant avoir évolué." },
+            { slot: "16h–18h", name: "St Patrick's Street, Grand Parade et ponts de la Lee", type: "free", duration: 120, icon: "🚶", note: "St Patrick's Street est le principal axe commercial de Cork, dessinant un arc de cercle sur l'île centrale entre les deux bras de la Lee. Grand Parade lui est parallèle, plus calme, bordée de bâtiments géorgiens et victoriens. Les ponts qui enjambent la Lee north et la Lee south sont des points de repère efficaces pour lire la configuration de la ville, construite sur une île et ses rives. Le centre est très compact : presque tout s'y fait à pied en quelques minutes. Bishop Lucey Park, petit square entre Grand Parade et l'English Market, marque le coeur géographique de la zone centrale." },
+            { slot: "18h–19h30", name: "Oliver Plunkett Street et rues locales", type: "free", duration: 90, icon: "🏙️", note: "Oliver Plunkett Street, parallèle à St Patrick's Street vers le sud, a un profil plus local : commerces indépendants, cafés, pubs de quartier. C'est une bonne introduction à l'atmosphère de Cork en dehors de l'axe commercial principal. Les rues adjacentes ont une densité de cafés et de petits restaurants fréquentés par des habitants de la ville. L'échelle de Cork permet une exploration libre sans carte et sans risque de se perdre longtemps." },
+            { slot: "20h–22h", name: "Premier dîner à Cork", type: "food", duration: 120, icon: "🍽️", note: "Les pubs avec cuisine (gastropubs) servent généralement du chowder de fruits de mer (bisque crémeuse aux poissons blancs et crustacés), du soda bread (pain irlandais dense, sans levain), de l'Irish stew (ragoût d'agneau mijoté) et du fish and chips. Les cafés-restaurants du centre proposent souvent des menus à prix raisonnables en semaine. Les produits du Munster, notamment les fromages et le beurre, sont présents dans la plupart des tables locales. Budget : 20 à 40€ par personne avec une boisson." },
+          ],
+        },
+        {
+          number: 2, title: "English Market, Shandon et culture du beurre", zone: "English Market / Centre / Shandon", intensity: 3, transportMinutes: 30, freeSlots: 0,
+          activities: [
+            { slot: "9h–10h30", name: "English Market", type: "culture", duration: 90, icon: "🧺", note: "L'English Market est un marché couvert fondé en 1788, installé dans un bâtiment du XIXe siècle entre Grand Parade et Princes Street. Il ouvre en semaine et le samedi matin, et est fermé le dimanche (vérifier les horaires précis sur le site de la ville de Cork). Les étals proposent des produits du Munster : fromages de ferme, beurre artisanal, poissons fumés et frais de l'Atlantique, saucisses et charcuteries locales, pain soda fraîchement cuit. Il est fréquenté par des habitants et des restaurateurs autant que par des visiteurs, sans mise en scène folklorique." },
+            { slot: "10h30–11h30", name: "Déjeuner ou pause au marché", type: "food", duration: 60, icon: "🐟", note: "Plusieurs comptoirs à l'intérieur du marché servent des repas chauds ou des produits à emporter : soupe de légumes avec soda bread, chowder, sandwichs aux produits locaux. C'est l'un des déjeuners les plus honnêtes et les plus représentatifs de Cork. Prévoir 8 à 15€ pour un repas simple avec boisson." },
+            { slot: "12h–13h30", name: "Shandon et St Anne's Church", type: "culture", duration: 90, icon: "🔔", note: "Shandon est le quartier historique sur la colline nord de Cork, accessible en 10 à 15 minutes de marche depuis le centre. St Anne's Church (1722) est reconnaissable à son clocher à deux faces en calcaire blanc et deux faces en grès rouge, surmonté d'une girouette dorée en forme de poisson. Les visiteurs peuvent accéder au clocher et sonner les cloches selon un carillon noté (accès payant ; tarif et conditions à vérifier sur place avant la visite). Les vues sur les toits de Cork depuis le clocher permettent de lire la topographie de la ville." },
+            { slot: "14h–15h", name: "Butter Museum", type: "culture", duration: 60, icon: "🧈", note: "Le Butter Museum est installé dans l'ancienne Cork Butter Exchange à Shandon, dans le bâtiment circulaire (Firkin Crane) qui servait de plaque tournante au commerce mondial du beurre de Cork aux XVIIIe et XIXe siècles. Cork était alors le premier marché mondial de beurre, drainant la production laitière de tout le Munster vers les ports de commerce atlantiques. Le musée retrace cette histoire économique et sociale peu connue. Tarif payant ; horaires et conditions d'ouverture à vérifier sur le site officiel avant la visite." },
+            { slot: "18h30–21h", name: "Soirée dans un pub de Cork", type: "food", duration: 150, icon: "🍺", note: "Les pubs de Cork, autour d'Oliver Plunkett Street, de South Mall ou des rues adjacentes à St Patrick's Street, ont généralement un profil plus local que ceux du centre touristique de Dublin. Les trad sessions existent mais sont moins systématiques et moins formatées pour les touristes ; se renseigner en arrivant sur les soirs et lieux de session. La Guinness est servie partout, mais les pubs de Cork ont souvent leur propre identité et une clientèle de réguliers. Budget soirée : 15 à 30€ en consommations avec éventuellement un plat léger." },
+          ],
+        },
+        {
+          number: 3, title: "UCC, Fitzgerald Park et promenade de la Lee", zone: "UCC / Western Road / Marina", intensity: 2, transportMinutes: 35, freeSlots: 1,
+          activities: [
+            { slot: "9h30–11h", name: "University College Cork et campus", type: "culture", duration: 90, icon: "🏛️", note: "University College Cork (UCC) a été fondée en 1845 dans le cadre du système des Queen's Colleges irlandais. Son campus principal est un ensemble de bâtiments néogothiques en pierre calcaire autour du quadrilatère central (Stone Corridor), à environ 20 minutes à pied du centre ou accessible en bus local. Le campus accueille environ 21 000 étudiants. La Honan Collegiate Chapel, sur le campus, est un exemple de style irlandais revival avec des vitraux et des mosaïques d'intérêt. L'entrée sur le campus est libre." },
+            { slot: "11h–12h", name: "Lewis Glucksman Gallery", type: "culture", duration: 60, icon: "🎨", note: "La Lewis Glucksman Gallery est un bâtiment d'architecture contemporaine installé à l'entrée du campus d'UCC, ouvert en 2004. Elle accueille des expositions temporaires d'art contemporain irlandais et international, avec une programmation renouvelée régulièrement. L'entrée aux expositions permanentes est généralement libre ; vérifier la programmation et les conditions d'accès sur le site de l'UCC Glucksman avant la visite." },
+            { slot: "12h–13h30", name: "Fitzgerald Park", type: "free", duration: 90, icon: "🌳", note: "Fitzgerald Park est un parc public municipal adjacent au campus d'UCC, longeant la Lee. Il est librement accessible, planté d'arbres matures et animé par des familles et des étudiants en semaine. Le Cork Public Museum, installé dans un pavillon du XIXe siècle dans le parc, retrace l'histoire locale de Cork depuis la préhistoire jusqu'au XXe siècle, avec une section sur la période de l'indépendance irlandaise. L'entrée au musée est gratuite." },
+            { slot: "13h30–14h30", name: "Déjeuner Western Road ou retour centre", type: "food", duration: 60, icon: "🍽️", note: "Le secteur de Western Road et des rues autour d'UCC propose des cafés et des sandwicheries fréquentés par les étudiants et le personnel universitaire. Les prix y sont généralement plus accessibles que dans le centre touristique. Budget déjeuner : 8 à 16€ pour un repas simple." },
+            { slot: "15h–17h", name: "Promenade de la Marina et bras sud de la Lee", type: "free", duration: 120, icon: "🚶", note: "La Marina est un axe de promenade longeant le bras sud de la Lee vers l'est, depuis le centre jusqu'à Blackrock. Le chemin longe d'anciens quais industriels et offre une perspective différente sur la ville et son contexte portuaire. Cork Harbour, à l'embouchure de la Lee, est l'une des plus grandes rades naturelles d'Europe. Blackrock, à environ 4 km du centre, possède un château médiéval en bord de Lee. La promenade est utilisée par les habitants pour le jogging et la marche." },
+          ],
+        },
+        {
+          number: 4, title: "Dernier matin et départ", zone: "Centre / Aéroport ou Gare Kent", intensity: 1, transportMinutes: 45, freeSlots: 1,
+          activities: [
+            { slot: "9h–10h30", name: "Promenade finale et quartier sud", type: "free", duration: 90, icon: "🚶", note: "Selon l'horaire du départ, le dernier matin peut être consacré à une exploration libre d'un quartier non encore parcouru : les rues autour de South Mall, les quais sud de la Lee, ou le South Parish (South Main Street), l'un des quartiers les plus anciens de la ville. Pour les séjours courts avec une journée de semaine disponible, un dernier passage à l'English Market est possible. Le centre de Cork est très animé le matin en semaine." },
+            { slot: "10h30–11h30", name: "Dernier café et spécialités locales", type: "food", duration: 60, icon: "☕", note: "Cork a développé une scène de cafés indépendants depuis les années 2010. Un dernier café dans l'un des établissements du centre, avec un soda bread grillé ou un full Irish breakfast (saucisses, rashers, black pudding et white pudding, oeufs, tomates, toast) constitue un bon format de départ. Budget café : 5 à 10€ ; full Irish : 10 à 16€." },
+            { slot: "12h–14h", name: "Transfert depuis Cork", type: "logistics", duration: 120, icon: "✈️", note: "Pour rejoindre Cork Airport (ORK), à environ 6 km au sud du centre : navette Bus Éireann depuis le centre ou taxi (20 à 30 minutes selon la circulation). Prévoir au minimum 2h avant le vol pour les vols européens. Kent Station est accessible à pied ou en taxi depuis le centre pour les départs en train vers Dublin ou d'autres destinations irlandaises. Vérifier les horaires de train à l'avance car les fréquences varient selon le service. Les files de contrôle à Cork Airport sont généralement moins longues qu'à Dublin, mais une marge raisonnable reste nécessaire." },
+          ],
+        },
+      ],
+    },
+  },
+
 };
 
 // ─── Derived helpers ──────────────────────────────────────────────
