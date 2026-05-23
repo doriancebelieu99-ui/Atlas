@@ -295,7 +295,7 @@ export const destinations: Record<string, Destination> = {
     region: "Marrakech-Safi",
     tagline: "Une ville impériale au pied du Haut Atlas",
     score: 87,
-    image: "https://images.unsplash.com/photo-1597212618440-806262de4f6b?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1763146742097-641ec944b948?w=900&q=80",
     summary: "Marrakech est une ancienne ville impériale à trois heures de vol de Paris, dont le centre historique est classé à l'UNESCO. La médina concentre souks, palais, mosquées et riads dans un tissu urbain dense et très vivant.",
     mainInterest: "Dépaysement",
     idealDuration: "3 à 5 jours",
