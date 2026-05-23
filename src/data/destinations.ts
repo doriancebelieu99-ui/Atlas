@@ -7578,7 +7578,7 @@ export const destinations: Record<string, Destination> = {
     region: "Émilie-Romagne",
     tagline: "Portiques, trattorie et pâtes fraîches au coeur de l'Émilie",
     score: 85,
-    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1682369551300-8901c39f2487?w=900&q=80",
     summary:
       "Bologne est la capitale de l'Émilie-Romagne, avec environ 400 000 habitants et une université fondée en 1088, la plus ancienne d'Europe. Elle n'est pas une ville-musée : son intérêt est distribué sur l'ensemble du tissu urbain plutôt que concentré sur un ou deux monuments. Ses 40 kilomètres de portiques couverts traversent la ville en toute saison, structurant les déplacements à pied. Sa réputation gastronomique est la plus solide d'Italie sur les marchés, les charcuteries, les trattorie et les pâtes fraîches. La présence universitaire (environ 85 000 étudiants) entretient une vie de quartier active le soir. Bologne est aussi une excellente base pour des excursions courtes en Émilie-Romagne (Modène, Parme, Ferrare).",
     mainInterest: "Gastronomie & vie urbaine italienne",
@@ -7860,7 +7860,7 @@ export const destinations: Record<string, Destination> = {
     region: "Grand Londres",
     tagline: "Quartiers contrastés, institutions mondiales et ville chère",
     score: 89,
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1563898058048-dc3a040decd9?w=900&q=80",
     summary:
       "Londres est la capitale du Royaume-Uni, avec environ 9 millions d'habitants dans le Grand Londres et plus de 14 millions dans l'aire métropolitaine. C'est l'une des villes les plus chères d'Europe pour l'hébergement, la restauration et les attractions. Elle compense par une offre muséale exceptionnelle en grande partie gratuite (British Museum, Natural History Museum, V&A, Tate Modern, National Gallery), des parcs immenses ouverts en permanence, et des quartiers très différenciés qui forment autant de villes dans la ville. Les distances entre quartiers sont réelles : compter 30 à 50 minutes de métro (Tube) entre Heathrow et le centre, et 20 à 40 minutes entre des quartiers comme Camden et Greenwich. La météo est variable toute l'année, avec une pluie possible en toute saison et une grisaille hivernale marquée.",
     mainInterest: "Patrimoine historique & vie de quartier mondiale",
@@ -8141,7 +8141,7 @@ export const destinations: Record<string, Destination> = {
     region: "Communauté de Madrid",
     tagline: "Triangle muséal, quartiers vivants et horaires décalés",
     score: 88,
-    image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1672771346408-aab1678430a3?w=900&q=80",
     summary:
       "Madrid est la capitale de l'Espagne et l'une des grandes capitales européennes, perchée à 650 mètres d'altitude sur le Plateau castillan. Elle ne bénéficie ni de mer ni d'un vieux centre médiéval compact comme Barcelone. Ce qu'elle concentre à la place : le triangle muséal le plus dense d'Europe (Prado, Reina Sofía, Thyssen-Bornemisza), des quartiers à forte personnalité (La Latina, Malasaña, Chueca, Lavapiés), une gastronomie de tapas concrète et une vie urbaine qui commence là où celle des autres capitales européennes s'arrête. Déjeuner après 14h, dîner après 21h, places animées jusqu'à l'aube : Madrid se vit à ses propres horaires.",
     mainInterest: "Musées & vie urbaine",
