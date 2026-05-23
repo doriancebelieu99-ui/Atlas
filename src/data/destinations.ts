@@ -4163,7 +4163,7 @@ export const destinations: Record<string, Destination> = {
     region: "Nord Vietnam — Delta du fleuve Rouge",
     tagline: "Le vieux quartier, le lac et l'héritage de l'Indochine",
     score: 85,
-    image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1689080541115-5acffbf0a083?w=900&q=80",
     summary: "Hanoï est à Bangkok ce que Porto est à Lisbonne : plus petite, plus dense, plus marquée par son histoire et sans la surcharge touristique de sa grande voisine. Le Vieux Quartier aux 36 corporations, l'architecture coloniale française et une culture street food parmi les plus fines d'Asie font d'Hanoï une destination à part entière — et la porte naturelle vers la Baie d'Ha Long.",
     mainInterest: "Street food, architecture coloniale et patrimoine de l'Indochine",
     idealDuration: "4 à 6 jours",
