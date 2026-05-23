@@ -6725,7 +6725,7 @@ export const destinations: Record<string, Destination> = {
     region: "Shanghai",
     tagline: "Le Bund colonial face aux tours de Lujiazui, entre French Concession et vieille ville",
     score: 85,
-    image: "https://images.unsplash.com/photo-1537531718468-4a6a1bde3e2d?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1506158669146-619067262a00?w=900&q=80",
     summary: "Shanghai est la plus grande métropole économique de Chine, avec environ 25 millions d'habitants dans la municipalité. La ville articule un héritage architectural des années de concessions étrangères (1842-1945), visible dans les bâtiments néoclassiques du Bund et les villas art déco de la French Concession, avec l'hypermodernité de Pudong et ses tours culminant à 632 mètres. La cuisine shanghaïenne, le réseau de métro parmi les plus étendus du monde et la densité de quartiers distincts en font une destination structurable en 5 jours sans empilement.",
     mainInterest: "Culture & architecture urbaine",
     idealDuration: "5 à 7 jours",
@@ -7437,7 +7437,7 @@ export const destinations: Record<string, Destination> = {
     region: "Hokkaidō",
     tagline: "Ramen miso, neige d'Hokkaidō et bière au nord du Japon",
     score: 84,
-    image: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1725772692406-eba5cc3c2adc?w=900&q=80",
     summary:
       "Sapporo est la quatrième ville du Japon par la population (environ 1,9 million d'habitants) et la capitale de l'île d'Hokkaidō. Conçue sur un plan en grille par des ingénieurs américains et japonais à partir de 1869, elle n'a pas la densité historique de Kyoto ni la saturation touristique d'Osaka. Sa force est ailleurs : une gastronomie distincte (ramen miso, fruits de mer d'Hokkaidō, produits laitiers), un hiver remarquable avec des chutes de neige parmi les plus importantes du monde pour une grande ville, et une excursion facile vers Otaru. L'été est doux et agréable, l'automne très net, le printemps tardif. C'est une destination cohérente pour qui cherche un Japon moins saturé, plus aéré, fortement saisonnier.",
     mainInterest: "Gastronomie d'Hokkaidō & hiver de grande ville",
