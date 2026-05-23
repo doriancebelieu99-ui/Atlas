@@ -2764,7 +2764,7 @@ export const destinations: Record<string, Destination> = {
     region: "Région métropolitaine",
     tagline: "Tango, architecture européenne et intensité porteña",
     score: 83,
-    image: "https://images.unsplash.com/photo-1755302733410-c797e958bff4?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
     summary: "Buenos Aires est la capitale de l'Argentine, avec 15 millions d'habitants dans la région métropolitaine. Surnommée 'le Paris de l'Amérique du Sud', elle affiche une architecture beaux-arts héritée du début du XXe siècle, une scène culturelle dense, une gastronomie marquée par l'immigration italienne et espagnole, et le tango comme langue universelle.",
     mainInterest: "Culture & vie nocturne",
     idealDuration: "5 à 7 jours",
