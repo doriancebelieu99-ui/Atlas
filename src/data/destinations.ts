@@ -5507,7 +5507,7 @@ export const destinations: Record<string, Destination> = {
     region: "Sjælland",
     tagline: "Design, hygge et gastronomie nordique au bord de l'Øresund",
     score: 87,
-    image: "https://images.unsplash.com/photo-1558600493-93ced9c29a2b?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1557846978-e801fff1c245?w=900&q=80",
     summary:
       "Copenhague est la capitale mondiale du design et de la durabilité urbaine. Là où d'autres villes accumulent les monuments, Copenhague construit des expériences : une gastronomie qui a reformaté la cuisine mondiale depuis 2003 (Noma et la New Nordic cuisine), une culture du vélo intégrée à l'identité citadine, et une architecture contemporaine systématiquement primée. Le concept danois de hygge (bien-être chaleureux dans l'instant présent) structure l'organisation de l'espace public, des cafés et de la vie sociale.",
     mainInterest: "Design & gastronomie nordique",
