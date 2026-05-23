@@ -1166,7 +1166,7 @@ export const destinations: Record<string, Destination> = {
     region: "Catalogne",
     tagline: "Gaudí, plage et énergie catalane",
     score: 88,
-    image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1728249960363-13079cc2c6f6?w=900&q=80",
     summary: "Barcelone est la capitale de la Catalogne, connue pour son architecture moderniste, ses quartiers contrastés et sa façade sur la Méditerranée. Gaudí y a laissé plusieurs œuvres majeures encore en chantier ou récemment achevées.",
     mainInterest: "Architecture & vie urbaine",
     idealDuration: "4 à 6 jours",
