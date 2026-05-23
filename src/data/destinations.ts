@@ -6575,7 +6575,7 @@ export const destinations: Record<string, Destination> = {
     region: "Hong Kong",
     tagline: "La skyline de Victoria Harbour entre tours de verre, temples et marchés de nuit",
     score: 87,
-    image: "https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1613380273632-4543c3376393?w=900&q=80",
     summary: "Hong Kong est une Région Administrative Spéciale de Chine de 7,5 millions d'habitants, répartis entre l'île de Hong Kong, la péninsule de Kowloon et les Nouveaux Territoires. La ville articule un héritage colonial britannique (1842-1997), une culture cantonaise dense et vivante, et une infrastructure logistique parmi les plus efficaces du monde. Son relief accidenté, ses marchés de nuit et sa skyline sur Victoria Harbour en font une destination qui se parcourt autant en tramway et en ferry qu'en MTR.",
     mainInterest: "Culture & gastronomie cantonaise",
     idealDuration: "5 à 7 jours",
