@@ -8561,7 +8561,7 @@ export const destinations: Record<string, Destination> = {
     region: "Bruxelles-Capitale",
     tagline: "Capitale européenne polycentrique : Art nouveau, Grand-Place, quartiers et table belge",
     score: 84,
-    image: "https://images.unsplash.com/photo-1575845664732-ee40fdc525a3?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1678009859747-9f4620e0c355?w=900&q=80",
     summary:
       "Bruxelles est une capitale atypique : ville officielle de l'Union européenne et de l'OTAN, elle est aussi une métropole profondément fragmentée, polycentrique, où des quartiers de caractères très différents coexistent à quelques minutes de marche. Le centre historique (Grand-Place, Galeries Royales, îlot sacré) est remarquable mais ne représente qu'une fraction de ce que la ville offre. Vers le haut du pentagone, le Sablon, le Mont des Arts et le Palais Royal marquent une Bruxelles plus institutionnelle et plus chargée. Vers les communes du sud et de l'est, Ixelles, Saint-Gilles et le quartier européen révèlent une ville Art nouveau, multiculturelle et vivante. Bruxelles peut paraître inégale à première vue : des rues soignées côtoient des zones plus brutes. C'est précisément cette texture composite qui en fait une ville intéressante à explorer à pied, loin du circuit carte postale.",
     mainInterest: "Patrimoine & vie de quartier",
@@ -8701,7 +8701,7 @@ export const destinations: Record<string, Destination> = {
     region: "Leinster",
     tagline: "Capitale compacte, géorgienne et littéraire : pubs, parcs et musique live en ville marchable",
     score: 84,
-    image: "https://images.unsplash.com/photo-1705170476377-6138def155af?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1779371454296-561503dd004d?w=900&q=80",
     summary:
       "Dublin est une capitale à taille humaine, entièrement parcourable à pied, construite en briques rouges dans un registre géorgien, traversée par la Liffey qui sépare le Northside du Southside. Sa puissance n'est pas celle d'une ville monumentale : elle tient dans l'atmosphère des quartiers, dans la densité des pubs et des cafés, dans une tradition littéraire exceptionnelle (Swift, Wilde, Beckett, Joyce, Yeats) et dans une musique traditionnelle vivante ancrée dans les salles et les rues. Temple Bar est touristique et cher ; les vrais pubs de Dublin se trouvent dans les quartiers plus locaux. La ville est chère, notamment en hébergement, mais elle reste accessible à pied et facile d'accès depuis l'aéroport par bus express. La météo est changeante et souvent humide : c'est une réalité à intégrer, pas un obstacle.",
     mainInterest: "Culture & vie de quartier",
