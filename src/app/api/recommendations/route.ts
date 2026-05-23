@@ -25,6 +25,7 @@ const VALID_STYLES = [
 
 const VALID_ENVIRONMENT = ["urban", "coastal", "nature", "any"];
 const VALID_FLIGHT_TOLERANCE = ["short", "medium", "long", "any"];
+const VALID_FLIGHT_BUDGET = ["low", "medium", "flexible"];
 const VALID_DEPARTURE_PRECISION = ["month", "season"];
 const VALID_DEPARTURE_MONTH = [
   "jan", "feb", "mar", "apr", "may", "jun",
@@ -59,6 +60,10 @@ function validateAnswers(
 
   if (answers.flightTolerance !== undefined && !VALID_FLIGHT_TOLERANCE.includes(answers.flightTolerance as string)) {
     return { valid: false, error: "Champ 'flightTolerance' invalide." };
+  }
+
+  if (answers.flightBudget !== undefined && !VALID_FLIGHT_BUDGET.includes(answers.flightBudget as string)) {
+    return { valid: false, error: "Champ 'flightBudget' invalide." };
   }
 
   if (answers.departurePrecision !== undefined) {

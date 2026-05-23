@@ -49,6 +49,7 @@ async function fillQuizAndGetSid(
   await page.getByRole("radio", { name: PACE_LABEL[pace] }).click();
   await page.getByRole("radio", { name: /peu importe/i }).first().click();  // env
   await page.getByRole("radio", { name: /peu importe/i }).first().click();  // flightTolerance
+  await page.getByRole("radio", { name: /peu importe/i }).first().click();  // flightBudget
   await page.getByRole("button", { name: /passer/i }).click();              // styles: skip
   await page.getByRole("button", { name: /passer/i }).click();              // interests: skip
 

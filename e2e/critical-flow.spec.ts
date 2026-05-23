@@ -14,11 +14,12 @@ async function fillQuiz(page: import("@playwright/test").Page) {
   await page.getByRole("radio", { name: /couple/i }).click();
   await page.getByRole("radio", { name: /équilibré/i }).click();
 
-  // Q6 environment, Q7 flightTolerance : single-select → role="radio"
+  // Q6 environment, Q7 flightTolerance, Q8 flightBudget : single-select → role="radio"
+  await page.getByRole("radio", { name: /peu importe/i }).first().click();
   await page.getByRole("radio", { name: /peu importe/i }).first().click();
   await page.getByRole("radio", { name: /peu importe/i }).first().click();
 
-  // Q8–Q9 : multi-select → aria-pressed buttons
+  // Q9–Q10 : multi-select → aria-pressed buttons
   await page.getByRole("button", { name: /authentique/i }).click();
   await page.getByRole("button", { name: /valider/i }).click();
   await page.getByRole("button", { name: /gastronomie/i }).click();

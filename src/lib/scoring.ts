@@ -10,6 +10,7 @@ import type {
   DestinationScoreResult,
   Destination,
   BudgetLevel,
+  FlightBudget,
 } from "./types";
 
 // ─── Default Weights (from blueprint §11.1) ──────────────────────
@@ -25,6 +26,7 @@ const DEFAULT_WEIGHTS: ScoringWeights = {
   group: 0.08,
   environment: 0.12,
   flightTime: 0.10,
+  flightBudget: 0.08,
 };
 
 // ─── Weight Adjustment ────────────────────────────────────────────
@@ -61,6 +63,10 @@ export function adjustWeights(prefs: PreferencesInput): ScoringWeights {
 
   if (!prefs.flightTolerance || prefs.flightTolerance === "any") {
     w.flightTime = 0;
+  }
+
+  if (!prefs.flightBudget || prefs.flightBudget === "flexible") {
+    w.flightBudget = 0;
   }
 
   // Normalize to sum = 1
@@ -343,6 +349,25 @@ export function scoreFlightTime(prefs: PreferencesInput, dest: Destination): num
   return 25;
 }
 
+// ─── Flight Budget Scorer ─────────────────────────────────────────
+// Uses dest.budget.flight.min — minimum realistic ticket price from Paris.
+
+export function scoreFlightBudget(prefs: PreferencesInput, dest: Destination): number {
+  if (!prefs.flightBudget || prefs.flightBudget === "flexible") return 100;
+  const min = dest.budget.flight.min;
+  if (prefs.flightBudget === "low") {
+    if (min <= 150) return 100;
+    if (min <= 200) return 70;
+    if (min <= 300) return 40;
+    return 15;
+  }
+  // medium
+  if (min <= 250) return 100;
+  if (min <= 400) return 80;
+  if (min <= 550) return 55;
+  return 30;
+}
+
 // ─── Main Scoring Function ────────────────────────────────────────
 
 export function scoreDestination(
@@ -362,6 +387,7 @@ export function scoreDestination(
     group: scoreGroup(prefs, dest),
     environment: scoreEnvironment(prefs, dest),
     flightTime: scoreFlightTime(prefs, dest),
+    flightBudget: scoreFlightBudget(prefs, dest),
   };
 
   const totalScore = Math.round(
@@ -374,7 +400,8 @@ export function scoreDestination(
     criteriaScores.pace * weights.pace +
     criteriaScores.group * weights.group +
     criteriaScores.environment * weights.environment +
-    criteriaScores.flightTime * weights.flightTime,
+    criteriaScores.flightTime * weights.flightTime +
+    criteriaScores.flightBudget * weights.flightBudget,
   );
 
   const sorted = Object.entries(criteriaScores).sort(([, a], [, b]) => b - a);
@@ -465,6 +492,7 @@ function generateHighlight(
     group: `Destination bien adaptée à votre configuration de voyage.`,
     environment: `Le cadre de cette destination correspond à votre préférence.`,
     flightTime: `Facilement accessible depuis la France.`,
+    flightBudget: `Billet d'avion accessible pour votre budget.`,
   };
   return map[criterion] ?? criterion;
 }
@@ -486,6 +514,7 @@ function generateLimitation(
     group: `Moins adaptée à votre configuration de voyage.`,
     environment: `Le cadre de cette destination diffère de votre préférence.`,
     flightTime: `Temps de vol assez long depuis la France.`,
+    flightBudget: `Billet d'avion onéreux pour votre budget.`,
   };
   return map[criterion] ?? criterion;
 }
@@ -507,6 +536,7 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
 
   const env = answers.environment as string | undefined;
   const flight = answers.flightTolerance as string | undefined;
+  const flightBudgetRaw = answers.flightBudget as string | undefined;
   const departurePrecision = answers.departurePrecision as string | undefined;
   const departureMonthStr = answers.departureMonth as string | undefined;
   const exactStr = answers.durationExact as string | undefined;
@@ -529,6 +559,7 @@ export function quizToPreferences(answers: Record<string, string | string[]>): P
     interests: Array.isArray(answers.interests) ? answers.interests : [],
     environment: env && env !== "any" ? env : undefined,
     flightTolerance: flight && flight !== "any" ? (flight as "short" | "medium" | "long") : undefined,
+    flightBudget: flightBudgetRaw ? (flightBudgetRaw as FlightBudget) : undefined,
   };
 }
 

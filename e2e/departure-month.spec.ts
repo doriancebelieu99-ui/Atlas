@@ -18,6 +18,7 @@ async function fillQuizWithMonth(page: Page, month: "aug" | "jan" | "dec") {
   await page.getByRole("radio", { name: /équilibré/i }).click();        // pace
   await page.getByRole("radio", { name: /peu importe/i }).first().click(); // env
   await page.getByRole("radio", { name: /peu importe/i }).first().click(); // flightTolerance
+  await page.getByRole("radio", { name: /peu importe/i }).first().click(); // flightBudget
   await page.getByRole("button", { name: /passer/i }).click();          // styles: skip
   await page.getByRole("button", { name: /passer/i }).click();          // interests: skip
 
@@ -34,10 +35,11 @@ async function fillQuizWithSeason(page: Page) {
   await page.getByRole("radio", { name: /printemps/i }).click();
   await page.getByRole("radio", { name: /couple/i }).click();
   await page.getByRole("radio", { name: /équilibré/i }).click();
-  await page.getByRole("radio", { name: /peu importe/i }).first().click();
-  await page.getByRole("radio", { name: /peu importe/i }).first().click();
-  await page.getByRole("button", { name: /passer/i }).click();
-  await page.getByRole("button", { name: /passer/i }).click();
+  await page.getByRole("radio", { name: /peu importe/i }).first().click(); // env
+  await page.getByRole("radio", { name: /peu importe/i }).first().click(); // flightTolerance
+  await page.getByRole("radio", { name: /peu importe/i }).first().click(); // flightBudget
+  await page.getByRole("button", { name: /passer/i }).click(); // styles: skip
+  await page.getByRole("button", { name: /passer/i }).click(); // interests: skip
 
   await page.waitForURL(/\/results\?sid=/, { timeout: 10_000 });
   await page.locator(".result-card").first().waitFor({ timeout: 5_000 });

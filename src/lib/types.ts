@@ -13,6 +13,7 @@ export type ViewName = "home" | "quiz" | "results" | "destination" | "compare" |
 
 export type Environment = "urban" | "coastal" | "nature" | "mixed";
 export type FlightTolerance = "short" | "medium" | "any" | "long";
+export type FlightBudget = "low" | "medium" | "flexible";
 export type DestinationType = "compact" | "city_plus" | "territory";
 export type DepartureMonth = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul" | "aug" | "sep" | "oct" | "nov" | "dec";
 
@@ -29,6 +30,7 @@ export interface PreferencesInput {
   interests?: string[];
   environment?: string;
   flightTolerance?: FlightTolerance;
+  flightBudget?: FlightBudget;
   maxTransportHoursPerDay?: number;
   comfortLevel?: string;
   excludeDestinations?: string[];
@@ -188,6 +190,7 @@ export interface CriteriaScores {
   group: number;
   environment: number;
   flightTime: number;
+  flightBudget: number;
 }
 
 export interface ScoringWeights {
@@ -201,6 +204,7 @@ export interface ScoringWeights {
   group: number;
   environment: number;
   flightTime: number;
+  flightBudget: number;
 }
 
 export interface DestinationScoreResult {

@@ -7,6 +7,7 @@ import {
   scoreLogistics,
   scoreInterests,
   scorePace,
+  scoreFlightBudget,
   scoreDestination,
   rankDestinations,
   quizToPreferences,
@@ -248,6 +249,52 @@ describe("scoreInterests", () => {
       lisbonne, // gastronomique, patrimoine
     );
     expect(score).toBeGreaterThan(70);
+  });
+});
+
+describe("scoreFlightBudget", () => {
+  const base: PreferencesInput = { durationDays: 5, groupType: "couple", pace: "balanced" };
+
+  it("returns 100 when flightBudget is flexible", () => {
+    expect(scoreFlightBudget({ ...base, flightBudget: "flexible" }, lisbonne)).toBe(100);
+  });
+
+  it("returns 100 when flightBudget is undefined", () => {
+    expect(scoreFlightBudget(base, lisbonne)).toBe(100);
+  });
+
+  it("low budget: returns 100 for cheap European destination (flight.min ≤ 150)", () => {
+    // Lisbonne flight.min = 80
+    expect(scoreFlightBudget({ ...base, flightBudget: "low" }, lisbonne)).toBe(100);
+  });
+
+  it("low budget: penalizes expensive destination (flight.min > 300)", () => {
+    const expensiveDest = { ...lisbonne, budget: { ...lisbonne.budget, flight: { min: 500, max: 900 } } };
+    expect(scoreFlightBudget({ ...base, flightBudget: "low" }, expensiveDest)).toBe(15);
+  });
+
+  it("medium budget: returns 100 for mid-range destination (flight.min ≤ 250)", () => {
+    expect(scoreFlightBudget({ ...base, flightBudget: "medium" }, lisbonne)).toBe(100);
+  });
+
+  it("medium budget: returns 80 for destination in 250–400 range", () => {
+    const midDest = { ...lisbonne, budget: { ...lisbonne.budget, flight: { min: 350, max: 600 } } };
+    expect(scoreFlightBudget({ ...base, flightBudget: "medium" }, midDest)).toBe(80);
+  });
+
+  it("medium budget: penalizes very expensive destination (flight.min > 550)", () => {
+    const expensiveDest = { ...lisbonne, budget: { ...lisbonne.budget, flight: { min: 600, max: 1000 } } };
+    expect(scoreFlightBudget({ ...base, flightBudget: "medium" }, expensiveDest)).toBe(30);
+  });
+
+  it("flightBudget weight is zero when undefined — does not affect total", () => {
+    const w = adjustWeights(base);
+    expect(w.flightBudget).toBe(0);
+  });
+
+  it("flightBudget weight is non-zero when set to low", () => {
+    const w = adjustWeights({ ...base, flightBudget: "low" });
+    expect(w.flightBudget).toBeGreaterThan(0);
   });
 });
 

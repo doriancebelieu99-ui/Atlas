@@ -133,6 +133,16 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
+    id: "flightBudget",
+    title: "Quel budget pour le billet d'avion ?",
+    subtitle: "Aller-retour depuis Paris.",
+    options: [
+      { value: "low",      label: "Économique",  description: "Je cherche les meilleures offres (< 200€)", icon: "💰" },
+      { value: "medium",   label: "Raisonnable", description: "Confort sans excès (< 400€)",               icon: "✈️" },
+      { value: "flexible", label: "Peu importe", description: "Le billet n'est pas un frein",               icon: "🌐" },
+    ],
+  },
+  {
     id: "styles",
     title: "Quelle atmosphère vous attire ?",
     subtitle: "Jusqu'à 2.",
@@ -185,6 +195,7 @@ export const answerLabels: Record<string, Record<string, string>> = {
   pace: { relaxed: "Relax", balanced: "Équilibré", dense: "Dense" },
   environment: { urban: "Ville & culture", coastal: "Mer & côtes", nature: "Nature & paysages", any: "Peu importe" },
   flightTolerance: { short: "Vol court (< 3h)", medium: "Vol moyen (3-7h)", long: "Long-courrier (> 7h)", any: "Peu importe" },
+  flightBudget: { low: "Billet économique (< 200€)", medium: "Billet raisonnable (< 400€)", flexible: "Peu importe" },
   styles: {
     authentic_local: "Authentique & local",
     culture_patrimoine: "Culture & patrimoine",

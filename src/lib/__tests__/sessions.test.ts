@@ -25,7 +25,7 @@ const results: DestinationScoreResult[] = [
     criteriaScores: {
       budget: 100, season: 85, style: 70,
       duration: 100, logistics: 88, interests: 80, pace: 100, group: 80,
-      environment: 75, flightTime: 100,
+      environment: 75, flightTime: 100, flightBudget: 100,
     },
     highlights: ["Bon budget"],
     limitations: [],

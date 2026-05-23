@@ -65,8 +65,9 @@ async function fillQuizMinimal(page: Page, opts: QuizOpts = {}) {
     await page.getByRole("radio", { name: /peu importe/i }).first().click();
   }
 
-  await page.getByRole("button", { name: /passer/i }).click(); // Q8 styles: skip
-  await page.getByRole("button", { name: /passer/i }).click(); // Q9 interests: skip
+  await page.getByRole("radio", { name: /peu importe/i }).first().click(); // flightBudget: flexible
+  await page.getByRole("button", { name: /passer/i }).click(); // styles: skip
+  await page.getByRole("button", { name: /passer/i }).click(); // interests: skip
 
   await page.waitForURL(/\/results\?sid=/, { timeout: 10_000 });
   await page.locator(".result-card").first().waitFor({ timeout: 5_000 });
@@ -90,8 +91,9 @@ test(
     await page.getByRole("radio", { name: /hiver/i }).click();                // period: winter
     await page.getByRole("radio", { name: /couple/i }).click();
     await page.getByRole("radio", { name: /équilibré/i }).click();
-    await page.getByRole("radio", { name: /peu importe/i }).first().click();
-    await page.getByRole("radio", { name: /long-courrier/i }).click();
+    await page.getByRole("radio", { name: /peu importe/i }).first().click(); // env
+    await page.getByRole("radio", { name: /long-courrier/i }).click();       // flightTolerance
+    await page.getByRole("radio", { name: /peu importe/i }).first().click(); // flightBudget
 
     await page.getByRole("button", { name: /culture/i }).click();
     await page.getByRole("button", { name: /vie urbaine/i }).click();
