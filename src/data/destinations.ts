@@ -4573,7 +4573,7 @@ export const destinations: Record<string, Destination> = {
     region: "Hongrie centrale",
     tagline: "La perle du Danube entre Buda et Pest",
     score: 87,
-    image: "https://images.unsplash.com/photo-1665937958632-9281af854bf2?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1500078974918-738828bc0422?w=900&q=80",
     summary: "Budapest est une capitale double — Buda, côté collines et château, et Pest, côté plaine et vie urbaine — séparées par un Danube plus large qu'à Paris. Sa singularité tient à trois choses absentes de Prague ou Vienne : les bains thermaux ottomans, les ruin bars et une culture culinaire au paprika.",
     mainInterest: "Architecture Art Nouveau, bains thermaux et vie nocturne",
     idealDuration: "3 à 4 jours",
