@@ -2912,7 +2912,7 @@ export const destinations: Record<string, Destination> = {
     region: "Bali",
     tagline: "Rizières en terrasses, temples hindous et plages de l'Indo-Pacifique",
     score: 87,
-    image: "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1553902000-e036b7d05af5?w=900&q=80",
     summary: "Bali est une île indonésienne de 5 800 km² avec 4,2 millions d'habitants, principalement hindous dans un pays à majorité musulmane. Elle réunit des paysages de rizières en terrasses classées à l'UNESCO, des temples parmi les plus actifs d'Asie du Sud-Est, des plages de surf de rang international et une culture artistique vivante centrée sur la danse, la sculpture et la musique.",
     mainInterest: "Nature & spiritualité",
     idealDuration: "6 à 10 jours",
