@@ -3601,7 +3601,7 @@ export const destinations: Record<string, Destination> = {
     region: "Amérique du Sud",
     tagline: "La capitale gastronomique du Pacifique entre falaises et ceviche",
     score: 86,
-    image: "https://images.unsplash.com/photo-1530723634302-cacd3ef6f20f?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1660521844005-015733ce411e?w=900&q=80",
     summary: "Lima est la capitale culinaire de l'Amérique du Sud, reconnue par les chefs du monde entier. Perchée sur des falaises dominant le Pacifique, elle conjugue un centre historique baroque classé à l'UNESCO, les quartiers branchés de Miraflores et Barranco, et une cuisine de rue qui mélange influences incas, africaines, japonaises et espagnoles. Point de départ idéal pour Machu Picchu et le Lac Titicaca.",
     mainInterest: "Gastronomie et patrimoine précolombien",
     idealDuration: "4 à 5 jours (avant Cusco)",
