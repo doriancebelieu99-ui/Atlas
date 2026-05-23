@@ -1314,7 +1314,7 @@ export const destinations: Record<string, Destination> = {
     region: "Toscane",
     tagline: "Le berceau de la Renaissance au creux de l'Arno",
     score: 92,
-    image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?w=900&q=80",
     summary: "Florence est la capitale de la Toscane et l'un des hauts lieux de l'art occidental. Ses musées concentrent une part considérable des chefs-d'œuvre de la Renaissance, dans une ville à l'échelle humaine traversée par l'Arno.",
     mainInterest: "Art & histoire",
     idealDuration: "3 à 5 jours",
