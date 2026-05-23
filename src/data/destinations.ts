@@ -4977,7 +4977,7 @@ export const destinations: Record<string, Destination> = {
     region: "Inde du Nord",
     tagline: "Forts roses, villes bleues et palais sur les lacs",
     score: 88,
-    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1602643454724-21d5a40722db?w=900&q=80",
     summary:
       "Le Rajasthan est l'État le plus visité d'Inde après le Taj Mahal, et pour cause : ses forteresses médiévales (Amber, Mehrangarh, Jaisalmer), ses villes aux façades colorées (Jaipur en rose, Jodhpur en bleu, Udaipur en blanc) et ses palais lacustres composent un catalogue architectural sans équivalent sur le continent. L'Inde entière était absente du catalogue Atlas — Rajasthan est la destination qui comble ce vide avec le plus de puissance visuelle et culturelle.",
     mainInterest: "Architecture royale, villes colorées et palais rajputs",
