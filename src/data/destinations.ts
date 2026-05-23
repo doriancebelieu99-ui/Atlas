@@ -2050,7 +2050,7 @@ export const destinations: Record<string, Destination> = {
     region: "Québec",
     tagline: "Une ville francophone à l'architecture contrastée, entre festivals et gastronomie",
     score: 81,
-    image: "https://images.unsplash.com/photo-1575540576545-3db8561c29e4?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1659618486174-245686c0aac4?w=900&q=80",
     summary: "Montréal est la deuxième ville francophone du monde après Paris. Elle réunit une architecture victorienne bien conservée, un réseau souterrain piéton de 33 km, une scène gastronomique reconnue internationalement et un calendrier de festivals estivaux dense.",
     mainInterest: "Culture & gastronomie urbaine",
     idealDuration: "4 à 6 jours",
