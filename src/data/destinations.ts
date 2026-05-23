@@ -8421,7 +8421,7 @@ export const destinations: Record<string, Destination> = {
     region: "Vénétie",
     tagline: "Canaux, vaporetti et lumière lagunaire : une ville unique sans voitures ni scooters",
     score: 90,
-    image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1511135570219-bbad9a02f103?w=900&q=80",
     summary:
       "Venise est une ville sans équivalent : construite sur une lagune, traversée par plus de 170 canaux et reliée par environ 400 ponts, elle est entièrement accessible à pied ou en bateau. Il n'existe aucun véhicule motorisé dans la ville historique. Ce qui paraît d'abord romantique devient rapidement une réalité physique concrète : ruelles sinueuses, ponts à monter et descendre sans cesse, bagages à tirer sur des escaliers. Venise est aussi l'une des destinations les plus visitées d'Europe, et la pression touristique dans les zones les plus connues (San Marco, Rialto) est forte, surtout de juin à septembre. Sa puissance tient dans le contraste entre ces axes saturés et les quartiers moins fréquentés de Cannaregio, Dorsoduro ou Castello, où la vie de la ville reste palpable. La beauté de Venise est dans son tissu même : palais gothiques et baroques reflétés dans l'eau, lumière changeante sur les canaux, circulation lente et contrainte qui impose un rythme différent de toute autre grande ville européenne.",
     mainInterest: "Patrimoine & paysage urbain unique",
@@ -8561,7 +8561,7 @@ export const destinations: Record<string, Destination> = {
     region: "Bruxelles-Capitale",
     tagline: "Capitale européenne polycentrique : Art nouveau, Grand-Place, quartiers et table belge",
     score: 84,
-    image: "https://images.unsplash.com/photo-1530470976485-f25d52ec7a84?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1575845664732-ee40fdc525a3?w=900&q=80",
     summary:
       "Bruxelles est une capitale atypique : ville officielle de l'Union européenne et de l'OTAN, elle est aussi une métropole profondément fragmentée, polycentrique, où des quartiers de caractères très différents coexistent à quelques minutes de marche. Le centre historique (Grand-Place, Galeries Royales, îlot sacré) est remarquable mais ne représente qu'une fraction de ce que la ville offre. Vers le haut du pentagone, le Sablon, le Mont des Arts et le Palais Royal marquent une Bruxelles plus institutionnelle et plus chargée. Vers les communes du sud et de l'est, Ixelles, Saint-Gilles et le quartier européen révèlent une ville Art nouveau, multiculturelle et vivante. Bruxelles peut paraître inégale à première vue : des rues soignées côtoient des zones plus brutes. C'est précisément cette texture composite qui en fait une ville intéressante à explorer à pied, loin du circuit carte postale.",
     mainInterest: "Patrimoine & vie de quartier",
@@ -8701,7 +8701,7 @@ export const destinations: Record<string, Destination> = {
     region: "Leinster",
     tagline: "Capitale compacte, géorgienne et littéraire : pubs, parcs et musique live en ville marchable",
     score: 84,
-    image: "https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1705170476377-6138def155af?w=900&q=80",
     summary:
       "Dublin est une capitale à taille humaine, entièrement parcourable à pied, construite en briques rouges dans un registre géorgien, traversée par la Liffey qui sépare le Northside du Southside. Sa puissance n'est pas celle d'une ville monumentale : elle tient dans l'atmosphère des quartiers, dans la densité des pubs et des cafés, dans une tradition littéraire exceptionnelle (Swift, Wilde, Beckett, Joyce, Yeats) et dans une musique traditionnelle vivante ancrée dans les salles et les rues. Temple Bar est touristique et cher ; les vrais pubs de Dublin se trouvent dans les quartiers plus locaux. La ville est chère, notamment en hébergement, mais elle reste accessible à pied et facile d'accès depuis l'aéroport par bus express. La météo est changeante et souvent humide : c'est une réalité à intégrer, pas un obstacle.",
     mainInterest: "Culture & vie de quartier",
@@ -8841,7 +8841,7 @@ export const destinations: Record<string, Destination> = {
     region: "Munster",
     tagline: "Ville-port compacte, gourmande et locale : marché, rivière Lee, collines et vraie vie de quartier",
     score: 80,
-    image: "https://images.unsplash.com/photo-1576764402855-9e3d8bdb0e41?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1711270991025-4b4b362e1525?w=900&q=80",
     summary:
       "Cork est la deuxième grande ville d'Irlande, bâtie sur les bras de la rivière Lee, dont l'île centrale forme un centre-ville dense, marchable et cohérent. Ce n'est pas une ville spectaculaire au sens monumental : sa force est dans l'échelle humaine, dans l'English Market au coeur du tissu commercial, dans les collines de Shandon au nord, dans un tissu de pubs et de cafés moins formaté que celui de Dublin, et dans une culture food qui s'est imposée comme l'une des plus solides d'Irlande. Cork se vit à pied, quartier par quartier, avec une densité de bonne table et une atmosphère locale directe. La ville a une identité propre, revendiquée : la réduire à \"petit Dublin\" est à la fois faux et réducteur.",
     mainInterest: "Food & vie urbaine compacte",
@@ -8971,7 +8971,7 @@ export const destinations: Record<string, Destination> = {
     region: "Communauté valencienne",
     tagline: "Ville méditerranéenne complète, ensoleillée et lisible : patrimoine, jardins, cuisine et quartiers sans saturation touristique",
     score: 86,
-    image: "https://images.unsplash.com/photo-1548181486-99e30b1f9d02?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1719401542194-95139aed215c?w=900&q=80",
     summary:
       "Valence est la troisième grande ville d'Espagne, entre mer et huerta, avec un centre historique compact, des jardins urbains exceptionnels et une architecture contemporaine très identifiable. Sans être aussi dense ni aussi saturée que Barcelone, elle offre un tissu urbain complet : vieille ville médiévale, marchés couverts, quartiers diversifiés et front de mer accessible. La ville est facile à lire et à parcourir, le métro, le tram et la marche couvrant l'essentiel. La food valencienne est une réalité à part entière : la paella originale vient d'ici, la horchata aussi, et le Mercado Central est l'un des marchés les plus vivants d'Europe. Valence n'est pas Barcelone et ne cherche pas à l'être : c'est son principal atout.",
     mainInterest: "Patrimoine & qualité de vie méditerranéenne",
@@ -9111,7 +9111,7 @@ export const destinations: Record<string, Destination> = {
     region: "Hamburg",
     tagline: "Métropole hanséatique de l'Elbe : eau, entrepôts, HafenCity et quartiers contrastés au bord du port",
     score: 85,
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1553547274-0df401ae03c9?w=900&q=80",
     summary:
       "Hambourg est la deuxième ville d'Allemagne et l'un des grands ports d'Europe, bâtie à l'embouchure de l'Elbe avec une logique d'eau omniprésente : lacs de l'Alster au centre, canaux de la Speicherstadt, front de l'Elbe au sud. Ville hanséatique à statut de cité-État, elle a une identité propre, plus marchande que politique, plus élégante que brute. La Speicherstadt, quartier d'entrepôts en briques rouges inscrits au patrimoine de l'UNESCO, et HafenCity, mutation urbaine contemporaine d'anciens terrains portuaires, forment un axe singulier et très cohérent. L'Elbphilharmonie, inaugurée en 2017, en est le point culminant. Hambourg se lit par l'eau, les quartiers et le tissu urbain dense, pas par une liste de monuments.",
     mainInterest: "Port & architecture urbaine",
