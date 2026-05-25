@@ -27,19 +27,36 @@ export interface BuildOpts {
 }
 
 // ─── Day importance for smart compression ────────────────────────
-// Default (balanced): culture * 3 + intensity.
-// Relaxed: prefers low-intensity days.
-// Dense: amplifies high-intensity days.
-// Family: penalises heavy transport and rewards free slots.
+// Default (balanced): culture * 3 + intensity + priority bias.
+// Relaxed: prefers low-intensity days (no priority bias — preserve pace semantics).
+// Dense: amplifies high-intensity days + priority bias.
+// Family: penalises heavy transport and rewards free slots (no priority bias).
+
+// Priority bias: only applied in balanced/dense modes.
+// anchor → +20 (must-see days), optional → -10 (expendable days), strong/undefined → 0.
+function dayPriorityBias(day: ItineraryDay, pace?: Pace, groupType?: GroupType): number {
+  if (pace === "relaxed" || groupType === "family") return 0;
+  if (day.priority === "anchor")   return 20;
+  if (day.priority === "optional") return -10;
+  return 0;
+}
 
 function dayImportance(day: ItineraryDay, pace?: Pace, groupType?: GroupType): number {
   const cultureCount = day.activities.filter((a) => a.type === "culture").length;
+  const bias = dayPriorityBias(day, pace, groupType);
   if (groupType === "family") {
     return cultureCount * 3 + day.intensity + day.freeSlots * 3 - Math.round(day.transportMinutes / 20);
   }
   if (pace === "relaxed") return cultureCount * 3 + (5 - day.intensity) * 2;
-  if (pace === "dense")   return cultureCount * 3 + day.intensity * 2;
-  return cultureCount * 3 + day.intensity;
+  if (pace === "dense")   return cultureCount * 3 + day.intensity * 2 + bias;
+  return cultureCount * 3 + day.intensity + bias;
+}
+
+// Drop bonus activities from a day, but only when at least one activity carries a
+// priority annotation (backward-compatible no-op for un-annotated destinations).
+function filterBonusActivities(day: ItineraryDay): ItineraryDay {
+  if (!day.activities.some((a) => a.priority !== undefined)) return day;
+  return { ...day, activities: day.activities.filter((a) => a.priority !== "bonus") };
 }
 
 // Select top-N template days by importance, then restore chronological order.
@@ -58,7 +75,7 @@ function compressBestOf(
   scored.sort((a, b) => b.score - a.score || a.originalIdx - b.originalIdx);
   const selected = scored.slice(0, n);
   selected.sort((a, b) => a.originalIdx - b.originalIdx);
-  return selected.map((s) => s.day);
+  return selected.map((s) => filterBonusActivities(s.day));
 }
 
 // ─── Pace/group profile ───────────────────────────────────────────

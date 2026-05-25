@@ -124,11 +124,11 @@ describe("buildItinerary — extension avec villes", () => {
 
 describe("buildItinerary — pace & group adaptation", () => {
   // Lisbonne J4 = Sintra : intensity 4, transportMinutes 100, freeSlots 0
-  // Verified scores for N=3:
-  //   balanced : J2(12) J3(12) J4(10)  → J4 included
-  //   relaxed  : J2(13) J3(13) J1(9)   → J4 excluded (score 8)
-  //   dense    : J2(15) J3(15) J4(14)  → J4 included
-  //   family   : J2(14) J3(13) J5(7)   → J4 excluded (score 5)
+  // Verified scores for N=3 (with priority bias where applicable):
+  //   balanced : J2(32) J3(32) J4(10)  → J4 included, J1(-5) & J5(-8) excluded
+  //   relaxed  : J2(13) J3(13) J1(9)   → J4 excluded (score 8) — no bias in relaxed
+  //   dense    : J2(35) J3(35) J4(14)  → J4 included — bias amplifies anchors
+  //   family   : J2(14) J3(13) J5(7)   → J4 excluded (score 5) — no bias in family
 
   it("balanced (défaut) : même résultat qu'un appel sans opts", () => {
     const base = buildItinerary(lisbonne, 3);
@@ -253,5 +253,99 @@ describe("buildItinerary — exhausted warning variants", () => {
     expect(buildItinerary(lisbonne, 999).durationWarning).toMatch(/lisbonne/i);
     expect(buildItinerary(seville, 999).durationWarning).toMatch(/séville/i);
     expect(buildItinerary(crete, 999).durationWarning).toMatch(/crète/i);
+  });
+});
+
+// ─── Architecture canonique — priorité jours & activités ─────────
+// Lisbonne est la destination de référence annotée :
+//   J1 optional · J2 anchor · J3 anchor · J4 strong · J5 optional
+// Activités bonus : Miradouro (J1), Feira da Ladra (J2),
+//                  LX Factory + Coucher de soleil (J3),
+//                  Time Out Market + Conservas (J5)
+
+describe("buildItinerary — priorité jours (day.priority)", () => {
+  it("N=1 balanced : retourne J2 (anchor, score 32) et non J1 (optional, score −5)", () => {
+    const r = buildItinerary(lisbonne, 1);
+    expect(r.days[0].zone).toBe("Alfama / Graça");
+  });
+
+  it("N=2 balanced : retourne les deux jours anchor J2 et J3", () => {
+    const r = buildItinerary(lisbonne, 2);
+    const zones = r.days.map((d) => d.zone);
+    expect(zones).toContain("Alfama / Graça");
+    expect(zones).toContain("Belém / Alcântara");
+  });
+
+  it("N=3 balanced : exclut J1 et J5 (optional) — seuls J2, J3, J4 retenus", () => {
+    const r = buildItinerary(lisbonne, 3);
+    const zones = r.days.map((d) => d.zone);
+    expect(zones).not.toContain("Baixa / Chiado");
+    expect(zones).not.toContain("Cais do Sodré / Mouraria / Baixa");
+    expect(zones).toContain("Alfama / Graça");
+    expect(zones).toContain("Belém / Alcântara");
+    expect(zones).toContain("Sintra (excursion)");
+  });
+
+  it("N=3 relaxed : pas de biais priorité — J1 peut être retenu, J4 exclu", () => {
+    const r = buildItinerary(lisbonne, 3, { pace: "relaxed" });
+    // Relaxed : J2(13) J3(13) J1(9) — J4(8) exclu
+    expect(r.days.some((d) => d.zone === "Sintra (excursion)")).toBe(false);
+    expect(r.days.some((d) => d.zone === "Alfama / Graça")).toBe(true);
+  });
+
+  it("N=3 family : pas de biais priorité — comportement inchangé", () => {
+    const r = buildItinerary(lisbonne, 3, { groupType: "family" });
+    // Family : J2(14) J3(13) J5(7) — J4 exclu (transport 100′)
+    expect(r.days.some((d) => d.zone === "Sintra (excursion)")).toBe(false);
+  });
+});
+
+describe("buildItinerary — filtrage activités bonus (activity.priority)", () => {
+  it("mode compressé N=3 : activités bonus de J3 retirées (LX Factory absent)", () => {
+    const r = buildItinerary(lisbonne, 3);
+    const j3 = r.days.find((d) => d.zone === "Belém / Alcântara");
+    expect(j3).toBeDefined();
+    expect(j3!.activities.some((a) => a.name.includes("LX Factory"))).toBe(false);
+  });
+
+  it("mode compressé N=3 : activités bonus de J3 retirées (Coucher de soleil absent)", () => {
+    const r = buildItinerary(lisbonne, 3);
+    const j3 = r.days.find((d) => d.zone === "Belém / Alcântara");
+    expect(j3!.activities.some((a) => a.name.includes("Coucher de soleil"))).toBe(false);
+  });
+
+  it("mode compressé N=3 : activités must préservées (Monastère + Tour présent)", () => {
+    const r = buildItinerary(lisbonne, 3);
+    const j3 = r.days.find((d) => d.zone === "Belém / Alcântara");
+    expect(j3!.activities.some((a) => a.name.includes("Monastère"))).toBe(true);
+  });
+
+  it("mode compressé N=2 : Museu do Fado (must) conservé sur J2", () => {
+    const r = buildItinerary(lisbonne, 2);
+    const j2 = r.days.find((d) => d.zone === "Alfama / Graça");
+    expect(j2).toBeDefined();
+    expect(j2!.activities.some((a) => a.name.includes("Museu do Fado"))).toBe(true);
+  });
+
+  it("mode compressé N=2 : Feira da Ladra (bonus) retirée de J2", () => {
+    const r = buildItinerary(lisbonne, 2);
+    const j2 = r.days.find((d) => d.zone === "Alfama / Graça");
+    expect(j2!.activities.some((a) => a.name.includes("Feira da Ladra"))).toBe(false);
+  });
+
+  it("exact_template N=5 : activités bonus conservées (pas de filtrage hors compression)", () => {
+    const r = buildItinerary(lisbonne, 5);
+    expect(r.adaptationMode).toBe("exact_template");
+    const j3 = r.days.find((d) => d.zone === "Belém / Alcântara");
+    expect(j3!.activities.some((a) => a.name.includes("LX Factory"))).toBe(true);
+    const j2 = r.days.find((d) => d.zone === "Alfama / Graça");
+    expect(j2!.activities.some((a) => a.name.includes("Feira da Ladra"))).toBe(true);
+  });
+
+  it("destinations sans annotations (seville) : filterBonusActivities est un no-op", () => {
+    // Seville's activities carry no priority field — compressed result must still have activities
+    const r = buildItinerary(seville, 2);
+    expect(r.adaptationMode).toBe("compressed_best_of");
+    r.days.forEach((d) => expect(d.activities.length).toBeGreaterThan(0));
   });
 });

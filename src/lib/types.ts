@@ -16,6 +16,8 @@ export type FlightTolerance = "short" | "medium" | "any" | "long";
 export type FlightBudget = "low" | "medium" | "flexible";
 export type DestinationType = "compact" | "city_plus" | "territory";
 export type DepartureMonth = "jan" | "feb" | "mar" | "apr" | "may" | "jun" | "jul" | "aug" | "sep" | "oct" | "nov" | "dec";
+export type DayPriority = "anchor" | "strong" | "optional";
+export type ActivityPriority = "must" | "recommended" | "bonus";
 
 // ─── User Preferences (quiz output) ──────────────────────────────
 
@@ -128,6 +130,7 @@ export interface ItineraryActivity {
   duration: number;
   icon: string;
   note: string;
+  priority?: ActivityPriority;
 }
 
 export interface ItineraryDay {
@@ -138,6 +141,7 @@ export interface ItineraryDay {
   transportMinutes: number;
   freeSlots: number;
   activities: ItineraryActivity[];
+  priority?: DayPriority;
 }
 
 export interface ItineraryData {
