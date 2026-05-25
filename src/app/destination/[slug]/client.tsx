@@ -42,6 +42,31 @@ export default function DestinationClient({ dest, sid }: Props) {
     <div className="atlas">
       <Nav currentView="destination" onNavigate={navigate} />
       <FicheHero dest={dest} />
+
+      {dest.itinerary && (
+        <div className="fiche-itin-strip">
+          <div className="fiche-itin-strip-info">
+            <div className="fiche-itin-strip-label">Plan de séjour</div>
+            <div className="fiche-itin-strip-title">
+              Itinéraire · {dest.itinerary.days.length} jour{dest.itinerary.days.length > 1 ? "s" : ""}
+            </div>
+            <div className="fiche-itin-strip-days">
+              {dest.itinerary.days.map((d) => (
+                <span key={d.number} className="fiche-itin-day-chip">
+                  J{d.number} · {d.zone}
+                </span>
+              ))}
+            </div>
+          </div>
+          <button
+            className="fiche-itin-strip-cta"
+            onClick={() => navigate("itinerary", dest.slug)}
+          >
+            Voir l'itinéraire →
+          </button>
+        </div>
+      )}
+
       <TabNav tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
       <div
         className="tab-content"
@@ -57,13 +82,6 @@ export default function DestinationClient({ dest, sid }: Props) {
         {activeTab === "cities" && <TabCities dest={dest} />}
       </div>
       <div className="fiche-actions">
-        {dest.itinerary ? (
-          <button className="btn-primary" onClick={() => navigate("itinerary", dest.slug)}>
-            Voir l'itinéraire →
-          </button>
-        ) : (
-          <span className="fiche-itinerary-soon">Itinéraire bientôt disponible</span>
-        )}
         <button className="btn-outline" onClick={() => navigate("results")}>
           ← Retour aux résultats
         </button>

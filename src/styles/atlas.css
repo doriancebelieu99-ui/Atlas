@@ -844,6 +844,81 @@ body {
   opacity: 0.7;
 }
 
+/* ─── Itinerary strip (entre hero et tabs) ──────────────────────── */
+
+.fiche-itin-strip {
+  background: var(--deep);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.fiche-itin-strip-info {
+  min-width: 0;
+}
+
+.fiche-itin-strip-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.fiche-itin-strip-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.fiche-itin-strip-days {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fiche-itin-day-chip {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
+.fiche-itin-strip-cta {
+  flex-shrink: 0;
+  padding: 10px 22px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--gold);
+  color: var(--deep);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.fiche-itin-strip-cta:hover {
+  background: #dbb95a;
+}
+
+@media (max-width: 768px) {
+  .fiche-itin-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .fiche-itin-strip-cta {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
 /* ─── Tab navigation ───────────────────────────────────────────── */
 
 .tab-nav {
