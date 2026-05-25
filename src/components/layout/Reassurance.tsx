@@ -12,7 +12,7 @@ const pillars = [
     desc: "Les programmes jour par jour tiennent compte des distances, durées de visite et du rythme demandé. Conçus pour être suivis, pas seulement lus.",
   },
   {
-    title: "Approche éditoriale sobre",
+    title: "Sélection indépendante",
     desc: "Sélection fondée sur la pertinence. Aucun critère commercial n'influence le classement des destinations.",
   },
 ];
